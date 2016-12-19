@@ -1,0 +1,64 @@
+/*
+ * Updated: 2014-05-12
+ */
+
+@charset "utf-8";
+.dialog_wrapper { /* background: #595959;*/ padding-bottom: 10px;}
+.dialog_wrapper a{  color:#315E81;}
+.dialog_wrapper button{cursor: pointer;}
+.dialog_wrapper .btn1,.dialog_wrapper .btn2{cursor: pointer;}
+    .dialog_body { padding: 6px; /*border: 4px solid #DDD;border-radius : 4px 4px 4px 4px;*/ background: #fff;}
+        .dialog_head { height: 0px;}
+            .dialog_title {display:none }
+            .dialog_close_button { position: absolute;top: 10px; right: 10px; display: block; width: 21px; height: 21px;background: #fff url(images/dialog_close_button.png) no-repeat right bottom; }
+            .dialog_close_button:hover {background: #fff url(images/dialog_close_button.png) no-repeat right top;}
+        .dialog_content {}
+            .dialog_loading { text-align:center; }
+                .dialog_loading_text { padding:0px;padding-top:20px;padding-left:10px;width:220px;font-style:italic;margin:15px auto 5px auto; text-align:left; font-size:15px;background:transparent url(images/loading.gif) no-repeat center top; }
+            .dialog_message_body { margin:15px 5px 5px 5px; }
+                .dialog_message_contents { margin:0px 10px;/*  padding-left:45px;  */padding-top:5px; padding-bottom:20px; }
+                .dialog_message_notice { background:transparent url(images/message_notice.gif) no-repeat left top; }
+                .dialog_message_warning { background:transparent url(images/message_warning.gif) no-repeat left top; }
+                .dialog_message_confirm { background:transparent url(images/message_confirm.gif) no-repeat left top; }
+                .dialog_buttons_bar { text-align:center;margin-top:5px; }
+                .dialog_buttons_bar input { margin:0px 5px; }
+                .dialog_buttons_bar .btn1,
+                .dialog_buttons_bar .btn2 {width: 75px; height: 30px; border: 0; background:url("images/btn_yes_no.png"); font-family: '微软雅黑'; font-size: 16px;}
+                .dialog_buttons_bar .btn1 {color: #FFF; background-position:0 0;}
+                .dialog_buttons_bar .btn1:hover {color: #FFF; background-position:0 -36px;}
+                .dialog_buttons_bar .btn2 {color: #666; background-position:-81px 0px;}
+                .dialog_buttons_bar .btn2:hover {color: #666; background-position:-81px -36px;}
+                .dialog_buttons_bar .btn_red { color:#FFF; line-height:30px; background:rgb(207, 34, 34); border:1px solid rgb(160, 8, 8); padding:0 5px;}
+				
+.dialog_wrapper .tab {width:auto; height: 28px; line-height: 26px; background: url("images/tab.gif") repeat-x bottom; }
+.dialog_wrapper .tab li {float: left; margin-right: 2px; cursor: pointer; font-size: 14px;border-radius : 4px 4px 0px 0px ; }
+.dialog_wrapper .tab .active {height: 26px; color: #ff4f01; font-weight: bold; padding: 0 20px; border: 1px solid #e2e2e2; border-bottom: 1px solid #fff; background: #fff; }
+.dialog_wrapper .tab li.first {margin-left:15px;}
+.dialog_wrapper .tab .normal {height: 26px; color: #3e3e3e; font-weight: bold; padding: 0px; border: 1px solid #e2e2e2; background: #f9f9f9; }
+.dialog_wrapper .tab .active a {color: #ff4f01; text-decoration: none; float: left; height: 26px; padding: 0 20px; }
+.dialog_wrapper .tab .normal a {color: #3e3e3e; text-decoration: none; float: left; height: 26px; padding: 0 20px; }
+
+
+
+.dialog_has_title { /*background: #555;*/ }
+    .dialog_has_title .dialog_body {padding: 6px;  font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #666;}
+        .dialog_has_title .dialog_head {  height: 30px;border-bottom:1px dashed #CCC; margin:0px;}
+            .dialog_has_title .dialog_title {color: #666; font-size: 16px; font-weight: bold; /*background: #fff url(images/linebox_h1_span.gif) no-repeat left 3px;*/ padding: 4px 10px 5px 15px; display: block; float: left; }
+            .dialog_has_title .dialog_close_button {  _top:14px;  overflow: hidden; cursor: pointer;}
+            .dialog_has_title .dialog_close_button:hover {}
+        .dialog_has_title .dialog_content {}
+            .dialog_has_title .dialog_loading { text-align:center; }
+                .dialog_has_title .dialog_loading_text { padding:0px;padding-top:20px;padding-left:10px;width:220px;font-style:italic;margin:15px auto 5px auto; text-align:left; font-size:15px;background:transparent url(images/loading.gif) no-repeat center top; }
+            .dialog_has_title .dialog_message_body { margin:15px 5px 5px 5px; }
+           
+                .dialog_has_title .dialog_buttons_bar { text-align:center;margin-top:5px; }
+                .dialog_has_title .dialog_buttons_bar input { margin:0px 5px; }
+               
+                
+                
+/*重置样式*/
+.dialog_wrapper .dialog_border{height :100%;width:100%; /*border-radius:  4px 4px 4px 4px ;opacity: 0.5;*/background: #DDD; display:none;}
+.dialog_wrapper .dialog_body{ border:4px solid #DDD;}
+.dialog_message_notice { background:none; }
+.dialog_message_warning { background:none; }
+.dialog_message_confirm { background:none; }

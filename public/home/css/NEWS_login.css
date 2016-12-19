@@ -1,0 +1,138 @@
+@charset "utf-8";
+/* CSS Document */
+/*
+* Basic Cascading Style Sheet
+* Intructions: none
+* Version: 1.0
+* Updated: 2013-11-01  
+* Author: Cyan.John.
+* Contact:
+* qq:331863539
+* Email:zzy85620987@163.com
+*/
+
+
+*,body{ margin:0; padding:0; font-family:'Microsoft YaHei'}
+.news_login div,.news_login p,.news_login span,.news_login h1,.news_login h2,.news_login h3,.news_login ul,.news_login li{ font-size:12px; float:left }
+ul,li{ list-style:none;}
+.news_login img{ float:left; border:0}
+a,a:hover{ text-decoration:none;}
+.spare{ height:8px; float:left;}
+input:-webkit-autofill {-webkit-box-shadow: 0 0 0px 1000px white inset;}
+/*******************LOGIN**********************/
+.login_head{ width:100%; float:none; height:80px; background:#c80a28; overflow:hidden }
+.login_head .login_headCon{ width:1100px; margin:0 auto; float:none}
+.login_head .login_headCon .login_headCon_logo{ background:url(../imgs/NEWS_login.png) no-repeat -199px -457px; width:193px; height:41px; float:left; margin-top:20px;}
+.login_head .login_headCon  span.login_headCon_logospan{ color:#fff; margin:45px 0 0 10px; float:left; font-size:14px;}
+.login_head .login_headCon  span.login_headCon_blankspan{ color:#fff; margin:45px 0 0 10px; float:right}
+.login_head .login_headCon  span.login_headCon_blankspan a{ color:#fff} 
+.login_head .login_headCon  span.login_headCon_blankspan a:hover{ text-decoration:underline} 
+ /********************news_login*************/
+.news_login{ margin:0 auto; width:1100px; float:none;}
+.news_login_left{width: 527px;border-left: #DDD 1px dashed;padding-left: 80px;}
+.login_form{width:300px;padding:20px 40px 20px 40px ;margin-top:40px;box-shadow: 2px 1px 5px rgba(0,0,0,0.4);border: 1px solid #EEE;opacity: 0.95;font-size:14px;}
+.login_form .news_login_title{width:100%;height:30px;font-size:19px;border-bottom:solid 1px #eee;color:#666;}
+.news_login .news_loginLeft{ margin-top:40px; float:left;}
+.news_login .news_loginLeft ul.news_loginLeft_list li{ width:100%; margin:10px 0 0 0}
+.news_login .news_loginLeft ul.news_loginLeft_list li a{text-decoration:underline}
+.news_login .news_loginLeft ul.news_loginLeft_list li .new_loginName{ font-size:14px; width:75px; text-align:right; color:#393939; line-height:33px;}
+.news_login .news_loginLeft ul.news_loginLeft_list li input.new_loginTxt{width:207px; height:33px;line-height:33px; float:left;color:#BBBBBB;font-family:'Microsoft YaHei'; }
+.news_login .news_loginLeft ul.news_loginLeft_list li input.new_loginTxt:focus{color:#000;}
+.news_login .news_loginLeft ul.news_loginLeft_list li .news_loginRadio{margin-left:5px;}
+.news_login .news_loginLeft ul.news_loginLeft_list li .login_error{color:#c80a28;margin: 10px 0;width: 100%;text-align: left;}
+.news_login .news_loginLeft ul.news_loginLeft_list li .login_btn{background: #BE0929;width: 140px;height: 35px;line-height: 35px;text-align: center;color: #fff;border-radius: 2px;letter-spacing: 1px;border:none;font-family:'Microsoft YaHei';}
+.news_login .news_login_left .login_other{width:528px;margin-top:30px;}
+.news_login .news_login_left .login_other .login_other_title{height:29px;line-height:29px;float:left;}
+.news_login .news_login_left .login_other .login_other_btn a span{background-image: url(../imgs/NEWS_login.png);}
+.news_login .news_login_left .login_other .login_other_btn .login_other_btn00{background-position:0 -528px;width: 97px;height: 29px;margin-right: 10px;float:left;}
+.news_login .news_login_left .login_other .login_other_btn .login_other_btn11{background-position:-111px -528px;}
+.news_login .news_login_left .login_other .login_other_btn .login_other_btn22{background-position:-222px -528px;}
+.news_login .news_login_left .login_other .login_other_btn .login_other_btn33{background-position:-333px -528px;}
+
+
+.news_loginRight{ width:420px; margin: 40px 40px 0 0px; float:left; display:inline;}
+.news_loginRight .news_loginRight_NR { margin:10px 10px 0 0; float:right}
+.news_loginRight .news_loginRight_NR span{ line-height:36px; text-align:right}
+.news_loginRight .news_loginRight_NR input.registered{background:url(../imgs/NEWS_login.png) no-repeat -0 -196px; width:135px; height:36px; float:left; border:0; letter-spacing:1px; font-size:20px; color:#fff; line-height:36px; cursor:pointer}
+/**************密码修改成功**********/
+.news_login div.news_login_tishi00,.news_login div.news_login_tishi00 div{ font-size:30px; color:#c80a28; font-family:'Microsoft YaHei'; width:1100px; text-align:center; margin:0 auto; float:none; line-height:100px; text-align:center;}
+.news_login_tishi11{ width:1100px; text-align:center; line-height:70px; font-size:18px; color:#393939}
+input.news_login_tishi_btn{background:url(../imgs/NEWS_login.png) no-repeat -0 -51px; width:171px; height:43px; border:none; color:#fff; font-size:20px; letter-spacing:1px; cursor:pointer}
+input.news_login_blank_btn{background:url(../imgs/NEWS_login.png) no-repeat -0 -196px; width:135px; height:36px; border:none; color:#fff; font-size:20px; letter-spacing:1px; cursor:pointer}
+.news_login_blank_btn{background:url(../imgs/user_logintishi.jpg) repeat-x; padding:10px 15px; height:43px; border:none; color:#fff; letter-spacing:1px; cursor:pointer; line-height:43px; text-align:center; font-size:14px; }
+ 
+input.news_login_00_btn{background:url(../imgs/NEWS_login.png) no-repeat -0 -102px; width:135px; height:36px; border:none; color:#fff; font-size:20px; letter-spacing:1px; cursor:pointer; margin-left:10px;}
+
+.login_good{ width:1100px; margin:0 auto; float:none; overflow:hidden}
+.login_good .login_goodtem{ width:215px; margin:80px 0 0 5px;}
+.login_good .login_goodtem .login_goodtem_name{ height:40px; line-height:20px; margin:5px 0 0 0;}
+/**********密码重置***************/
+#sendEmailDiv_bg{ position:fixed;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:999999;  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);}
+.mail_suess{  width:374px; height:180px; background:#fff; border:#9d0f24 1px solid; position:absolute; left:50%; top:50%; margin:-90px 0 0 -187px; z-index:200000; position: fixed; z-index:9999991;   }
+.mail_suess .mail_suess_title{ width:100%; height:30px; line-height:30px; color:#fff; background:#ab142b}
+.mail_suess .mail_suess_title span{ text-indent:10px;}
+.mail_suess .mail_suess_title span.mail_suess_close{ float:right; margin-right:10px;}
+.mail_suess ul{ margin:10px 0 0 0; padding:0}
+.mail_suess ul li{ line-height:25px; text-align:center; width:370px;}
+.mail_suess ul li.mail_suess_input{background:url(../imgs/NEWS_login.png) no-repeat -0 -244px; width:93px; height:29px; line-height:29px; text-align:center; margin:8px 0 0 140px;}
+.mail_suess ul li.mail_suess_input a{ color:#FFFFFF}
+.news_password_list{ width:440px; border:red 1px solid; margin:0 auto; float:none;margin: 50px auto 10px;padding:10px;}
+.news_password_list ul{ margin:0; padding:0; margin:40px 0 0 0}
+.news_password_list ul li{ width:100%; height:53px;}
+.news_password_list ul li .new_loginName{ width:70px; text-align:right; line-height:33px; font-size:14px; float:left}
+.news_password_list ul li input.new_loginTxt{background:url(../imgs/shopping_login.png) no-repeat -0 -182px; width:210px; height:33px; border:none; float:left; }
+.news_password_list ul li input.login_btn{background:url(../imgs/NEWS_login.png) no-repeat 0 -244px; width:93px; height:29px; border:none; font-size:15px; color:#fff; letter-spacing:1px; margin-left:70px;}
+.news_password_list ul li .register_list_tishi{ float:left;  margin:8px 0 0 0}
+
+
+ 
+/**********注册方式**********/
+.register{ width:1100px; margin:0 auto; float:none}
+.register_left{height: 500px;border-left: #DDD 1px dashed;margin: 30px 0 0 50px;padding-left: 50px;}
+.register_left .register_matel{ width:609px;border-bottom:#ddd 1px dashed; height:120px; line-height:50px;}
+.register_num{ background:url(../imgs/NEWS_login.png) no-repeat 0 -326px; width:22px; height:22px; color:#fff; float:left; text-align:center; line-height:22px; margin:13px 0 0 0}
+.register_numName{ margin-left:8px;line-height:50px;}
+.register_fs{ width:316px; margin:8px 0 0 0;}
+.register_fs a{background:url(../imgs/NEWS_login.png) no-repeat 0 -102px; width:135px; height:38px; border:none; display:block; line-height:32px;float:left; text-align:center; font-size:14px; margin-left:10px; }
+.register_fs a.register_emailbtn{ background-position:0 -151px; color:#393939; }
+.register_fs a.register_telphonebtn{ background-position:0 -102px; color:#fff;}
+
+
+/*email or phone 注册提示*/
+.register_left .register_matel .register_tip{float: left;border: 1px solid #ddd;border-radius: 10px;margin-top: 10px;background-color: #fffac3;}
+.triangle-up,.triangle-up-back{ width: 0px;height: 0px;color: white;text-align: center;border-left: 8px solid transparent;border-right: 8px solid transparent;border-bottom: 8px solid #fffac3;}
+.triangle-up-back{border-bottom-color: #c7c08d;margin-top:-10px;}
+.phone-up{margin-top:-8px;margin-left: 60px;}
+.email-up{margin-top: -8px;margin-left: 210px;}
+
+.register_mail{ margin:20px 0 0 0;}
+.register_mail ul.register_list{ margin:0; padding:0; width:580px;}
+.register_mail ul.register_list li{ width:580px; line-height:33px;float:left;}
+.register_mail ul.register_list li .register_list_name{ width:115px; text-align:right; float:left; color:#393939}
+.register_mail ul.register_list li input.register_list_txt{background:url(../imgs/shopping_login.png) no-repeat -0 -182px; width:210px; height:33px; border:none; float:left; text-indent:5px; line-height:33px;}
+.register_mail ul.register_list li .register_list_tishi{  text-align:right; float:left; color:#bf0000}
+.register_mail ul.register_list li .register_list_neirong{ float:left; color:#7b7b7b; text-indent:115px; width:600px;}
+.register_mail ul.register_list li .register_list_xieyi{ float:left; color:#393939; text-indent:115px; font-size:16px; margin-top:10px;}
+
+.register_mail ul.register_list li input.register_list_regree{background:url(../imgs/NEW_images/NEWS_login.png) no-repeat 0 -51px; width:171px; height:43px; border:none; font-size:18px; color:#fff; margin:10px 0 0 120px; cursor:pointer}
+
+.register_mail ul.register_list li input.register_list_regree{background:url(../imgs/NEW_images/NEWS_login.png) no-repeat 0 -51px; width:171px; height:43px; border:none; font-size:18px; color:#fff; margin:10px 0 0 120px; cursor:pointer}
+
+.register_mail ul.register_list li .register_list_tishi{ margin-top:3px;}
+.register_right{width: 360px;margin: 40px 0 0 30px;}
+.register_right .register_right_list{ width:360px; line-height:40px; font-size:13px;}
+.register_right_listName{ font-size:13px;}
+input.register_loginbtn{background:url(../imgs/NEWS_login.png) no-repeat  -347px -211px; width:103px; height:29px; border:none; color:#fff; font-size:16px; line-height:29px; letter-spacing:1px; margin:8px 0 0 10px; cursor:pointer}
+.register_right .login_other_btn{ width:230px; float:left}
+.register_right .login_other_btn span.login_other_btn00{background:url(../imgs/NEWS_login.png) no-repeat -0 -528px; width:97px; height:29px; float:left; margin:10px 0 0 10px;}
+.register_right .login_other_btn span.login_other_btn11{background:url(../imgs/NEWS_login.png) no-repeat -111px -528px;}
+.register_right .login_other_btn span.login_other_btn22{background:url(../imgs/NEWS_login.png) no-repeat -222px -528px;}
+.register_right .login_other_btn span.login_other_btn33{background:url(../imgs/NEWS_login.png) no-repeat -333px -528px;}
+/**手机方式**/
+.register_mail ul.register_list li .register_telphonetime{background:url(../imgs/NEWS_login.png) no-repeat -256px -107px; width:116px; height:26px; line-height:26px; text-align:center; margin:3px 0 0 5px; color:#7b7b7b; float: left;}
+.register_mail ul.register_list li input.register_telphonetime{background:url(../imgs/NEWS_login.png) no-repeat -256px -107px; width:116px; height:26px; line-height:26px; text-align:center; margin:3px 0 0 5px; color:#7b7b7b; border:none;}
+.register_mail ul.register_list li input.register_list_regree00{background:url(../imgs/NEWS_login.png) no-repeat 0 -244px; width:93px; height:29px; border:none; font-size:16px; color:#fff; margin:25px 0 0 120px;}
+
+
+
+
