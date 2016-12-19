@@ -116,9 +116,7 @@ class Catecontroller extends Controller
 		// _str;
 		
     	//按照path对查询出的结果排序
-    	$data = DB::table('category as c1')
-    		 -> leftJoin('category as c2','c1.pid','=','c2.id')
-    		 -> select('c1.*','c2.title as ptitle',DB::raw("concat(c1.path,',',c1.id) AS sort_str")) -> orderBy('sort_str') -> get();
+        $data = DB::table('category') -> select('*',DB::raw("concat(path,',',id) AS sort_str")) -> orderBy('sort_str') -> get();
     	
     	//处理title分级显示
     	foreach ($data as $key => $value) {

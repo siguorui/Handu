@@ -48,3 +48,6 @@ Route::get('/admin/cate/index','Admin\CateController@index');
 Route::get('/admin/cate/edit/{id}','Admin\CateController@edit');
 Route::post('/admin/cate/update/{id}','Admin\CateController@update');
 Route::get('/admin/cate/delete/{id}','Admin\CateController@delete');
+
+//商品管理
+Route::get('/admin/goods/add','Admin\GoodsController@add');
