@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -102,6 +102,42 @@ function closeDt(){
 #HD_MEMBERZONE li.zhuce_main:hover>img {display: block;}
 #HD_MEMBERZONE li.on>img {position: absolute;top: 15px;left: 4px;z-index: 222;}
 </style>
+
+@if(session('master'))
+<li class="on">
+  <a href="http://www.handu.com/user.php" target="_blank" title="15313066678" class="user_name">欢迎您，{{session('master') -> email}}</a>
+  
+  <a href="http://www.handu.com/user.php?act=privilege" title="注册会员" target="_blank">
+    
+          <em class="lv lv0"></em>
+      
+  </a>
+  <!--<img src="http://img01.handu.com/hdysweb/20141222/gwgl.png"  alt="官网会员内部攻略" border="0" usemap="#Map" />
+  <map name="Map" id="Map">
+    <area shape="rect" coords="0,2,151,27" href="http://www.handu.com/topic-1276.html" target="_blank" />
+  </map>-->
+</li>
+
+<li class="integral">
+  <a href="http://www.handu.com/user.php?act=exchange" target="_blank"><span>积分</span><b>100</b></a>
+</li> 
+<li><a href="{{url('home/logout')}}">退出</a></li>
+<li class="">
+    <div class="more-active">
+    <a href="http://www.handu.com/user.php" class="bn-more"><span>我的韩都</span></a><b></b>
+    <div class="more-items">
+        <table cellpadding="0" cellspacing="0">
+            <tbody>
+              <tr><td><a href="http://www.handu.com/user.php?act=order_list" target="_blank">我的订单</a></td></tr>
+              <tr><td><a href="http://www.handu.com/user.php?act=bonus" target="_blank">我的优惠券</a></td></tr>
+              <tr><td><a href="http://www.handu.com/user.php?act=collection_list" target="_blank">我的收藏</a></td></tr>
+              <tr><td><a href="http://www.handu.com/user.php?act=return_list" target="_blank">退货办理</a></td></tr>
+                         </tbody>
+        </table>
+    </div>
+    </div>
+</li>
+@else
 <li>您好，欢迎光临韩都衣舍！</li>
 <li>
   <a href="http://www.handu.com/user.php?act=login"  target="_blank">登录</a>
@@ -114,6 +150,8 @@ function closeDt(){
     <area shape="rect" coords="2,8,165,189" href="http://www.handu.com/user.php?act=register" target="_blank"/>
   </map>-->
 </li>
+@endif
+
 <li><a href="http://www.handu.com/flow.php?step=cart" style="margin-right:10px"  target="_blank">购物车</a></li>      </ul>
       <ul id="HD_HELPZONE" style="border-right:none;">
        

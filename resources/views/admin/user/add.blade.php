@@ -47,7 +47,7 @@
                                 @endif
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">用户名</label>
-                                    <input type="text" name="user_name" value="{{old('name')}}" class="form-control" id="exampleInputEmail1"
+                                    <input type="text" name="user_name" value="{{old('user_name')}}" class="form-control" id="exampleInputEmail1"
                                            placeholder="请输入用户名">
                                 </div>
                                 <div class="form-group">

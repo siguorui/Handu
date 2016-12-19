@@ -41,15 +41,25 @@
                                 <div class="form-group">
                                     <label for="exampleInpuPid">管理员权限</label>
                                     <select style="width: 200px;" name="auth" class="form-control">
+                                        @if($data -> auth == 1)
+                                        <option selected='selected' value="1">高级管理员</option>
                                         <option value="0">普通管理员</option>
-                                        <option value="1">超级管理员</option>
+                                        @else
+                                        <option selected='selected' value="0">普通管理员</option>
+                                        <option value="1">高级管理员</option>
+                                        @endif
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInpuPid">账号状态</label>
                                     <select name="status" class="form-control" style="width: 200px;">
+                                        @if($data -> status == 1)
+                                        <option selected='selected' value="1">启用</option>
                                         <option value="0">禁用</option>
+                                        @else
+                                        <option selected='selected' value="0">禁用</option>
                                         <option value="1">启用</option>
+                                        @endif
                                     </select>
                                 </div>
                             </div><!-- /.box-body -->

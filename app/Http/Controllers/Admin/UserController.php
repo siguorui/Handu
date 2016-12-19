@@ -7,72 +7,72 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Crypt;
 use DB;
-
+use Hash;
 class UserController extends Controller
 {
     //add
     public function add()
     {
-    	return view('admin.user.add');
+        return view('admin.user.add');
     }
     //insert数据添加
     public function insert(Request $request)
     {
-    	//验证
-    	$this -> validate($request, [
-    		//验证是否为空
-    		'user_name' => 'required',
-    		'password' => 'required|max:18',
-    		'repassword' => 'required|same:password|max:18',
-    		],[
-    		'name.required' => '用户名不能为空',
-    		'password.required' => '密码不能为空',
-    		'repassword.required' => '确认密码不能为空',
-    		'repassword.same' => '两次密码不一致',
+        //验证
+        $this -> validate($request, [
+            //验证是否为空
+            'user_name' => 'required',
+            'password' => 'required|max:18',
+            'repassword' => 'required|same:password|max:18',
+            ],[
+            'user_name.required' => '用户名不能为空',
+            'password.required' => '密码不能为空',
+            'repassword.required' => '确认密码不能为空',
+            'repassword.same' => '两次密码不一致',
             ]);
         //获取的值
-    	$data = $request -> except('_token', 'repassword');
+        $data = $request -> except('_token', 'repassword');
 
-    	
-    	//加密
-    	$data['password'] = Crypt::encrypt($data['password']);
-    	// dd($password);
-    	//解密
-		// $str = Crypt::decrypt($password);
-		// dd($str);
-    	//处理
-    	// $data['remember_token'] = str_random(50);//随机50个字符
-    	$time = time();
-    	$data['add_time'] = $time; 
-    	// dd($data);
-    	//执行添加
+        
+        //加密
+        $data['password'] = Hash::make($data['password']);
+        // dd($password);
+        //解密
+        // $str = Crypt::decrypt($password);
+        // dd($str);
+        //处理
+        // $data['remember_token'] = str_random(50);//随机50个字符
+        $time = time();
+        $data['add_time'] = $time; 
+        // dd($data);
+        //执行添加
         // $sel = select * from managers where user_name = $data['user_name'];
         $sel = DB::table('managers') -> where('user_name',$data['user_name']) -> first();
         if($sel)
         {
             return back() -> with(['info' => '用户名重复']);
         }
-    	$res = DB::table('managers') -> insert($data);
-    	if($res)
-    	{
-    		return redirect('admin/user/index') -> with(['info' => '添加成功']);
+        $res = DB::table('managers') -> insert($data);
+        if($res)
+        {
+            return redirect('admin/user/index') -> with(['info' => '添加成功']);
 
-    	}else
-    	{
-    		return back() -> with(['info' => '添加失败']);
-    	}
+        }else
+        {
+            return back() -> with(['info' => '添加失败']);
+        }
     }
 
 
     //index用户列表页
     public function index(Request $request)
     {
-    	//搜索加分页
-    	$num = $request -> input('num', 10);
-    	$keyword = $request -> input('keyword','');
-    	// $data = DB::table('users') -> get();
-    	$data = DB::table('managers') -> where('user_name', 'like', '%'.$keyword.'%') -> paginate($num);
-    	return view('admin.user.index', ['data' => $data, 'request' => $request -> all()]);
+        //搜索加分页
+        $num = $request -> input('num', 10);
+        $keyword = $request -> input('keyword','');
+        // $data = DB::table('users') -> get();
+        $data = DB::table('managers') -> where('user_name', 'like', '%'.$keyword.'%') -> paginate($num);
+        return view('admin.user.index', ['data' => $data, 'request' => $request -> all()]);
     }
 
     //更改用户名 双击
@@ -243,6 +243,18 @@ class UserController extends Controller
         }
     }
 
-    //
-    
+    //前台用户删除
+    public function usersdelete($id)
+    {
+        $tra = DB::table('user_extra') -> where('uid',$id) -> delete();
+        $res = DB::table('users') -> where('id',$id) -> delete();
+        if($res)
+        {
+            return redirect('admin/user/users') -> with(['info' => '删除成功']);
+        }else
+        {
+            return back() -> with(['info' => '删除失败']);
+        }
+    }
+
 }

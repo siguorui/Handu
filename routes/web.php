@@ -2,22 +2,29 @@
 
 
 //前台登录
-Route::get('home/login/login','Home\LoginController@login');
-Route::get('home/login/login/{tmp}', 'Home\LoginController@captcha');
+Route::match(['get','post'],'/home/login', 'Home\LoginController@login');
+//后台退出
+Route::get('home/logout', 'Home\LoginController@logout');
 Route::get('home/dequanna/dequanna', 'Home\BrandController@dequanna');
 Route::get('home/shopingcart/shopingcart', 'Home\CartController@shopingcart');
 
+//后台登录
+Route::match(['get','post'],'/admin/login', 'Admin\LoginController@login');
+//后台退出
+Route::get('/admin/logout', 'Admin\LoginController@logout');
 
 //后台用户管理
 Route::get('admin/user/add', 'Admin\UserController@add');
 Route::post('admin/user/insert', 'Admin\UserController@insert');
 Route::get('admin/user/index', 'Admin\UserController@index');
 Route::get('admin/user/users', 'Admin\UserController@users');
+Route::get('admin/user/usersedit/{id}', 'Admin\UserController@usersedit');
+Route::post('admin/user/usersupdate/{id}', 'Admin\UserController@usersupdate');
+Route::get('admin/user/usersdelete/{id}', 'Admin\UserController@usersdelete');
 Route::post('admin/user/ajaxchangename', 'Admin\UserController@ajaxChangeName');
 Route::get('admin/user/edit/{id}', 'Admin\UserController@edit');
 Route::get('admin/user/auth/{id}', 'Admin\UserController@auth');
 Route::get('admin/user/delete/{id}', 'Admin\UserController@delete');
-Route::post('admin/user/update/{id}', 'Admin\UserController@update');
 Route::post('admin/user/update/{id}', 'Admin\UserController@update');
 Route::post('admin/user/change/{id}', 'Admin\UserController@change');
 

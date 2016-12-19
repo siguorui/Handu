@@ -12,33 +12,45 @@
 		<div class="news_login_left">
 	    <div class="login_form" style="margin-top:25px;">
 			  <h1 class="news_login_title">用户登录</h1>
-				<form name="formLogin" action="http://www.handu.com/user.php" method="post">
+				<form name="formLogin" action="{{url('/home/login')}}" method="post">
+				{{ csrf_field() }}
 				<div class="news_loginLeft">
 					<ul class="news_loginLeft_list">
 						<li>
 						  <div class="new_loginName">用户名：</div>
-							<input name="username" type="text" size="25" maxlength="50" class="new_loginTxt" value="邮箱地址/手机号" onfocus="if (value ==&#39;邮箱地址/手机号&#39;){value =&#39;&#39;}$(&#39;&#39;) " onblur="if (value ==&#39;&#39;){value=&#39;邮箱地址/手机号&#39;}">
+							<input name="email" type="email" size="25" maxlength="50" class="new_loginTxt" value="邮箱地址/手机号" onfocus="if (value ==&#39;邮箱地址/手机号&#39;){value =&#39;&#39;}$(&#39;&#39;) " onblur="if (value ==&#39;&#39;){value=&#39;邮箱地址/手机号&#39;}">
 						</li>
 						<li><div class="new_loginName">密码：</div>
 							<input name="password" type="password" size="15" maxlength="30" class="new_loginTxt">
 						</li>
                         
                         <li id="captcha_li"><div class="new_loginName">验证码：</div>
-							<input type="text" id="captcha" name="captcha" style="width:120px;">&nbsp;<a href="javascript:void(0);" onclick="javascript:re_captcha();"><img src="{{ url('home/login/login/1') }}" width="86" height="31" align="absmiddle" id="captcha_img" style="float:none"></a>
+							<input type="text" name="captcha" class="form-control" style="width: 80px;float:left;">
+                        <a onclick="javascript:re_captcha();" ><img style="margin-left:10px;" src="{{ URL('kit/captcha/1') }}"  alt="验证码" title="刷新图片" width="100" height="34" id="c2c98f0de5a04167a9e427d883690ff6" border="0"></a>
+
+                    <script>  
+                      function re_captcha() {
+                        $url = "{{ URL('kit/captcha') }}";
+                            $url = $url + "/" + Math.random();
+                            document.getElementById('c2c98f0de5a04167a9e427d883690ff6').src=$url;
+                      }
+                    </script>
 						</li>
-                        <script>  
-							  function re_captcha() {
-							    $url = "{{ URL('home/login/login') }}";
-							        $url = $url + "/" + Math.random();
-							        document.getElementById('captcha_img').src=$url;
-							  }
-						</script>
+                        
 						<li style="text-align:center;margin-left:75px;margin-top:0px;">
-						 <span id="message" class="login_error">请输入正确的手机号</span>	
+						 <span id="message" class="login_error">
+						 @if (count($errors) > 0)
+				            @foreach ($errors->all() as $error)
+				                <p class="text-red">{{ $error }}</p>
+				            @endforeach
+				        @endif
+				        @if(session('info'))
+				        <p class="text-red">{{session('info')}}</p>
+				        @endif</span>	
                           <span>
 							<input type="hidden" name="back_act" value="http://www.handu.com/">
                             
-							<input type="button" name="submit" class="login_btn" onclick="login();_czc.push([&#39;_trackEvent&#39;, &#39;登陆&#39;, &#39;立即登录&#39;]);" value="立即登录" style="float:left; cursor:pointer;">
+							<input type="submit" name="submit" class="login_btn" onclick="login();_czc.push([&#39;_trackEvent&#39;, &#39;登陆&#39;, &#39;立即登录&#39;]);" value="立即登录" style="float:left; cursor:pointer;">
 							<div style="height:35px;line-height:50px;">
 							  <input class="news_loginRadio" type="checkbox" value="1" name="remember" id="remember">保存登录信息
 							</div>

@@ -270,7 +270,7 @@
                             <img src="{{ url('/ad/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
                             <span class="hidden-xs">
                             @if(session('master'))
-                                {{session('master') -> name}}
+                                {{session('master') -> user_name}}
                             @else
                                 请登录
                             @endif
@@ -283,7 +283,7 @@
                                 <p>
 
                                        @if(session('master'))
-                                        {{session('master') -> name}}
+                                        {{session('master') -> user_name}}
                                         @else
                                             请登录
                                         @endif - PHP工程师
