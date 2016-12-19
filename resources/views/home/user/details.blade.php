@@ -58,9 +58,9 @@
           <dt>个人信息<span class="arrow"></span></dt>
           <dd>
             <ul>
-              <li key="profile"><a href="http://www.handu.com/user.php?act=profile">基本资料</a></li>
-              <li key="edit_password"><a href="http://www.handu.com/user.php?act=edit_password">修改密码</a></li>
-              <li key="address_list"><a href="http://www.handu.com/user.php?act=address_list">地址管理</a></li>
+              <li key="profile"><a href="{{url('/home/user/details')}}">基本资料</a></li>
+              <li key="edit_password"><a href="{{url('/home/user/password')}}">修改密码</a></li>
+              <li key="address_list"><a href="{{url('/home/user/address')}}">地址管理</a></li>
               <li key="validate"><a href="http://www.handu.com/user.php?act=validate">安全验证</a></li>
             </ul>
           </dd>
@@ -94,12 +94,13 @@
         <h1 class="theme">我的基本资料</h1>
         <div class="info">
           <p>亲爱的15313066678，欢迎您！</p>
-          <form class="info_forms"  name="formEdit" action="user.php" method="post" onsubmit="return checkFormEdit(this)">
+          <form class="info_forms"  name="formEdit" action="{{url('/home/user/update')}}" method="post" onsubmit="return checkFormEdit(this)">
             <div class="item">
-              <div class="left fl">&nbsp;&nbsp;</span>当前头像：</div>
+              <div class="left fl"></span>当前头像：</div>
               <div class="right fl">
                 <p><img src="http://s.handu.com/images/static/default_avatarbig.png" width="120"  /></p>
-                <p><a href="javascript:edit_avatar()"   class="blue update_img">修改头像</a></p>
+                <p>&nbsp;&nbsp;<input type="file" name="pic" value="修改头像" style="margin-left:70px" /></p>
+                
               </div>
             </div>
             <div class="item">
@@ -119,7 +120,7 @@
             <div class="item">
               <div class="left fl"><span class="red">*&nbsp;</span>真实姓名：</div>
               <div class="right fl">
-                <input type="text" value="王士兵" disabled name="real_name" class="txt_k true_name"/>
+                <input type="text" value="汪世兵" disabled name="real_name" class="txt_k true_name"/>
               </div>
             </div>
             <div class="item">
@@ -133,19 +134,22 @@
             <div class="item">
               <div class="left fl"><span class="red">*&nbsp;</span>出生日期：</div>
               <div class="right fl">
-                              1966-01-01                            
+                              1993-03-18                            
                  
               </div>
             </div>
+
+  
             <div class="item">
               <div class="left fl"><span class="red">*&nbsp;</span>所在地：</div>
-              <div class="right fl">
-              
-                <select id="province"   name="province" > <option value="0">loading</option> </select>
-                <select id="city"     name="city"     > <option value="0">loading</option> </select>
-                <select id="district"   name="district" > </select>
-              
+              <div class="right fl" id="relative">
+
+                <select id="province" name="province" onchange="showcity()"><option value="0">请选择</option> </select>
+                <select id="city" name="city" onchange="showarea()"><option value="0">请选择</option> </select>
+                <select id="area" name="district" ><option value="0">请选择</option></select>
+ 
               </div>
+
             </div>
             <div class="item">
               <div class="left fl"><span class="red">*&nbsp;</span>详细地址：</div>
@@ -178,6 +182,66 @@
         </div>
       </div>
     </div>
+<script type="text/javascript">
+
+    var xmldom = null;
+    function showprovince(){
+      $.ajax({
+        url: "{{ url('/home/xml/ChinaArea.xml')}}",
+        type: 'get',
+        dataType: 'xml',
+        success:function(msg)
+        {
+          xmldom = msg;
+          var pros = $(msg).find('province');
+          pros.each(function(k,v){
+            var nm = $(this).attr('province');
+            var id = $(this).attr('provinceID');
+            var str = "<option value='"+id+"'>"+nm+"</option>";
+            $('#province').append(str);
+            
+          });
+        }
+      });
+    }
+
+    $(function(){
+      //页面加载完毕显示省份
+      showprovince();
+    });
+
+    function showcity(){
+      area = $('#area').remove();
+      
+      var pid = $('#province option:selected').val();
+
+      var xml_province = $(xmldom).find("province[provinceID='"+pid+"']");
+      var citys = xml_province.find('City');
+      $('#city').empty();
+      // $('#city').append("<option value='0'>-请选择-</option>");
+      citys.each(function() {
+        var nm = $(this).attr('City');
+        var id = $(this).attr('CityID');
+        $('#city').append("<option value='"+id+"'>"+nm+"</option>");
+      });
+    }
+
+    function showarea()
+    {
+      $('#relative').append(area);
+      var pid = $('#city option:selected').val();
+      var areas = $(xmldom).find("City[CityID='"+pid+"']").find('Piecearea');
+      $('#area').empty();
+      $('#area').append("<option value='0'>-请选择-</option>");
+      areas.each(function() {
+        var nm = $(this).attr('Piecearea');
+        var id = $(this).attr('provinceID');
+        $('#area').append("<option value='"+id+"'>"+nm+"</option>");
+      });
+
+
+    }
+  </script>
 
 <script type="text/javascript">
  function checkFormEdit(obj){

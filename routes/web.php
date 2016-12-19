@@ -28,7 +28,10 @@ Route::get('home/user/register','Home\UserController@register');  //注册
 Route::post('home/user/add','Home\UserController@add');
 Route::get('/home/user/active/{remember_token}','Home\UserController@active');  //激活用户
 Route::get('/home/user/myCenter','Home\MyCenterController@myCenter');  //个人中心
-Route::get('/home/user/details','Home\MyCenterController@details');
+Route::get('/home/user/details','Home\MyCenterController@details');		//基本资料
+Route::get('/home/user/password','Home\MyCenterController@password');	//修改密码
+Route::post('/home/user/update','Home\MyCenterController@update');	//修改密码
+Route::post('/home/user/update','Home\DetailsController@update');	//更新个人信息
 
 //前台商品列表
 Route::get('/home/cate/index','Home\CateController@index');

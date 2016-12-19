@@ -82,11 +82,11 @@
 
  <div class="userinfo">
         <div class="img">
-          <a href="http://www.handu.com/user.php?act=profile">
+          <a href="{{asset('/home/user/details')}}">
            <img src="{{ asset('/home/imgs/default_avatarbig.png') }}" width="120">
            <div class="upd_img">修改头像</div>
           </a>
-          <a href="http://www.handu.com/user.php?act=profile" target="_blank" class="upd_ifo">编辑个人资料</a>
+          <a href="{{asset('/home/user/details')}}" target="_blank" class="upd_ifo">编辑个人资料</a>
         </div>
         <ul class="info">
           <li><span class="user_name">15313066678</span>欢迎您！</li>
@@ -95,7 +95,7 @@
           只要有一笔购物就能升级为普通会员哦            </span>
            
             </li>
-          <li><a href="http://www.handu.com/user.php?act=profile" target="_blank" class="blue">完善账户信息，随时随地享受快乐购物！还能获得100积分哦~</a></li>
+          <li><a href="{{asset('/home/user/details')}}" target="_blank" class="blue">完善账户信息，随时随地享受快乐购物！还能获得100积分哦~</a></li>
           <li class="favor">我的优惠信息：
             <a href="http://www.handu.com/user.php?act=bonus" target="_blank">韩都优惠券<span class="red">（4）</span></a> 
             <a href="http://www.handu.com/user.php?act=address_list" target="_blank">我的收货地址</a>

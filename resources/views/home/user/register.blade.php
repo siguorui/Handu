@@ -116,9 +116,7 @@
 						</div>
 					</li>
 					<li>
-						<input type="hidden" name="back_act" value="./" />
-						<input type="hidden" name="parent_id" value="0" />
-						<input type="hidden" name="act" value="act_register" />
+						
 						<input id="reg_email_submit" type="submit" class="register_list_regree" value="同意协议并注册" onclick="_czc.push(['_trackEvent', '注册', 'Agree']);">
 					</li>
 				</ul>
@@ -173,9 +171,6 @@
 						</div>
 					</li>
 					<li>
-						<input type="hidden" name="back_act" value="./" />
-						<input type="hidden" name="parent_id" value="0" />
-						<input type="hidden" name="act" value="act_register" />
 						<input id="reg_email_submit" type="submit" class="register_list_regree" value="同意协议并注册" onclick="_czc.push(['_trackEvent', '注册', 'Agree']);">
 					</li>
 				</ul>

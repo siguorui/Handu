@@ -32,8 +32,8 @@ class UserController extends Controller
     		'password.confirmed' => '确认密码不一致',
     		'password_comfiration.required' => '确认密码不能为空'
     		]);
-
     	$data = $request -> except('agreement','captcha','_token','password_confirmation');
+       
     	$data['password'] = Hash::make($data['password']);
     	
     	$data['rem_token'] = str_random(50);
