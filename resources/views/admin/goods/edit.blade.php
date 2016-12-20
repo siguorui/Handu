@@ -6,12 +6,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                分类管理
+                商品管理
                 <small>编辑</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
-                <li><a href="#">分类管理</a></li>
+                <li><a href="#">商品管理</a></li>
                 <li class="active">编辑</li>
             </ol>
         </section>
@@ -27,7 +27,7 @@
                             <h3 class="box-title">快速编辑</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" action="{{ url('/admin/cate/update')}}/{{$dataFirst->id}}" enctype="multipart/form-data" method="post">
+                        <form role="form" action="{{ url('/admin/goods/update')}}/{{$data->id}}/{{$urlid}}" enctype="multipart/form-data" method="post">
                         	{{ csrf_field() }}
                         	
                             <div class="box-body">
@@ -44,14 +44,14 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">父分类</label>
-                                    <select name="pid" class="form-control">
-                                        <option value="0">根分类</option>
-                                        @foreach($data as $v)
+                                    <select name="cate_id" class="form-control">
+                                        
+                                        @foreach($catedata as $v)
                                         <option 
-                                        @if($dataFirst ->pid == $v->id)
+                                        @if($data ->cate_id == $v->id)
                                             selected
                                         @endif
-                                        @if($dataFirst -> id == $v->id)
+                                        @if($v->num!=2)
                                              disabled
                                         @endif
                                         value="{{$v->id}}">{{$v->title}}</option>
@@ -60,56 +60,61 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">分类名</label>
-                                    <input type="text" name="title" value="{{$dataFirst -> title}}" class="form-control" id="exampleInputEmail1"
+                                    <label for="exampleInputEmail1">名称</label>
+                                    <input type="text" name="title" value="@if(old('title')){{old('title')}}@else{{$data -> title}}@endif" class="form-control" id="exampleInputEmail1"
                                            placeholder="请输入分类名">
                                 </div> 
 
                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">现价</label>
+                                    <input type="text" name="promt_price" value="@if(old('promt_price')){{old('promt_price')}}@else{{$data -> promt_price}}@endif" class="form-control" id="exampleInputEmail1"
+                                           placeholder="请输入分类名">
+                                </div>
+
+                                <div class="radio">
+                                        <label>
+                                            <input name="type" id="optionsRadios1" value="1" checked="" type="radio">
+                                            按折扣
+                                        </label>
+                                        <label>
+                                            <input name="type" id="optionsRadios1" value="0" checked="checked" type="radio">
+                                            按价格
+                                        </label>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">原价</label>
+                                    <input type="text" name="orign_price" value="@if(old('orign_price')){{old('orign_price')}}@else{{$data -> orign_price}}@endif" class="form-control" id="exampleInputEmail1"
+                                           placeholder="请输入分类名">
+                                </div>
+
+                                <!-- <div class="form-group">
                                     <label for="exampleInputEmail1">展示位置</label>
                                     <select name="show_pos" class="form-control">
                                         <option value="0">非必选</option>
                                         <option value="1">主页展示</option>
                                         <option value="2">列表页展示</option>
                                     </select>
-                                </div>
-
+                                </div> -->
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">状态</label>
-                                    <select name="status" class="form-control">
-                                        <option value="1" 
-                                        @if($dataFirst -> status== 1)
-                                        selected
-                                        @endif>上架</option>
-                                        <option value="0" 
-                                        @if($dataFirst ->status == 0)
-                                        selected
-                                        @endif>下架</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleInputFile">类别logo</label>
-                                    @if(!empty($dataFirst->logo))
-                                    <img src = "{{ url('/home/imgs/category') }}/{{ $dataFirst->logo }}" width="80"/>
+                                    <label for="exampleInputFile">商品图片</label>
+                                    @if(!empty($data->pic))
+                                    <img src = "{{ url('/home/imgs/goods') }}/{{ $data->pic }}" width="150" />
                                     @endif
-                                    <input type="file" name="logo" id="exampleInputFile">
+                                </div>
+                                    
+                                <div class="form-group">
+                                    <label for="exampleInputFile">商品图片</label>
+                                    <input type="file" name="pic" id="exampleInputFile">
                                     <p class="help-block">请选择一张图片</p>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="exampleInputFile">类副logo</label>
-                                    @if(!empty($dataFirst->assit_logo))
-                                     <img src = "{{ url('/home/imgs/category') }}/{{ $dataFirst->assit_logo }}" width="80"/>
-                                     @endif
-                                    <input type="file" name="assit_logo" id="exampleInputFile">
-                                    <p class="help-block">非必选</p>
-                                </div>
                                 
+
                             </div><!-- /.box-body -->
 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">更新</button>
+                                <button type="submit" class="btn btn-primary">提交</button>
                             </div>
                         </form>
                     </div><!-- /.box -->

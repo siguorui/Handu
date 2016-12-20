@@ -49,5 +49,10 @@ Route::get('/admin/cate/edit/{id}','Admin\CateController@edit');
 Route::post('/admin/cate/update/{id}','Admin\CateController@update');
 Route::get('/admin/cate/delete/{id}','Admin\CateController@delete');
 
-//商品管理
-Route::get('/admin/goods/add','Admin\GoodsController@add');
+//后台商品管理
+Route::get('/admin/goods/add/{id}','Admin\GoodsController@add');
+Route::post('/admin/goods/insert/{id}','Admin\GoodsController@insert');
+Route::get('/admin/goods/index/{id}','Admin\GoodsController@index');  //商品列表展示
+Route::get('/admin/goods/edit/{id}/{urlid}','Admin\GoodsController@edit');    //商品编辑
+Route::post('/admin/goods/update/{id}/{urlid}','Admin\GoodsController@update');    //商品编辑
+Route::get('/admin/goods/delete/{id}/{urlid}','Admin\GoodsController@delete');  //商品删除

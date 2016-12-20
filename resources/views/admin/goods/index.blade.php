@@ -49,46 +49,91 @@
 
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>分类树</th>
-                                    <th>分类名称</th>
-                                    <th>状态</th>
-                                    <th>类别logo</th>
+                                    <th>序号</th>
+                                    <th>商品货号</th>
+                                    <th>名称</th>
+                                    <th>现价/原价(￥)</th>
+                                    <th>销量</th>
+                                    <th>商品图片</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
+
+                            <?php $key_num = 0 ?>
+                            @if($num == 2)
                                 <tbody>
-								@foreach($data as $v)
+								@foreach($data as $k => $v)
                                 <tr>
-                                    <td>{{$v->id}}</td>
-                                    <td class="cname">@if($v->num == 0)
-                                                <img src = "{{ url('/admin/imgs/dirfirst.gif') }}"/>
-                                            @else
-                                                @for($i=1;$i<=$v->num;$i++)
-                                                <img src = "{{ url('/admin/imgs/dirsecond.gif') }}"/>
-                                                @endfor
-                                            @endif
-                                    </td>
-                                    <td class="cname">{{$v->title}}</td>
-                                    <td class="cname">
-                                    @if($v->status == 1)
-                                    上架
-                                    @else
-                                    下架
-                                    @endif
-                                    </td>
-                                    <td><img src = "{{ url('/home/imgs/category') }}/{{ $v->logo }}" width="30"/></td>
+                                    <td>{{$key_num += 1}}</td>
+                                    <td>{{'HD'.str_pad($v->cate_id,3,"0",STR_PAD_LEFT).str_pad($v->cate_id,6,"0",STR_PAD_LEFT)}}</td>
+                                    <td>{{$v->title}}</td>
                                     <td>
-                                    @if($v->num == 0||$v->num == 1)
-                                    <a href="{{ url('/admin/goods/index') }}/{{$v -> id}}">查看商品</a>　<a href="{{ url('/admin/cate/edit') }}/{{$v -> id}}">编辑</a>　<a href="{{ url('/admin/cate/delete') }}/{{$v -> id}}">删除</a>
-                                    @else
-                                    <a href="{{ url('/admin/goods/index') }}/{{$v -> id}}">查看商品</a>　<a href="{{ url('/admin/goods/add') }}/{{$v -> id}}">添加商品</a>　<a href="{{ url('/admin/cate/edit') }}/{{$v -> id}}">编辑</a>　<a href="{{ url('/admin/cate/delete') }}/{{$v -> id}}">删除</a>
+                                    {{$v->promt_price."/".$v->orign_price}}
                                     </td>
-                                    @endif
+                                    <td>
+                                    {{$v->count}}
+                                    </td>
+                                    <td><img src = "{{ url('/home/imgs/goods') }}/{{ $v->pic }}" width="30"/></td>
+                                    <td>
+                                    <a href="{{ url('/admin/goods/index') }}/{{$v -> id}}">商品详情</a>　<a href="{{ url('/admin/goods/edit') }}/{{$v -> id}}/{{$urlid}}">编辑</a>　<a href="{{ url('/admin/goods/delete') }}/{{$v -> id}}/{{$urlid}}">删除</a>
+                                    </td>  
                                 </tr>
                                @endforeach
                                 </tbody>
-                                
+                            @endif
+
+
+                            @if($num == 1) 
+                                <tbody>
+                                @foreach($data as $key => $value)
+                                @foreach($value as $k=>$v)
+                                <tr>
+                                    <td>{{$key_num += 1}}</td>
+                                    <td>{{'HD'.str_pad($v->cate_id,3,"0",STR_PAD_LEFT).str_pad($v->cate_id,6,"0",STR_PAD_LEFT)}}</td>
+                                    <td>{{$v->title}}</td>
+                                    <td>
+                                    {{$v->promt_price."/".$v->orign_price}}
+                                    </td>
+                                    <td>
+                                    {{$v->count}}
+                                    </td>
+                                    <td><img src = "{{ url('/home/imgs/goods') }}/{{ $v->pic }}" width="30"/></td>
+                                    <td>
+                                    <a href="{{ url('/admin/goods/index') }}/{{$v -> id}}">商品详情</a>　<a href="{{ url('/admin/goods/edit') }}/{{$v -> id}}/{{$urlid}}">编辑</a>　<a href="{{ url('/admin/goods/delete') }}/{{$v -> id}}/{{$urlid}}">删除</a>
+                                    </td>  
+                                </tr>
+                                @endforeach
+                               @endforeach
+                                </tbody>
+                            @endif
+
+                            @if($num == 0) 
+                                <tbody>
+                                @foreach($data as $k1 => $v1)
+                                @foreach($v1 as $key => $value)
+                                @foreach($value as $k=>$v)
+                                    @if(!empty($v))
+                                <tr>
+                                    <td>{{$key_num += 1}}</td>
+                                    <td>{{'HD'.str_pad($v->cate_id,3,"0",STR_PAD_LEFT).str_pad($v->cate_id,6,"0",STR_PAD_LEFT)}}</td>
+                                    <td>{{$v->title}}</td>
+                                    <td>
+                                    {{$v->promt_price."/".$v->orign_price}}
+                                    </td>
+                                    <td>
+                                    {{$v->count}}
+                                    </td>
+                                    <td><img src = "{{ url('/home/imgs/goods') }}/{{ $v->pic }}" width="30"/></td>
+                                    <td>
+                                    <a href="{{ url('/admin/goods/index') }}/{{$v -> id}}">商品详情</a>　<a href="{{ url('/admin/goods/edit') }}/{{$v -> id}}/{{$urlid}}">编辑</a>　<a href="{{ url('/admin/goods/delete') }}/{{$v -> id}}/{{$urlid}}">删除</a>
+                                    </td>  
+                                </tr>
+                                    @endif
+                                @endforeach
+                               @endforeach
+                               @endforeach
+                                </tbody>
+                            @endif
                             </table>
                             <!-- 分页展示 -->
                         </div><!-- /.box-body -->

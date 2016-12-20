@@ -27,7 +27,7 @@
                             <h3 class="box-title">快速添加</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" action="{{ url('/admin/cate/insert')}}" enctype="multipart/form-data" method="post">
+                        <form role="form" action="{{ url('/admin/goods/insert')}}/{{$dataFirst->id}}" enctype="multipart/form-data" method="post">
                         	{{ csrf_field() }}
                         	
                             <div class="box-body">
@@ -44,40 +44,56 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">父分类</label>
-                                    <select name="pid" class="form-control">
-                                        <option value="0">根分类</option>
-                                        @foreach($data as $v)
-                                        <option value="{{$v->id}}">{{$v->title}}</option>
-                                        @endforeach
+                                    <select name="cate_id" class="form-control">
+                                        <option value="{{$dataFirst->id}}">{{$dataFirst->title}}</option>
                                     </select>
 
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">分类名</label>
-                                    <input type="text" name="title" value="{{old('name')}}" class="form-control" id="exampleInputEmail1"
+                                    <label for="exampleInputEmail1">名称</label>
+                                    <input type="text" name="title" value="{{old('title')}}" class="form-control" id="exampleInputEmail1"
                                            placeholder="请输入分类名">
                                 </div> 
 
                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">现价</label>
+                                    <input type="text" name="promt_price" value="{{old('promt_price')}}" class="form-control" id="exampleInputEmail1"
+                                           placeholder="请输入分类名">
+                                </div>
+
+                                <div class="radio">
+                                        <label>
+                                            <input name="type" id="optionsRadios1" value="0" checked="" type="radio">
+                                            按价格
+                                        </label>
+                                        <label>
+                                            <input name="type" id="optionsRadios1" value="1" checked="" type="radio">
+                                            按折扣
+                                        </label>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">原价</label>
+                                    <input type="text" name="orign_price" value="{{old('orign_price')}}" class="form-control" id="exampleInputEmail1"
+                                           placeholder="请输入分类名">
+                                </div>
+
+                                <!-- <div class="form-group">
                                     <label for="exampleInputEmail1">展示位置</label>
                                     <select name="show_pos" class="form-control">
                                         <option value="0">非必选</option>
                                         <option value="1">主页展示</option>
                                         <option value="2">列表页展示</option>
                                     </select>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group">
-                                    <label for="exampleInputFile">类别logo</label>
-                                    <input type="file" name="logo" id="exampleInputFile">
+                                    <label for="exampleInputFile">商品图片</label>
+                                    <input type="file" name="pic" id="exampleInputFile">
                                     <p class="help-block">请选择一张图片</p>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="exampleInputFile">类别副logo</label>
-                                    <input type="file" name="assit_logo" id="exampleInputFile">
-                                    <p class="help-block">非必选</p>
-                                </div>
+                                
 
                             </div><!-- /.box-body -->
 
