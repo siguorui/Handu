@@ -1,5 +1,5 @@
 
-@extends('home.layout')
+@extends('home.layoutmy')
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns:wb="http://open.weibo.com/wb"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,11 +19,13 @@
 <script src="{{ asset('/home/js/hm.js') }}"></script>
 <script async="" src="{{ asset('/home/js/analytics.js') }}"></script>
 <script type="text/javascript" async="" charset="utf-8" src="{{ asset('/home/js/ntkfstat.js') }}"></script>
+<script src="{{ asset('/home/js/hm.js') }}"></script>
 <script src="{{ asset('/home/js/jquery-1.js') }}"></script>
 <script src="{{ asset('/home/js/jquery.js') }}"></script>
 <script src="{{ asset('/home/js/jquery_002.js') }}"></script>
 <script src="{{ asset('/home/js/wb.js') }}" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="{{ asset('/home/js/goods_no1214.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/home/js/jquery.slide.js') }}"></script>
 <style>
 /**泰山压顶*/
 .seven{
@@ -440,7 +442,7 @@ $(".firstP a").hover(function(){
                     </ul>
                 </div>
                 <div class="one">
-                    <a href="http://www.handu.com/topic.php?topic_id=1539" target="_blank"><h2 style="background:url({{ asset('/home/imgs/20160711/12.jpg') }}" no-repeat;"><span>韩风十年 星光十年</span></h2></a>
+                    <a href="http://www.handu.com/topic.php?topic_id=1539" target="_blank"><h2 style="background:url({{ asset('/home/imgs/12.jpg') }}" no-repeat;"><span>韩风十年 星光十年</span></h2></a>
                     <ul>
                         <li><a href="http://www.handu.com/news/details/15446.html" target="_blank">韩都衣舍旗下男装AMH摘得双11淘品牌冠军</a></li>
                         <li><a href="http://www.handu.com/news/details/13244.html" target="_blank">韩都衣舍多级跳 淘品牌到孵化器</a></li>
@@ -699,7 +701,7 @@ $(".firstP a").hover(function(){
         
     </ul>
     
-    <ul class="floor_con" style="z-index: 4; display: block; opacity: 0;">
+    <ul class="floor_con" style="z-index: 4; display: none;">
               <li class="new_boxs">
           <a href="http://www.handu.com/goods-1050504.html" title="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜" target="_blank">
             <img src="{{ asset('/home/imgs/1050504_thumb_G_1473149859942.jpg') }}" alt="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜" title="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜">

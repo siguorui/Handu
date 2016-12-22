@@ -10,6 +10,7 @@ class IndexController extends Controller
     //加载首页面
     public function index()
     {
+    	
     	return view('home.index.index');
     }
 }

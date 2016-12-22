@@ -2,9 +2,14 @@
 
 
 //前台登录
+Route::match(['get','post'],'/home/login', 'Home\LoginController@login');
+//前台退出
+Route::get('home/logout', 'Home\LoginController@logout');
+
+//前台登录
 Route::get('home/login/login','Home\LoginController@login');
 Route::get('home/login/login/{tmp}', 'Home\LoginController@captcha');
-Route::get('home/dequanna/dequanna', 'Home\BrandController@dequanna');
+
 Route::get('home/shopingcart/shopingcart', 'Home\CartController@shopingcart');
 
 
@@ -30,15 +35,20 @@ Route::get('/home/user/active/{remember_token}','Home\UserController@active');  
 Route::get('/home/user/myCenter','Home\MyCenterController@myCenter');  //个人中心
 Route::get('/home/user/details','Home\MyCenterController@details');		//基本资料
 Route::get('/home/user/password','Home\MyCenterController@password');	//修改密码
-Route::post('/home/user/update','Home\MyCenterController@update');	//修改密码
-Route::post('/home/user/update','Home\DetailsController@update');	//更新个人信息
+Route::post('/home/user/updateP','Home\MyCenterController@updateP');	//修改密码
+Route::post('/home/update','Home\DetailsController@update');	//更新个人信息
+Route::get('/home/user/vip','Home\DetailsController@vip');	//特权
+Route::get('/home/user/idea','Home\DetailsController@idea');	//意见反馈
+Route::get('/home/user/address','Home\DetailsController@address');	//意见反馈
 
 //前台商品列表
 Route::get('/home/cate/index','Home\CateController@index');
 Route::get('/home/cate/show','Home\GoodsController@show');
-
+// Route::get('/home/cate/list','Home\CateController@list');
+Route::get('/home/nana/nana/{id}', 'Home\CateController@nana');
 //前台首页
 Route::get('/','Home\IndexController@index');
+// Route::get('/home/all','Home\LayoutController@all');
 
 //后台首页
 Route::get('/admin/index','Admin\IndexController@index');

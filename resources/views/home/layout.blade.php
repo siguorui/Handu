@@ -63,7 +63,7 @@ function closeDt(){
 </script>-->
 
 
-<div style="width:100%;height:200px;min-width:1200px;background:url({{ asset('/home/imgs/584a93b2Nfe89bf16.jpg') }}) no-repeat center top;">
+<!-- <div style="width:100%;height:200px;min-width:1200px;background:url({{ asset('/home/imgs/584a93b2Nfe89bf16.jpg') }}) no-repeat center top;">
  <div style="width:1400px; height:100%; position:relative; margin:0 auto;">
   	<a href="http://www.handu.com/topic-423.html" target="_blank" style="display:block; width:100%; height:100%"> 
 		<div style="width:1200px; position:absolute;">
@@ -72,7 +72,7 @@ function closeDt(){
     
   </div>
 
-</div>
+</div> -->
 
 
 
@@ -1333,7 +1333,8 @@ $(function(){
 .gwd_toolbar_info{display:none !important; visibility:hidden !important; margin-left: -1000000px !important;}
 </style>
 
-<script src="{{ asset('/home/js/tag.js') }}" type="text/javascript" async></script><script type="text/javascript">
+
+<script type="text/javascript">
 
 $(function(){
   var regTitleList = $('#regTitle>a');

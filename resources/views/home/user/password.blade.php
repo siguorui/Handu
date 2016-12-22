@@ -5,11 +5,11 @@
   <div class="user_wrap">
     
     <h1 class="crumbs">
-      您当前的位置:<a href="http://www.handu.com/" target="_blank">韩都衣舍</a> &gt; <a href="http://www.handu.com/user.php" target="_blank">我的韩都</a>
+      您当前的位置:<a href="{{asset('/')}}" target="_blank">韩都衣舍</a> &gt; <a href="{{asset('/home/user/myCenter')}}" target="_blank">我的韩都</a>
           </h1>
     
     <div class="user_left">
-      <a href="http://www.handu.com/user.php" class="home">
+      <a href="{{asset('/home/user/myCenter')}}" class="home">
         <span>我的韩都</span>
       </a>
       
@@ -34,7 +34,7 @@
               <li key="return_list"><a href="http://www.handu.com/user.php?act=return_list">售后服务</a></li>
               <li key="comment_list"><a href="http://www.handu.com/user.php?act=comment_list">我的评价</a></li>
               <!--<li key="recommend" ><a href="user.php?act=recommend">推荐有礼</a></li>-->
-              <li><a href="http://www.handu.com/msg.php" target="_blank">建议/反馈</a></li>
+              <li><a href="{{asset('/home/user/idea')}}" target="_blank">建议/反馈</a></li>
               <li class="last"><a href="javascript:NTKF.im_openInPageChat();">在线客服</a></li>
             </ul>
           </dd>
@@ -43,7 +43,7 @@
           <dt>账户管理<span class="arrow"></span></dt>
           <dd>
             <ul>
-              <li key="privilege"><a href="http://www.handu.com/user.php?act=privilege">我的特权</a></li>
+              <li key="privilege"><a href="{{asset('/home/user/vip')}}">我的特权</a></li>
               <li key="exchange"><a href="http://www.handu.com/user.php?act=exchange">我的积分</a></li>
               <li key="bonus"><a href="http://www.handu.com/user.php?act=bonus">我的优惠券</a></li>
               <li key="postage"><a href="http://www.handu.com/user.php?act=postage">我的包邮卡</a></li>
@@ -58,8 +58,8 @@
           <dt>个人信息<span class="arrow"></span></dt>
           <dd>
             <ul>
-              <li key="profile"><a href="http://www.handu.com/user.php?act=profile">基本资料</a></li>
-              <li key="edit_password"><a href="http://www.handu.com/user.php?act=edit_password">修改密码</a></li>
+              <li key="profile"><a href="{{asset('/home/user/details')}}">基本资料</a></li>
+              <li key="edit_password"><a style="color:#C80A28;" href="{{asset('/home/user/password')}}">修改密码</a></li>
               <li key="address_list"><a href="http://www.handu.com/user.php?act=address_list">地址管理</a></li>
               <li key="validate"><a href="http://www.handu.com/user.php?act=validate">安全验证</a></li>
             </ul>
@@ -105,7 +105,7 @@ function checkF(th){
                 <p class="text-red">{{$error}}</p>
                 @endforeach
               @endif
-          <form onsubmit="return checkF(this)" method="post" action="{{url('/home/user/update')}}" name="formEditPassword" id="formEditPassword" class="info_forms">
+          <form onsubmit="return checkF(this)" method="post" action="{{url('/home/user/updateP')}}" name="formEditPassword" id="formEditPassword" class="info_forms">
             {{csrf_field()}}
             <div class="item">
               <div class="left fl">&nbsp;&nbsp;原密码：</div>
@@ -128,7 +128,7 @@ function checkF(th){
               </div>
             </div>
             
-            <input type="submit" class="save_btn" value="tijiao">
+            <input type="submit" class="save_btn" value="">
           </form>
         </div>
       </div>

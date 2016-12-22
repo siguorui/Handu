@@ -151,11 +151,9 @@ class UserController extends Controller
                 {
                     $data['pic'] = $picd;
                 }
-
-
             }
         }
-
+dd($picd);
        $res = DB::table('managers') -> where('id', $id) -> update($data);
        if($res)
        {

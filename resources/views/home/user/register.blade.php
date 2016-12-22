@@ -19,7 +19,7 @@
 			<div class="crm_module zhuce">
 		      <div class="dy">
 		        <form id="form_dy" method="post" action="send_bonus.php?act=add_user_dingyue">
-		          <input type="text" name="email" value="">
+		          <input type="email" name="email" value="">
 		          <button type="submit" onclick="_czc.push(['_trackEvent', '订阅', '订阅']);"></button>
 		        </form>
 		      </div>
@@ -136,7 +136,7 @@
 				{{csrf_field()}}
 				<ul class="register_list" style="display:none">
 					<li><div class="register_list_name">Email：</div>
-						<input name="email" type="text" size="25" value="{{old('email')}}" id="email" onblur="checkEmail(this.value);"  class="register_list_txt"/>
+						<input name="email" type="email" size="25" value="{{old('email')}}" id="email" onblur="checkEmail(this.value);"  class="register_list_txt"/>
 						<div  id="tip_e_e"  class="register_list_tishi"></div>
 					</li>
 					<li><div class="register_list_neirong">Email地址作为用户名，同时也用于接收账户信息、订单通知及密码找回等功能</div></li>
