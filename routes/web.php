@@ -5,7 +5,6 @@
 Route::get('home/login/login','Home\LoginController@login');
 Route::get('home/login/login/{tmp}', 'Home\LoginController@captcha');
 Route::get('home/dequanna/dequanna', 'Home\BrandController@dequanna');
-Route::get('home/shopingcart/shopingcart', 'Home\CartController@shopingcart');
 
 
 //后台用户管理
@@ -31,8 +30,7 @@ Route::get('/home/user/myCenter','Home\MyCenterController@myCenter');  //个人�
 Route::get('/home/user/details','Home\MyCenterController@details');
 
 //前台商品列表
-Route::get('/home/cate/index','Home\CateController@index');
-Route::get('/home/cate/show','Home\GoodsController@show');
+Route::get('/home/cate/index/{id}','Home\CateController@index');    //
 
 //前台首页
 Route::get('/','Home\IndexController@index');
@@ -56,3 +54,9 @@ Route::get('/admin/goods/index/{id}','Admin\GoodsController@index');  //商品�
 Route::get('/admin/goods/edit/{id}/{urlid}','Admin\GoodsController@edit');    //商品编辑
 Route::post('/admin/goods/update/{id}/{urlid}','Admin\GoodsController@update');    //商品编辑
 Route::get('/admin/goods/delete/{id}/{urlid}','Admin\GoodsController@delete');  //商品删除
+
+//商品详情
+//购物车
+Route::get('home/shopingcart/shopingcart', 'Home\CartController@shopingcart');
+// 前台商品详情展示
+Route::get('/home/goods/goods/{id}','Home\GoodsController@goods');

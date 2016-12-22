@@ -5,56 +5,26 @@
 <div id="cate_left">
 <div class='cate_tree'> 
        
-        <dl>
-        <dt><a href="category-181-b0.html" >每日新品</a><i></i></dt>
-    		
-                <dd class=" no_child ">
-        <h3><a href="category-10924-b0.html" title="20161213">20161213</a></h3>
-   		<ul>
-           		</ul>
+    <dl>
+        <dt><a href="{{ url('/home/cate/index/10000000') }}" >每日新品</a><i></i></dt>
+    	@foreach($datenum as $v)	
+        <dd class=" no_child ">
+            <h3><a href="{{ url('/home/cate/index') }}/{{$v}}" title="{{$v}}">{{$v}}</a></h3>
+   		    <ul></ul>
         </dd>
- 		        <dd class=" no_child ">
-        <h3><a href="category-10923-b0.html" title="20161209">20161209</a></h3>
-   		<ul>
-           		</ul>
-        </dd>
- 		        <dd class=" no_child ">
-        <h3><a href="category-10922-b0.html" title="20161206">20161206</a></h3>
-   		<ul>
-           		</ul>
-        </dd>
- 		        <dd class=" no_child ">
-        <h3><a href="category-10888-b0.html" title="20161202">20161202</a></h3>
-   		<ul>
-           		</ul>
-        </dd>
- 		        <dd class=" no_child ">
-        <h3><a href="category-10887-b0.html" title="20161129">20161129</a></h3>
-   		<ul>
-           		</ul>
-        </dd>
- 		        <dd class=" no_child ">
-        <h3><a href="category-10886-b0.html" title="20161125">20161125</a></h3>
-   		<ul>
-           		</ul>
-        </dd>
- 		        <dd class=" no_child ">
-        <h3><a href="category-10885-b0.html" title="20161122">20161122</a></h3>
-   		<ul>
-           		</ul>
-        </dd> 	
+ 		@endforeach       
     </dl>
         
-    @foreach($data as $k1 => $v1) 
+    @foreach($fdata as $k1 => $v1) 
     <dl>
-        <dt><a href="category-225-b0.html" >{{$v1->title}}</a><i></i></dt>
+        <dt><a href="{{ url('/home/cate/index') }}/{{$v1 -> id}}" >{{$v1->title}}</a><i></i></dt>
         @foreach($data1[$k1] as $k2 => $v2)	
         <dd class="">
-            <h3><a href="category-366-b0.html" title="上装">{{$v2->title}}</a></h3>
+            <h3><a href="{{ url('/home/cate/index') }}/{{$v2 -> id}}" title="{{$v2->title}}">{{$v2->title}}</a></h3>
        		<ul>
                 @foreach($data2[$k1][$k2] as $k3 => $v3)
                 <li>
-                    <a  href="category-10727-b0.html" title="毛呢外套">{{$v3->title}}</a><span>(131)</span>
+                    <a  href="{{ url('/home/cate/index') }}/{{$v3 -> id}}" title="{{$v3->title}}">{{$v3->title}}</a><span>{{$v3 -> goods_num}}</span>
                 </li>
                 @endforeach
             </ul>           
@@ -127,38 +97,148 @@
  
     <div class="grid_wrap">
 
+
+        @if($num == 2)
+            @foreach($data as $k => $v)
         <div class="product" >
             <div class="product-iWrap">
                 <div class="productImg-wrap">
-                        <a href="goods-1053982.html" title="韩都衣舍2016韩版女装冬装装新款温暖显瘦拼接短款羽绒服GW6157阨" class="productImg" target="_blank"  >
-                        <img src="./Picture/1053982_thumb_g_1481526135517.jpg" alt="韩都衣舍2016韩版女装冬装装新款温暖显瘦拼接短款羽绒服GW6157阨">
+                        <a href="{{ url('/home/goods/goods') }}/{{ $v->id }}" title="{{$v->title}}" class="productImg" target="_blank"  >
+                        <img src="{{ url('/home/imgs/goods') }}/{{ $v->pic }}" alt="{{$v->title}}">
                         </a>    
                 </div>
 
                 <div class="productThumb clearfix">
                     <div class="proThumb-wrap">
-                        <p class="ks-switchable-content"><b class="proThumb-img "><img  src="/Picture/1053982_thumb_g_1481526135517.jpg" title="主图" alt="韩都衣舍2016韩版女装冬装装新款温暖显瘦拼接短款羽绒服GW6157阨"><i></i></b></p>
+                        <p class="ks-switchable-content"><b class="proThumb-img "><img  src="{{ url('/home/imgs/goods') }}/{{ $v->pic }}" title="主图" alt="{{$v->title}}"><i></i></b></p>
 					</div>
                 </div>
 
                 <p class="productPrice">
-                    <em title="￥348"><b>¥</b>348</em>
-                    <del title="市场价 1718.00">¥1718.00</del>
+                    <em title="￥{{$v->promt_price}}"><b>¥</b>{{$v->promt_price}}</em>
+                    <del title="市场价 {{$v->orign_price}}">¥{{$v->orign_price}}</del>
                 </p>
                 <p class="productTitle">
-                    <a href="goods-1053982.html" target="_blank" title="韩都衣舍2016韩版女装冬装装新款温暖显瘦拼接短款羽绒服GW6157阨" >韩都衣舍2016韩版女装冬装装新款温暖显瘦拼接短款羽绒服GW6157阨</a>
+                    <a href="goods-1053982.html" target="_blank" title="{{$v->title}}" >{{$v->title}}</a>
                 </p>
                 <p class="productStatus">
-                    <span><em>9</em><br>月销量</span>
+                    <span><em>{{$v->count}}</em><br>月销量</span>
                     <span class="r"><a href="goods-1053982.html#goods_comments_a" target="_blank" >0</a><br>累计评价</span>   
                 </p> 
             </div>
                 <p class="productContry">中国</p>
         </div>
+            @endforeach                         
+        @endif
+
+        @if($num == 1)
+            @foreach($data as $k1 => $v1)
+                @foreach($v1 as $k => $v)
+        <div class="product" >
+            <div class="product-iWrap">
+                <div class="productImg-wrap">
+                        <a href="{{ url('/home/goods/goods') }}/{{ $v->id }}" title="{{$v->title}}" class="productImg" target="_blank"  >
+                        <img src="{{ url('/home/imgs/goods') }}/{{ $v->pic }}" alt="{{$v->title}}">
+                        </a>    
+                </div>
+
+                <div class="productThumb clearfix">
+                    <div class="proThumb-wrap">
+                        <p class="ks-switchable-content"><b class="proThumb-img "><img  src="{{ url('/home/imgs/goods') }}/{{ $v->pic }}" title="主图" alt="{{$v->title}}"><i></i></b></p>
+                    </div>
+                </div>
+
+                <p class="productPrice">
+                    <em title="￥{{$v->promt_price}}"><b>¥</b>{{$v->promt_price}}</em>
+                    <del title="市场价 {{$v->orign_price}}">¥{{$v->orign_price}}</del>
+                </p>
+                <p class="productTitle">
+                    <a href="goods-1053982.html" target="_blank" title="{{$v->title}}" >{{$v->title}}</a>
+                </p>
+                <p class="productStatus">
+                    <span><em>{{$v->count}}</em><br>月销量</span>
+                    <span class="r"><a href="goods-1053982.html#goods_comments_a" target="_blank" >0</a><br>累计评价</span>   
+                </p> 
+            </div>
+                <p class="productContry">中国</p>
+        </div>
+                @endforeach
+            @endforeach                         
+        @endif
 
 
+        @if($num == 0)
+            @foreach($data as $k1 => $v1)
+                @foreach($v1 as $key => $value)
+                    @foreach($value as $k => $v)
+                        @if(!empty($v))
+        <div class="product" >
+            <div class="product-iWrap">
+                <div class="productImg-wrap">
+                        <a href="{{ url('/home/goods/goods') }}/{{ $v->id }}" title="{{$v->title}}" class="productImg" target="_blank"  >
+                        <img src="{{ url('/home/imgs/goods') }}/{{ $v->pic }}" alt="{{$v->title}}">
+                        </a>    
+                </div>
+
+                <div class="productThumb clearfix">
+                    <div class="proThumb-wrap">
+                        <p class="ks-switchable-content"><b class="proThumb-img "><img  src="{{ url('/home/imgs/goods') }}/{{ $v->pic }}" title="主图" alt="{{$v->title}}"><i></i></b></p>
+                    </div>
+                </div>
+
+                <p class="productPrice">
+                    <em title="￥{{$v->promt_price}}"><b>¥</b>{{$v->promt_price}}</em>
+                    <del title="市场价 {{$v->orign_price}}">¥{{$v->orign_price}}</del>
+                </p>
+                <p class="productTitle">
+                    <a href="goods-1053982.html" target="_blank" title="{{$v->title}}" >{{$v->title}}</a>
+                </p>
+                <p class="productStatus">
+                    <span><em>{{$v->count}}</em><br>月销量</span>
+                    <span class="r"><a href="goods-1053982.html#goods_comments_a" target="_blank" >0</a><br>累计评价</span>   
+                </p> 
+            </div>
+                <p class="productContry">中国</p>
+        </div>
+                        @endif
+                    @endforeach
+                @endforeach
+            @endforeach                         
+        @endif
 
 
+        @if($num == 3)
+            @foreach($dateData as $k => $v)
+        <div class="product" >
+            <div class="product-iWrap">
+                <div class="productImg-wrap">
+                        <a href="{{ url('/home/goods/goods') }}/{{ $v->id }}" title="{{$v->title}}" class="productImg" target="_blank"  >
+                        <img src="{{ url('/home/imgs/goods') }}/{{ $v->pic }}" alt="{{$v->title}}">
+                        </a>    
+                </div>
+
+                <div class="productThumb clearfix">
+                    <div class="proThumb-wrap">
+                        <p class="ks-switchable-content"><b class="proThumb-img "><img  src="{{ url('/home/imgs/goods') }}/{{ $v->pic }}" title="主图" alt="{{$v->title}}"><i></i></b></p>
+                    </div>
+                </div>
+
+                <p class="productPrice">
+                    <em title="￥{{$v->promt_price}}"><b>¥</b>{{$v->promt_price}}</em>
+                    <del title="市场价 {{$v->orign_price}}">¥{{$v->orign_price}}</del>
+                </p>
+                <p class="productTitle">
+                    <a href="goods-1053982.html" target="_blank" title="{{$v->title}}" >{{$v->title}}</a>
+                </p>
+                <p class="productStatus">
+                    <span><em>{{$v->count}}</em><br>月销量</span>
+                    <span class="r"><a href="goods-1053982.html#goods_comments_a" target="_blank" >0</a><br>累计评价</span>   
+                </p> 
+            </div>
+                <p class="productContry">中国</p>
+        </div>
+            @endforeach                         
+        @endif
 
         <br class="clear" />
     </div>

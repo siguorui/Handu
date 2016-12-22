@@ -1,29 +1,29 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039)http://www.handu.com/flow.php?step=cart -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <title>购物车中心-韩都衣舍官方网站</title>
-<script charset="utf-8" src="{{asset('/home/shopingcart/js/v.js')}}"></script>
-<script type="text/javascript" id="veConnect" async="" src="{{asset('/home/shopingcart/js/capture-apps-4.18.6.js')}}"></script>
-<script src="{{asset('/home/shopingcart/js/hm.js')}}"></script>
-<script async="" src="{{asset('/home/shopingcart/js/analytics.js')}}"></script>
-<script type="text/javascript" async="" charset="utf-8" src="{{asset('/home/shopingcart/js/ntkfstat.js')}}"></script>
-<script type="text/javascript" language="javascript" src="{{asset('/home/shopingcart/js/jquery.min.js')}}"></script>
-<script type="text/javascript" language="javascript" src="{{asset('/home/shopingcart/js/jquery.json.js')}}"></script>
-<script src="{{asset('/home/shopingcart/js/common.js')}}"></script>
-<script src="{{asset('/home/shopingcart/js/slides.min.jquery.js')}}"></script>
+<script charset="utf-8" src="{{asset('/home/js/v.js')}}"></script>
+<script type="text/javascript" id="veConnect" async="" src="{{asset('/home/js/capture-apps-4.18.6.js')}}"></script>
+<script src="{{asset('/home/js/hm.js')}}"></script>
+<script async="" src="{{asset('/home/js/analytics.js')}}"></script>
+<script type="text/javascript" async="" charset="utf-8" src="{{asset('/home/js/ntkfstat.js')}}"></script>
+<script type="text/javascript" language="javascript" src="{{asset('/home/js/jquery.min.js')}}"></script>
+<script type="text/javascript" language="javascript" src="{{asset('/home/js/jquery.json.js')}}"></script>
+<script src="{{asset('/home/js/common.js')}}"></script>
+<script src="{{asset('/home/js/slides.min.jquery.js')}}"></script>
 
 
-<link rel="stylesheet" type="text/css" href="{{asset('/home/shopingcart/css/handu_base.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('/home/shopingcart/css/handu_cart.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/home/css/handu_base.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/home/css/handu_cart.css')}}">
 
-<link href="{{asset('/home/shopingcart/css/dialog.css" rel="stylesheet" type="text/css')}}">
-<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/shopingcart/js/zh_cn.js')}}" data-requiremodule="lang"></script>
-<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/shopingcart/js/chat.in.js')}}" data-requiremodule="chatManage"></script>
-<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/shopingcart/js/mqtt31.js')}}" data-requiremodule="MQTT"></script>
-<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/shopingcart/js/mqtt.chat.js')}}" data-requiremodule="Connection"></script>
-</head>
+<link href="{{asset('/home/css/dialog.css')}}" rel="stylesheet" type="text/css">
+<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/js/zh_cn.js')}}" data-requiremodule="lang"></script>
+<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/js/chat.in.js')}}" data-requiremodule="chatManage"></script>
+<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/js/mqtt31.js')}}" data-requiremodule="MQTT"></script>
+<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/js/mqtt.chat.js')}}" data-requiremodule="Connection"></script>
+<link id="ve-apps-style-css" type="text/css" rel="stylesheet" href="{{asset('/home/css/capture-apps-4.18.6.css')}}"></head>
 
 <body><div id="nTalk_post_hiddenElement" style="left: -10px; top: -10px; visibility: hidden; display: none; width: 1px; height: 1px;"></div>
 
@@ -48,9 +48,9 @@ function closeDt(){
 
 <div style="width:100%;height:200px;min-width:1200px;background:url(http://img14.360buyimg.com/cms/jfs/t3241/165/4616047024/38480/3bee75f3/584a93b2Nfe89bf16.jpg) no-repeat center top;">
  <div style="width:1400px; height:100%; position:relative; margin:0 auto;">
-  	<a href="http://www.handu.com/topic-423.html" target="_blank" style="display:block; width:100%; height:100%"> 
-		<div style="width:1200px; position:absolute;">
-		</div>
+    <a href="http://www.handu.com/topic-423.html" target="_blank" style="display:block; width:100%; height:100%"> 
+    <div style="width:1200px; position:absolute;">
+    </div>
 </a>
     
   </div>
@@ -186,10 +186,9 @@ function dhceng(obj, sType)
 
    
 
-    
-    <div class="shopping_nr">
-        <div class="shopping_nr_title">
-            <div class="shop_qx" style="width: 117px;"><!--<input id="selectAll" type="checkbox" value=""> 全选--></div>
+ <div class="shopping_nr">
+        <!--<div class="shopping_nr_title">
+            <div class="shop_qx" style="width: 117px;"><input id="selectAll" type="checkbox" value=""> 全选</div>
             <div class="shop_qx" style="width: 500px;">商品名称</div>
             <div class="shop_qx" style="width: 117px;">售价</div>
             <div class="shop_qx" style="width: 143px;">数量</div>
@@ -203,17 +202,180 @@ function dhceng(obj, sType)
                    <li class="car_arrow_warn">您的购物车内没有商品，请挑选心仪的商品吧！</li>
                    <li><a href="http://www.handu.com/" target="_blank" class="go_shopping">去挑选喜欢的商品</a></li>
                 </ul>
+                </div>
+            </div>
+        </div>-->
+    <form id="formCart" name="formCart" method="post" action="">
+        <div class="shopping_nr_title">
+            <!--<div class="shop_qx" style="width: 110px;"><input id="selectAll" type="checkbox" value=""> 全选</div>-->
+            <div class="shop_qx" style="width: 381px;">商品名称</div>
+            <div class="shop_qx" style="width: 132px;">售价</div>
+            <div class="shop_qx" style="width: 132px;">数量</div>
+            <div class="shop_qx" style="width: 122px;">小计</div>
+            <div class="shop_qx" style="width: 134px;">操作</div>
+            <div class="shop_qx" style="width: 186px;">备注</div>
+        </div>
+        <div id="cartGoodsList" class="shopping_nr_top">
+         
+<script type="text/javascript">
+function readCookie(name)
+{
+var cookieValue = "";
+var search = name + "=";
+if(document.cookie.length > 0)
+{
+offset = document.cookie.indexOf(search);
+if (offset != -1)
+{
+ offset += search.length;
+ end = document.cookie.indexOf(";", offset);
+ if (end == -1) end = document.cookie.length;
+ cookieValue = (document.cookie.substring(offset, end))
+}
+}
+document.write(cookieValue);
+}
+
+</script>        
+<script type="text/javascript">
+readCookie('sc');
+
+</script>  
+<h3> <!--<input type="checkbox" class="brand_checkall" name="" id="" /><span>-->品牌：<!--</span>--></h3>
+<ul id="brand_cart_1">       
+      <li id="rec-6720105">
+            <!--<div class="cbg xuan"><input name="cartIds" type="checkbox" value="6720105"/></div> -->
+            <div class="cbg shop_product">
+                <div class="shop_product_pic">
+                    <a href="http://www.handu.com/goods-1053493.html" target="_blank" title="韩都衣舍2017韩版女装春装新款纯色套头针织衫KY7511湲">
+                        <img src="{{asset('/home/imgs/1481040166652171244.jpg')}}" width="112" border="0" alt="韩都衣舍2017韩版女装春装新款纯色套头针织衫KY7511湲">
+                    </a>
+                </div>
+                <div class="shop_product_name">
+                    <a href="http://www.handu.com/goods-1053493.html" title="韩都衣舍2017韩版女装春装新款纯色套头针织衫KY7511湲" target="_blank"></a>
+                </div>
+                
+                <div class="shop_product_size">
+                    <span>颜色: &nbsp;&nbsp;&nbsp;尺码:</span>
+                </div>
+            </div>
+            <div class="cbg shop_product_money"> <div class="cprice" style="line-height:20px;"><del>￥</del><br><span>￥</span></div></div>
+            <div class="cbg shop_product_number">
+                <span class="amount-widget" id="J_AmountWidget">
+                    <span class="increase" onclick="zengjia(this)">+</span>
+                    <span class="decrease" onclick="jianshao(this)">-</span>
+                     <input name="recId" type="hidden" value="6720105">
+                     <input type="text" onchange="gaibian(this)" name="goods_number" class="text" old="1" value="1" maxlength="3" title="请输入购买量">
+                     <input name="goodsPrice" type="hidden" value="">
+                </span>
+            </div>
+            <div class="cbg shop_product_money00">￥</div>
+            <div class="cbg shop_product_close">
+                <div class="middle">
+                    <a href="javascript:removeToCollect(6720105,1053493);"> 移入收藏夹</a><br>
+                    <a href="javascript:confirm_delgoods(6720105);"> 删除</a>
+                </div>
+            </div>
+            <div class="cbg shop_product_tip">
+                <div class="middle"><a href="http://www.handu.com/topic-423.html" target="_blank"><span style="color:#c80a28;">【年终盛典】春季新品6折首发.全场满199包邮.领券满299减30/满399减80/满599减150</span></a></div>
+            </div>
+            <div class="shop_xinxi" style="display:none">
+                   <input type="hidden" class="goods_id" value="1053493">
+                   <input type="hidden" class="goods_attr_id" value="584182,584181">  
+                   <input type="hidden" class="goods_number" value="1">   
+                   <input type="hidden" class="rec_id" value="6720105">   
+            </div>
+          
+             
+        </li>
+          
+        
+</ul> 
+<script>
+$(".cart_good_type").each(function(index,item){
+  if(index==0){
+    $(this).show();
+  }
+});
+</script>            
+        </div>
+        
+        
+        <div class="shopping_car_bottom">
+            
+            <div class="shopping_car_bottom_right">
+              <div class="accumulated fr">
+                <table>
+                 <tbody><tr>
+                      <td><span id="goods_allnum" class="p_color">3</span>件商品</td>
+                      <td class="td_len1">总计：</td>
+                        <td id="total_Price" class="td_len">￥389</td>
+                  </tr>
+                  <tr>  
+                          
+                        <td colspan="2">满立减：</td>
+                      <td id="total_fanxian">-  ￥20.00 </td>
+                          
+                  </tr>
+                   <tr> 
+                          
+                        <td colspan="2">税费：</td>
+                      <td id="total_fanxian">- ￥0.00 </td>
+                          
+                  </tr>
+                </tbody></table>
+              </div>
+              
             </div>
         </div>
-    </div>
+         
+  
+
+        
+        <div class="shopping_car_bottom shopping_car_bottom_bg">
+            <!--<div class="shopping_car_bottom_left hg2">
+                      <a id="batchDelete" href="javascript:void(0);">
+                            批量删除
+                      </a>
+                      <a id="batchCollect" href="javascript:void(0);">
+                          批量移入收藏夹
+                      </a>
+            </div>-->
+            <div class="shopping_car_bottom_right">
+                
+                <span class="shopping_car_bottom_rightMoney">
+                    <span style="line-height:50px;">
+                    
+                        购物金额总计：
+                        <span style="min-width:75px;display:inline-block;text-align:right;">
+                          <span style="color:#bf0000; font-size:18px;">￥</span>
+                          <span id="totalAmount">369</span>
+                        </span>
+                    </span>
+                </span>
+
+            </div>
+        </div>
+         
+
+    </form>
+    <a href="http://www.handu.com/"><div class="cart_btn btn9 fl" style="margin-right:10px;margin-top:12px;" onclick="_czc.push([&#39;_trackEvent&#39;, &#39;购物车&#39;, &#39;继续购物&#39;]);"></div></a>
+    <a href="http://www.handu.com/flow.php?step=checkout" id="btn_goto_checkout"><div class="cart_btn btn1 fr" style="margin-top:12px;position:relative;" onclick="_czc.push([&#39;_trackEvent&#39;, &#39;购物车&#39;, &#39;去结算&#39;]);">
+      <div class="turnOrder">
+        正在转向订单信息,请稍候！
+      </div>
+    </div></a>
+ 
+</div>
+
 
 
 <div class="div_deleted">
   <h1 id="show_del_msg"></h1>
-	<ul class="deleted">
+  <ul class="deleted">
         
-	
-	</ul>
+  
+  </ul>
 </div>
 
 
@@ -231,10 +393,10 @@ function dhceng(obj, sType)
                                 <div class="slides_control" style="position: relative; width: 3660px; height: 240px; left: -1220px;"><div class="slide" style="position: absolute; top: 0px; left: 1220px; z-index: 0;">
                                    
                  
-				                  
+                          
                     <div class="item">
                         <a href="http://www.handu.com/goods-1032502.html" title="" target="_blank">
-                             <img src="{{asset('/home/shopingcart/imgs/1459281627970756825.jpg')}}" alt="" title="女中老年单色厚度适中型双层领撞色拼接中长款长袖外套WD4856【Dequanna/迪葵纳 2016春季新品】">
+                             <img src="{{asset('/home/imgs/1459281627970756825.jpg')}}" alt="" title="女中老年单色厚度适中型双层领撞色拼接中长款长袖外套WD4856【Dequanna/迪葵纳 2016春季新品】">
                         </a>
                         <p><a href="http://www.handu.com/goods-1032502.html" title="" target="_blank">女中老年单色厚度适中型双层领撞色拼接中长款长袖外套WD4856【Dequanna/迪葵纳 2016春季新品】</a></p>
                         <p><span class="price">469.00</span></p>
@@ -242,10 +404,10 @@ function dhceng(obj, sType)
 
                                  
                  
-				                  
+                          
                     <div class="item">
                         <a href="http://www.handu.com/goods-1033066.html" title="" target="_blank">
-                             <img src="{{asset('/home/shopingcart/imgs/1459281497269229038.jpg')}}" alt="" title="女中老年冬装新款单色菱形压格抽绳收腰加厚外套FM4813【Dequanna/迪葵纳 2015冬装新款】">
+                             <img src="{{asset('/home/imgs/1459281497269229038.jpg')}}" alt="" title="女中老年冬装新款单色菱形压格抽绳收腰加厚外套FM4813【Dequanna/迪葵纳 2015冬装新款】">
                         </a>
                         <p><a href="http://www.handu.com/goods-1033066.html" title="" target="_blank">女中老年冬装新款单色菱形压格抽绳收腰加厚外套FM4813【Dequanna/迪葵纳 2015冬装新款】</a></p>
                         <p><span class="price">609.00</span></p>
@@ -253,10 +415,32 @@ function dhceng(obj, sType)
 
                                  
                  
-				                  
+                          
+                    <div class="item">
+                        <a href="http://www.handu.com/goods-1042684.html" title="" target="_blank">
+                             <img src="{{asset('/home/imgs/1463018128881951006.jpg')}}" alt="" title="迪葵纳中年妈妈装夏装中老年女装印花宽松大码短袖连衣裙WF4324咲">
+                        </a>
+                        <p><a href="http://www.handu.com/goods-1042684.html" title="" target="_blank">迪葵纳中年妈妈装夏装中老年女装印花宽松大码短袖连衣裙WF4324咲</a></p>
+                        <p><span class="price">249.00</span></p>
+                    </div>
+
+                                 
+                 
+                          
+                    <div class="item">
+                        <a href="http://www.handu.com/goods-1047070.html" title="" target="_blank">
+                             <img src="{{asset('/home/imgs/1469562716159650900.jpg')}}" alt="" title="迪葵纳2016秋装新款中老年女装中年妈妈装长袖外套WD4818轩0726">
+                        </a>
+                        <p><a href="http://www.handu.com/goods-1047070.html" title="" target="_blank">迪葵纳2016秋装新款中老年女装中年妈妈装长袖外套WD4818轩0726</a></p>
+                        <p><span class="price">559.00</span></p>
+                    </div>
+
+                                 
+                 
+                          
                     <div class="item">
                         <a href="http://www.handu.com/goods-1048879.html" title="" target="_blank">
-                             <img src="{{asset('/home/shopingcart/imgs/1471377054566288931.jpg')}}" alt="" title="迪葵纳秋装新款中老年女装中年妈妈装上衣印花T恤FQ4819莜0816">
+                             <img src="{{asset('/home/imgs/1471377054566288931.jpg')}}" alt="" title="迪葵纳秋装新款中老年女装中年妈妈装上衣印花T恤FQ4819莜0816">
                         </a>
                         <p><a href="http://www.handu.com/goods-1048879.html" title="" target="_blank">迪葵纳秋装新款中老年女装中年妈妈装上衣印花T恤FQ4819莜0816</a></p>
                         <p><span class="price">209.00</span></p>
@@ -264,10 +448,22 @@ function dhceng(obj, sType)
 
                                  
                  
-				                  
+                          
+                    <div class="item">
+                        <a href="http://www.handu.com/goods-1050504.html" title="" target="_blank">
+                             <img src="{{asset('/home/imgs/1050504_thumb_G_1473149859942.jpg')}}" alt="" title="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜">
+                        </a>
+                        <p><a href="http://www.handu.com/goods-1050504.html" title="" target="_blank">迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜</a></p>
+                        <p><span class="price">278.00</span></p>
+                    </div>
+
+                                 
+                 
+                           </div><div class="slide" style="position: absolute; top: 0px; left: 1220px; z-index: 0; display: none;">
+                                   
                     <div class="item">
                         <a href="http://www.handu.com/goods-1051006.html" title="" target="_blank">
-                             <img src="{{asset('/home/shopingcart/imgs/1051006_thumb_G_1480923226894.jpg')}}" alt="" title="尼班诗欧美2016冬新贴布立领宽松大衣棉服棉衣女WHZ5658梵0908">
+                             <img src="{{asset('/home/imgs/1051006_thumb_G_1480923226894.jpg')}}" alt="" title="尼班诗欧美2016冬新贴布立领宽松大衣棉服棉衣女WHZ5658梵0908">
                         </a>
                         <p><a href="http://www.handu.com/goods-1051006.html" title="" target="_blank">尼班诗欧美2016冬新贴布立领宽松大衣棉服棉衣女WHZ5658梵0908</a></p>
                         <p><span class="price">549.00</span></p>
@@ -275,21 +471,10 @@ function dhceng(obj, sType)
 
                                  
                  
-				                  
-                    <div class="item">
-                        <a href="http://www.handu.com/goods-1051531.html" title="" target="_blank">
-                             <img src="{{asset('/home/shopingcart/imgs/1474646959905679353.jpg')}}" alt="" title="韩都衣舍2016韩版女冬装新款宽松显瘦纯色无袖百褶连衣裙RW6456瑒">
-                        </a>
-                        <p><a href="http://www.handu.com/goods-1051531.html" title="" target="_blank">韩都衣舍2016韩版女冬装新款宽松显瘦纯色无袖百褶连衣裙RW6456瑒</a></p>
-                        <p><span class="price">278.00</span></p>
-                    </div>
-
-                                 
-                 
-				                  
+                          
                     <div class="item">
                         <a href="http://www.handu.com/goods-1052142.html" title="" target="_blank">
-                             <img src="{{asset('/home/shopingcart/imgs/1477305540472926604.jpg')}}" alt="" title="韩都衣舍2016韩版女冬新宽松纯色套头毛衣RW6338瑒">
+                             <img src="{{asset('/home/imgs/1477305540472926604.jpg')}}" alt="" title="韩都衣舍2016韩版女冬新宽松纯色套头毛衣RW6338瑒">
                         </a>
                         <p><a href="http://www.handu.com/goods-1052142.html" title="" target="_blank">韩都衣舍2016韩版女冬新宽松纯色套头毛衣RW6338瑒</a></p>
                         <p><span class="price">298.00</span></p>
@@ -297,36 +482,24 @@ function dhceng(obj, sType)
 
                                  
                  
-				                   </div><div class="slide" style="position: absolute; top: 0px; left: 1220px; z-index: 0; display: none;">
-              	                   
+                          
                     <div class="item">
-                        <a href="http://www.handu.com/goods-1052475.html" title="" target="_blank">
-                             <img src="{{asset('/home/shopingcart/imgs/1052475_thumb_G_1478577118459.jpg')}}" alt="" title="米妮哈鲁童装冬装连帽女童中长款儿童棉衣棉服YO5629">
+                        <a href="http://www.handu.com/goods-1052303.html" title="" target="_blank">
+                             <img src="{{asset('/home/imgs/1052303_thumb_G_1479982240413.jpg')}}" alt="" title="韩都衣舍2016韩版女装秋装新款连帽针织衫JM6116蒖">
                         </a>
-                        <p><a href="http://www.handu.com/goods-1052475.html" title="" target="_blank">米妮哈鲁童装冬装连帽女童中长款儿童棉衣棉服YO5629</a></p>
-                        <p><span class="price">528.00</span></p>
+                        <p><a href="http://www.handu.com/goods-1052303.html" title="" target="_blank">韩都衣舍2016韩版女装秋装新款连帽针织衫JM6116蒖</a></p>
+                        <p><span class="price">258.00</span></p>
                     </div>
 
                                  
                  
-				                  
+                          
                     <div class="item">
-                        <a href="http://www.handu.com/goods-1052526.html" title="" target="_blank">
-                             <img src="{{asset('/home/shopingcart/imgs/1478745076679190750.jpg')}}" alt="" title="米妮哈鲁童装2016冬装新女童韩版纯色中大童毛衣套头儿童针织衫鋐">
+                        <a href="http://www.handu.com/goods-1053493.html" title="" target="_blank">
+                             <img src="{{asset('/home/imgs/1481040166652171244.jpg')}}" alt="" title="韩都衣舍2017韩版女装春装新款纯色套头针织衫KY7511湲">
                         </a>
-                        <p><a href="http://www.handu.com/goods-1052526.html" title="" target="_blank">米妮哈鲁童装2016冬装新女童韩版纯色中大童毛衣套头儿童针织衫鋐</a></p>
-                        <p><span class="price">198.00</span></p>
-                    </div>
-
-                                 
-                 
-				                  
-                    <div class="item">
-                        <a href="http://www.handu.com/goods-1052803.html" title="" target="_blank">
-                             <img src="{{asset('/home/shopingcart/imgs/1052803_thumb_G_1479966692946.jpg')}}" alt="" title="韩都衣舍2017韩版女装春装新款纯色宽松针织衫MR6628汩">
-                        </a>
-                        <p><a href="http://www.handu.com/goods-1052803.html" title="" target="_blank">韩都衣舍2017韩版女装春装新款纯色宽松针织衫MR6628汩</a></p>
-                        <p><span class="price">288.00</span></p>
+                        <p><a href="http://www.handu.com/goods-1053493.html" title="" target="_blank">韩都衣舍2017韩版女装春装新款纯色套头针织衫KY7511湲</a></p>
+                        <p><span class="price">298.00</span></p>
                     </div>
 
                                  </div></div>
@@ -349,7 +522,7 @@ function dhceng(obj, sType)
 
 </div>
   
-<script charset="utf-8" type="text/javascript" src="./购物车中心-韩都衣舍官方网站_files/dialog.js" id="dialog_js"></script>
+<script charset="utf-8" type="text/javascript" src="{{asset('/home/js/dialog.js')}}" id="dialog_js"></script>
 <script type="text/javascript">
 /*检查是否登录*/
 $('#btn_goto_checkout').click(function (){
@@ -465,33 +638,33 @@ function login_suc(){
    </div>
 
     <center class="copyright_info">
-      <span><img src="{{asset('/home/shopingcart/imgs/copyright.gif')}}" alt="" width="33" height="37" border="0" align="absmiddle">鲁ICP备14003322号-2 © 2006-2015 handu.com All Rights Reserved. 
+      <span><img src="{{asset('/home/imgs/copyright.gif')}}" alt="" width="33" height="37" border="0" align="absmiddle">鲁ICP备14003322号-2 © 2006-2015 handu.com All Rights Reserved. 
       
-      <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37010202000113" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="{{asset('/home/shopingcart/imgs/beiantubiao.png')}}" style="float:left;"><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">鲁公网安备 37010202000113号</p></a>
+      <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37010202000113" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="{{asset('/home/imgs/beiantubiao.png')}}" style="float:left;"><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">鲁公网安备 37010202000113号</p></a>
       
-      山东韩都衣舍电商集团有限公司，禁止非法复制
+      韩都衣舍电子商务集团股份有限公司，禁止非法复制
       </span>
       
-                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5484197'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s25.cnzz.com/stat.php%3Fid%3D5484197%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_5484197"><a href="http://www.cnzz.com/stat/website.php?web_id=5484197" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="{{asset('/home/shopingcart/imgs/pic.gif')}}"></a></span><script src="./购物车中心-韩都衣舍官方网站_files/stat.php" type="text/javascript"></script><script src="{{asset('/home/shopingcart/imgs/core.php')}}" charset="utf-8" type="text/javascript"></script> 
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5484197'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s25.cnzz.com/stat.php%3Fid%3D5484197%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_5484197"><a href="http://www.cnzz.com/stat/website.php?web_id=5484197" target="_blank" title="站长统计"><img border="0" hspace="0" vspace="0" src="{{asset('/home/imgs/pic.gif')}}"></a></span><script src="{{asset('/home/js/stat.php')}}" type="text/javascript"></script><script src="{{asset('/home/js/core.php')}}" charset="utf-8" type="text/javascript"></script> 
                 <br>
              <center>
 
-         <img src="{{asset('/home/shopingcart/imgs/zxmbutton02_sy.jpg')}}" alt="" width="114" height="38" border="0">
+         <img src="{{asset('/home/imgs/zxmbutton02_sy.jpg')}}" alt="" width="114" height="38" border="0">
          
-        <a href="http://www.handu.com/themes/handuyishe/html/yyzz.html" target="_blank"><img src="{{asset('/home/shopingcart/imgs/zxmbutton05_sy.jpg')}}" alt="" width="103" height="38" border="0" style="margin:5px 5px 0 5px;"></a>
+        <a href="http://www.handu.com/themes/handuyishe/html/yyzz.html" target="_blank"><img src="{{asset('/home/imgs/zxmbutton05_sy.jpg')}}" alt="" width="103" height="38" border="0" style="margin:5px 5px 0 5px;"></a>
 
 
-		<a href="https://ss.knet.cn/verifyseal.dll?sn=e14071837010051457jcgb000000&amp;ct=df&amp;a=1&amp;pa=0.6688498684670776" target="_blank" style="display:inline-block;position:relative;width:102px;height:37px;">
-       <img src="{{asset('/home/shopingcart/imgs/cnnic.png')}}" alt="" width="102" height="37" border="0"></a>
+    <a href="https://ss.knet.cn/verifyseal.dll?sn=e14071837010051457jcgb000000&amp;ct=df&amp;a=1&amp;pa=0.6688498684670776" target="_blank" style="display:inline-block;position:relative;width:102px;height:37px;">
+       <img src="{{asset('/home/imgs/cnnic.png')}}" alt="" width="102" height="37" border="0"></a>
 
         <!--<a href="http://si.trustutn.org/info?sn=615140701004909923565" target="_blank">
         <img src="http://img01.handu.com/hdysweb/20140415/renzheng.jpg" alt="" width="45" height="38" border="0"></a>-->
 
-        <a style="display: inline-block;width: 74px;margin: 4px 3px;"> <img src="{{asset('/home/shopingcart/imgs/cctv.png')}}" alt="" width="74" height="40" border="0"></a>
+        <a style="display: inline-block;width: 74px;margin: 4px 3px;"> <img src="{{asset('/home/imgs/cctv.png')}}" alt="" width="74" height="40" border="0"></a>
         </center>
 
-        <script src="{{asset('/home/shopingcart/js/cert.js')}}"></script>
-        <script type="text/javascript" src="./购物车中心-韩都衣舍官方网站_files/certShow"></script>
+        <script src="{{asset('/home/js/cert.js')}}"></script>
+        <script type="text/javascript" src="{{asset('/home/js/certShow')}}"></script>
     </center>
      
   
@@ -595,7 +768,7 @@ $('.float_box .backTop').click(function(){
   NTKF_PARAM = {
   siteid:"kf_9817",
   settingid: "kf_9817_1377747298633",
-    itemid: "",
+    itemid: "1042684",
       uid:"",
     uname:"",
 
@@ -710,13 +883,13 @@ $(function(){
 <style>
 .btm_box_b{position:fixed;width:100%;z-index: 999; height:205px;bottom:-200px;left:0px;text-align: center; font-family:"微软雅黑"; background:url(http://img01.handu.com/hdysweb/20161108/dit4.png) no-repeat center 0;transition:0.8s;}
 .guanb_btn{
-	position:absolute;
-	left:1074px;
-	top:7px;
-	z-index:1000;
-	width:16px;
-	height:16px;
-	background:url(http://img01.handu.com/hdysweb/20161108/close.png) no-repeat;
+  position:absolute;
+  left:1074px;
+  top:7px;
+  z-index:1000;
+  width:16px;
+  height:16px;
+  background:url(http://img01.handu.com/hdysweb/20161108/close.png) no-repeat;
 }
 .guanb_btn:hover{background:url(http://img01.handu.com/hdysweb/20161108/close0.png) no-repeat;cursor:pointer}
 .btm_box_bb{bottom:0;}
@@ -725,15 +898,15 @@ $(function(){
 
 <script>
 
-	$(function(){
-		$("#btm_0828").addClass("btm_box_bb");
-		$(".guanb_btn").click(function(){
-			$("#btm_0828").css("display","none")
-			})
-			$(".dengl_btn").click(function(){
-			$("#btm_0828").css("display","none")
-			})
-		})
+  $(function(){
+    $("#btm_0828").addClass("btm_box_bb");
+    $(".guanb_btn").click(function(){
+      $("#btm_0828").css("display","none")
+      })
+      $(".dengl_btn").click(function(){
+      $("#btm_0828").css("display","none")
+      })
+    })
 
 </script>
 <div class="btm_box_b" id="btm_0828">
@@ -760,7 +933,7 @@ $(function(){
 .gwd_toolbar_goods_list .gwd_toolbar_goods_item_pic {display:none !important;}
 .gwd_toolbar_info{display:none !important; visibility:hidden !important; margin-left: -1000000px !important;}
 </style>
-<script src="./购物车中心-韩都衣舍官方网站_files/tag.js" type="text/javascript" async=""></script>
+<script src="{{asset('/home/js/tag.js')}}" type="text/javascript" async=""></script>
 
 
 
@@ -774,51 +947,51 @@ $(function(){
 
 
 $(function(){
-	
-	
-	/* 批量删除  */
-	$("#selectAll").click(function(){
-	    var cartIds = $("#cartGoodsList input:checkbox");
-		if(this.checked == true ){
- 			cartIds.prop('checked',true);
-		}else{
-			cartIds.prop('checked',false);
-		}
-	});
-	$(".brand_checkall").live('click',function(){
-	    var cartIds = $(this).parent().next().find("input:checkbox");
-		if(this.checked == true ){
- 			cartIds.prop('checked',true);
-		}else{
-			cartIds.prop('checked',false);
-		}
-	});
-	 
+  
+  
+  /* 批量删除  */
+  $("#selectAll").click(function(){
+      var cartIds = $("#cartGoodsList input:checkbox");
+    if(this.checked == true ){
+      cartIds.prop('checked',true);
+    }else{
+      cartIds.prop('checked',false);
+    }
+  });
+  $(".brand_checkall").live('click',function(){
+      var cartIds = $(this).parent().next().find("input:checkbox");
+    if(this.checked == true ){
+      cartIds.prop('checked',true);
+    }else{
+      cartIds.prop('checked',false);
+    }
+  });
+   
 
-	 
-	$("#batchDelete").click(function(){
-		var cartIds = $("input:checkbox[name='cartIds']");
-		var recIds = new Array();
-		
-		$("input:checkbox:checked[name='cartIds']").each(function(i){
-			recIds.push(this.value);
-		});
-		popConfirm({'text':'您确实要把选择的商品移出购物车吗？','onClickYes':function(){
+   
+  $("#batchDelete").click(function(){
+    var cartIds = $("input:checkbox[name='cartIds']");
+    var recIds = new Array();
+    
+    $("input:checkbox:checked[name='cartIds']").each(function(i){
+      recIds.push(this.value);
+    });
+    popConfirm({'text':'您确实要把选择的商品移出购物车吗？','onClickYes':function(){
                 for(i=0;i<recIds.length;i++){
-                    delgoods(recIds[i]);	
+                    delgoods(recIds[i]);  
                 }
             }
         });
-		
-	});
-	/*批量加入收藏夹*/
-	$("#batchCollect").click(function(){
+    
+  });
+  /*批量加入收藏夹*/
+  $("#batchCollect").click(function(){
         var cartIdsck = $("input:checkbox:checked[name='cartIds']");
         var cartArray =[];
         cartIdsck.each(function(){
-		   cartArray.push($(this).parents('li').children().find('.goods_id').val());
+       cartArray.push($(this).parents('li').children().find('.goods_id').val());
         })   
-	
+  
         popConfirm({'text':'你确定要把选择的商品移入收藏夹吗？','onClickYes':function(){
                 for(i=0;i<cartArray.length;i++){
                      
@@ -835,10 +1008,10 @@ $(function(){
  
     });
  
-	//最近浏览的商品
-	var t1 = $('.slides_container').html();
-  	var t2 = $('.h').html();
-	$(".t2").click(function(){
+  //最近浏览的商品
+  var t1 = $('.slides_container').html();
+    var t2 = $('.h').html();
+  $(".t2").click(function(){
           $('.slides_container').html(t2);
           $(this).addClass('current');
           $('.t1').removeClass('current');
@@ -863,7 +1036,7 @@ $(function(){
       });
        
     })
-	
+  
 });
 
 
@@ -904,7 +1077,7 @@ function gaibian(obj){
 function changeCart(rec_id,goods_number){
     $.post('flow.php?step=ajax_update_cart',{rec_id: rec_id,goods_number:goods_number,rid:Math.random()},function(result){
         var $num_input=$('#rec-'+rec_id).find('input[name=goods_number]');
-        if(result.error == 0) {	
+        if(result.error == 0) { 
             _update_cart_info(result);
             $num_input.attr('old',goods_number);
         }else{
@@ -926,12 +1099,12 @@ function confirm_delgoods(rec_id){
             } 
         };
     popConfirm(op);    
-	 
+   
 }
 //删除商品ajax
 function delgoods(rec_id){
-	var str='';
-	$.post('flow.php?step=delete_goods',{id: rec_id},function(result){
+  var str='';
+  $.post('flow.php?step=delete_goods',{id: rec_id},function(result){
         var goods=result.goods_list;
       
         if(goods){
@@ -947,11 +1120,11 @@ function delgoods(rec_id){
         }
         $('.deleted').append(str);
         _update_cart_info(result);
-		
-	},'json');
-	
- 	$('#show_del_msg'). html('您已删除的商品，您可以重新购买或放入收藏夹');
-	
+    
+  },'json');
+  
+  $('#show_del_msg'). html('您已删除的商品，您可以重新购买或放入收藏夹');
+  
 }
 
 
@@ -967,7 +1140,7 @@ function tobuy(goodsId){
     goods.goods_id = goodsId;
     goods.number   = goodsNumber;
     goods.parent   = 0;
-    goods.is_tocart   = 1;			
+    goods.is_tocart   = 1;      
     $.post("flow.php?step=add_to_cart&need_carts=1&confirmType=1", {id: specId, goods:$.toJSON(goods)},function(result){
     
         if(result.error=='0' && result.confirm_type == '1'){
@@ -995,29 +1168,29 @@ function _update_cart_info(result){
 
 //切换浏览和收藏
 function change_tuijian(obj){
-	if(obj==1)
-	{
-		$('#shoucang').attr('class','current');	
-		$('#liulan').attr('class',' ');	
-	}else if(obj==2)
-	{
-		$('#shoucang').attr('class',' ');	
-		$('#liulan').attr('class','current');	
-	}
+  if(obj==1)
+  {
+    $('#shoucang').attr('class','current'); 
+    $('#liulan').attr('class',' '); 
+  }else if(obj==2)
+  {
+    $('#shoucang').attr('class',' '); 
+    $('#liulan').attr('class','current'); 
+  }
 
 }
 
 ///删除的商品加入收藏夹
 function collect(goodsId){
-	
-	$.get('user.php?act=collect',{id: goodsId},function(result){
-	 	
+  
+  $.get('user.php?act=collect',{id: goodsId},function(result){
+    
         if(result.message == '由于您还没有登录，因此您还不能使用该功能。')
             location.href='user.php?act=login';
         else
             popMsg(result.message,400);
-		
-	},'json');
+    
+  },'json');
 
 }
 
@@ -1032,4 +1205,4 @@ function collect(goodsId){
         generateNextPrev: true
       });
     });
-  </script><iframe id="veUtilsIframe" width="0" height="0" style="visibility: hidden; display: none; border: none;" src="./购物车中心-韩都衣舍官方网站_files/saved_resource.html"></iframe><iframe id="1481765463739" tabindex="-1" src="./购物车中心-韩都衣舍官方网站_files/iframeStorage.html" style="display: none;"></iframe></body></html>
+  </script><iframe id="veUtilsIframe" width="0" height="0" style="visibility: hidden; display: none; border: none;" src="{{asset('/home/imgs/saved_resource.html')}}"></iframe><iframe id="1482203326563" tabindex="-1" src="{{asset('/home/imgs/iframeStorage.html')}}" style="display: none;"></iframe><div id="ve-chat-container" class="waiting ready"><div id="ve-chat-iframe-container" style="height: 520px; top: 110px;"><div id="ve-chat-iframe-drag-area"></div><iframe id="ve-chat-iframe" tabindex="-1" src="{{asset('/home/imgs/1667.html')}}" style="height: 520px;"></iframe></div><div id="ve-chat-iframe-overlay"></div></div></body></html>

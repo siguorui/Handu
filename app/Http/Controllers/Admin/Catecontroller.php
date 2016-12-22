@@ -88,6 +88,7 @@ class Catecontroller extends Controller
     		}
     	}
 
+        //拼接path
     	if($data['pid'] == '0')
     	{
     		$path = '0';
