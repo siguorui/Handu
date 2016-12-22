@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Keywords" content="" />
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="Description" content="" />
 <title>用户中心_韩都衣舍HSTYLE网-韩风快时尚第一品牌购物商城。正品保证！</title>
 <!-- <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_base.css') }}"> -->

@@ -7,9 +7,11 @@ use App\Http\Controllers\Controller;
 use DB;
 class Catecontroller extends Controller
 {
+    
     //显示添加类别页面
     public function add()
     {
+
     	//按照path对查询出的结果排序
     	$data = DB::table('category') -> select('id','path','title',DB::raw("concat(path,',',id) AS sort_str")) -> orderBy('sort_str') -> get();
     	
@@ -27,6 +29,7 @@ class Catecontroller extends Controller
     //插入数据库
     public function insert(Request $request)
     {
+
     	$this -> validate($request,[
     		'title'=>'required',
     		'logo'=>'image',
@@ -113,6 +116,7 @@ class Catecontroller extends Controller
 
     public function index()
     {
+
   //   	mysql> select c1.*,concat(c1.path,',',c1.id) as sort_str,c2.title as ptitle from category as c1 left join category as c2 on c1.pid=c2.id order by sort
 		// _str;
 		

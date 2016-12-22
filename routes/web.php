@@ -56,7 +56,12 @@ Route::post('/admin/goods/update/{id}/{urlid}','Admin\GoodsController@update'); 
 Route::get('/admin/goods/delete/{id}/{urlid}','Admin\GoodsController@delete');  //商品删除
 
 //商品详情
-//购物车
-Route::get('home/shopingcart/shopingcart', 'Home\CartController@shopingcart');
 // 前台商品详情展示
 Route::get('/home/goods/goods/{id}','Home\GoodsController@goods');
+Route::post('/home/goods/addCart','Home\GoodsController@addCart');
+//单击颜色尺寸查询库存
+Route::post('/home/goods/checkStock','Home\GoodsController@checkStock');
+//购物车页面显示
+Route::get('/home/goods/shopingcart','Home\GoodsController@shopingcart');
+
+

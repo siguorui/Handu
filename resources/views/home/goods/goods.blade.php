@@ -315,7 +315,7 @@
 
           <div class="goods_attr text" > 
               <span class="label">尺码 <b>：</b></span>
-                <ul attr_id=""  >
+                <ul id="size"  >
                   @foreach($size as $s)
                   <li class="" l="{{$s -> size}}" title="{{$s -> size}}">
                     <span>{{$s -> size}}</span><s></s>      
@@ -326,7 +326,7 @@
 
           <div class="goods_attr text" >    
               <span class="label">颜色 <b>：</b></span>
-                <ul attr_id=""  >
+                <ul id="color"  >
                 @foreach($res as $v)
                   <li class=""  val="{{$v -> id}}" title="{{$v -> color}}">
                     <span>{{$v -> color}}</span><s></s>       
@@ -335,6 +335,31 @@
                 </ul>
           </div>      
         </div>
+
+        <div id="goods_detail_2" class="product_detail_info">
+            <div class="set">
+              <span class='label'>数　　量：   &nbsp;</span>
+              <span class="amount-widget" id="J_AmountWidget">
+                  <span class="increase" onclick="change_num(1)">+</span>
+                  <span class="decrease" onclick="change_num(-1)">-</span>
+                  <input name="recId" id="cartRecId" type="hidden" value="0">
+                  <input type="text" onchange="gaibian(this)" name="goods_number" id="goodsNumber" class="text" value="1" maxlength="3" title="请输入购买量">
+                  <input name="goodsPrice" type="hidden" value="46">
+              </span>
+              <span id="goodsInventory">
+                  <font class="loading">loading..</font>
+                  <font class='inventory' total="">&nbsp;（库存<b></b>件）</font>
+                  <font class='no_inventory'> （无货） </font>
+              </span>
+            </div>
+          <p id='GoodsAttrSelectedString'></p>
+            <input type="hidden" name="GoodsId" id="goods_id" value="{{$data->id}}" />
+              <p class='detail_btn_set'>
+                                <a onclick="_is_login(goods_login_suc)" class='fl detail_btn buy' href="javascript:void(0);" title='点击购买'></a>
+                                <a onclick="insertCart()" class='fl detail_btn addCart' href="javascript:void(0);" title='加入购物车'></a>
+                                
+                              </p>
+        </div>  
 <script type="text/javascript">
   /*字体闪烁*/
   var index = 0;
@@ -355,249 +380,401 @@
   setInterval("changeColor()", 1000); 
 </script>
 <script type="text/javascript">
-var sku_list= [{"goods_attr":"575044|575046","product_number":"87"},{"goods_attr":"575044|575047","product_number":"105"}];
-$(function(){
-    update_sku_list();
-});
-function set_def_selected(){
-    if(sku_list.length>0){
-        var def=sku_list[0];
-        $.each(def['goods_attr'].split('|'),function(k,v){
-           
-             $(".goods_attr li[val="+v+"]").addClass('sel');
-        
-        });
-        $('.goods_attr li.sel').eq(0).click().click();//锁定不可选的属性值
-    }
-    showSelectSKU();
-}
-function update_sku_list(){
-    var goodsId= $("#goods_id").val();
-    var url='goods.php?act=get_products_v2&id='+goodsId;
-    $.getJSON(url,function(data){
-        //console.log(data);
-        sku_list=data;
-        set_def_selected();
-    });
-}
- 
-//获取所有包含指定节点的路线
-function filterProduct(ids){
-    var result=[];
-    $(sku_list).each(function(k,v){
-        _attr='|'+v['goods_attr']+'|';
-        _all_ids_in=true;
-        for( k in ids){
-            if(_attr.indexOf('|'+ids[k]+'|')==-1){
-                _all_ids_in=false;
-                break;
+
+$(function($){
+  $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
+      });
+
+  $("#size li:first").addClass('sel');
+  $("#color li:first").addClass('sel');
+  $('#goodsNumber').val('1');
+  choose();
+});
+ 
+//定义函数供给(#size li)和(#color li)的click方法调用
+function choose(){
+    var str = '您已选择了';
+    if($("#size li").hasClass('sel')){
+        var size = $("#size .sel span" ).html();
+        str += "　["+$("#size .sel span" ).html()+"]";
+
+        if($("#color li").hasClass('sel')){
+          var color = $("#color .sel span" ).html();
+          str += "　["+$("#color .sel span" ).html()+"]";
+
+          var goodsNumber = $('#goodsNumber').val();
+          var id = $('#goods_id').val();
+          
+          //当颜色和尺寸均选取时，用ajax获取实时库存
+              $.ajax({
+                type:'POST',
+                url:"{{url('/home/goods/checkStock')}}",
+                data:{id:id,size:size,color:color,goodsNumber:goodsNumber},
+                success:function(data)
+                {
+                    $('.inventory').attr('total',data);
+                    $('.inventory b').html(data);
+                    
+                },
+                error:function()
+                {
+                    alert("异常");
+                }
+
+            });
         }
-        if(_all_ids_in){
-            result.push(v);    
-        }
-    
-    });
-    return result;
+    }else{ 
+  
+      if($("#color li").hasClass('sel')){
+        str += "　["+$("#color .sel span" ).html()+"]";
+      }else{
+        str = '您未选择';
+      } 
+
+    }
+    // console.log(str);
+    $('#GoodsAttrSelectedString').html(str);
 }
+
+$('#size li').click(function(){
+    // if($(this).hasClass('b')){
+    //     return ;//被锁定了
+    // }
     
-//获取 经过已选节点 所有线路上的全部节点
-// 根据已经选择得属性值，得到余下还能选择的属性值
-function filterAttrs(ids){
-    var products=filterProduct(ids);
-    
-    var result=[];
-    $(products).each(function(k,v){
-        result=result.concat(v['goods_attr'].split('|'));
-    
-    });
-    return result;
-}
-//已选择的节点数组
-function getSelAttrId(){
-    
-     var list=[];
-     $('.goods_attr li.sel').each(function(){
-        list.push($(this).attr('val'));
-     });
-     return list;
-}
-$('.goods_attr li').click(function(){
+    if($(this).hasClass('sel')){
+        $(this).removeClass('sel');
+        // console.log($(this span).html());
+    }else{
+        $(this).siblings().removeClass('sel');
+        $(this).addClass('sel');
+    }
+
+    choose();
+});
+
+$('#color li').click(function(){
     // if($(this).hasClass('b')){
     //     return ;//被锁定了
     // }
     if($(this).hasClass('sel')){
         $(this).removeClass('sel');
-        //alert(22);
+        // console.log($(this span).html());
     }else{
         $(this).siblings().removeClass('sel');
         $(this).addClass('sel');
      
     }
-    var select_ids=getSelAttrId();
-    var filterP=filterProduct(select_ids);
-    if(filterP.length==1){
-        _show_product_num(filterP[0]['product_number']);
-    }
-    //已经选择了的规格
-    var $_sel_goods_attr=$('li.sel').parents('.goods_attr');
-    
-    // step 1
-    var all_ids=filterAttrs(select_ids);     
-    
-    //获取未选择的
-    var $other_notsel_attr=$('.goods_attr').not($_sel_goods_attr);
-    
-    //设置为选择属性中的不可选节点
-    $other_notsel_attr.each(function(){
-       set_block($(this),all_ids);
-      
-    });
-    
-    //step 2
-    //设置已选节点的同级节点是否可选
-    $_sel_goods_attr.each(function(){ 
-        update_2($(this));  
-    });
-    
-    showSelectSKU();
+
+    choose();
 });
-function update_2($goods_attr){
-    // 若该属性值 $li 是未选中状态的话，设置同级的其他属性是否可选
-    var select_ids=getSelAttrId();
-    var $li=$goods_attr.find('li.sel');
-    
-    var select_ids2=del_array_val(select_ids,$li.attr('val'));
-    
-    var all_ids=filterAttrs(select_ids2);
-    
-    set_block($goods_attr,all_ids);
-}
-function set_block($goods_attr,all_ids){
-// 根据 $goods_attr下的所有节点是否在可选节点中（all_ids） 来设置可选状态
-    $goods_attr.find('li').each(function(k2,li2){
-            
-        if($.inArray($(li2).attr('val'),all_ids)==-1){
-            $(li2).addClass('b');
-        }else{
-            $(li2).removeClass('b');
-        }
-        
-    });
-}
-function del_array_val(arr,val){
-//去除 数组 arr中的 val ，返回一个新数组
-    var a=[];
-    for(k in arr){
-        if(arr[k]!=val){
-            a.push(arr[k]);
-        }
-    }
-    return a;
-}
-var a = ''; 
-var b = '';
-var c = 'size';
-var d = 'color';
-var goods = [];
-// var sc[] = '';  
-function showSelectSKU(){
-    var $li_sel = $(".goods_attr li.sel");
-    var goodsSelectedString ='你已选择了 ';
-    var not_choose=true;
-    
-    //设置选择的属性字符串
-    $li_sel.each(function(){
-        
-        _label = $(this).attr('title');
-        //a[] = _label;
-        if( typeof(_label) !='undefined'){
-            goodsSelectedString +='&nbsp;'+'['+_label+']';
-            not_choose=false;
-        }
-        
-    });
-    $li_sel.each(function(){
-        _label = $(this).attr('l');
-        //a[] = _label;
-        if( typeof(_label) !='undefined'){
-            a = _label;
-            not_choose=false;
-        }
-        
-    });
-    $li_sel.each(function(){
-        _label = $(this).attr('val');
-        //a[] = _label;
-        if( typeof(_label) !='undefined'){
-            b = _label;
-            not_choose=false;
-        }
-        
-    });
 
-    // document.cookie="name="+a;
-    console.log(a);
-    console.log(b);
-    // var goods = [];    
-    goods[0]=a;
-    goods[1]=b;
-    console.log(goods);
+function change_num(num)
+{
+  var goodsNumber= $('#goodsNumber').val();
+  var goodsNumber= parseInt(goodsNumber);
+  if(num ==1)
+  {
+      goodsNumber += 1;
+      $('#goodsNumber').val(goodsNumber);
+  }else 
+  {
+      goodsNumber -= 1;
 
-    if(not_choose){
-        goodsSelectedString='您未选择';
-    }
-    $('#GoodsAttrSelectedString').show().html(goodsSelectedString);
+      if(goodsNumber <= -1)
+      {
+        return false;
+      }
+
+      $('#goodsNumber').val(goodsNumber);
+  }
 }
 
-//添加至cookie
 function insertCart(){
+   
 
-}
-
-//n =-1 显示原有库存
-function _show_product_num(n){
-    $("#goodsInventory .loading").hide();
-    if(n>0 || n==-1){
-        $("#goodsInventory .inventory").show();
-        if(n==-1){//设为总库存
-            n=$("#goodsInventory .inventory").attr('total');
-        }
-        $("#goodsInventory b").html(n).show();
-        
-        
-    }else{
-        $("#goodsInventory .no_inventory").show();
+    if($("#size li").hasClass('sel'))
+    {
+      var size = $("#size .sel span" ).html();
+     
+    }else 
+    {
+      alert('请选择商品尺码');
+      return false;
     }
+
+    if($("#color li").hasClass('sel'))
+    {
+      var color = $("#color .sel span" ).html();
+     
+    }else 
+    {
+      alert('请选择商品颜色');
+      return false;
+    }
+
+    var goodsNumber = $('#goodsNumber').val();
+    if(goodsNumber<=0)
+    {
+      alert('请输入正确的商品数量');
+      return false;
+    }
+
+    var id = $('#goods_id').val();
+
+    $.ajax({
+            type:'POST',
+            url:"{{url('/home/goods/addCart')}}",
+            data:{id:id,size:size,color:color,goodsNumber:goodsNumber},
+            success:function(data)
+            {
+                if(data==0)
+                {
+                  $('#good_Car').css('display','block');
+                }else
+                {
+                  alert('商品添加到购物车失败');
+                }
+                
+            },
+            error:function()
+            {
+                alert("异常");
+            }
+
+        });
+
+
 }
-$('.goods_attr.img li').click(function(){
-    var img=$(this).find('img').attr('bigsrc');
-    if(typeof(img)!=='undefined'){
-        $('.videoplayer').hide();
-        $(".colorImg").show().html('<img src="'+img+'" alt="" />');
+
+// var sku_list= [{"goods_attr":"575044|575046","product_number":"87"},{"goods_attr":"575044|575047","product_number":"105"}];
+// $(function(){
+//     update_sku_list();
+// });
+// function set_def_selected(){
+//     if(sku_list.length>0){
+//         var def=sku_list[0];
+//         $.each(def['goods_attr'].split('|'),function(k,v){
+           
+//              $(".goods_attr li[val="+v+"]").addClass('sel');
+        
+//         });
+//         $('.goods_attr li.sel').eq(0).click().click();//锁定不可选的属性值
+//     }
+//     showSelectSKU();
+// }
+// function update_sku_list(){
+//     var goodsId= $("#goods_id").val();
+//     var url='goods.php?act=get_products_v2&id='+goodsId;
+//     $.getJSON(url,function(data){
+//         //console.log(data);
+//         sku_list=data;
+//         set_def_selected();
+//     });
+// }
+ 
+// //获取所有包含指定节点的路线
+// function filterProduct(ids){
+//     var result=[];
+//     $(sku_list).each(function(k,v){
+//         _attr='|'+v['goods_attr']+'|';
+//         _all_ids_in=true;
+//         for( k in ids){
+//             if(_attr.indexOf('|'+ids[k]+'|')==-1){
+//                 _all_ids_in=false;
+//                 break;
+//             }
+//         }
+//         if(_all_ids_in){
+//             result.push(v);    
+//         }
+    
+//     });
+//     return result;
+// }
+    
+// //获取 经过已选节点 所有线路上的全部节点
+// // 根据已经选择得属性值，得到余下还能选择的属性值
+// function filterAttrs(ids){
+//     var products=filterProduct(ids);
+    
+//     var result=[];
+//     $(products).each(function(k,v){
+//         result=result.concat(v['goods_attr'].split('|'));
+    
+//     });
+//     return result;
+// }
+// //已选择的节点数组
+// function getSelAttrId(){
+    
+//      var list=[];
+//      $('.goods_attr li.sel').each(function(){
+//         list.push($(this).attr('val'));
+//      });
+//      return list;
+// }
+// $('.goods_attr li').click(function(){
+//     // if($(this).hasClass('b')){
+//     //     return ;//被锁定了
+//     // }
+//     if($(this).hasClass('sel')){
+//         $(this).removeClass('sel');
+//         //alert(22);
+//     }else{
+//         $(this).siblings().removeClass('sel');
+//         $(this).addClass('sel');
+     
+//     }
+//     var select_ids=getSelAttrId();
+//     var filterP=filterProduct(select_ids);
+//     if(filterP.length==1){
+//         _show_product_num(filterP[0]['product_number']);
+//     }
+//     //已经选择了的规格
+//     var $_sel_goods_attr=$('li.sel').parents('.goods_attr');
+    
+//     // step 1
+//     var all_ids=filterAttrs(select_ids);     
+    
+//     //获取未选择的
+//     var $other_notsel_attr=$('.goods_attr').not($_sel_goods_attr);
+    
+//     //设置为选择属性中的不可选节点
+//     $other_notsel_attr.each(function(){
+//        set_block($(this),all_ids);
+      
+//     });
+    
+//     //step 2
+//     //设置已选节点的同级节点是否可选
+//     $_sel_goods_attr.each(function(){ 
+//         update_2($(this));  
+//     });
+    
+//     showSelectSKU();
+// });
+// function update_2($goods_attr){
+//     // 若该属性值 $li 是未选中状态的话，设置同级的其他属性是否可选
+//     var select_ids=getSelAttrId();
+//     var $li=$goods_attr.find('li.sel');
+    
+//     var select_ids2=del_array_val(select_ids,$li.attr('val'));
+    
+//     var all_ids=filterAttrs(select_ids2);
+    
+//     set_block($goods_attr,all_ids);
+// }
+// function set_block($goods_attr,all_ids){
+// // 根据 $goods_attr下的所有节点是否在可选节点中（all_ids） 来设置可选状态
+//     $goods_attr.find('li').each(function(k2,li2){
+            
+//         if($.inArray($(li2).attr('val'),all_ids)==-1){
+//             $(li2).addClass('b');
+//         }else{
+//             $(li2).removeClass('b');
+//         }
+        
+//     });
+// }
+// function del_array_val(arr,val){
+// //去除 数组 arr中的 val ，返回一个新数组
+//     var a=[];
+//     for(k in arr){
+//         if(arr[k]!=val){
+//             a.push(arr[k]);
+//         }
+//     }
+//     return a;
+// }
+// var a = ''; 
+// var b = '';
+// var c = 'size';
+// var d = 'color';
+// var goods = [];
+// // var sc[] = '';  
+// function showSelectSKU(){
+//     var $li_sel = $(".goods_attr li.sel");
+//     var goodsSelectedString ='你已选择了 ';
+//     var not_choose=true;
+    
+//     //设置选择的属性字符串
+//     $li_sel.each(function(){
+        
+//         _label = $(this).attr('title');
+//         //a[] = _label;
+//         if( typeof(_label) !='undefined'){
+//             goodsSelectedString +='&nbsp;'+'['+_label+']';
+//             not_choose=false;
+//         }
+        
+//     });
+//     $li_sel.each(function(){
+//         _label = $(this).attr('l');
+//         //a[] = _label;
+//         if( typeof(_label) !='undefined'){
+//             a = _label;
+//             not_choose=false;
+//         }
+        
+//     });
+//     $li_sel.each(function(){
+//         _label = $(this).attr('val');
+//         //a[] = _label;
+//         if( typeof(_label) !='undefined'){
+//             b = _label;
+//             not_choose=false;
+//         }
+        
+//     });
+
+//     // document.cookie="name="+a;
+//     console.log(a);
+//     console.log(b);
+//     // var goods = [];    
+//     goods[0]=a;
+//     goods[1]=b;
+//     console.log(goods);
+
+//     if(not_choose){
+//         goodsSelectedString='您未选择';
+//     }
+//     $('#GoodsAttrSelectedString').show().html(goodsSelectedString);
+// }
+
+// //添加至cookie
+
+
+// //n =-1 显示原有库存
+// function _show_product_num(n){
+//     $("#goodsInventory .loading").hide();
+//     if(n>0 || n==-1){
+//         $("#goodsInventory .inventory").show();
+//         if(n==-1){//设为总库存
+//             n=$("#goodsInventory .inventory").attr('total');
+//         }
+//         $("#goodsInventory b").html(n).show();
+        
+        
+//     }else{
+//         $("#goodsInventory .no_inventory").show();
+//     }
+// }
+// $('.goods_attr.img li').click(function(){
+//     var img=$(this).find('img').attr('bigsrc');
+//     if(typeof(img)!=='undefined'){
+//         $('.videoplayer').hide();
+//         $(".colorImg").show().html('<img src="'+img+'" alt="" />');
        
-    }
-})
+//     }
+// })
 
 </script>
         
         
-        <div id="goods_detail_2" class="product_detail_info">
-            <div class="set">
-              <span class='label'>数　　量：   &nbsp;</span>
-              <span class="amount-widget" id="J_AmountWidget">
-                  <span class="increase" onclick="change_num(1)">+</span>
-                  <span class="decrease" onclick="change_num(-1)">-</span>
-                  <input name="recId" id="cartRecId" type="hidden" value="0">
-                  <input type="text" onchange="gaibian(this)" name="goods_number" id="goodsNumber" class="text" value="1" maxlength="3" title="请输入购买量">
-                  <input name="goodsPrice" type="hidden" value="46">
-              </span>
-              <span id="goodsInventory">
-                  <font class="loading">loading..</font>
-                  <font class='inventory' total="192">&nbsp;（库存<b>192</b>件）</font>
-                  <font class='no_inventory'> （无货） </font>
-              </span>
-            </div>  
+        
 <script src="/js/tag_1.js" type="text/javascript" async></script>
 <script type="text/javascript">
 // function goods_login_suc_addCart(data){ 
@@ -617,14 +794,7 @@ function login_suc(){
   return ;
 }
 </script>           
-            <p id='GoodsAttrSelectedString'>未选择</p>
-            <input type="hidden" name="GoodsId" id="goods_id" value="{{$data->id}}" />
-              <p class='detail_btn_set'>
-                                <a onclick="_is_login(goods_login_suc)" class='fl detail_btn buy' href="javascript:void(0);" title='点击购买'></a>
-                                <a onclick="insertCart" class='fl detail_btn addCart' href="javascript:void(0);" title='加入购物车'></a>
-                                
-                              </p>
-        </div>
+            
         <div class='  product_detail_info' style='border-bottom:none;'>       
             
             <div class='extra_info'>
@@ -705,7 +875,7 @@ area{ border:0; outline:none}
   </map>
 <a href="http://www.handu.com/topic-1566.html" target="_blank"><img alt="" src="{{asset('/home/imgs/750.jpg')}}" width="750" height="374" /></a> 
   <div style="padding-top:10px;clear:both;">
-    <img border="0" alt="" src="{{asset('/home/imgs/bt.jpg')}}" width="750" height="10" /><a href="http://www.handu.com/goods-1052260.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_01.jpg')}}" width="183" height="332" /></a> <a href="http://www.handu.com/goods-1052489.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_02.jpg')}}" width="192" height="332" /></a> <a href="http://www.handu.com/goods-1049633.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_03.jpg')}}" width="190" height="332" /></a> <a href="http://www.handu.com/goods-1049734.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_04.jpg')}}" width="185" height="332" /></a> <a href="http://www.handu.com/goods-1051714.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_05.jpg')}}" width="183" height="335" /></a> <a href="http://www.handu.com/goods-1049876.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_06.jpg')}}" width="192" height="335" /></a> <a href="http://www.handu.com/goods-1050114.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_07.jpg')}}" width="190" height="335" /></a> <a href="http://www.handu.com/goods-1052324.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_08.jpg')}}" width="185" height="335" /></a> <a href="http://www.handu.com/goods-1050030.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_09.jpg')}}" width="183" height="333" /></a> <a href="http://www.handu.com/goods-1052213.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_10.jpg')}}" width="192" height="333" /></a> <a href="http://www.handu.com/goods-1051137.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_11.jpg')}}" width="190" height="333" /></a> <a href="http://www.handu.com/goods-1052320.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_12.jpg')}}" width="185" height="333" /></a> 
+    <img border="0" alt="" src="{{asset('/home/imgs/bt.jpg')}}" width="750" height="10" /><a href="http://www.handu.com/goods-1052260.html" target="_blank"><img alt="" src="{{asset('/home/imgs/goods/sx_01.jpg')}}" width="183" height="332" /></a> <a href="http://www.handu.com/goods-1052489.html" target="_blank"><img alt="" src="{{asset('/home/imgs/goods/sx_02.jpg')}}" width="192" height="332" /></a> <a href="http://www.handu.com/goods-1049633.html" target="_blank"><img alt="" src="{{asset('/home/imgs/goods/sx_03.jpg')}}" width="190" height="332" /></a> <a href="http://www.handu.com/goods-1049734.html" target="_blank"><img alt="" src="{{asset('/home/imgs/goods/sx_04.jpg')}}" width="185" height="332" /></a> <a href="http://www.handu.com/goods-1051714.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_05.jpg')}}" width="183" height="335" /></a> <a href="http://www.handu.com/goods-1049876.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_06.jpg')}}" width="192" height="335" /></a> <a href="http://www.handu.com/goods-1050114.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_07.jpg')}}" width="190" height="335" /></a> <a href="http://www.handu.com/goods-1052324.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_08.jpg')}}" width="185" height="335" /></a> <a href="http://www.handu.com/goods-1050030.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_09.jpg')}}" width="183" height="333" /></a> <a href="http://www.handu.com/goods-1052213.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_10.jpg')}}" width="192" height="333" /></a> <a href="http://www.handu.com/goods-1051137.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_11.jpg')}}" width="190" height="333" /></a> <a href="http://www.handu.com/goods-1052320.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_12.jpg')}}" width="185" height="333" /></a> 
     <p>
       <br />
     </p>
@@ -840,7 +1010,7 @@ area{ border:0; outline:none}
         </td>
       </tr>
       <tr>
-        <td style="border:1.0px solid #e6e6e6;background-repeat:no-repeat;background-position:left center;" background="/Images/t20nwxxptbxxxxxxxx-263817957.gif">
+        <td style="border:1.0px solid #e6e6e6;background-repeat:no-repeat;background-position:left center;" background="{{asset('/home/imgs/t20nwxxptbxxxxxxxx-263817957.gif')}}">
           <b>版型</b> 
         </td>
         <td style="border:1.0px solid #e6e6e6;">
@@ -854,7 +1024,7 @@ area{ border:0; outline:none}
         </td>
       </tr>
       <tr>
-        <td style="border:1.0px solid #e6e6e6;background-repeat:no-repeat;background-position:left center;" background="/Images/t20nwxxptbxxxxxxxx-263817957.gif" bgcolor="#FFFFFF">
+        <td style="border:1.0px solid #e6e6e6;background-repeat:no-repeat;background-position:left center;" background="{{asset('/home/imgs/t20nwxxptbxxxxxxxx-263817957.gif')}}">
           <b>长度</b> 
         </td>
         <td style="border:1.0px solid #e6e6e6;" bgcolor="#FFFFFF">
@@ -1098,7 +1268,7 @@ area{ border:0; outline:none}
   <table style="font-size:20.0px;font-family:微软雅黑;line-height:30.0px;text-align:center;width:100.0%;background:#ffffff;border-collapse:collapse;border:1.0px solid #e6e6e6;margin:20.0px auto;" class="ke-zeroborder" border="0" cellpadding="0" cellspacing="0" width="100%">
     <tbody>
       <tr>
-        <td style="border:1.0px solid #e6e6e6;font-size:16.0px;background-repeat:no-repeat;background-position:center;height:60.0px;" align="left" background="/Images/tb2zjy1efxxxxc4xpxxxxxxxxxx-263817957.gif" bgcolor="#fff" valign="top" width="118">
+        <td style="border:1.0px solid #e6e6e6;font-size:16.0px;background-repeat:no-repeat;background-position:center;height:60.0px;" align="left" background="{{asset('/home/imgs/tb2zjy1efxxxxc4xpxxxxxxxxxx-263817957.gif')}}" bgcolor="#fff" valign="top" width="118">
           <span style="margin-left:0.0px;margin-top:0.0px;display:block;float:left;width:100.0%;text-align:right;">身高(cm)</span><span style="display:block;float:left;width:100.0%;">体重(kg)</span> 
         </td>
         <td style="border:1.0px solid #e6e6e6;background:#ffffff;">
@@ -1591,7 +1761,7 @@ area{ border:0; outline:none}
 </div>
 <div style="width:100.0%;max-width:750.0px;min-width:480.0px;margin:0 auto 30.0px;height:auto;line-height:50.0px;text-align:center;font-family:microsoft yahei;" align="center">
   <img class="img-ks-lazyload" src="{{asset('/home/imgs/tb2oxqmxyko.ebjszphxxxqcpxa-263817957.jpg')}}" /> 
-  <table style="font-size:1.0em;background-repeat:no-repeat;background-position:left center;line-height:24.0px;width:100.0%;border-bottom:1.0px solid #dddddd;float:left;margin-bottom:30.0px;" class="ke-zeroborder" background="/Images/tb2q8zxifxxxxamxpxxxxxxxxxx-263817957.png" border="0" cellpadding="0" cellspacing="0">
+  <table style="font-size:1.0em;background-repeat:no-repeat;background-position:left center;line-height:24.0px;width:100.0%;border-bottom:1.0px solid #dddddd;float:left;margin-bottom:30.0px;" class="ke-zeroborder" background="{{asset('/home/imgs/tb2oxqmxyko.ebjszphxxxqcpxa-263817957.jpg')}}" border="0" cellpadding="0" cellspacing="0">
     <tbody>
       <tr>
         <td style="border-left:1.0px solid #dddddd;font-size:1.25rem;color:#ffffff;font-family:微软雅黑;" height="69" align="center" width="60">
@@ -1607,7 +1777,7 @@ area{ border:0; outline:none}
 </div>
 <div style="width:100.0%;max-width:750.0px;min-width:480.0px;margin:0 auto 30.0px;height:auto;line-height:50.0px;text-align:center;font-family:microsoft yahei;" align="center">
   <img class="img-ks-lazyload" src="{{asset('/home/imgs/tb2zjvpxxmj.ebjy0fhxxbbdfxa-263817957.jpg')}}" /> 
-  <table style="font-size:1.0em;background-repeat:no-repeat;background-position:left center;line-height:24.0px;width:100.0%;border-bottom:1.0px solid #dddddd;float:left;margin-bottom:30.0px;" class="ke-zeroborder" background="/Images/tb2q8zxifxxxxamxpxxxxxxxxxx-263817957.png" border="0" cellpadding="0" cellspacing="0">
+  <table style="font-size:1.0em;background-repeat:no-repeat;background-position:left center;line-height:24.0px;width:100.0%;border-bottom:1.0px solid #dddddd;float:left;margin-bottom:30.0px;" class="ke-zeroborder" background="{{asset('/home/imgs/tb2oxqmxyko.ebjszphxxxqcpxa-263817957.jpg')}}" border="0" cellpadding="0" cellspacing="0">
     <tbody>
       <tr>
         <td style="border-left:1.0px solid #dddddd;font-size:1.25rem;color:#ffffff;font-family:微软雅黑;" height="69" align="center" width="60">
@@ -1623,7 +1793,7 @@ area{ border:0; outline:none}
 </div>
 <div style="width:100.0%;max-width:750.0px;min-width:480.0px;margin:0 auto 30.0px;height:auto;line-height:50.0px;text-align:center;font-family:microsoft yahei;" align="center">
   <img class="img-ks-lazyload" src="{{asset('/home/imgs/tb22pjpxcki.ebjy1zcxxxiopxa-263817957.jpg')}}" /> 
-  <table style="font-size:1.0em;background-repeat:no-repeat;background-position:left center;line-height:24.0px;width:100.0%;border-bottom:1.0px solid #dddddd;float:left;margin-bottom:30.0px;" class="ke-zeroborder" background="/Images/tb2q8zxifxxxxamxpxxxxxxxxxx-263817957.png" border="0" cellpadding="0" cellspacing="0">
+  <table style="font-size:1.0em;background-repeat:no-repeat;background-position:left center;line-height:24.0px;width:100.0%;border-bottom:1.0px solid #dddddd;float:left;margin-bottom:30.0px;" class="ke-zeroborder" background="{{asset('/home/imgs/tb2oxqmxyko.ebjszphxxxqcpxa-263817957.jpg')}}" border="0" cellpadding="0" cellspacing="0">
     <tbody>
       <tr>
         <td style="border-left:1.0px solid #dddddd;font-size:1.25rem;color:#ffffff;font-family:微软雅黑;" height="69" align="center" width="60">
@@ -1639,7 +1809,7 @@ area{ border:0; outline:none}
 </div>
 <div style="width:100.0%;max-width:750.0px;min-width:480.0px;margin:0 auto 30.0px;height:auto;line-height:50.0px;text-align:center;font-family:microsoft yahei;" align="center">
   <img class="img-ks-lazyload" src="{{asset('/home/imgs/tb2e6emxpop.ebjszfhxxxqnpxa-263817957.jpg')}}" /> 
-  <table style="font-size:1.0em;background-repeat:no-repeat;background-position:left center;line-height:24.0px;width:100.0%;border-bottom:1.0px solid #dddddd;float:left;margin-bottom:30.0px;" class="ke-zeroborder" background="/Images/tb2q8zxifxxxxamxpxxxxxxxxxx-263817957.png" border="0" cellpadding="0" cellspacing="0">
+  <table style="font-size:1.0em;background-repeat:no-repeat;background-position:left center;line-height:24.0px;width:100.0%;border-bottom:1.0px solid #dddddd;float:left;margin-bottom:30.0px;" class="ke-zeroborder" background="{{asset('/home/imgs/tb2oxqmxyko.ebjszphxxxqcpxa-263817957.jpg')}}" border="0" cellpadding="0" cellspacing="0">
     <tbody>
       <tr>
         <td style="border-left:1.0px solid #dddddd;font-size:1.25rem;color:#ffffff;font-family:微软雅黑;" height="69" align="center" width="60">
@@ -1662,31 +1832,24 @@ area{ border:0; outline:none}
   </div>
 </div>
 <div align="center">
-  <img class="img-ks-lazyload" src="{{asset('/home/imgs/tb2i6kmxygo.ebjszfpxxckcxxa-263817957.jpg')}}" /><br />
+  <img class="img-ks-lazyload" src="{{asset('/home/imgs/tb2i6kmxygo.ebjszfpxxckcxxa-263817957.jpg')}}" /><br/>
 </div>                </div>
-                                                                <style>
-                 .baidu_hdys{width:100%;float:left;}
-                 .baidu_hdys_img{margin:0 auto;float:none;width:750px;}
-                </style>
-               <!--  <div class="baidu_hdys">
-                 <div class="baidu_hdys_img">
-                    <img  src="{{asset('/home/imgs/baidu_hdys.jpg"/>
-                 </div>
-               </div> -->
-                                <div style=" margin: 0 auto;font-size: 14px;text-align: center;font-family: 微软雅黑;color: #5c5c5c;flaot:none;line-height:25px;">
-                  <span style="color:#000">没空去韩国？就来韩都衣舍官网！韩都衣舍官网，网上购物首选。</span>
-                </div>
-        <!--<div style="margin-top:30px;">
-          <img src="{{asset('/home/imgs/suggest.png" style="vertical-align: -2px;"/> 如果您在韩都衣舍发现任何问题，欢迎<a href="msg.php" target="_blank" style="color: #35a;margin-left: 3px;">提点建议</a>
-        </div>-->
+<style>
+ .baidu_hdys{width:100%;float:left;}
+ .baidu_hdys_img{margin:0 auto;float:none;width:750px;}
+</style>
+              
+  <div style=" margin: 0 auto;font-size: 14px;text-align: center;font-family: 微软雅黑;color: #5c5c5c;flaot:none;line-height:25px;">
+      <span style="color:#000">没空去韩国？就来韩都衣舍官网！韩都衣舍官网，网上购物首选。</span>
+    </div>
+        
             </li>
             <li ><div id="ECS_COMMENT" style="width:1100px;margin:0 auto;float:none;">
   <div class="New_goodCONtitle" id="userConmentList" name="userConmentList">商品评论</div>
   <ul class="New_goodCONPLlist">
                 <li>
-                    <div class="New_goodPLTime New_goodPLNR_star">
-                                                <span style="float:left;margin-right:5px; color:#7b7b7b"><strong>是否合身：</strong>正好</span>
-                                                                                                                    </div>
+    <div class="New_goodPLTime New_goodPLNR_star">
+        <span style="float:left;margin-right:5px; color:#7b7b7b"><strong>是否合身：</strong>正好</span>                  
       <div class="New_goodPLNR_top">
         <div class="New_goodPLNR">质量不错，我在这里领了优惠券之后更优惠了，打折不少，如果好用可以分享一下网址，记得收藏哦，每周都会更新网址：http://t.cn/RANJ7RH?ks</div>
         <div class="New_goodPLuserName">vml***@163.com</div>
@@ -1712,24 +1875,7 @@ area{ border:0; outline:none}
         </div>
 </div></li>
             <li></li>
-            <!-- <li class="goods_wenti">
-                <center>
-                <h4>支付方式</h4>
-                <p>韩都衣舍为您提供在线支付、网上银行、货到付款等多种支付方式，可满足您不同的支付需求。</p>
-                <h5>1.在线支付</h5>
-                <p>韩都衣舍为您提供支付宝支付、网上银行两种在线支付方式，几乎涵盖所有大中型银行发行的银行卡，覆盖率达98%。选择在线支付，您的银行卡需要开通相应的网上银行业务。</p>
-                <img src="/Picture/zhifu_list.png" alt="" />
-                <h5>2.货到付款</h5>
-                <p>货到付款是韩都衣舍配送员送货上门，客户收单验货后，直接将货款交给配送员的一种结算方式。</p>
-                <strong>更多支付方式问题请查看 <a href="/helper-22-121.html#xx_121" target="_blank">在线支付</a></strong>　
-                <br />
-                <br />
-                <h4>退换货政策</h4>
-                    
-                <img src="/Picture/goods_tuihuozhengce.png" alt="" />
-                <strong>更多售后服务问题请查看 <a href="/helper-11.html" target="_blank">售后服务</a></strong>
-                </center>
-            </li> -->
+           
            
         </ul>
     </div>
@@ -1741,7 +1887,8 @@ area{ border:0; outline:none}
       <ul>
         <li><div class="good_Car_topName">该商品已经成功添加到购物车</div>
           <div class="good_Car_topCOlose" onclick="_close_goods_Car();">×</div></li>
-        <li><a href="flow.php"><img src="/home/imgs/guycar_buycart.png"></a>
+        <li><a href="{{url('home/goods/shopingcart')}}"><img src="/home/imgs/guycar_buycart.png"/></a>
+
           <a href="javascript:_close_goods_Car();" class="jixuguang" style="margin-top:0;"><img src="/home/imgs/jxgw.png"></a>
         </li>
       </ul>
@@ -1781,10 +1928,10 @@ area{ border:0; outline:none}
                   
       </div>
     </div>
-        <script type="text/javascript">
-        function _close_goods_Car(){
-            $('#good_Car').hide();
-        }
+    <script type="text/javascript">
+    function _close_goods_Car(){
+        $('#good_Car').hide();
+    }
     </script>
 </div>
 @endsection
