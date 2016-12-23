@@ -10,7 +10,7 @@ Route::get('home/logout', 'Home\LoginController@logout');
 Route::get('home/login/login','Home\LoginController@login');
 Route::get('home/login/login/{tmp}', 'Home\LoginController@captcha');
 
-Route::get('home/shopingcart/shopingcart', 'Home\CartController@shopingcart');
+
 
 
 //后台用户管理
@@ -39,6 +39,7 @@ Route::post('/home/user/updateP','Home\MyCenterController@updateP');	//修改密
 Route::post('/home/update','Home\DetailsController@update');	//更新个人信息
 Route::get('/home/user/vip','Home\DetailsController@vip');	//特权
 Route::get('/home/user/idea','Home\DetailsController@idea');	//意见反馈
+Route::post('/home/user/addidea','Home\DetailsController@addidea');	//意见反馈
 Route::get('/home/user/address','Home\DetailsController@address');	//意见反馈
 
 //前台商品列表

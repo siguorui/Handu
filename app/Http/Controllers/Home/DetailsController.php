@@ -79,11 +79,33 @@ class DetailsController extends Controller
 
     public function idea()
     {
-    	return view('home.user.idea');
+        return view('home.user.idea');
+    }
+
+
+    public function addidea(Request $request)
+    {
+        $id = Session('master') -> id;
+
+        $data = $request -> except('_token');
+        $data['uid'] = $id;
+        $time = time();
+        $data['feedback_time'] = $time;
+
+        $data1 = DB::table('feedback') -> insert($data);
+    	
+        if($data1)
+        {
+            return redirect('home/user/idea') -> with(['info' => '提交成功']);
+        }else
+        {
+            return back() -> with(['info' => '提交失败,请重新提交']);
+        }
     }
 
     public function address()
     {
         return view('home.user.address');
     }
+    
 }

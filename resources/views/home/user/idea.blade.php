@@ -3,6 +3,10 @@
 @section('content')
 <script charset="utf-8" type="text/javascript" src="{{ asset('/home/js/dialog.js')}}" id="dialog_js"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/regist.css') }}"/>
+<style type="text/css">
+  input[type=submit].save_btn{background: url() no-repeat -305px -310px;width:75px;height:38px;}
+  input[type=submit].save_btn:active{background-position: -360px -310px;}
+</style>
 <div id="d_html1" style="display:none;">
    <div class="popup_box_txt">
      <h1 class="warn_info" style="padding: 15px 0 10px;">提交成功!</h1>     
@@ -12,7 +16,6 @@
      <p>&nbsp;</p>
    </div>
 </div>
-
 
 <div id="d_html4" style="display:none;">
    <div class="popup_box_txt">
@@ -59,8 +62,16 @@
       </ul>
     </div>
     <div class="regist_list">
-    <form action="msg.php?act=add"  method="post">
-      
+    @if (count($errors) > 0)
+            @foreach ($errors->all() as $error)
+                <p class="text-red">{{ $error }}</p>
+            @endforeach
+        @endif
+        @if(session('info'))
+        <p class="text-red">{{session('info')}}</p>
+        @endif
+    <form action="{{asset('/home/user/addidea')}}"  method="post">
+      {{csrf_field()}}
       <div class="regist_item">
         <div class="regist_item_head">
           <p>亲爱的用户：</p>
@@ -74,12 +85,12 @@
               <td class="regist_tb_righttd">
                 <ul>
         
-                  <li><input type="radio" name="regist_radio" value="0" class="regist_radio"  onclick="_is_login();" href="javascript:void(0);"/>商品信息</li>
-                  <li><input type="radio" name="regist_radio" value="1" class="regist_radio"  onclick="_is_login();" href="javascript:void(0);"/>下单支付</li>
-                  <li><input type="radio" name="regist_radio" value="2" class="regist_radio"  onclick="_is_login();" href="javascript:void(0);"/>会员中心</li>
-                  <li><input type="radio" name="regist_radio" value="3" class="regist_radio"  onclick="_is_login();" href="javascript:void(0);"/>登录访问</li>
-                  <li><input type="radio" name="regist_radio" value="4" class="regist_radio"  onclick="_is_login();" href="javascript:void(0);"/>客户服务</li>
-                  <li><input type="radio" name="regist_radio" value="5" class="regist_radio"  onclick="_is_login();" href="javascript:void(0);"/>其他</li>
+                  <li><input type="radio" name="fd_type" value="0" class="regist_radio"  onclick="_is_login();" href="javascript:void(0);"/>商品信息</li>
+                  <li><input type="radio" name="fd_type" value="1" class="regist_radio"  onclick="_is_login();" href="javascript:void(0);"/>下单支付</li>
+                  <li><input type="radio" name="fd_type" value="2" class="regist_radio"  onclick="_is_login();" href="javascript:void(0);"/>会员中心</li>
+                  <li><input type="radio" name="fd_type" value="3" class="regist_radio"  onclick="_is_login();" href="javascript:void(0);"/>登录访问</li>
+                  <li><input type="radio" name="fd_type" value="4" class="regist_radio"  onclick="_is_login();" href="javascript:void(0);"/>客户服务</li>
+                  <li><input type="radio" name="fd_type" value="5" class="regist_radio"  onclick="_is_login();" href="javascript:void(0);"/>其他</li>
                 </ul>
               </td>
             </tr>
@@ -98,7 +109,7 @@
             </tr>
             <tr>
               <td></td>
-              <td><div class="regist_submit regist1" onclick="_czc.push(['_trackEvent', '在线反馈', '提交意见']);"></div></td>
+              <td><div class="regist_submit regist1" type="submit" onclick="_czc.push(['_trackEvent', '在线反馈', '提交意见']);"><input type="submit" value="" class="save_btn"/></div></td>
             </tr>
           </table>
         </div>
@@ -106,7 +117,7 @@
       </form>
       
       <div class="regist_item" style="display:none;">
-       <form action="msg.php?act=survey"  method="post" >
+       <form action="{{ asset('/home/user/addidea')}}"  method="post" >
         <div class="regist_item_head">
           <p>亲爱的用户：</p>
           <p>感谢您支持韩都衣舍！您在购物的过程中，有没有遇到问题？若您有任何的意见或建议，请告诉我们。</p>
@@ -216,7 +227,7 @@ $(".regist_submit.regist1").click(function(){
    }
    
    
-   $.post("msg.php?act=add", {type: type, title: title ,content:content},function(data){
+   $.post("{{url('home/idea')}}", {type: type, title: title ,content:content},function(data){
        if(data.error==4){
           popHtml(4,360);
      }else if(data.error == 2){

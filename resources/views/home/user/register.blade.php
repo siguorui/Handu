@@ -7,8 +7,8 @@
 	<div class="register">
 		<div class="register_right fl">
 			<div class="register_right_list">
-				<div class="register_right_listName">已是韩都衣舍用户：
-					<input type="button" value="直接登录" onclick="javascript:window.location.href='user.php?act=login';_czc.push(['_trackEvent', '注册', 'Login']);"  class="register_loginbtn" />
+				<div class="register_right_listName">已是韩都衣舍用户:<a href="{{asset('/home/login')}}">
+					<input type="button" value="直接登录" onclick="javascript:window.location.href="{{asset('/home/login')}}";_czc.push(['_trackEvent', '注册', 'Login']);"  class="register_loginbtn" /></a>
 				</div>
 			</div>
 			<div class="news_loginRight_pic" style="margin-left:-7px;">
