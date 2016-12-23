@@ -30,40 +30,7 @@
 
 
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
-<!--[if IE 6]>
-<div id="ie6_upgrade_tip" >
-  <div class="ie6_tips">温馨提示：尊敬的用户，现在检测到您正在使用IE6浏览器。为了确保您的购物安全和更好的用户体验，请
-  <a class="se6_download" style="color:#1C79A1" href="http://chrome.360.cn/" target="_blank">下载360极速浏览器</a>或者升级更高版本的IE浏览器</div>
-  <div id="yellowtipclose" style="display:none;"></div>
-</div>
-<![endif]-->
 
-
-<!-- 大顶通
-<script type="text/javascript">
-function closeDt(){
-  $(".dt").hide();
-}
-</script>
-
-<div style="width:100%;height:200px;min-width:1200px;background:url(http://img14.360buyimg.com/cms/jfs/t3241/165/4616047024/38480/3bee75f3/584a93b2Nfe89bf16.jpg) no-repeat center top;">
- <div style="width:1400px; height:100%; position:relative; margin:0 auto;">
-    <a href="http://www.handu.com/topic-423.html" target="_blank" style="display:block; width:100%; height:100%"> 
-    <div style="width:1200px; position:absolute;">
-    </div>
-</a>
-    
-  </div>
-</div>-->
-
-
-
-
-<!--普通顶通
-<div style="width:100%;height:100px;min-width:1200px;" class="dt">
-  <div style="height:100px;background:url(http://img01.handu.com/hdysweb/20150512/01.jpg) center top no-repeat;"></div>
-</div>
--->
 <div id="global_nav">
   <div class="global_nav">
     <div class="global_info fl">
@@ -247,29 +214,29 @@ readCookie('sc');
             <!--<div class="cbg xuan"><input name="cartIds" type="checkbox" value="6720105"/></div> -->
             <div class="cbg shop_product">
                 <div class="shop_product_pic">
-                    <a href="http://www.handu.com/goods-1053493.html" target="_blank" title="韩都衣舍2017韩版女装春装新款纯色套头针织衫KY7511湲">
-                        <img src="{{asset('/home/imgs/1481040166652171244.jpg')}}" width="112" border="0" alt="韩都衣舍2017韩版女装春装新款纯色套头针织衫KY7511湲">
+                    <a href="http://www.handu.com/goods-1053493.html" target="_blank" title="{{$data->title}}">
+                        <img src="{{asset('/home/imgs/goods')}}/{{$data->pic}}" width="112" border="0" alt="{{$data->title}}">
                     </a>
                 </div>
                 <div class="shop_product_name">
-                    <a href="http://www.handu.com/goods-1053493.html" title="韩都衣舍2017韩版女装春装新款纯色套头针织衫KY7511湲" target="_blank"></a>
+                    <a href="http://www.handu.com/goods-1053493.html" title="{{$data->title}}" target="_blank">{{$data->title}}</a>
                 </div>
                 
                 <div class="shop_product_size">
-                    <span>颜色: &nbsp;&nbsp;&nbsp;尺码:</span>
+                    <span>颜色:{{$cartData['color']}} &nbsp;&nbsp;&nbsp;尺码:{{$cartData['size']}}</span>
                 </div>
             </div>
-            <div class="cbg shop_product_money"> <div class="cprice" style="line-height:20px;"><del>￥</del><br><span>￥</span></div></div>
+            <div class="cbg shop_product_money"> <div class="cprice" style="line-height:20px;"><del>￥{{$data->orign_price}}.00</del><br><span>￥{{$data->promt_price}}</span></div></div>
             <div class="cbg shop_product_number">
                 <span class="amount-widget" id="J_AmountWidget">
                     <span class="increase" onclick="zengjia(this)">+</span>
                     <span class="decrease" onclick="jianshao(this)">-</span>
                      <input name="recId" type="hidden" value="6720105">
-                     <input type="text" onchange="gaibian(this)" name="goods_number" class="text" old="1" value="1" maxlength="3" title="请输入购买量">
+                     <input type="text" onchange="gaibian(this)" name="goods_number" class="text" old="1" value="{{$cartData['goodsNumber']}}" maxlength="3" title="请输入购买量">
                      <input name="goodsPrice" type="hidden" value="">
                 </span>
             </div>
-            <div class="cbg shop_product_money00">￥</div>
+            <div class="cbg shop_product_money00">￥{{$data->promt_price}}.00</div>
             <div class="cbg shop_product_close">
                 <div class="middle">
                     <a href="javascript:removeToCollect(6720105,1053493);"> 移入收藏夹</a><br>
@@ -307,9 +274,9 @@ $(".cart_good_type").each(function(index,item){
               <div class="accumulated fr">
                 <table>
                  <tbody><tr>
-                      <td><span id="goods_allnum" class="p_color">3</span>件商品</td>
+                      <td><span id="goods_allnum" class="p_color">{{$cartData['goodsNumber']}}</span>件商品</td>
                       <td class="td_len1">总计：</td>
-                        <td id="total_Price" class="td_len">￥389</td>
+                        <td id="total_Price" class="td_len">￥{{$cartData['total']}}</td>
                   </tr>
                   <tr>  
                           
@@ -349,7 +316,7 @@ $(".cart_good_type").each(function(index,item){
                         购物金额总计：
                         <span style="min-width:75px;display:inline-block;text-align:right;">
                           <span style="color:#bf0000; font-size:18px;">￥</span>
-                          <span id="totalAmount">369</span>
+                          <span id="totalAmount">{{$cartData['total']}}</span>
                         </span>
                     </span>
                 </span>
@@ -387,129 +354,33 @@ $(".cart_good_type").each(function(index,item){
     </span>
 
 </div>
-    <div id="slides">
+    <!-- <div id="slides">
             <div class="slides_container" style="overflow: hidden; position: relative; display: block;">
                 
-                                <div class="slides_control" style="position: relative; width: 3660px; height: 240px; left: -1220px;"><div class="slide" style="position: absolute; top: 0px; left: 1220px; z-index: 0;">
-                                   
-                 
-                          
-                    <div class="item">
-                        <a href="http://www.handu.com/goods-1032502.html" title="" target="_blank">
-                             <img src="{{asset('/home/imgs/1459281627970756825.jpg')}}" alt="" title="女中老年单色厚度适中型双层领撞色拼接中长款长袖外套WD4856【Dequanna/迪葵纳 2016春季新品】">
-                        </a>
-                        <p><a href="http://www.handu.com/goods-1032502.html" title="" target="_blank">女中老年单色厚度适中型双层领撞色拼接中长款长袖外套WD4856【Dequanna/迪葵纳 2016春季新品】</a></p>
-                        <p><span class="price">469.00</span></p>
-                    </div>
+      <div class="slides_control" style="position: relative; width: 3660px; height: 240px; left: -1220px;">
 
-                                 
-                 
-                          
-                    <div class="item">
-                        <a href="http://www.handu.com/goods-1033066.html" title="" target="_blank">
-                             <img src="{{asset('/home/imgs/1459281497269229038.jpg')}}" alt="" title="女中老年冬装新款单色菱形压格抽绳收腰加厚外套FM4813【Dequanna/迪葵纳 2015冬装新款】">
-                        </a>
-                        <p><a href="http://www.handu.com/goods-1033066.html" title="" target="_blank">女中老年冬装新款单色菱形压格抽绳收腰加厚外套FM4813【Dequanna/迪葵纳 2015冬装新款】</a></p>
-                        <p><span class="price">609.00</span></p>
-                    </div>
 
-                                 
-                 
-                          
-                    <div class="item">
-                        <a href="http://www.handu.com/goods-1042684.html" title="" target="_blank">
-                             <img src="{{asset('/home/imgs/1463018128881951006.jpg')}}" alt="" title="迪葵纳中年妈妈装夏装中老年女装印花宽松大码短袖连衣裙WF4324咲">
-                        </a>
-                        <p><a href="http://www.handu.com/goods-1042684.html" title="" target="_blank">迪葵纳中年妈妈装夏装中老年女装印花宽松大码短袖连衣裙WF4324咲</a></p>
-                        <p><span class="price">249.00</span></p>
-                    </div>
+          <div class="slide" style="position: absolute; top: 0px; left: 1220px; z-index: 0;"> -->
+         
+              <div class="item">
+                  <a href="http://www.handu.com/goods-1032502.html" title="" target="_blank">
+                       <img src="{{asset('/home/imgs/goods')}}/{{$data->pic}}" alt="" title="{{$data->title}}">
+                  </a>
+                  <p><a href="http://www.handu.com/goods-1032502.html" title="" target="_blank">{{$data->title}}</a></p>
+                  <p><span class="price">{{$data->promt_price}}.00</span></p>
+              </div>
 
-                                 
-                 
-                          
-                    <div class="item">
-                        <a href="http://www.handu.com/goods-1047070.html" title="" target="_blank">
-                             <img src="{{asset('/home/imgs/1469562716159650900.jpg')}}" alt="" title="迪葵纳2016秋装新款中老年女装中年妈妈装长袖外套WD4818轩0726">
-                        </a>
-                        <p><a href="http://www.handu.com/goods-1047070.html" title="" target="_blank">迪葵纳2016秋装新款中老年女装中年妈妈装长袖外套WD4818轩0726</a></p>
-                        <p><span class="price">559.00</span></p>
-                    </div>
+          </div>
+          <div class="slide" style="position: absolute; top: 0px; left: 1220px; z-index: 0; display: none;">       
+          </div>
 
-                                 
-                 
-                          
-                    <div class="item">
-                        <a href="http://www.handu.com/goods-1048879.html" title="" target="_blank">
-                             <img src="{{asset('/home/imgs/1471377054566288931.jpg')}}" alt="" title="迪葵纳秋装新款中老年女装中年妈妈装上衣印花T恤FQ4819莜0816">
-                        </a>
-                        <p><a href="http://www.handu.com/goods-1048879.html" title="" target="_blank">迪葵纳秋装新款中老年女装中年妈妈装上衣印花T恤FQ4819莜0816</a></p>
-                        <p><span class="price">209.00</span></p>
-                    </div>
 
-                                 
-                 
-                          
-                    <div class="item">
-                        <a href="http://www.handu.com/goods-1050504.html" title="" target="_blank">
-                             <img src="{{asset('/home/imgs/1050504_thumb_G_1473149859942.jpg')}}" alt="" title="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜">
-                        </a>
-                        <p><a href="http://www.handu.com/goods-1050504.html" title="" target="_blank">迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜</a></p>
-                        <p><span class="price">278.00</span></p>
-                    </div>
-
-                                 
-                 
-                           </div><div class="slide" style="position: absolute; top: 0px; left: 1220px; z-index: 0; display: none;">
-                                   
-                    <div class="item">
-                        <a href="http://www.handu.com/goods-1051006.html" title="" target="_blank">
-                             <img src="{{asset('/home/imgs/1051006_thumb_G_1480923226894.jpg')}}" alt="" title="尼班诗欧美2016冬新贴布立领宽松大衣棉服棉衣女WHZ5658梵0908">
-                        </a>
-                        <p><a href="http://www.handu.com/goods-1051006.html" title="" target="_blank">尼班诗欧美2016冬新贴布立领宽松大衣棉服棉衣女WHZ5658梵0908</a></p>
-                        <p><span class="price">549.00</span></p>
-                    </div>
-
-                                 
-                 
-                          
-                    <div class="item">
-                        <a href="http://www.handu.com/goods-1052142.html" title="" target="_blank">
-                             <img src="{{asset('/home/imgs/1477305540472926604.jpg')}}" alt="" title="韩都衣舍2016韩版女冬新宽松纯色套头毛衣RW6338瑒">
-                        </a>
-                        <p><a href="http://www.handu.com/goods-1052142.html" title="" target="_blank">韩都衣舍2016韩版女冬新宽松纯色套头毛衣RW6338瑒</a></p>
-                        <p><span class="price">298.00</span></p>
-                    </div>
-
-                                 
-                 
-                          
-                    <div class="item">
-                        <a href="http://www.handu.com/goods-1052303.html" title="" target="_blank">
-                             <img src="{{asset('/home/imgs/1052303_thumb_G_1479982240413.jpg')}}" alt="" title="韩都衣舍2016韩版女装秋装新款连帽针织衫JM6116蒖">
-                        </a>
-                        <p><a href="http://www.handu.com/goods-1052303.html" title="" target="_blank">韩都衣舍2016韩版女装秋装新款连帽针织衫JM6116蒖</a></p>
-                        <p><span class="price">258.00</span></p>
-                    </div>
-
-                                 
-                 
-                          
-                    <div class="item">
-                        <a href="http://www.handu.com/goods-1053493.html" title="" target="_blank">
-                             <img src="{{asset('/home/imgs/1481040166652171244.jpg')}}" alt="" title="韩都衣舍2017韩版女装春装新款纯色套头针织衫KY7511湲">
-                        </a>
-                        <p><a href="http://www.handu.com/goods-1053493.html" title="" target="_blank">韩都衣舍2017韩版女装春装新款纯色套头针织衫KY7511湲</a></p>
-                        <p><span class="price">298.00</span></p>
-                    </div>
-
-                                 </div></div>
-                  
-                                
-            
-                 
-            </div><a href="http://www.handu.com/flow.php?step=cart#" class="prev">Prev</a><a href="http://www.handu.com/flow.php?step=cart#" class="next">Next</a>
-        </div>
-
+     <!--  </div>
+          
+    </div>
+            <a href="http://www.handu.com/flow.php?step=cart#" class="prev">Prev</a><a href="http://www.handu.com/flow.php?step=cart#" class="next">Next</a>
+  </div>
+ -->
 
 
     <div class="h" style="display:none  ">
@@ -810,118 +681,6 @@ var _hmt = _hmt || [];
 
  
 
-
-<!--底部悬浮条 start
-<style>
-.saohuo{background:url(http://img01.handu.com//hdysweb/20150713/dt.png) center top no-repeat; position:fixed;width:100%;z-index: 999; height:40px;bottom:0px;left:0px;text-align: center; font-family:"微软雅黑"}
-.saohuoco{width:1200px;margin:0 auto;position:relative;}
-.lxftime{position:absolute; color: #ffd200; font-family:Arial, Helvetica, sans-serif;font-size: 26px; font-weight: bold; left:620px; top:5px; text-align:left; word-spacing:26px;}
-.lxftime span{color:#fff; font-size:22px; font-weight:lighter; margin:0 2px; font-weight:bold;}
-</style> 
-<a href="http://www.handu.com/topic-1007.html" target="_blank">
-<div class="saohuo"> 
-  <div class="saohuoco">
-      <div class="lxftime" endtime="07/17/2015 10:00:00" lxfday="no"></div>
-  </div>
-</div>
-</a>
-<script>
-function lxfEndtime(){
-  $(".lxftime").each(function(){
-    var lxfday=$(this).attr("lxfday");//用来判断是否显示天数的变量
-    var endtime = new Date($(this).attr("endtime")).getTime();//取结束日期(毫秒值)
-    endtime = 1437098400000;
-    var nowtime = new Date().getTime();        //今天的日期(毫秒值)
-    var youtime = endtime-nowtime;//还有多久(毫秒值)
-    var seconds = youtime/1000;
-    var minutes = Math.floor(seconds/60);
-    var hours = Math.floor(minutes/60);
-    var days = Math.floor(hours/24);
-    var CDay= days ;
-    var CHour= hours % 24;
-    var CMinute= minutes % 60;
-    var CSecond= Math.floor(seconds%60);//"%"是取余运算，可以理解为60进一后取余数，然后只要余数。
-    if(CSecond<10){
-      CSecond="0"+CSecond;
-    }
-    if(CMinute<10){
-      CMinute="0"+CMinute;
-    }
-    if(CHour<10){
-      CHour="0"+CHour;
-    }    
-    if(endtime<=nowtime){
-      $(this).html("已过期")//如果结束日期小于当前日期就提示过期啦
-    }else{
-      if($(this).attr("lxfday")=="no"){
-      $(this).html(hours+"<span>时</span>"+CMinute+"<span>分</span>"+CSecond+"<span>秒</span>");          //输出没有天数的数据
-      }else{
-      $(this).html(CHour);          //输出有天数的数据
-      }
-    }
-  });
-};
-function auto_hide(){                                                 //到期自动隐藏掉倒计时悬浮条
-  var endtime = new Date($(".lxftime").attr("endtime")).getTime();    //取结束日期(毫秒值)
-  var nowtime = new Date().getTime();                                 //今天的日期(毫秒值)服务器时间
-  if(endtime <= nowtime){
-    $(".saohuo").hide();
-  }else{
-    lxfEndtime();
-  }
-}
-$(function(){
-   auto_hide();
-   setInterval("auto_hide()",1000);
- //setInterval("lxfEndtime()",1000);
-});
-</script>-->
-
-
-
-<!--20150908底部弹出
-<style>
-.btm_box_b{position:fixed;width:100%;z-index: 999; height:205px;bottom:-200px;left:0px;text-align: center; font-family:"微软雅黑"; background:url(http://img01.handu.com/hdysweb/20161108/dit4.png) no-repeat center 0;transition:0.8s;}
-.guanb_btn{
-  position:absolute;
-  left:1074px;
-  top:7px;
-  z-index:1000;
-  width:16px;
-  height:16px;
-  background:url(http://img01.handu.com/hdysweb/20161108/close.png) no-repeat;
-}
-.guanb_btn:hover{background:url(http://img01.handu.com/hdysweb/20161108/close0.png) no-repeat;cursor:pointer}
-.btm_box_bb{bottom:0;}
-</style>
-
-
-<script>
-
-  $(function(){
-    $("#btm_0828").addClass("btm_box_bb");
-    $(".guanb_btn").click(function(){
-      $("#btm_0828").css("display","none")
-      })
-      $(".dengl_btn").click(function(){
-      $("#btm_0828").css("display","none")
-      })
-    })
-
-</script>
-<div class="btm_box_b" id="btm_0828">
-<div style="width:1200px; margin:0 auto; position:relative; height:100%;">
-
-<div class="guanb_btn"></div>
-<a href="http://www.handu.com/user.php?act=login" target="_blank"><div style="position:absolute; width:90px; height:20px; left:81%; bottom:10px;" class="dengl_btn"></div></a>
-
-</div>
-</div>
--->
-
-
-<!-- 广告位：底部悬浮
-<script type='text/javascript' charset='gb2312' src='http://js.adm.cnzz.net/s.php?sid=304928'></script>-->
 
 <style type="text/css">
 .gwd_toolbar_container{display:none; visibility:hidden;}
