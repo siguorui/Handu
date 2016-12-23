@@ -119,6 +119,7 @@ class CateController extends Controller
             return view('home.cate.index',['data'=>$data,'num'=>$num,'fdata'=>$fdata,'data1'=>$data1,'data2'=>$data2,'datenum'=>$datenum]);
         }
 
+
     }
 
     public function nana($id)
@@ -150,4 +151,8 @@ class CateController extends Controller
        
     }
  
+
+    
+
+
 }

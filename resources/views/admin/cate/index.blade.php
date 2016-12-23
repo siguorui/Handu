@@ -78,7 +78,13 @@
                                     @endif
                                     </td>
                                     <td><img src = "{{ url('/home/imgs/category') }}/{{ $v->logo }}" width="30"/></td>
-                                    <td><a href="{{ url('/admin/cate/edit') }}/{{$v -> id}}">编辑</a> <a href="{{ url('/admin/cate/delete') }}/{{$v -> id}}">删除</a></td>
+                                    <td>
+                                    @if($v->num == 0||$v->num == 1)
+                                    <a href="{{ url('/admin/goods/index') }}/{{$v -> id}}">查看商品</a>　<a href="{{ url('/admin/cate/edit') }}/{{$v -> id}}">编辑</a>　<a href="{{ url('/admin/cate/delete') }}/{{$v -> id}}">删除</a>
+                                    @else
+                                    <a href="{{ url('/admin/goods/index') }}/{{$v -> id}}">查看商品</a>　<a href="{{ url('/admin/goods/add') }}/{{$v -> id}}">添加商品</a>　<a href="{{ url('/admin/cate/edit') }}/{{$v -> id}}">编辑</a>　<a href="{{ url('/admin/cate/delete') }}/{{$v -> id}}">删除</a>
+                                    </td>
+                                    @endif
                                 </tr>
                                @endforeach
                                 </tbody>

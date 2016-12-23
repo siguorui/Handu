@@ -1,6 +1,6 @@
 @extends('home.layout')
 @section('content')
-	
+<title>登录中心_韩都衣舍HSTYLE网-韩风快时尚第一品牌购物商城。正品保证！</title>	
 	<div style=" width:1000px; margin:0 auto;margin-top:20px; margin-bottom:0;">
 	<a href="http://www.handu.com/topic-1134.html" target="_blank">
 	<img src="/home/imgs/banner1.jpg"></a></div>

@@ -1,6 +1,6 @@
   @extends('home.layout')
   @section('content')
-
+<title>个人中心_韩都衣舍HSTYLE网-韩风快时尚第一品牌购物商城。正品保证！</title>
 <div class="user_main">
   <div class="user_wrap">
     

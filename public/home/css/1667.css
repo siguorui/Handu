@@ -1,0 +1,55 @@
+
+/*# sourceMappingURL=c1ed2830-99d1-4a19-b4cf-8286f6028ee8.css.map */
+/* DO NOT MODIFY THE CSS BELOW */
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;margin:0;border:0;padding:0}body{position:relative;margin:0 auto;width:720px;height:520px}.container>*{position:absolute}.container{position:relative;width:100%;height:100%;background-repeat:no-repeat;background-color:transparent}.close-button{width:15px;height:15px;background-repeat:no-repeat;cursor:pointer}.title{top:150px;width:400px;left:0;right:0;margin-left:auto;margin-right:auto;text-align:center;color:#fff;font-size:26px;font-weight:bold;font-family:Arial,sans-serif}.text{text-align:center;font-size:15px;font-family:Arial,sans-serif;color:#fff;line-height:19px}.text .link{color:inherit;font-weight:bold;cursor:pointer}.text .link:hover{color:#bbb}.text .text-effect{font-weight:bold}.button{cursor:pointer}
+/* DO NOT MODIFY THE CSS ABOVE */
+.container{
+	top:20px;
+	background-image: url(https://vemerchanthk.veinteractive.com/CustomerImages/92496316/05A2/4CA0/9CA3/D24F1B32B43C/Sep2016/299_70_back.png);width: 700px;height: 400px;
+	font-family: Arial;
+}
+.close-button{
+	left: 668px;
+	top: 6px;
+	width: 23px;
+	height: 23px;
+	background-image: url(https://vemerchanthk.veinteractive.com/CustomerImages/92496316/05A2/4CA0/9CA3/D24F1B32B43C/Sep2016/Close.png);
+	background-color: transparent;
+	transition: all 0.5s ease-out;
+}
+.close-button:hover{
+	opacity: 0.5;
+}
+.title{
+	top: 20px;
+	font-weight: normal;
+	font-family: Arial, sans-serif;
+	font-size: 26px;
+	line-height: 26px;
+}
+.text{
+	left: 114px;
+	top: 208px;
+	width: 220px;
+	height: 32px;
+	color:#E4414B;
+	font-size: 28px;
+    font-weight: bold;
+}
+.button{
+	left: 130px;
+	top: 336px;
+	width: 179px;
+	height: 44px;
+	background-image: url(https://vemerchanthk.veinteractive.com/CustomerImages/92496316/05A2/4CA0/9CA3/D24F1B32B43C/Sep2016/CTA.png);
+	transition: all 0.5s ease-out;
+}
+.button:hover{
+	opacity: 0.5;
+}
+.text .link{
+	transition: all 0.5s ease-out;
+}
+.text .link:hover{
+	opacity:0.5;
+}

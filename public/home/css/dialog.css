@@ -29,7 +29,6 @@
                 .dialog_buttons_bar .btn2 {color: #666; background-position:-81px 0px;}
                 .dialog_buttons_bar .btn2:hover {color: #666; background-position:-81px -36px;}
                 .dialog_buttons_bar .btn_red { color:#FFF; line-height:30px; background:rgb(207, 34, 34); border:1px solid rgb(160, 8, 8); padding:0 5px;}
-				
 .dialog_wrapper .tab {width:auto; height: 28px; line-height: 26px; background: url("../imgs/tab.gif") repeat-x bottom; }
 .dialog_wrapper .tab li {float: left; margin-right: 2px; cursor: pointer; font-size: 14px;border-radius : 4px 4px 0px 0px ; }
 .dialog_wrapper .tab .active {height: 26px; color: #ff4f01; font-weight: bold; padding: 0 20px; border: 1px solid #e2e2e2; border-bottom: 1px solid #fff; background: #fff; }
@@ -37,9 +36,6 @@
 .dialog_wrapper .tab .normal {height: 26px; color: #3e3e3e; font-weight: bold; padding: 0px; border: 1px solid #e2e2e2; background: #f9f9f9; }
 .dialog_wrapper .tab .active a {color: #ff4f01; text-decoration: none; float: left; height: 26px; padding: 0 20px; }
 .dialog_wrapper .tab .normal a {color: #3e3e3e; text-decoration: none; float: left; height: 26px; padding: 0 20px; }
-
-
-
 .dialog_has_title { /*background: #555;*/ }
     .dialog_has_title .dialog_body {padding: 6px;  font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #666;}
         .dialog_has_title .dialog_head {  height: 30px;border-bottom:1px dashed #CCC; margin:0px;}

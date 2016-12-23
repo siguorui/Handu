@@ -45,7 +45,7 @@ class LoginController extends Controller
                 return back() -> with(['info' => '账号或密码错误']);
             }
             Session::set('master', $res);
-            // dd(Session::get('master', $res));
+
             return redirect('/') -> with(['info' => '登录成功']);
         }
 
