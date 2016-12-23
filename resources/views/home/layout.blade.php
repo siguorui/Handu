@@ -1,10 +1,10 @@
-﻿   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Keywords" content="" />
 <meta name="Description" content="" />
-<title>用户中心_韩都衣舍HSTYLE网-韩风快时尚第一品牌购物商城。正品保证！</title>
+
 <!-- <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_base.css') }}"> -->
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_base.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_style.css') }}">
@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_search.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_list.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/user_common.css') }}">
+<script type="text/javascript" src="{{ asset('/home/js/jquery.slide.js') }}"></script>
 <script type="text/javascript"  src="{{ asset('/home/js/jquery.min.js') }}"></script>
 <script type="text/javascript"  src="{{ asset('/home/js/jquery-migrate-1.1.0.js') }}"></script>
 <script type="text/javascript"  src="{{ asset('/home/js/goods_no1214.js') }}"></script>
@@ -348,10 +349,10 @@ left: 4px;}
     <div id="hd_search">
       <div class="hdi-search">
         <div class="form hdin_not">
-          <form method="get" action="search.php">
+          <form method="get" action="{{url('/home/search')}}">
             <!--<label for="">请输入关键词</label>-->
-            <input type="text" class="text" name="keywords" value="">
-            <input type="submit" value="搜索" onClick="_czc.push(['_trackEvent', '搜索', '搜索', $('input[name=keywords]').val()])" class="button">
+            <input type="text" class="text" name="keywords" value="{{$request['keywords'] or ''}}">
+            <input type="submit" value="搜索" class="button">
           </form>
         </div>
       </div>

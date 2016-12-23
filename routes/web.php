@@ -3,10 +3,11 @@
 
 //前台登录
 Route::match(['get','post'],'/home/login', 'Home\LoginController@login');
-//后台退出
+//前台退出
 Route::get('home/logout', 'Home\LoginController@logout');
+//迪葵纳页面展示
 Route::get('home/dequanna/dequanna', 'Home\BrandController@dequanna');
-Route::get('home/shopingcart/shopingcart', 'Home\CartController@shopingcart');
+
 
 //后台登录
 Route::match(['get','post'],'/admin/login', 'Admin\LoginController@login');
@@ -43,7 +44,8 @@ Route::get('/home/cate/show','Home\GoodsController@show');
 
 //前台首页
 Route::get('/','Home\IndexController@index');
-
+//搜索
+Route::get('/home/search','Home\IndexController@search');
 //后台首页
 Route::get('/admin/index','Admin\IndexController@index');
 
@@ -55,3 +57,33 @@ Route::get('/admin/cate/index','Admin\CateController@index');
 Route::get('/admin/cate/edit/{id}','Admin\CateController@edit');
 Route::post('/admin/cate/update/{id}','Admin\CateController@update');
 Route::get('/admin/cate/delete/{id}','Admin\CateController@delete');
+
+
+
+////后台友情链接处理
+//添加页面&添加动作
+Route::get('admin/friendlinks/add', 'Admin\LinkController@add');
+Route::post('admin/friendlinks/insert', 'Admin\LinkController@insert');
+//链接列表
+Route::get('admin/friendlinks/index', 'Admin\LinkController@index');
+//编辑页面&动作
+Route::get('admin/friendlinks/edit/{id}', 'Admin\LinkController@edit');
+Route::post('admin/friendlinks/update/{id}', 'Admin\LinkController@update');
+//
+Route::get('admin/friendlinks/delete/{id}', 'Admin\LinkController@delete');
+
+
+
+
+
+Route::get('/admin/goods/add/{id}','Admin\GoodsController@add');
+Route::post('/admin/goods/insert/{id}','Admin\GoodsController@insert');
+Route::get('/admin/goods/index/{id}','Admin\GoodsController@index');  
+//商品列表展示
+Route::get('/admin/goods/edit/{id}/{urlid}','Admin\GoodsController@edit');    //商品编辑
+Route::post('/admin/goods/update/{id}/{urlid}','Admin\GoodsController@update');    //商品编辑
+Route::get('/admin/goods/delete/{id}/{urlid}','Admin\GoodsController@delete');  //商品删除
+
+
+
+

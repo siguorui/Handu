@@ -1,5 +1,6 @@
 ﻿  	@extends('home.layout')
 	@section('content')
+	<title>注册中心_韩都衣舍HSTYLE网-韩风快时尚第一品牌购物商城。正品保证！</title>
 	<script type="text/javascript"  src="{{ asset('/home/js/jquery-1.1.0.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('/home/js/users.js') }}"></script>
   	<div style="margin:0 auto; width:1100px; float:none; margin-top:10px;"><img src="{{ asset('/home/imgs/banner1.jpg') }}" width="1100" height="60" /></div>

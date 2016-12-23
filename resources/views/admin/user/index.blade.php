@@ -71,7 +71,10 @@
                                         @else
                                             <span class="text-red">禁用</span>
                                         @endif</td>
-                                    <td style="width: 200px;"><a href="{{url('admin/user/edit')}}/{{$v -> id}}" @if(session('master') -> user_name != $v -> user_name) onclick="javascript:return false;" @endif>修改用户 |</a> <a href="{{url('admin/user/auth')}}/{{$v -> id}}" @if(session('master') -> auth == 0) onclick="javascript:return false;" @endif> 管理权限 |</a> <a href="{{url('admin/user/delete')}}/{{$v -> id}}" @if(session('master') -> auth == 0) onclick="javascript:return false;" @endif> 删除</a></td>
+                                    <td style="width: 200px;">
+                                    @if(session('master') != null)
+                                    <a href="{{url('admin/user/edit')}}/{{$v -> id}}" @if(session('master') -> user_name != $v -> user_name) onclick="javascript:return false;" @endif>修改用户 |</a> <a href="{{url('admin/user/auth')}}/{{$v -> id}}" @if(session('master') -> auth == 0) onclick="javascript:return false;" @endif> 管理权限 |</a> <a href="{{url('admin/user/delete')}}/{{$v -> id}}" @if(session('master') -> auth == 0) onclick="javascript:return false;" @endif> 删除</a></td>
+                                    @endif
                                 </tr> 
                                 @endforeach
                                 </tfoot>

@@ -49,7 +49,10 @@
                                         @foreach($data as $v)
                                         <option 
                                         @if($dataFirst ->pid == $v->id)
-                                            selected disabled
+                                            selected
+                                        @endif
+                                        @if($dataFirst -> id == $v->id)
+                                             disabled
                                         @endif
                                         value="{{$v->id}}">{{$v->title}}</option>
                                         @endforeach
@@ -72,6 +75,20 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">状态</label>
+                                    <select name="status" class="form-control">
+                                        <option value="1" 
+                                        @if($dataFirst -> status== 1)
+                                        selected
+                                        @endif>上架</option>
+                                        <option value="0" 
+                                        @if($dataFirst ->status == 0)
+                                        selected
+                                        @endif>下架</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="exampleInputFile">类别logo</label>
                                     @if(!empty($dataFirst->logo))
                                     <img src = "{{ url('/home/imgs/category') }}/{{ $dataFirst->logo }}" width="80"/>
@@ -88,7 +105,7 @@
                                     <input type="file" name="assit_logo" id="exampleInputFile">
                                     <p class="help-block">非必选</p>
                                 </div>
-
+                                
                             </div><!-- /.box-body -->
 
                             <div class="box-footer">

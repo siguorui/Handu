@@ -1,5 +1,5 @@
 
-@extends('home.layout')
+@extends('home.layoutmy')
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns:wb="http://open.weibo.com/wb"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -115,11 +115,11 @@ function xuanfu_close(){
         <div id="xf_search_s">
           <div class="i-searcha ld">
             <div class="form input_noticea">
-              <form method="get" action="search.php">
-                <!--<label for="">七夕穿什么见蓝盆友呢？选我选我选我~</label>-->
-                <input class="text" name="keywords" value="毛呢外套" onfocus="if (value =='毛呢外套'){value =''}$('') " onblur="if (value ==''){value='毛呢外套'}" type="text">
-                <input value="搜索" onclick="_czc.push(['_trackEvent', '搜索', '悬浮搜索', $('input[name=keywords]').val()])" class="button" type="submit">
-              </form>
+              <form method="get" action="{{url('/home/search')}}">
+            <!--<label for="">请输入关键词</label>-->
+            <input type="text" class="text" name="keywords" value="{{$request['keywords'] or ''}}">
+            <input type="submit" value="搜索" class="button">
+          </form>
             </div>
           </div>
         </div>  
@@ -237,7 +237,7 @@ window.onscroll=function(){
 <div style="width:100%;background:url({{ asset('/home/imgs/lbb_04.jpg') }}) no-repeat center 0px;height:90px;"></div>
 <div style="width:100%;background:url({{ asset('/home/imgs/lbb_05.jpg') }}) no-repeat center 0px;height:90px;"></div>        </a>
       </div>
-          <div class="content" style="z-index: 2; display: block; opacity: 0.232087;">
+          <div class="content" style="z-index: 2; display: block; opacity: 1;">
         <a rel="nofollow" target="_blank" href="http://www.handu.com/topic-1566.html">
           <div style="height:90px;width:100%;background:url({{ asset('/home/imgs/ql_01.jpg') }}) no-repeat center 0px;">
 </div>
@@ -250,7 +250,7 @@ window.onscroll=function(){
 <div style="height:90px;width:100%;background:url({{ asset('/home/imgs/ql_05.jpg') }}) no-repeat center 0px;">
 </div>        </a>
       </div>
-          <div class="content" style="z-index: 4; display: block; opacity: 0.767913;">
+          <div class="content" style="z-index: 4; display: block; opacity: 1;">
         <a rel="nofollow" target="_blank" href="http://www.handu.com/topic-1506.html">
           <div style="width:100%;background:url({{ asset('/home/imgs/xt_01.jpg') }}) no-repeat center top;height:90px;">
 </div>
@@ -440,7 +440,7 @@ $(".firstP a").hover(function(){
                     </ul>
                 </div>
                 <div class="one">
-                    <a href="http://www.handu.com/topic.php?topic_id=1539" target="_blank"><h2 style="background:url({{ asset('/home/imgs/20160711/12.jpg') }}" no-repeat;"><span>韩风十年 星光十年</span></h2></a>
+                    <a href="http://www.handu.com/topic.php?topic_id=1539" target="_blank"><h2 style="background:url({{ asset('/home/imgs/12.jpg') }}" no-repeat;"><span>韩风十年 星光十年</span></h2></a>
                     <ul>
                         <li><a href="http://www.handu.com/news/details/15446.html" target="_blank">韩都衣舍旗下男装AMH摘得双11淘品牌冠军</a></li>
                         <li><a href="http://www.handu.com/news/details/13244.html" target="_blank">韩都衣舍多级跳 淘品牌到孵化器</a></li>
@@ -522,432 +522,102 @@ $(".firstP a").hover(function(){
     </style>
     
     <ul class="floor_con" style="display: none; z-index: 2;">
-      
-              <li class="new_boxs">
+          @foreach($data as $v)
+            <li class="new_boxs">
           <a href="http://www.handu.com/goods-1053119.html" title="韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽" target="_blank">
-            <img src="{{ asset('/home/imgs/1053119_thumb_G_1480576047685.jpg') }}" alt="韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽" title="韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽">
+            <img src="/home/imgs/{{$v -> pic}}" alt="韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽" title="韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽">
             
-			<script>
-     	getGood_price("OI5602");
-            </script><em class="price_11">198</em>
+			<em class="price_11">{{$v -> promt_price}}</em>
             
           </a>
           <ul>
             <!-- <li class="name"><a href="goods-1053119.html"  target="_blank" title="韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽">韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽</a></li>-->
             <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>198.00</span>
-              <del class="old_price">￥898.00</del>
+              <span class="new_price"><span class="arrow">￥</span>{{$v -> promt_price}}.00</span>
+              <del class="old_price">￥{{$v -> orign_price}}.00</del>
             </li>
               <li><span class="pic_button">立即抢购</span> </li>
           </ul>
         </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1053081.html" title="韩都衣舍2017韩版女装春装新款宽松显瘦长袖套头毛衣RW6513瑒" target="_blank">
-            <img src="{{ asset('/home/imgs/1480555714455887270.jpg') }}" alt="韩都衣舍2017韩版女装春装新款宽松显瘦长袖套头毛衣RW6513瑒" title="韩都衣舍2017韩版女装春装新款宽松显瘦长袖套头毛衣RW6513瑒">
-            
-			<script>
-     	getGood_price("RW6513");
-            </script><em class="price_11">146</em>
-            
-          </a>
-          <ul>
-            <!-- <li class="name"><a href="goods-1053081.html"  target="_blank" title="韩都衣舍2017韩版女装春装新款宽松显瘦长袖套头毛衣RW6513瑒">韩都衣舍2017韩版女装春装新款宽松显瘦长袖套头毛衣RW6513瑒</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>156.00</span>
-              <del class="old_price">￥288.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1053048.html" title="韩都衣舍2016韩版女装冬装新款条纹圆领套头长袖毛衣IG7176僥" target="_blank">
-            <img src="{{ asset('/home/imgs/1480490605632642717.jpg') }}" alt="韩都衣舍2016韩版女装冬装新款条纹圆领套头长袖毛衣IG7176僥" title="韩都衣舍2016韩版女装冬装新款条纹圆领套头长袖毛衣IG7176僥">
-            
-			<script>
-     	getGood_price("IG7176");
-            </script><em class="price_11">126</em>
-            
-          </a>
-          <ul>
-            <!-- <li class="name"><a href="goods-1053048.html"  target="_blank" title="韩都衣舍2016韩版女装冬装新款条纹圆领套头长袖毛衣IG7176僥">韩都衣舍2016韩版女装冬装新款条纹圆领套头长袖毛衣IG7176僥</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>136.00</span>
-              <del class="old_price">￥248.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1053021.html" title="韩都衣舍2017韩版女装冬装新款宽松显瘦V领毛衣开衫IG6346僥" target="_blank">
-            <img src="{{ asset('/home/imgs/1480435372187169866.jpg') }}" alt="韩都衣舍2017韩版女装冬装新款宽松显瘦V领毛衣开衫IG6346僥" title="韩都衣舍2017韩版女装冬装新款宽松显瘦V领毛衣开衫IG6346僥">
-            
-			<script>
-     	getGood_price("IG6346");
-            </script><em class="price_11">166</em>
-            
-          </a>
-          <ul>
-            <!-- <li class="name"><a href="goods-1053021.html"  target="_blank" title="韩都衣舍2017韩版女装冬装新款宽松显瘦V领毛衣开衫IG6346僥">韩都衣舍2017韩版女装冬装新款宽松显瘦V领毛衣开衫IG6346僥</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>188.00</span>
-              <del class="old_price">￥328.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1053002.html" title="韩都衣舍2017韩版女装春新款宽松腰带收腰显瘦连衣裙CQ6592莀" target="_blank">
-            <img src="{{ asset('/home/imgs/1480410132357870070.jpg') }}" alt="韩都衣舍2017韩版女装春新款宽松腰带收腰显瘦连衣裙CQ6592莀" title="韩都衣舍2017韩版女装春新款宽松腰带收腰显瘦连衣裙CQ6592莀">
-            
-			<script>
-     	getGood_price("CQ6592");
-            </script><em class="price_11">142</em>
-            
-          </a>
-          <ul>
-            <!-- <li class="name"><a href="goods-1053002.html"  target="_blank" title="韩都衣舍2017韩版女装春新款宽松腰带收腰显瘦连衣裙CQ6592莀">韩都衣舍2017韩版女装春新款宽松腰带收腰显瘦连衣裙CQ6592莀</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>152.00</span>
-              <del class="old_price">￥278.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-          </ul>
-    
-    <ul class="floor_con" style="z-index: 2; display: block; opacity: 1;">
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1051867.html" title="娜娜日记甜美女装2016冬装冬季外套女加厚学生红色棉服棉衣NP5488" target="_blank"> 
-            <img src="{{ asset('/home/imgs/1476043815683026172.jpg') }}" alt="娜娜日记甜美女装2016冬装冬季外套女加厚学生红色棉服棉衣NP5488" title="娜娜日记甜美女装2016冬装冬季外套女加厚学生红色棉服棉衣NP5488">           
-			<script>
-         getGood_price("NP5488");
-            </script><em class="price_11">228</em>
-          </a>
-          <ul>
-           <!-- <li class="name"><a href="goods-1051867.html"  target="_blank" title="娜娜日记甜美女装2016冬装冬季外套女加厚学生红色棉服棉衣NP5488">娜娜日记甜美女装2016冬装冬季外套女加厚学生红色棉服棉衣NP5488</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>279.00</span>
-              <del class="old_price">￥648.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1048628.html" title="娜娜日记甜美女装2016冬装新款中长款粉色毛呢外套女NM5673菡" target="_blank"> 
-            <img src="{{ asset('/home/imgs/1048628_thumb_G_1480921804904.jpg') }}" alt="娜娜日记甜美女装2016冬装新款中长款粉色毛呢外套女NM5673菡" title="娜娜日记甜美女装2016冬装新款中长款粉色毛呢外套女NM5673菡">           
-			<script>
-         getGood_price("NM5673");
-            </script><em class="price_11">238</em>
-          </a>
-          <ul>
-           <!-- <li class="name"><a href="goods-1048628.html"  target="_blank" title="娜娜日记甜美女装2016冬装新款中长款粉色毛呢外套女NM5673菡">娜娜日记甜美女装2016冬装新款中长款粉色毛呢外套女NM5673菡</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>369.00</span>
-              <del class="old_price">￥778.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1048062.html" title="娜娜日记甜美女装2016冬装新款粉色宽松韩版毛呢外套NL5697嬛0809" target="_blank"> 
-            <img src="{{ asset('/home/imgs/1048062_thumb_G_1480921732987.jpg') }}" alt="娜娜日记甜美女装2016冬装新款粉色宽松韩版毛呢外套NL5697嬛0809" title="娜娜日记甜美女装2016冬装新款粉色宽松韩版毛呢外套NL5697嬛0809">           
-			<script>
-         getGood_price("NL5697");
-            </script><em class="price_11">278</em>
-          </a>
-          <ul>
-           <!-- <li class="name"><a href="goods-1048062.html"  target="_blank" title="娜娜日记甜美女装2016冬装新款粉色宽松韩版毛呢外套NL5697嬛0809">娜娜日记甜美女装2016冬装新款粉色宽松韩版毛呢外套NL5697嬛0809</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>362.00</span>
-              <del class="old_price">￥768.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1048049.html" title="娜娜日记甜美女装2016冬装新款紫灰色短款羽绒服女NK5870冉0809" target="_blank"> 
-            <img src="{{ asset('/home/imgs/1048049_thumb_G_1480921676152.jpg') }}" alt="娜娜日记甜美女装2016冬装新款紫灰色短款羽绒服女NK5870冉0809" title="娜娜日记甜美女装2016冬装新款紫灰色短款羽绒服女NK5870冉0809">           
-			<script>
-         getGood_price("NK5870");
-            </script><em class="price_11">299</em>
-          </a>
-          <ul>
-           <!-- <li class="name"><a href="goods-1048049.html"  target="_blank" title="娜娜日记甜美女装2016冬装新款紫灰色短款羽绒服女NK5870冉0809">娜娜日记甜美女装2016冬装新款紫灰色短款羽绒服女NK5870冉0809</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>339.00</span>
-              <del class="old_price">￥738.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1048030.html" title="娜娜日记甜美女装2016冬装新款纯色中长款毛呢外套女NP6009媄0809" target="_blank"> 
-            <img src="{{ asset('/home/imgs/1048030_thumb_G_1480921653434.jpg') }}" alt="娜娜日记甜美女装2016冬装新款纯色中长款毛呢外套女NP6009媄0809" title="娜娜日记甜美女装2016冬装新款纯色中长款毛呢外套女NP6009媄0809">           
-			<script>
-         getGood_price("NP6009");
-            </script><em class="price_11">285</em>
-          </a>
-          <ul>
-           <!-- <li class="name"><a href="goods-1048030.html"  target="_blank" title="娜娜日记甜美女装2016冬装新款纯色中长款毛呢外套女NP6009媄0809">娜娜日记甜美女装2016冬装新款纯色中长款毛呢外套女NP6009媄0809</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>368.00</span>
-              <del class="old_price">￥768.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
+        @endforeach  
         
     </ul>
-    
-    <ul class="floor_con" style="z-index: 4; display: block; opacity: 0;">
+    <ul class="floor_con" style="display: none; z-index: 2;">
+          @foreach($data1 as $v)
+            <li class="new_boxs">
+          <a href="http://www.handu.com/goods-1053119.html" title="韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽" target="_blank">
+            <img src="/home/imgs/{{$v -> pic}}" alt="韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽" title="韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽">
+            
+      <em class="price_11">{{$v -> promt_price}}</em>
+            
+          </a>
+          <ul>
+            <!-- <li class="name"><a href="goods-1053119.html"  target="_blank" title="韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽">韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽</a></li>-->
+            <li class="price">
+              <span class="new_price"><span class="arrow">￥</span>{{$v -> promt_price}}.00</span>
+              <del class="old_price">￥{{$v -> orign_price}}.00</del>
+            </li>
+              <li><span class="pic_button">立即抢购</span> </li>
+          </ul>
+        </li>
+        @endforeach  
+        
+    </ul>
+    <ul class="floor_con" style="z-index: 4; display: none;">
+            @foreach($data2 as $v)
               <li class="new_boxs">
           <a href="http://www.handu.com/goods-1050504.html" title="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜" target="_blank">
-            <img src="{{ asset('/home/imgs/1050504_thumb_G_1473149859942.jpg') }}" alt="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜" title="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜">
-			<script>
-         getGood_price("FQ4666");
-            </script><em class="price_11">129</em>
+            <img src="/home/imgs/{{$v -> pic}}" alt="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜" title="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜">
+			<em class="price_11">{{$v -> promt_price}}</em>
           </a>
           <ul>
             <!-- <li class="name"><a href="goods-1050504.html"  target="_blank" title="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜">迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜</a></li>-->
             <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>149.00</span>
-              <del class="old_price">￥278.00</del>
+              <span class="new_price"><span class="arrow">￥</span>{{$v -> promt_price}}.00</span>
+              <del class="old_price">￥{{$v -> orign_price}}.00</del>
             </li>
               <li><span class="pic_button">立即抢购</span> </li>
           </ul>
         </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1048879.html" title="迪葵纳秋装新款中老年女装中年妈妈装上衣印花T恤FQ4819莜0816" target="_blank">
-            <img src="{{ asset('/home/imgs/1471377054566288931.jpg') }}" alt="迪葵纳秋装新款中老年女装中年妈妈装上衣印花T恤FQ4819莜0816" title="迪葵纳秋装新款中老年女装中年妈妈装上衣印花T恤FQ4819莜0816">
-			<script>
-         getGood_price("FQ4819");
-            </script><em class="price_11">109</em>
-          </a>
-          <ul>
-            <!-- <li class="name"><a href="goods-1048879.html"  target="_blank" title="迪葵纳秋装新款中老年女装中年妈妈装上衣印花T恤FQ4819莜0816">迪葵纳秋装新款中老年女装中年妈妈装上衣印花T恤FQ4819莜0816</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>119.00</span>
-              <del class="old_price">￥209.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1047070.html" title="迪葵纳2016秋装新款中老年女装中年妈妈装长袖外套WD4818轩0726" target="_blank">
-            <img src="{{ asset('/home/imgs/1469562716159650900.jpg') }}" alt="迪葵纳2016秋装新款中老年女装中年妈妈装长袖外套WD4818轩0726" title="迪葵纳2016秋装新款中老年女装中年妈妈装长袖外套WD4818轩0726">
-			<script>
-         getGood_price("WD4818");
-            </script><em class="price_11">239</em>
-          </a>
-          <ul>
-            <!-- <li class="name"><a href="goods-1047070.html"  target="_blank" title="迪葵纳2016秋装新款中老年女装中年妈妈装长袖外套WD4818轩0726">迪葵纳2016秋装新款中老年女装中年妈妈装长袖外套WD4818轩0726</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>279.00</span>
-              <del class="old_price">￥559.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1045020.html" title="迪葵纳春装中年妈妈装时尚上衣中老年女装宽松中长款外套WQ3567沣" target="_blank">
-            <img src="{{ asset('/home/imgs/1464810636313310739.jpg') }}" alt="迪葵纳春装中年妈妈装时尚上衣中老年女装宽松中长款外套WQ3567沣" title="迪葵纳春装中年妈妈装时尚上衣中老年女装宽松中长款外套WQ3567沣">
-			<script>
-         getGood_price("WQ3567");
-            </script><em class="price_11">196</em>
-          </a>
-          <ul>
-            <!-- <li class="name"><a href="goods-1045020.html"  target="_blank" title="迪葵纳春装中年妈妈装时尚上衣中老年女装宽松中长款外套WQ3567沣">迪葵纳春装中年妈妈装时尚上衣中老年女装宽松中长款外套WQ3567沣</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>229.00</span>
-              <del class="old_price">￥418.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1043140.html" title="迪葵纳2016春装新款中老年女装中年妈妈装蕾丝镶钻针织衫FQ5023莜" target="_blank">
-            <img src="{{ asset('/home/imgs/1463169045470056481.jpg') }}" alt="迪葵纳2016春装新款中老年女装中年妈妈装蕾丝镶钻针织衫FQ5023莜" title="迪葵纳2016春装新款中老年女装中年妈妈装蕾丝镶钻针织衫FQ5023莜">
-			<script>
-         getGood_price("FQ5023");
-            </script><em class="price_11">129</em>
-          </a>
-          <ul>
-            <!-- <li class="name"><a href="goods-1043140.html"  target="_blank" title="迪葵纳2016春装新款中老年女装中年妈妈装蕾丝镶钻针织衫FQ5023莜">迪葵纳2016春装新款中老年女装中年妈妈装蕾丝镶钻针织衫FQ5023莜</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>139.00</span>
-              <del class="old_price">￥258.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-        
+        @endforeach
     </ul>
     
     <ul class="floor_con" style="z-index: 2; display: none;">
+    @foreach($data3 as $v)
               <li class="new_boxs">
           <a href="http://www.handu.com/goods-1052346.html" title="哲初女装2016新款秋装套头卫衣上衣长袖宽松显瘦刺绣ZZ7064" target="_blank">
-            <img src="{{ asset('/home/imgs/1052346_thumb_G_1478143058051.jpg') }}" alt="哲初女装2016新款秋装套头卫衣上衣长袖宽松显瘦刺绣ZZ7064" title="哲初女装2016新款秋装套头卫衣上衣长袖宽松显瘦刺绣ZZ7064">
-			<script>
-         getGood_price("ZZ7064");
-            </script>
+            <img src="/home/imgs/{{$v -> pic}}" alt="哲初女装2016新款秋装套头卫衣上衣长袖宽松显瘦刺绣ZZ7064" title="哲初女装2016新款秋装套头卫衣上衣长袖宽松显瘦刺绣ZZ7064">
+			<em class="price_11">{{$v -> promt_price}}</em>
           </a>
           <ul>
             <!-- <li class="name"><a href="goods-1052346.html"  target="_blank" title="哲初女装2016新款秋装套头卫衣上衣长袖宽松显瘦刺绣ZZ7064">哲初女装2016新款秋装套头卫衣上衣长袖宽松显瘦刺绣ZZ7064</a></li>-->
             <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>109.00</span>
-              <del class="old_price">￥199.00</del>
+              <span class="new_price"><span class="arrow">￥</span>{{$v -> promt_price}}.00</span>
+              <del class="old_price">￥{{$v -> orign_price}}.00</del>
             </li>
               <li><span class="pic_button">立即抢购</span> </li>
           </ul>
         </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1052344.html" title="哲初女装2016新款秋装卫衣圆领长袖撞色条纹宽松上衣ZZ7106" target="_blank">
-            <img src="{{ asset('/home/imgs/1052344_thumb_G_1478142302884.jpg') }}" alt="哲初女装2016新款秋装卫衣圆领长袖撞色条纹宽松上衣ZZ7106" title="哲初女装2016新款秋装卫衣圆领长袖撞色条纹宽松上衣ZZ7106">
-			<script>
-         getGood_price("ZZ7106");
-            </script>
-          </a>
-          <ul>
-            <!-- <li class="name"><a href="goods-1052344.html"  target="_blank" title="哲初女装2016新款秋装卫衣圆领长袖撞色条纹宽松上衣ZZ7106">哲初女装2016新款秋装卫衣圆领长袖撞色条纹宽松上衣ZZ7106</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>89.00</span>
-              <del class="old_price">￥159.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1052342.html" title="哲初简约2016冬装新呢子大衣连帽牛角扣中长款毛呢外套女YH6134" target="_blank">
-            <img src="{{ asset('/home/imgs/1052342_thumb_G_1478141866343.jpg') }}" alt="哲初简约2016冬装新呢子大衣连帽牛角扣中长款毛呢外套女YH6134" title="哲初简约2016冬装新呢子大衣连帽牛角扣中长款毛呢外套女YH6134">
-			<script>
-         getGood_price("YH6134");
-            </script>
-          </a>
-          <ul>
-            <!-- <li class="name"><a href="goods-1052342.html"  target="_blank" title="哲初简约2016冬装新呢子大衣连帽牛角扣中长款毛呢外套女YH6134">哲初简约2016冬装新呢子大衣连帽牛角扣中长款毛呢外套女YH6134</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>459.00</span>
-              <del class="old_price">￥909.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1052296.html" title="哲初女装2016秋装新款宽松短款百搭多穿加厚套头开衫毛衣YZ7150" target="_blank">
-            <img src="{{ asset('/home/imgs/1052296_thumb_G_1477991255837.jpg') }}" alt="哲初女装2016秋装新款宽松短款百搭多穿加厚套头开衫毛衣YZ7150" title="哲初女装2016秋装新款宽松短款百搭多穿加厚套头开衫毛衣YZ7150">
-			<script>
-         getGood_price("YZ7150");
-            </script>
-          </a>
-          <ul>
-            <!-- <li class="name"><a href="goods-1052296.html"  target="_blank" title="哲初女装2016秋装新款宽松短款百搭多穿加厚套头开衫毛衣YZ7150">哲初女装2016秋装新款宽松短款百搭多穿加厚套头开衫毛衣YZ7150</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>139.00</span>
-              <del class="old_price">￥249.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1052103.html" title="哲初女装2016冬装新款连帽茧型纯色中长款宽松羽绒服ZZ6642" target="_blank">
-            <img src="{{ asset('/home/imgs/1052103_thumb_G_1477020213514.jpg') }}" alt="哲初女装2016冬装新款连帽茧型纯色中长款宽松羽绒服ZZ6642" title="哲初女装2016冬装新款连帽茧型纯色中长款宽松羽绒服ZZ6642">
-			<script>
-         getGood_price("ZZ6642");
-            </script>
-          </a>
-          <ul>
-            <!-- <li class="name"><a href="goods-1052103.html"  target="_blank" title="哲初女装2016冬装新款连帽茧型纯色中长款宽松羽绒服ZZ6642">哲初女装2016冬装新款连帽茧型纯色中长款宽松羽绒服ZZ6642</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>398.00</span>
-              <del class="old_price">￥799.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-        
+        @endforeach     
     </ul>
     
     <ul class="floor_con" style="z-index: 2; display: none;">
+              @foreach($data4 as $v)
               <li class="new_boxs">
           <a href="http://www.handu.com/goods-1052720.html" title="米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵" target="_blank">
-            <img src="{{ asset('/home/imgs/1052720_thumb_G_1479449355906.jpg') }}" alt="米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵" title="米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵">
-			<script>
-        getGood_price("YO4477");
-            </script><em class="price_11">223</em>
+            <img src="/home/imgs/{{$v -> pic}}" alt="米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵" title="米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵">
+			<em class="price_11">{{$v -> promt_price}}</em>
           </a>
           <ul>
            <!-- <li class="name"><a href="goods-1052720.html"  target="_blank" title="米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵">米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵</a></li>-->
             <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>249.00</span>
-              <del class="old_price">￥578.00</del>
+              <span class="new_price"><span class="arrow">￥</span>{{$v -> promt_price}}.00</span>
+              <del class="old_price">￥{{$v -> orign_price}}.00</del>
             </li>
               <li><span class="pic_button">立即抢购</span> </li>
           </ul>
         </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1052526.html" title="米妮哈鲁童装2016冬装新女童韩版纯色中大童毛衣套头儿童针织衫鋐" target="_blank">
-            <img src="{{ asset('/home/imgs/1478745076679190750.jpg') }}" alt="米妮哈鲁童装2016冬装新女童韩版纯色中大童毛衣套头儿童针织衫鋐" title="米妮哈鲁童装2016冬装新女童韩版纯色中大童毛衣套头儿童针织衫鋐">
-			<script>
-        getGood_price("ZY5015");
-            </script><em class="price_11">64</em>
-          </a>
-          <ul>
-           <!-- <li class="name"><a href="goods-1052526.html"  target="_blank" title="米妮哈鲁童装2016冬装新女童韩版纯色中大童毛衣套头儿童针织衫鋐">米妮哈鲁童装2016冬装新女童韩版纯色中大童毛衣套头儿童针织衫鋐</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>69.00</span>
-              <del class="old_price">￥198.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1052475.html" title="米妮哈鲁童装冬装连帽女童中长款儿童棉衣棉服YO5629" target="_blank">
-            <img src="{{ asset('/home/imgs/1052475_thumb_G_1478577118459.jpg') }}" alt="米妮哈鲁童装冬装连帽女童中长款儿童棉衣棉服YO5629" title="米妮哈鲁童装冬装连帽女童中长款儿童棉衣棉服YO5629">
-			<script>
-        getGood_price("YO5629");
-            </script><em class="price_11">229</em>
-          </a>
-          <ul>
-           <!-- <li class="name"><a href="goods-1052475.html"  target="_blank" title="米妮哈鲁童装冬装连帽女童中长款儿童棉衣棉服YO5629">米妮哈鲁童装冬装连帽女童中长款儿童棉衣棉服YO5629</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>229.00</span>
-              <del class="old_price">￥528.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1052431.html" title="米妮哈鲁童装宝宝夹棉加厚外套宝宝上衣2016秋装新款外套YY5017麥" target="_blank">
-            <img src="{{ asset('/home/imgs/1052431_thumb_G_1478487805306.jpg') }}" alt="米妮哈鲁童装宝宝夹棉加厚外套宝宝上衣2016秋装新款外套YY5017麥" title="米妮哈鲁童装宝宝夹棉加厚外套宝宝上衣2016秋装新款外套YY5017麥">
-			<script>
-        getGood_price("YY5017");
-            </script><em class="price_11">60</em>
-          </a>
-          <ul>
-           <!-- <li class="name"><a href="goods-1052431.html"  target="_blank" title="米妮哈鲁童装宝宝夹棉加厚外套宝宝上衣2016秋装新款外套YY5017麥">米妮哈鲁童装宝宝夹棉加厚外套宝宝上衣2016秋装新款外套YY5017麥</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>99.00</span>
-              <del class="old_price">￥268.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1052396.html" title="米妮哈鲁童装2016冬季新款男童韩版中大童外套儿童棉服YG5283妤" target="_blank">
-            <img src="{{ asset('/home/imgs/1052396_thumb_G_1478243064312.jpg') }}" alt="米妮哈鲁童装2016冬季新款男童韩版中大童外套儿童棉服YG5283妤" title="米妮哈鲁童装2016冬季新款男童韩版中大童外套儿童棉服YG5283妤">
-			<script>
-        getGood_price("YG5283");
-            </script><em class="price_11">163</em>
-          </a>
-          <ul>
-           <!-- <li class="name"><a href="goods-1052396.html"  target="_blank" title="米妮哈鲁童装2016冬季新款男童韩版中大童外套儿童棉服YG5283妤">米妮哈鲁童装2016冬季新款男童韩版中大童外套儿童棉服YG5283妤</a></li>-->
-            <li class="price">
-              <span class="new_price"><span class="arrow">￥</span>189.00</span>
-              <del class="old_price">￥518.00</del>
-            </li>
-              <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
+          @endforeach    
         
     </ul>
   </div>
@@ -1127,7 +797,7 @@ $(".firstP a").hover(function(){
               </li>
                           <li>
                 <h2><span class="arrow num_8"></span>2016韩版女装秋装新款</h2>
-                <ul class="hot_con" "="">
+                <ul class="hot_con" "=">
                   <li class="hot_img">
                     <a href="http://www.handu.com/goods-1046754.html" title="韩都衣舍2016韩版女装秋装新款毛边破洞宽松长裤牛仔裤OR5502" target="_blank"><img src="{{ asset('/home/imgs/1478790245149647651.jpg') }}" alt="韩都衣舍2016韩版女装秋装新款毛边破洞宽松长裤牛仔裤OR5502" title="韩都衣舍2016韩版女装秋装新款毛边破洞宽松长裤牛仔裤OR5502"></a>
                     <em class="arrow">8</em>
@@ -1389,91 +1059,22 @@ $(".firstP a").hover(function(){
     </div>
     
     <ul>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1051988.html" alt="迪葵纳冬装新款中年妈妈装中老年女装中长款棉服女WQ6050沣1011" title="迪葵纳冬装新款中年妈妈装中老年女装中长款棉服女WQ6050沣1011" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1476388212974597930.jpg') }}" class="lazy" alt="迪葵纳冬装新款中年妈妈装中老年女装中长款棉服女WQ6050沣1011" title="迪葵纳冬装新款中年妈妈装中老年女装中长款棉服女WQ6050沣1011" src="{{ asset('/home/imgs/1476388212974597930.jpg') }}" style="display: block;" width="230">
-			<script>
-        getGood_price("WQ6050");
-            </script><em class="price_11">268</em>
+              @foreach($data2 as $v)
+              <li class="new_boxs">
+          <a href="http://www.handu.com/goods-1050504.html" title="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜" target="_blank">
+            <img src="/home/imgs/{{$v -> pic}}" alt="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜" title="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜">
+      <em class="price_11">{{$v -> promt_price}}</em>
           </a>
           <ul>
-             <!--<li class="name"><a href="goods-1051988.html" target="_blank" title="迪葵纳冬装新款中年妈妈装中老年女装中长款棉服女WQ6050沣1011">迪葵纳冬装新款中年妈妈装中老年女装中长款棉服女WQ6050沣1011</a></li>-->
+            <!-- <li class="name"><a href="goods-1050504.html"  target="_blank" title="迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜">迪葵纳中老年女装秋装新款中年女上衣长袖针织妈妈装外套FQ4666莜</a></li>-->
             <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">299.00</span>
-              <del class="old_price">￥539.00</del>
+              <span class="new_price"><span class="arrow">￥</span>{{$v -> promt_price}}.00</span>
+              <del class="old_price">￥{{$v -> orign_price}}.00</del>
             </li>
-            <li><span class="pic_button">立即抢购</span> </li>
+              <li><span class="pic_button">立即抢购</span> </li>
           </ul>
         </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1051821.html" alt="迪葵纳中老年女装秋装中年妈妈装冬装大码修身毛呢外套WQ4937沣" title="迪葵纳中老年女装秋装中年妈妈装冬装大码修身毛呢外套WQ4937沣" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1475956202519724667.jpg') }}" class="lazy" alt="迪葵纳中老年女装秋装中年妈妈装冬装大码修身毛呢外套WQ4937沣" title="迪葵纳中老年女装秋装中年妈妈装冬装大码修身毛呢外套WQ4937沣" src="{{ asset('/home/imgs/1475956202519724667.jpg') }}" style="display: block;" width="230">
-			<script>
-        getGood_price("WQ4937");
-            </script><em class="price_11">98</em>
-          </a>
-          <ul>
-             <!--<li class="name"><a href="goods-1051821.html" target="_blank" title="迪葵纳中老年女装秋装中年妈妈装冬装大码修身毛呢外套WQ4937沣">迪葵纳中老年女装秋装中年妈妈装冬装大码修身毛呢外套WQ4937沣</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">179.00</span>
-              <del class="old_price">￥749.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1050530.html" alt="迪葵纳秋装新款中老年女装中年妈妈装上衣长袖毛衣FQ6018莜0906" title="迪葵纳秋装新款中老年女装中年妈妈装上衣长袖毛衣FQ6018莜0906" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1473191416367578353.jpg') }}" class="lazy" alt="迪葵纳秋装新款中老年女装中年妈妈装上衣长袖毛衣FQ6018莜0906" title="迪葵纳秋装新款中老年女装中年妈妈装上衣长袖毛衣FQ6018莜0906" src="{{ asset('/home/imgs/1473191416367578353.jpg') }}" style="display: block;" width="230">
-			<script>
-        getGood_price("FQ6018");
-            </script><em class="price_11">139</em>
-          </a>
-          <ul>
-             <!--<li class="name"><a href="goods-1050530.html" target="_blank" title="迪葵纳秋装新款中老年女装中年妈妈装上衣长袖毛衣FQ6018莜0906">迪葵纳秋装新款中老年女装中年妈妈装上衣长袖毛衣FQ6018莜0906</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">159.00</span>
-              <del class="old_price">￥288.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1049554.html" alt="迪葵纳秋冬中老年女装棉服中年女上衣妈妈装棉衣外套FQ4661莜0823" title="迪葵纳秋冬中老年女装棉服中年女上衣妈妈装棉衣外套FQ4661莜0823" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1471981855281044051.jpg') }}" class="lazy" alt="迪葵纳秋冬中老年女装棉服中年女上衣妈妈装棉衣外套FQ4661莜0823" title="迪葵纳秋冬中老年女装棉服中年女上衣妈妈装棉衣外套FQ4661莜0823" src="{{ asset('/home/imgs/1471981855281044051.jpg') }}" style="display: block;" width="230">
-			<script>
-        getGood_price("FQ4661");
-            </script><em class="price_11">209</em>
-          </a>
-          <ul>
-             <!--<li class="name"><a href="goods-1049554.html" target="_blank" title="迪葵纳秋冬中老年女装棉服中年女上衣妈妈装棉衣外套FQ4661莜0823">迪葵纳秋冬中老年女装棉服中年女上衣妈妈装棉衣外套FQ4661莜0823</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">249.00</span>
-              <del class="old_price">￥439.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1047050.html" alt="迪葵纳秋装新款中年女装中老年妈妈装上衣大花T恤FQ4872莜0726" title="迪葵纳秋装新款中年女装中老年妈妈装上衣大花T恤FQ4872莜0726" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1469562657423732422.jpg') }}" class="lazy" alt="迪葵纳秋装新款中年女装中老年妈妈装上衣大花T恤FQ4872莜0726" title="迪葵纳秋装新款中年女装中老年妈妈装上衣大花T恤FQ4872莜0726" src="{{ asset('/home/imgs/1469562657423732422.jpg') }}" style="display: block;" width="230">
-			<script>
-        getGood_price("FQ4872");
-            </script><em class="price_11">109</em>
-          </a>
-          <ul>
-             <!--<li class="name"><a href="goods-1047050.html" target="_blank" title="迪葵纳秋装新款中年女装中老年妈妈装上衣大花T恤FQ4872莜0726">迪葵纳秋装新款中年女装中老年妈妈装上衣大花T恤FQ4872莜0726</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">129.00</span>
-              <del class="old_price">￥239.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
+        @endforeach
           </ul>
   </div>
  
@@ -1533,91 +1134,24 @@ $(".firstP a").hover(function(){
     </div>
     
     <ul>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1051564.html" alt="娜娜日记甜美女装2016冬装新款冬季外套中长款羽绒服女加厚NP6266" title="娜娜日记甜美女装2016冬装新款冬季外套中长款羽绒服女加厚NP6266" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1474834236468808448.jpg') }}" class="lazy" alt="娜娜日记甜美女装2016冬装新款冬季外套中长款羽绒服女加厚NP6266" title="娜娜日记甜美女装2016冬装新款冬季外套中长款羽绒服女加厚NP6266" src="{{ asset('/home/imgs/1474834236468808448.jpg') }}" style="display: block;" width="230">
-			<script>
-      getGood_price("NP6266");
-            </script><em class="price_11">319</em>
+              @foreach($data1 as $v)
+            <li class="new_boxs">
+          <a href="http://www.handu.com/goods-1053119.html" title="韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽" target="_blank">
+            <img src="/home/imgs/{{$v -> pic}}" alt="韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽" title="韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽">
+            
+      <em class="price_11">{{$v -> promt_price}}</em>
+            
           </a>
           <ul>
-             <!--<li class="name"><a href="goods-1051564.html" target="_blank" title="娜娜日记甜美女装2016冬装新款冬季外套中长款羽绒服女加厚NP6266">娜娜日记甜美女装2016冬装新款冬季外套中长款羽绒服女加厚NP6266</a></li>-->
+            <!-- <li class="name"><a href="goods-1053119.html"  target="_blank" title="韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽">韩都衣舍2016韩版女装冬装新款纯色显瘦口袋毛呢外套OI5602棽</a></li>-->
             <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">355.00</span>
-              <del class="old_price">￥708.00</del>
+              <span class="new_price"><span class="arrow">￥</span>{{$v -> promt_price}}.00</span>
+              <del class="old_price">￥{{$v -> orign_price}}.00</del>
             </li>
-            <li><span class="pic_button">立即抢购</span> </li>
+              <li><span class="pic_button">立即抢购</span> </li>
           </ul>
         </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1050084.html" alt="娜娜日记甜美女装2016冬装新款中长款紫色加厚羽绒服NK5969冉0831" title="娜娜日记甜美女装2016冬装新款中长款紫色加厚羽绒服NK5969冉0831" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1050084_thumb_G_1479982380724.jpg') }}" class="lazy" alt="娜娜日记甜美女装2016冬装新款中长款紫色加厚羽绒服NK5969冉0831" title="娜娜日记甜美女装2016冬装新款中长款紫色加厚羽绒服NK5969冉0831" src="{{ asset('/home/imgs/1050084_thumb_G_1479982380724.jpg') }}" style="display: block;" width="230">
-			<script>
-      getGood_price("NK5969");
-            </script><em class="price_11">319</em>
-          </a>
-          <ul>
-             <!--<li class="name"><a href="goods-1050084.html" target="_blank" title="娜娜日记甜美女装2016冬装新款中长款紫色加厚羽绒服NK5969冉0831">娜娜日记甜美女装2016冬装新款中长款紫色加厚羽绒服NK5969冉0831</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">349.00</span>
-              <del class="old_price">￥778.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1049456.html" alt="娜娜日记甜美女装2016冬装新款蓝色中长款毛呢外套女NL6013嬛0822" title="娜娜日记甜美女装2016冬装新款蓝色中长款毛呢外套女NL6013嬛0822" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1049456_thumb_G_1479982312900.jpg') }}" class="lazy" alt="娜娜日记甜美女装2016冬装新款蓝色中长款毛呢外套女NL6013嬛0822" title="娜娜日记甜美女装2016冬装新款蓝色中长款毛呢外套女NL6013嬛0822" src="{{ asset('/home/imgs/1049456_thumb_G_1479982312900.jpg') }}" style="display: block;" width="230">
-			<script>
-      getGood_price("NL6013");
-            </script><em class="price_11">238</em>
-          </a>
-          <ul>
-             <!--<li class="name"><a href="goods-1049456.html" target="_blank" title="娜娜日记甜美女装2016冬装新款蓝色中长款毛呢外套女NL6013嬛0822">娜娜日记甜美女装2016冬装新款蓝色中长款毛呢外套女NL6013嬛0822</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">325.00</span>
-              <del class="old_price">￥718.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1049069.html" alt="娜娜日记甜美女装2016秋装新款蓝色休闲运动套装女NK6085冉0818" title="娜娜日记甜美女装2016秋装新款蓝色休闲运动套装女NK6085冉0818" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1049069_thumb_G_1473844943239.jpg') }}" class="lazy" alt="娜娜日记甜美女装2016秋装新款蓝色休闲运动套装女NK6085冉0818" title="娜娜日记甜美女装2016秋装新款蓝色休闲运动套装女NK6085冉0818" src="{{ asset('/home/imgs/1049069_thumb_G_1473844943239.jpg') }}" style="display: block;" width="230">
-			<script>
-      getGood_price("NK6085");
-            </script><em class="price_11">95</em>
-          </a>
-          <ul>
-             <!--<li class="name"><a href="goods-1049069.html" target="_blank" title="娜娜日记甜美女装2016秋装新款蓝色休闲运动套装女NK6085冉0818">娜娜日记甜美女装2016秋装新款蓝色休闲运动套装女NK6085冉0818</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">122.00</span>
-              <del class="old_price">￥278.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1047222.html" alt="娜娜日记甜美女装2016秋装新款白色圆领贴布针织衫NL6078嬛0728" title="娜娜日记甜美女装2016秋装新款白色圆领贴布针织衫NL6078嬛0728" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1047222_thumb_G_1473842968874.jpg') }}" class="lazy" alt="娜娜日记甜美女装2016秋装新款白色圆领贴布针织衫NL6078嬛0728" title="娜娜日记甜美女装2016秋装新款白色圆领贴布针织衫NL6078嬛0728" src="{{ asset('/home/imgs/1047222_thumb_G_1473842968874.jpg') }}" style="display: block;" width="230">
-			<script>
-      getGood_price("NL6078");
-            </script><em class="price_11">109</em>
-          </a>
-          <ul>
-             <!--<li class="name"><a href="goods-1047222.html" target="_blank" title="娜娜日记甜美女装2016秋装新款白色圆领贴布针织衫NL6078嬛0728">娜娜日记甜美女装2016秋装新款白色圆领贴布针织衫NL6078嬛0728</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">128.00</span>
-              <del class="old_price">￥248.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
+        @endforeach 
           </ul>
   </div>
   
@@ -1697,91 +1231,22 @@ $(".firstP a").hover(function(){
     </div>
     
     <ul>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1052473.html" title="米妮哈鲁童装羽绒服2016冬装新款女童连帽儿童中长款厚羽绒服XE5478駺" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1052473_thumb_G_1478574450357.jpg') }}" class="lazy" alt="米妮哈鲁童装羽绒服2016冬装新款女童连帽儿童中长款厚羽绒服XE5478駺" title="米妮哈鲁童装羽绒服2016冬装新款女童连帽儿童中长款厚羽绒服XE5478駺" src="{{ asset('/home/imgs/1052473_thumb_G_1478574450357.jpg') }}" style="display: block;" width="230">
-			<script>
-         getGood_price("XE5478");
-            </script><em class="price_11">299</em>
+              @foreach($data4 as $v)
+              <li class="new_boxs">
+          <a href="http://www.handu.com/goods-1052720.html" title="米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵" target="_blank">
+            <img src="/home/imgs/{{$v -> pic}}" alt="米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵" title="米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵">
+      <em class="price_11">{{$v -> promt_price}}</em>
           </a>
           <ul>
-            <!--<li class="name"><a href="goods-1052473.html" target="_blank" title="米妮哈鲁童装羽绒服2016冬装新款女童连帽儿童中长款厚羽绒服XE5478駺">米妮哈鲁童装羽绒服2016冬装新款女童连帽儿童中长款厚羽绒服XE5478駺</a></li>-->
+           <!-- <li class="name"><a href="goods-1052720.html"  target="_blank" title="米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵">米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵</a></li>-->
             <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">299.00</span>
-              <del class="old_price">￥788.00</del>
+              <span class="new_price"><span class="arrow">￥</span>{{$v -> promt_price}}.00</span>
+              <del class="old_price">￥{{$v -> orign_price}}.00</del>
             </li>
-            <li><span class="pic_button">立即抢购</span> </li>
+              <li><span class="pic_button">立即抢购</span> </li>
           </ul>
         </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1052677.html" title="米妮哈鲁童装2016冬装新款女童连帽上衣儿童羽绒服轻薄款XC5040" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1052677_thumb_G_1479289046312.jpg') }}" class="lazy" alt="米妮哈鲁童装2016冬装新款女童连帽上衣儿童羽绒服轻薄款XC5040" title="米妮哈鲁童装2016冬装新款女童连帽上衣儿童羽绒服轻薄款XC5040" src="{{ asset('/home/imgs/1052677_thumb_G_1479289046312.jpg') }}" style="display: block;" width="230">
-			<script>
-         getGood_price("XC5040");
-            </script><em class="price_11">239</em>
-          </a>
-          <ul>
-            <!--<li class="name"><a href="goods-1052677.html" target="_blank" title="米妮哈鲁童装2016冬装新款女童连帽上衣儿童羽绒服轻薄款XC5040">米妮哈鲁童装2016冬装新款女童连帽上衣儿童羽绒服轻薄款XC5040</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">239.00</span>
-              <del class="old_price">￥568.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1052666.html" title="米妮哈鲁童装2016冬装新款男童中大童韩版短款连帽羽绒服ZW4515熣" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1479277416691882071.jpg') }}" class="lazy" alt="米妮哈鲁童装2016冬装新款男童中大童韩版短款连帽羽绒服ZW4515熣" title="米妮哈鲁童装2016冬装新款男童中大童韩版短款连帽羽绒服ZW4515熣" src="{{ asset('/home/imgs/1479277416691882071.jpg') }}" style="display: block;" width="230">
-			<script>
-         getGood_price("ZW4515");
-            </script><em class="price_11">297</em>
-          </a>
-          <ul>
-            <!--<li class="name"><a href="goods-1052666.html" target="_blank" title="米妮哈鲁童装2016冬装新款男童中大童韩版短款连帽羽绒服ZW4515熣">米妮哈鲁童装2016冬装新款男童中大童韩版短款连帽羽绒服ZW4515熣</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">297.00</span>
-              <del class="old_price">￥678.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1052527.html" title="米妮哈鲁童装16冬中长款女童羽绒服ZY5786 鋐" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1052527_thumb_G_1478747043016.jpg') }}" class="lazy" alt="米妮哈鲁童装16冬中长款女童羽绒服ZY5786 鋐" title="米妮哈鲁童装16冬中长款女童羽绒服ZY5786 鋐" src="{{ asset('/home/imgs/1052527_thumb_G_1478747043016.jpg') }}" style="display: block;" width="230">
-			<script>
-         getGood_price("ZY5786");
-            </script><em class="price_11">204</em>
-          </a>
-          <ul>
-            <!--<li class="name"><a href="goods-1052527.html" target="_blank" title="米妮哈鲁童装16冬中长款女童羽绒服ZY5786 鋐">米妮哈鲁童装16冬中长款女童羽绒服ZY5786 鋐</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">299.00</span>
-              <del class="old_price">￥758.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1052410.html" title="米妮哈鲁童装2016冬装新款男童中大童韩版连帽加厚羽绒服YO4544熣" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1052410_thumb_G_1478249311239.jpg') }}" class="lazy" alt="米妮哈鲁童装2016冬装新款男童中大童韩版连帽加厚羽绒服YO4544熣" title="米妮哈鲁童装2016冬装新款男童中大童韩版连帽加厚羽绒服YO4544熣" src="{{ asset('/home/imgs/1052410_thumb_G_1478249311239.jpg') }}" style="display: block;" width="230">
-			<script>
-         getGood_price("YO4544");
-            </script><em class="price_11">214</em>
-          </a>
-          <ul>
-            <!--<li class="name"><a href="goods-1052410.html" target="_blank" title="米妮哈鲁童装2016冬装新款男童中大童韩版连帽加厚羽绒服YO4544熣">米妮哈鲁童装2016冬装新款男童中大童韩版连帽加厚羽绒服YO4544熣</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">270.00</span>
-              <del class="old_price">￥698.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
+          @endforeach
           </ul>
   </div>
   
@@ -1844,96 +1309,23 @@ $(".firstP a").hover(function(){
     </div>
     
     <ul>
+      @foreach($data5 as $v)
               <li class="hstyle_boxs">
           <a href="http://www.handu.com/goods-1051198.html" title="尼班诗欧美2016冬装新款女装贴布羽绒服女中长款女WUP2036裳0918" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1051198_thumb_G_1480922904759.jpg') }}" class="lazy" alt="尼班诗欧美2016冬装新款女装贴布羽绒服女中长款女WUP2036裳0918" title="尼班诗欧美2016冬装新款女装贴布羽绒服女中长款女WUP2036裳0918" src="{{ asset('/home/imgs/1051198_thumb_G_1480922904759.jpg') }}" style="display: block;" width="230">
+            <img src="/home/imgs/{{$v -> pic}}" class="lazy" alt="尼班诗欧美2016冬装新款女装贴布羽绒服女中长款女WUP2036裳0918" title="尼班诗欧美2016冬装新款女装贴布羽绒服女中长款女WUP2036裳0918" src="{{ asset('/home/imgs/1051198_thumb_G_1480922904759.jpg') }}" style="display: block;" width="230">
             
-			<script>
-        getGood_price("WUP2036");
-            </script>
+			<em class="price_11">{{$v -> promt_price}}</em>
           </a>
           <ul>
             <!--<li class="name"><a href="goods-1051198.html" target="_blank" title="尼班诗欧美2016冬装新款女装贴布羽绒服女中长款女WUP2036裳0918">尼班诗欧美2016冬装新款女装贴布羽绒服女中长款女WUP2036裳0918</a></li>-->
             <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">418.00</span>
-              <del class="old_price">￥789.00</del>
+              <span class="new_price"><span class="arrow">￥</span>{{$v -> promt_price}}.00</span>
+              <del class="old_price">￥{{$v -> orign_price}}.00</del>
             </li>
-            <li><span class="pic_button">立即抢购</span> </li>
+              <li><span class="pic_button">立即抢购</span> </li>
           </ul>
         </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1051128.html" title="尼班诗欧美2016冬装新款立领贴布黑色百搭棉服女WHZ5661梵0914" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1051128_thumb_G_1480923199039.jpg') }}" class="lazy" alt="尼班诗欧美2016冬装新款立领贴布黑色百搭棉服女WHZ5661梵0914" title="尼班诗欧美2016冬装新款立领贴布黑色百搭棉服女WHZ5661梵0914" src="{{ asset('/home/imgs/1051128_thumb_G_1480923199039.jpg') }}" style="display: block;" width="230">
-            
-			<script>
-        getGood_price("WHZ5661");
-            </script>
-          </a>
-          <ul>
-            <!--<li class="name"><a href="goods-1051128.html" target="_blank" title="尼班诗欧美2016冬装新款立领贴布黑色百搭棉服女WHZ5661梵0914">尼班诗欧美2016冬装新款立领贴布黑色百搭棉服女WHZ5661梵0914</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">338.00</span>
-              <del class="old_price">￥669.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1051006.html" title="尼班诗欧美2016冬新贴布立领宽松大衣棉服棉衣女WHZ5658梵0908" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1051006_thumb_G_1480923226894.jpg') }}" class="lazy" alt="尼班诗欧美2016冬新贴布立领宽松大衣棉服棉衣女WHZ5658梵0908" title="尼班诗欧美2016冬新贴布立领宽松大衣棉服棉衣女WHZ5658梵0908" src="{{ asset('/home/imgs/1051006_thumb_G_1480923226894.jpg') }}" style="display: block;" width="230">
-            
-			<script>
-        getGood_price("WHZ5658");
-            </script>
-          </a>
-          <ul>
-            <!--<li class="name"><a href="goods-1051006.html" target="_blank" title="尼班诗欧美2016冬新贴布立领宽松大衣棉服棉衣女WHZ5658梵0908">尼班诗欧美2016冬新贴布立领宽松大衣棉服棉衣女WHZ5658梵0908</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">259.00</span>
-              <del class="old_price">￥549.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1049763.html" title="尼班诗欧美2016冬装新款中长款显瘦长袖毛呢外套女WGA6163萍0826" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1049763_thumb_G_1480923262222.jpg') }}" class="lazy" alt="尼班诗欧美2016冬装新款中长款显瘦长袖毛呢外套女WGA6163萍0826" title="尼班诗欧美2016冬装新款中长款显瘦长袖毛呢外套女WGA6163萍0826" src="{{ asset('/home/imgs/1049763_thumb_G_1480923262222.jpg') }}" style="display: block;" width="230">
-            
-			<script>
-        getGood_price("WGA6163");
-            </script>
-          </a>
-          <ul>
-            <!--<li class="name"><a href="goods-1049763.html" target="_blank" title="尼班诗欧美2016冬装新款中长款显瘦长袖毛呢外套女WGA6163萍0826">尼班诗欧美2016冬装新款中长款显瘦长袖毛呢外套女WGA6163萍0826</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">228.00</span>
-              <del class="old_price">￥679.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
-              <li class="hstyle_boxs">
-          <a href="http://www.handu.com/goods-1048960.html" title="尼班诗欧美2016冬装新款女装休闲显瘦中长款棉服女WUC1922芊0816" target="_blank">
-            <img data-original="{{ asset('/home/imgs/1048960_thumb_G_1480923313693.jpg') }}" class="lazy" alt="尼班诗欧美2016冬装新款女装休闲显瘦中长款棉服女WUC1922芊0816" title="尼班诗欧美2016冬装新款女装休闲显瘦中长款棉服女WUC1922芊0816" src="{{ asset('/home/imgs/1048960_thumb_G_1480923313693.jpg') }}" style="display: block;" width="230">
-            
-			<script>
-        getGood_price("WUC1922");
-            </script>
-          </a>
-          <ul>
-            <!--<li class="name"><a href="goods-1048960.html" target="_blank" title="尼班诗欧美2016冬装新款女装休闲显瘦中长款棉服女WUC1922芊0816">尼班诗欧美2016冬装新款女装休闲显瘦中长款棉服女WUC1922芊0816</a></li>-->
-            <li class="price">
-              <span class="arrow">￥</span>
-              <span class="new_price">319.00</span>
-              <del class="old_price">￥619.00</del>
-            </li>
-            <li><span class="pic_button">立即抢购</span> </li>
-          </ul>
-        </li>
+        @endforeach    
           </ul>
   </div>
 
@@ -2195,8 +1587,13 @@ function getsec(str)
   </style>
   <div style="width:1200px;">
     <span style=" float:left; width:60px;position:absolute;">友情链接：</span>
-    <div style="width: 1140px; position: relative; float: right; margin-top: 1px; overflow: hidden;"> 
-      <ul class="friendlink" id="gdtw" style="margin: 0px; padding: 0px; overflow: hidden; position: relative; list-style: outside none none; width: 2370px; left: -127px;"><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.hznzcn.com/" target="_blank">女装批发网</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.36588.com.cn/" target="_blank">照片书</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.17ugo.com/" target="_blank">优品惠</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://guangzhou.liebiao.com/" target="_blank">广州分类信息</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.sjq.cn/" target="_blank">四季青服装网</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.quanlaoda.com/" target="_blank">优惠券</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.wbiao.cn/" target="_blank">手表品牌大全</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.nahuo9.com/" target="_blank">服装批发网</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.zhigou.com/" target="_blank">网上购物</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.1zw.com/" target="_blank">淘牛品</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.shihuo.cn/" target="_blank">虎扑识货</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://xiangyouhui.cn/" target="_blank">享优惠</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.jhly.cn/" target="_blank">嘉华旅游</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.hznzcn.com/" target="_blank">女装批发网</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.36588.com.cn/" target="_blank">照片书</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.17ugo.com/" target="_blank">优品惠</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://guangzhou.liebiao.com/" target="_blank">广州分类信息</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.sjq.cn/" target="_blank">四季青服装网</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.quanlaoda.com/" target="_blank">优惠券</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.wbiao.cn/" target="_blank">手表品牌大全</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.nahuo9.com/" target="_blank">服装批发网</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.zhigou.com/" target="_blank">网上购物</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.1zw.com/" target="_blank">淘牛品</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.shihuo.cn/" target="_blank">虎扑识货</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://xiangyouhui.cn/" target="_blank">享优惠</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.jhly.cn/" target="_blank">嘉华旅游</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.hznzcn.com/" target="_blank">女装批发网</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.36588.com.cn/" target="_blank">照片书</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.17ugo.com/" target="_blank">优品惠</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://guangzhou.liebiao.com/" target="_blank">广州分类信息</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.sjq.cn/" target="_blank">四季青服装网</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.quanlaoda.com/" target="_blank">优惠券</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.wbiao.cn/" target="_blank">手表品牌大全</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.nahuo9.com/" target="_blank">服装批发网</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.zhigou.com/" target="_blank">网上购物</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.1zw.com/" target="_blank">淘牛品</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.shihuo.cn/" target="_blank">虎扑识货</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://xiangyouhui.cn/" target="_blank">享优惠</a></li><li style="position: relative; overflow: hidden; float: left;"><a href="http://www.jhly.cn/" target="_blank">嘉华旅游</a></li></ul>
+    <div style="width: 1140px; position: relative; float: right; margin-top: 1px; overflow: hidden;">
+    @foreach($res as $v) 
+      <ul class="friendlink" id="gdtw" style="margin: 0px; padding: 0px; overflow: hidden; position: relative; list-style: outside none none; width: 2370px; left: -127px;"><li style="position: relative; overflow: hidden; float: left;">
+      
+      <a href="{{$v -> url}}" target="_blank">{{$v -> link_name}}</a></li>
+      @endforeach
+      </ul>
     </div>
   </div>
    
