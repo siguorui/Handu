@@ -1,30 +1,22 @@
-@extends('home.layout')
+@extends('home.layoutmy')
 @section('content')
-<link rel="stylesheet" type="text/css" href="{{asset('/home/dequanna/css/handu_base.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('/home/dequanna/css/handu_search.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('/home/dequanna/css/handu_list.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/home/css/handu_base.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/home/css/handu_search.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/home/css/handu_list.css')}}">
 <script charset="utf-8" src="{{asset('/home/dequanna/js/v.js')}}"></script>
-<script type="text/javascript" id="veConnect" async="" src="{{asset('/home/dequanna/js/capture-apps-4.18.6.js')}}"></script>
-<script src="{{asset('/home/dequanna/js/hm.js')}}"></script>
-<script async="" src="{{asset('/home/dequanna/js/analytics.js')}}"></script>
+<script type="text/javascript" id="veConnect" async="" src="{{asset('/home/js/capture-apps-4.18.6.js')}}"></script>
+<script src="{{asset('/home/js/hm.js')}}"></script>
+<script async="" src="{{asset('/home/js/analytics.js')}}"></script>
 <script type="text/javascript" async="" charset="utf-8" src="{{asset('/home/dequanna/js/ntkfstat.js')}}"></script>
-<script type="text/javascript" src="{{asset('/home/dequanna/js/goods_no1214.js')}}"></script>
-<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/dequanna/js/zh_cn.js')}}" data-requiremodule="lang"></script>
-<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/dequanna/js/chat.in.js')}}" data-requiremodule="chatManage"></script>
-<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/dequanna/js/mqtt31.js')}}" data-requiremodule="MQTT"></script>
-<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/dequanna/js/mqtt.chat.js')}}" data-requiremodule="Connection"></script>
+<script type="text/javascript" src="{{asset('/home/js/goods_no1214.js')}}"></script>
+<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/js/zh_cn.js')}}" data-requiremodule="lang"></script>
+<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/js/chat.in.js')}}" data-requiremodule="chatManage"></script>
+<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/js/mqtt31.js')}}" data-requiremodule="MQTT"></script>
+<script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/js/mqtt.chat.js')}}" data-requiremodule="Connection"></script>
 <div style="width:100%;">
-<div style="width:100%;background:url(http://img01.handu.com/hdysweb/20161114/DQ/DQ_01.jpg) no-repeat center 0px;height:120px;">
+<div style="width:100%;background:url(/home/imgs/goods/{{$data -> logo}}) no-repeat center 0px;height:600px;">
 </div>
-<div style="width:100%;background:url(http://img01.handu.com/hdysweb/20161114/DQ/DQ_02.jpg) no-repeat center 0px;height:120px;">
 </div>
-<div style="width:100%;background:url(http://img01.handu.com/hdysweb/20161114/DQ/DQ_03.jpg) no-repeat center 0px;height:120px;">
-</div>
-<div style="width:100%;background:url(http://img01.handu.com/hdysweb/20161114/DQ/DQ_04.jpg) no-repeat center 0px;height:120px;">
-</div>
-<div style="width:100%;background:url(http://img01.handu.com/hdysweb/20161114/DQ/DQ_05.jpg) no-repeat center 0px;height:120px;">
-</div>
-&gt;</div>
 
 <div class="wrap"> 
 <div id="cate_left" style="display:none; width:0">
@@ -141,30 +133,25 @@
 <div class="cataClass_0317">
 	
 	<dl class="cadl_0317">
-    <dt>Dequanna迪葵纳</dt>
-    	        <dd class="ca_dd">上装        	<ul class="caul_0317">
-            	            	<li><a href="http://www.handu.com/brand_topic.php?id=10144" title="T恤">T恤</a></li>
-                            	<li><a href="http://www.handu.com/brand_topic.php?id=10145" title="衬衫">衬衫</a></li>
-                            	<li><a href="http://www.handu.com/brand_topic.php?id=10646" title="短外套">短外套</a></li>
-                            	<li><a href="http://www.handu.com/brand_topic.php?id=10146" title="毛针织衫">毛针织衫</a></li>
-                            	<li><a href="http://www.handu.com/brand_topic.php?id=10294" title="套装">套装</a></li>
-                            	<li><a href="http://www.handu.com/brand_topic.php?id=10176" title="风衣">风衣</a></li>
-                            	<li><a href="http://www.handu.com/brand_topic.php?id=10147" title="棉衣/棉服">棉衣/棉服</a></li>
-                            	<li><a href="http://www.handu.com/brand_topic.php?id=10741" title="羽绒服">羽绒服</a></li>
-                            	<li><a href="http://www.handu.com/brand_topic.php?id=10215" title="马夹">马夹</a></li>
-                            	<li><a href="http://www.handu.com/brand_topic.php?id=10746" title="毛呢外套">毛呢外套</a></li>
+    
+    <dt>{{$data -> title}}</dt>
+
+        @foreach($data1 as $k => $v)
+   
+    	        <dd class="ca_dd">{{$v -> title}}
+    
+                        	<ul class="caul_0317">
+                            @foreach($data2[$k] as $d2)
+
+            	            	<li><a href="http://www.handu.com/brand_topic.php?id=10144" title="{{$d2 -> title}}">{{$d2 -> title}}</a></li>
+            	            	
+                            @endforeach
                             </ul>
-        </dd>
-                <dd class="ca_dd">裤装        	<ul class="caul_0317">
-            	            	<li><a href="http://www.handu.com/brand_topic.php?id=10152" title="休闲裤">休闲裤</a></li>
-                            </ul>
-        </dd>
-                <dd class="ca_dd">裙装        	<ul class="caul_0317">
-            	            	<li><a href="http://www.handu.com/brand_topic.php?id=10151" title="连衣裙">连衣裙</a></li>
-                            	<li><a href="http://www.handu.com/brand_topic.php?id=10378" title="半身裙">半身裙</a></li>
-                            </ul>
-        </dd>
-            </dl>
+                            
+                </dd>
+   
+        @endforeach
+          
     
 </div>
 <script>
@@ -232,31 +219,13 @@ $(function(){
 <div class="productGrid">
  
     <div class="grid_wrap">
+            @foreach($res as $kk => $vv)
+            @foreach($vv as $r)
         	<div class="product " style="height:280px;">
             <div class="product-iWrap">
                 <div class="productImg-wrap">
-                                        <a href="http://www.handu.com/goods-1054075.html" title="迪葵纳中老年女装2017春装新款中年女上衣妈妈装T恤WQ5217沣1213" class="productImg" target="_blank">
-                    <img src="{{asset('/home/dequanna/imgs/1481658629369749497.jpg')}}" alt="迪葵纳中老年女装2017春装新款中年女上衣妈妈装T恤WQ5217沣1213">
-                    </a>
-                     <!--<div style="position: absolute;width: 68px;height: 41px;background: url(http://img01.handu.com/hdysweb/20141105/1111.png) no-repeat 0 0;top: 0;left: 0;"></div> -->
-                    <script>
-                 //  getGood_price("WQ5217");
-                    </script>      
-                </div>
-            
-               <p class="productPrice" style="width:100%; text-align:center">
-                    <em title="￥129" style="float:none"><b>¥</b>129</em>
-                    <del title="市场价 657.00" style="float:none">¥657.00</del>
-                    <!--<em title="10.10狂欢价" style="margin: 6px 0 0 6px;"><img src="http://img01.handu.com/hdysweb/20141009/10.10.png" /></em>-->
-                </p>
-            </div>
-        </div>
-    
-        	<div class="product " style="height:280px;">
-            <div class="product-iWrap">
-                <div class="productImg-wrap">
-                                        <a href="http://www.handu.com/goods-1054011.html" title="迪葵纳中老年女装春装新款中年妈妈装上衣条纹长袖针织衫WD6223轩" class="productImg" target="_blank">
-                    <img src="{{asset('/home/dequanna/imgs/1481572219110114165.jpg')}}" alt="迪葵纳中老年女装春装新款中年妈妈装上衣条纹长袖针织衫WD6223轩">
+                                        <a href="http://www.handu.com/goods-1054011.html" title="{{$r -> title}}" class="productImg" target="_blank">
+                    <img src="/home/imgs/goods/{{$r -> pic}}" alt="{{$r -> title}}">
                     </a>
                      <!--<div style="position: absolute;width: 68px;height: 41px;background: url(http://img01.handu.com/hdysweb/20141105/1111.png) no-repeat 0 0;top: 0;left: 0;"></div> -->
                     <script>
@@ -265,51 +234,15 @@ $(function(){
                 </div>
             
                <p class="productPrice" style="width:100%; text-align:center">
-                    <em title="￥159" style="float:none"><b>¥</b>159</em>
-                    <del title="市场价 684.00" style="float:none">¥684.00</del>
+                    <em title="{{$r -> promt_price}}" style="float:none"><b>¥</b>{{$r -> promt_price}}</em>
+                    <del title="市场价 {{$r -> orign_price}}" style="float:none">¥{{$r -> orign_price}}</del>
                     <!--<em title="10.10狂欢价" style="margin: 6px 0 0 6px;"><img src="http://img01.handu.com/hdysweb/20141009/10.10.png" /></em>-->
                 </p>
             </div>
         </div>
+        @endforeach
+        @endforeach
     
-        	<div class="product " style="height:280px;">
-            <div class="product-iWrap">
-                <div class="productImg-wrap">
-                                        <a href="http://www.handu.com/goods-1054010.html" title="迪葵纳中老年女装春装新款妈妈装上衣中年百搭长袖T恤WD6272轩" class="productImg" target="_blank">
-                    <img src="{{asset('/home/dequanna/imgs/1481572217802061534.jpg')}}" alt="迪葵纳中老年女装春装新款妈妈装上衣中年百搭长袖T恤WD6272轩">
-                    </a>
-                     <!--<div style="position: absolute;width: 68px;height: 41px;background: url(http://img01.handu.com/hdysweb/20141105/1111.png) no-repeat 0 0;top: 0;left: 0;"></div> -->
-                    <script>
-                 //  getGood_price("WD6272");
-                    </script>      
-                </div>
-            
-               <p class="productPrice" style="width:100%; text-align:center">
-                    <em title="￥179" style="float:none"><b>¥</b>179</em>
-                    <del title="市场价 894.00" style="float:none">¥894.00</del>
-                    <!--<em title="10.10狂欢价" style="margin: 6px 0 0 6px;"><img src="http://img01.handu.com/hdysweb/20141009/10.10.png" /></em>-->
-                </p>
-            </div>
-        </div>
-    
-        	<div class="product " style="height:280px;">
-            <div class="product-iWrap">
-                <div class="productImg-wrap">
-                                        <a href="http://www.handu.com/goods-1054009.html" title="迪葵纳中老年女装新款春装妈妈装上衣中年时尚长袖T恤WD6068轩" class="productImg" target="_blank">
-                    <img src="{{asset('/home/dequanna/imgs/1481572215747791635.jpg')}}" alt="迪葵纳中老年女装新款春装妈妈装上衣中年时尚长袖T恤WD6068轩">
-                    </a>
-                     <!--<div style="position: absolute;width: 68px;height: 41px;background: url(http://img01.handu.com/hdysweb/20141105/1111.png) no-repeat 0 0;top: 0;left: 0;"></div> -->
-                    <script>
-                 //  getGood_price("WD6068");
-                    </script>      
-                </div>
-            
-               <p class="productPrice" style="width:100%; text-align:center">
-                    <em title="￥139" style="float:none"><b>¥</b>139</em>
-                    <del title="市场价 567.00" style="float:none">¥567.00</del>
-                    <!--<em title="10.10狂欢价" style="margin: 6px 0 0 6px;"><img src="http://img01.handu.com/hdysweb/20141009/10.10.png" /></em>-->
-                </p>
-            </div>
 <!-- ============================================= -->
     
         <br class="clear">

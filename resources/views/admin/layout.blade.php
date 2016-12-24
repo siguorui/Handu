@@ -270,7 +270,7 @@
                             <img src="{{ url('/ad/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
                             <span class="hidden-xs">
                             @if(session('master'))
-                                {{session('master') -> name}}
+                                {{session('master') -> user_name}}
                             @else
                                 请登录
                             @endif
@@ -283,7 +283,7 @@
                                 <p>
 
                                        @if(session('master'))
-                                        {{session('master') -> name}}
+                                        {{session('master') -> user_name}}
                                         @else
                                             请登录
                                         @endif - PHP工程师
@@ -383,11 +383,11 @@
                         <i class="fa fa-files-o"></i>
 
                         <span> 商品管理</span>
-                        <span class="label label-primary pull-right">4</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{url('/admin/cate/add')}}"><i class="fa fa-circle-o"></i> 商品添加</a></li>
-                        <li><a href="{{url('/admin/cate/index')}}"><i class="fa fa-circle-o"></i> 商品列表</a></li>
+                        <li><a href="{{url('/admin/goods/add/1')}}"><i class="fa fa-circle-o"></i> 商品添加</a></li>
+                        <li><a href="{{url('/admin/goods/index/1')}}"><i class="fa fa-circle-o"></i> 商品列表</a></li>
 
                     </ul>
                 </li>
@@ -412,8 +412,8 @@
                         <span class="label label-primary pull-right">4</span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{url('/admin/cate/add')}}"><i class="fa fa-circle-o"></i> 添加链接</a></li>
-                        <li><a href="{{url('/admin/cate/index')}}"><i class="fa fa-circle-o"></i> 链接列表</a></li>
+                        <li><a href="{{url('/admin/friendlinks/add')}}"><i class="fa fa-circle-o"></i> 添加链接</a></li>
+                        <li><a href="{{url('/admin/friendlinks/index')}}"><i class="fa fa-circle-o"></i> 链接列表</a></li>
 
                     </ul>
                 </li>

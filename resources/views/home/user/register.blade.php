@@ -1,5 +1,6 @@
 ﻿  	@extends('home.layout')
 	@section('content')
+	<title>注册中心_韩都衣舍HSTYLE网-韩风快时尚第一品牌购物商城。正品保证！</title>
 	<script type="text/javascript"  src="{{ asset('/home/js/jquery-1.1.0.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('/home/js/users.js') }}"></script>
   	<div style="margin:0 auto; width:1100px; float:none; margin-top:10px;"><img src="{{ asset('/home/imgs/banner1.jpg') }}" width="1100" height="60" /></div>
@@ -7,8 +8,8 @@
 	<div class="register">
 		<div class="register_right fl">
 			<div class="register_right_list">
-				<div class="register_right_listName">已是韩都衣舍用户：
-					<input type="button" value="直接登录" onclick="javascript:window.location.href='user.php?act=login';_czc.push(['_trackEvent', '注册', 'Login']);"  class="register_loginbtn" />
+				<div class="register_right_listName">已是韩都衣舍用户:<a href="{{asset('/home/login')}}">
+					<input type="button" value="直接登录" onclick="javascript:window.location.href="{{asset('/home/login')}}";_czc.push(['_trackEvent', '注册', 'Login']);"  class="register_loginbtn" /></a>
 				</div>
 			</div>
 			<div class="news_loginRight_pic" style="margin-left:-7px;">
@@ -19,7 +20,7 @@
 			<div class="crm_module zhuce">
 		      <div class="dy">
 		        <form id="form_dy" method="post" action="send_bonus.php?act=add_user_dingyue">
-		          <input type="text" name="email" value="">
+		          <input type="email" name="email" value="">
 		          <button type="submit" onclick="_czc.push(['_trackEvent', '订阅', '订阅']);"></button>
 		        </form>
 		      </div>
@@ -116,9 +117,7 @@
 						</div>
 					</li>
 					<li>
-						<input type="hidden" name="back_act" value="./" />
-						<input type="hidden" name="parent_id" value="0" />
-						<input type="hidden" name="act" value="act_register" />
+						
 						<input id="reg_email_submit" type="submit" class="register_list_regree" value="同意协议并注册" onclick="_czc.push(['_trackEvent', '注册', 'Agree']);">
 					</li>
 				</ul>
@@ -138,7 +137,7 @@
 				{{csrf_field()}}
 				<ul class="register_list" style="display:none">
 					<li><div class="register_list_name">Email：</div>
-						<input name="email" type="text" size="25" value="{{old('email')}}" id="email" onblur="checkEmail(this.value);"  class="register_list_txt"/>
+						<input name="email" type="email" size="25" value="{{old('email')}}" id="email" onblur="checkEmail(this.value);"  class="register_list_txt"/>
 						<div  id="tip_e_e"  class="register_list_tishi"></div>
 					</li>
 					<li><div class="register_list_neirong">Email地址作为用户名，同时也用于接收账户信息、订单通知及密码找回等功能</div></li>
@@ -173,9 +172,6 @@
 						</div>
 					</li>
 					<li>
-						<input type="hidden" name="back_act" value="./" />
-						<input type="hidden" name="parent_id" value="0" />
-						<input type="hidden" name="act" value="act_register" />
 						<input id="reg_email_submit" type="submit" class="register_list_regree" value="同意协议并注册" onclick="_czc.push(['_trackEvent', '注册', 'Agree']);">
 					</li>
 				</ul>

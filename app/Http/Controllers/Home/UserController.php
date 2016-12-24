@@ -32,8 +32,8 @@ class UserController extends Controller
     		'password.confirmed' => '确认密码不一致',
     		'password_comfiration.required' => '确认密码不能为空'
     		]);
-
     	$data = $request -> except('agreement','captcha','_token','password_confirmation');
+       
     	$data['password'] = Hash::make($data['password']);
     	
     	$data['rem_token'] = str_random(50);
@@ -89,11 +89,13 @@ class UserController extends Controller
 
     public function active($remember_token)
     {
-    	$res = DB::table('users') -> where('rem_token',$remember_token) -> update(['status' => 1]);
+    	DB::table('users') -> where('rem_token',$remember_token) -> update(['status' => 1]);
 
-    	if($res)
+        $res = DB::table('users')-> select('status') -> where('rem_token',$remember_token) ->first()->status;
+    	
+        if($res==1)
     	{
-    		return redirect('home/user/login') -> with(['info' => '激活成功,请登录']);
+    		return redirect('home/login/login') -> with(['info' => '激活成功,请登录']);
     	}else
     	{
     		return '激活失败';    

@@ -26,7 +26,7 @@
 </script>
 <script type="text/javascript" async="async" charset="utf-8" src="{{ asset('/home/js/mqtt31.js') }}" data-requiremodule="MQTT"></script>
 <script type="text/javascript" async="async" charset="utf-8" src="{{ asset('/home/js/mqtt.js') }}" data-requiremodule="Connection"></script>
-
+<script type="text/javascript" src="{{ asset('/home/js/jquery.slide.js') }}"></script>
 <style type="text/css">
 /* tagscloud */
 #tagscloud{width:360px;height:250px;position:relative;font-size:12px;color:#333;margin:0px auto;text-align:center;right: 70px;}
@@ -44,6 +44,9 @@
 </style>
 </head>
 <body>
+
+  @if(session('master'))
+
 <div id="global_nav">
   <div class="global_nav">
     <div class="global_info fl">
@@ -65,16 +68,74 @@
 </style>
 <li>您好，欢迎光临韩都衣舍！</li>
 <li>
-  <a href="http://www.handu.com/user.php?act=login"  target="_blank">登录</a>
+  <a href="{{asset('/home/login/login')}}"  target="_blank">登录</a>
  <!--<span style="position: absolute;top: 12px;right: -4px;"><img src="http://img01.handu.com//hdysweb/20150821/180-263.png"></span>-->
 </li>
 <li class="zhuce_main">
-  <a href="http://www.handu.com/user.php?act=register" style="color:#c70a28;width:30px;height:30px;display:inline-block;" target="_blank">注册</a>
+  <a href="{{asset('/home/user/register')}}" style="color:#c70a28;width:30px;height:30px;display:inline-block;" target="_blank">注册</a>
   <!--<img src="http://img01.handu.com/hdysweb/20141014/zhuce.png"  alt="注册" border="0" usemap="#zc_Map"/>
   <map name="zc_Map" id="zc_Map">
     <area shape="rect" coords="2,8,165,189" href="http://www.handu.com/user.php?act=register" target="_blank"/>
   </map>-->
 </li>
+
+@else
+
+<div id="global_nav">
+  <div class="global_nav">
+    <div class="global_info fl">
+      <ul id="HD_MZONE">
+        <li class="on">
+          <em><a href="http://www.handu.com">返回首页</a></em>
+        </li>
+        <li id="nav_addFavorite">
+          <a rel="nofollow" href="javascript:window.external.addFavorite()"><b></b>收藏网站</a>
+        </li>
+      </ul>
+    </div>
+    <div class="global_info fr">
+      <ul id="HD_MEMBERZONE"><style type="text/css">
+#HD_MEMBERZONE li.zhuce_main&gt;img {position: absolute;top: 15px;left: -71px;z-index: 222;display: none;}
+#HD_MEMBERZONE li.zhuce_main:hover&gt;img {display: block;}
+#HD_MEMBERZONE li.on&gt;img {position: absolute;top: 15px;left: 4px;z-index: 222;}
+</style>
+<li class="on">
+  <a class="user_name" title="" target="_blank" href="{{asset('/home/user/myCenter')}}">欢迎您，汪世兵大爷！</a>
+  
+  <a target="_blank" title="注册会员" href="http://www.handu.com/user.php?act=privilege">
+    
+          <em class="lv lv0"></em>
+      
+  </a>
+  <!--<img src="http://img01.handu.com/hdysweb/20141222/gwgl.png"  alt="官网会员内部攻略" border="0" usemap="#Map" />
+  <map name="Map" id="Map">
+    <area shape="rect" coords="0,2,151,27" href="http://www.handu.com/topic-1276.html" target="_blank" />
+  </map>-->
+</li>
+
+<li class="integral">
+  <a target="_blank" href="http://www.handu.com/user.php?act=exchange"><span>积分</span><b>190</b></a>
+</li>
+<li><a href="{{asset('/home/logout')}}">退出</a></li>
+<li class="">
+    <div class="more-active">
+    <a class="bn-more" href="{{asset('/home/user/myCenter')}}"><span>我的韩都</span></a><b></b>
+    <div class="more-items">
+        <table cellspacing="0" cellpadding="0">
+            <tbody>
+              <tr><td><a target="_blank" href="http://www.handu.com/user.php?act=order_list">我的订单</a></td></tr>
+              <tr><td><a target="_blank" href="http://www.handu.com/user.php?act=bonus">我的优惠券</a></td></tr>
+              <tr><td><a target="_blank" href="http://www.handu.com/user.php?act=collection_list">我的收藏</a></td></tr>
+              <tr><td><a target="_blank" href="http://www.handu.com/user.php?act=return_list">退货办理</a></td></tr>
+                         </tbody>
+        </table>
+    </div>
+    </div>
+</li>
+
+
+@endif
+
 <li><a href="http://www.handu.com/flow.php?step=cart" style="margin-right:10px"  target="_blank">购物车</a></li>      </ul>
       <ul id="HD_HELPZONE" style="border-right:none;">
        
@@ -271,10 +332,10 @@ left: 4px;}
     <div id="hd_search">
       <div class="hdi-search">
         <div class="form hdin_not">
-          <form method="get" action="search.php">
+          <form method="get" action="{{url('/home/search')}}">
             <!--<label for="">请输入关键词</label>-->
-            <input type="text" class="text" name="keywords" value="">
-            <input type="submit" value="搜索" onClick="_czc.push(['_trackEvent', '搜索', '搜索', $('input[name=keywords]').val()])" class="button">
+            <input type="text" class="text" name="keywords" value="{{$request['keywords'] or ''}}">
+            <input type="submit" value="搜索" class="button">
           </form>
         </div>
       </div>

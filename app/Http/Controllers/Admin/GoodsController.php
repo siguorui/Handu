@@ -94,7 +94,8 @@ class GoodsController extends Controller
    	}
 
    	//商品展示
-   	public function index($id)
+
+   	public function index(Request $request, $id)
    	{
    		$res = DB::table('category') -> where('id',$id) -> first();
    		
@@ -139,7 +140,9 @@ class GoodsController extends Controller
 				{
 					foreach ($d[$key] as $k => $v) {
 
-						$data[$key][$k] = DB::table('goods_list') -> where('cate_id',$v->id) -> get();
+                        $num = $request -> input('num', 10);
+                        $keyword = $request -> input('keyword','');
+						$data[$key][$k] = DB::table('goods_list') -> where([['cate_id',$v->id],['title', 'like', '%'.$keyword.'%']]) -> paginate($num);
 						
 					}
 					
@@ -147,7 +150,8 @@ class GoodsController extends Controller
 
 			}
 
-			return view('admin.goods.index',['data'=>$data,'num'=>$num,'urlid'=>$id]);
+
+			return view('admin.goods.index',['data'=>$data,'num'=>$num,'urlid'=>$id,'request' => $request -> all()]);
 		}
 
 

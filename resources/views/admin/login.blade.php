@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Registration Page</title>
+    <title>{{config('app.name')}}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -41,9 +41,9 @@
         <p class="text-red">{{session('info')}}</p>
         @endif
         <form action="{{url('/admin/login')}}" method="post">
-        {{csrf_field()}}
+        {{ csrf_field() }}
             <div class="form-group has-feedback">
-                <input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="Email">
+                <input type="text" name="user_name" value="{{old('user_name')}}" class="form-control" placeholder="Email">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
@@ -56,13 +56,13 @@
                         <input type="text" name="captcha" class="form-control" style="width: 80px;float:left;">
                         <a onclick="javascript:re_captcha();" ><img style="margin-left:10px;" src="{{ URL('kit/captcha/1') }}"  alt="验证码" title="刷新图片" width="100" height="34" id="c2c98f0de5a04167a9e427d883690ff6" border="0"></a>
 
-        <script>  
-          function re_captcha() {
-            $url = "{{ URL('kit/captcha') }}";
-                $url = $url + "/" + Math.random();
-                document.getElementById('c2c98f0de5a04167a9e427d883690ff6').src=$url;
-          }
-        </script>
+                    <script>  
+                      function re_captcha() {
+                        $url = "{{ URL('kit/captcha') }}";
+                            $url = $url + "/" + Math.random();
+                            document.getElementById('c2c98f0de5a04167a9e427d883690ff6').src=$url;
+                      }
+                    </script>
                     </div>
                 </div><!-- /.col -->
                 <div class="col-xs-4">

@@ -32,19 +32,20 @@
                         @endif
                         <div class="box-body">
                             <table id="example2" class="table table-bordered table-hover">
-                        <form action="{{url('/admin/user/index')}}">
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <div class="dataTables_length" id="example1_length">
-                                        <!-- 分页展示 -->
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                        <div class="input-group input-group-sm">
-                                            <!-- 搜索展示 -->
-                                        </div>
-                                </div>
-                            </div>
+                       
+                                        <!-- 分页展示 --> 
+                                        <form action="{{url('admin/goods/index')}}">
+                        <div class="row"><div class="col-sm-8"><div class="dataTables_length" id="example1_length"><label><select name="num" aria-controls="example1" class="form-control input-sm">
+                        <option @if(!empty($request['num']) && $request['num'] ==10) selected="selected" @endif value="10">10</option>
+                        <option @if(!empty($request['num']) && $request['num'] ==25) selected="selected" @endif value="25">25</option>
+                        <option @if(!empty($request['num']) && $request['num'] ==50) selected="selected" @endif value="50">50</option>
+                        <option @if(!empty($request['num']) && $request['num'] ==100) selected="selected" @endif value="100">100</option>
+                        </select> </label></div></div><div class="col-sm-4"><div id="example1_filter" class="dataTables_filter"><label><div class="input-group input-group-sm">
+                                <input name="keyword" type="text" class="form-control" value="{{$request['keyword'] or ''}}">
+                        <span class="input-group-btn">
+                          <button class="btn btn-info btn-flat" type="submit">Go!</button>
+                        </span>
+                            </div></label></div></div></div>
                         </form>
 
                                 <thead>
@@ -80,6 +81,7 @@
                                 </tr>
                                @endforeach
                                 </tbody>
+
                             @endif
 
 
@@ -132,14 +134,17 @@
                                 @endforeach
                                @endforeach
                                @endforeach
+
+                               {{$data -> links()}}
                                 </tbody>
+
                             @endif
                             </table>
                             <!-- 分页展示 -->
+                        
                         </div><!-- /.box-body -->
-                    </div><!-- /.box -->
+                    </div><!-- /.box -->      
 
-          
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </section><!-- /.content -->

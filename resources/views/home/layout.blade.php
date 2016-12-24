@@ -5,7 +5,7 @@
 <meta name="Keywords" content="" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="Description" content="" />
-<title>用户中心_韩都衣舍HSTYLE网-韩风快时尚第一品牌购物商城。正品保证！</title>
+
 <!-- <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_base.css') }}"> -->
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_base.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_style.css') }}">
@@ -14,6 +14,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_search.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_list.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/user_common.css') }}">
+<script type="text/javascript" src="{{ asset('/home/js/jquery.slide.js') }}"></script>
 <script type="text/javascript"  src="{{ asset('/home/js/jquery.min.js') }}"></script>
 <script type="text/javascript"  src="{{ asset('/home/js/jquery-migrate-1.1.0.js') }}"></script>
 <script type="text/javascript"  src="{{ asset('/home/js/goods_no1214.js') }}"></script>
@@ -64,7 +65,7 @@ function closeDt(){
 </script>-->
 
 
-<div style="width:100%;height:200px;min-width:1200px;background:url({{ asset('/home/imgs/584a93b2Nfe89bf16.jpg') }}) no-repeat center top;">
+<!-- <div style="width:100%;height:200px;min-width:1200px;background:url({{ asset('/home/imgs/584a93b2Nfe89bf16.jpg') }}) no-repeat center top;">
  <div style="width:1400px; height:100%; position:relative; margin:0 auto;">
   	<a href="http://www.handu.com/topic-423.html" target="_blank" style="display:block; width:100%; height:100%"> 
 		<div style="width:1200px; position:absolute;">
@@ -73,7 +74,7 @@ function closeDt(){
     
   </div>
 
-</div>
+</div> -->
 
 
 
@@ -103,6 +104,42 @@ function closeDt(){
 #HD_MEMBERZONE li.zhuce_main:hover>img {display: block;}
 #HD_MEMBERZONE li.on>img {position: absolute;top: 15px;left: 4px;z-index: 222;}
 </style>
+
+@if(session('master'))
+<li class="on">
+  <a href="http://www.handu.com/user.php" target="_blank" title="15313066678" class="user_name">欢迎您，{{session('master') -> email}}</a>
+  
+  <a href="http://www.handu.com/user.php?act=privilege" title="注册会员" target="_blank">
+    
+          <em class="lv lv0"></em>
+      
+  </a>
+  <!--<img src="http://img01.handu.com/hdysweb/20141222/gwgl.png"  alt="官网会员内部攻略" border="0" usemap="#Map" />
+  <map name="Map" id="Map">
+    <area shape="rect" coords="0,2,151,27" href="http://www.handu.com/topic-1276.html" target="_blank" />
+  </map>-->
+</li>
+
+<li class="integral">
+  <a href="http://www.handu.com/user.php?act=exchange" target="_blank"><span>积分</span><b>100</b></a>
+</li> 
+<li><a href="{{url('home/logout')}}">退出</a></li>
+<li class="">
+    <div class="more-active">
+    <a href="http://www.handu.com/user.php" class="bn-more"><span>我的韩都</span></a><b></b>
+    <div class="more-items">
+        <table cellpadding="0" cellspacing="0">
+            <tbody>
+              <tr><td><a href="http://www.handu.com/user.php?act=order_list" target="_blank">我的订单</a></td></tr>
+              <tr><td><a href="http://www.handu.com/user.php?act=bonus" target="_blank">我的优惠券</a></td></tr>
+              <tr><td><a href="http://www.handu.com/user.php?act=collection_list" target="_blank">我的收藏</a></td></tr>
+              <tr><td><a href="http://www.handu.com/user.php?act=return_list" target="_blank">退货办理</a></td></tr>
+                         </tbody>
+        </table>
+    </div>
+    </div>
+</li>
+@else
 <li>您好，欢迎光临韩都衣舍！</li>
 <li>
   <a href="http://www.handu.com/user.php?act=login"  target="_blank">登录</a>
@@ -115,6 +152,8 @@ function closeDt(){
     <area shape="rect" coords="2,8,165,189" href="http://www.handu.com/user.php?act=register" target="_blank"/>
   </map>-->
 </li>
+@endif
+
 <li><a href="http://www.handu.com/flow.php?step=cart" style="margin-right:10px"  target="_blank">购物车</a></li>      </ul>
       <ul id="HD_HELPZONE" style="border-right:none;">
        
@@ -311,10 +350,10 @@ left: 4px;}
     <div id="hd_search">
       <div class="hdi-search">
         <div class="form hdin_not">
-          <form method="get" action="search.php">
+          <form method="get" action="{{url('/home/search')}}">
             <!--<label for="">请输入关键词</label>-->
-            <input type="text" class="text" name="keywords" value="">
-            <input type="submit" value="搜索" onClick="_czc.push(['_trackEvent', '搜索', '搜索', $('input[name=keywords]').val()])" class="button">
+            <input type="text" class="text" name="keywords" value="{{$request['keywords'] or ''}}">
+            <input type="submit" value="搜索" class="button">
           </form>
         </div>
       </div>
@@ -1051,7 +1090,7 @@ margin-top: 3px;}
         <a href="http://www.handu.com/themes/handuyishe/html/yyzz.html" target="_blank"><img src="{{ asset('/home/imgs/zxmbutton05_sy.jpg') }}" alt="" width="103" height="38" border="0" style="margin:5px 5px 0 5px;"></a>
 
 
-    <a href="https://ss.knet.cn/verifyseal.dll?sn=e14071837010051457jcgb000000&ct=df&a=1&pa=0.6688498684670776" target="_blank" style="display:inline-block;position:relative;width:102px;height:37px;">
+    <a href="" target="_blank" style="display:inline-block;position:relative;width:102px;height:37px;">
        <img src="{{ asset('/home/imgs/cnnic.png') }}" alt="" width="102" height="37" border="0"></a>
 
         <!--<a href="http://si.trustutn.org/info?sn=615140701004909923565" target="_blank">
@@ -1334,7 +1373,8 @@ $(function(){
 .gwd_toolbar_info{display:none !important; visibility:hidden !important; margin-left: -1000000px !important;}
 </style>
 
-<script src="{{ asset('/home/js/tag.js') }}" type="text/javascript" async></script><script type="text/javascript">
+
+<script type="text/javascript">
 
 $(function(){
   var regTitleList = $('#regTitle>a');

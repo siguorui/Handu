@@ -114,9 +114,9 @@ input.news_login_00_btn{background:url(../imgs/NEWS_login.png) no-repeat -0 -102
 .register_mail ul.register_list li .register_list_neirong{ float:left; color:#7b7b7b; text-indent:115px; width:600px;}
 .register_mail ul.register_list li .register_list_xieyi{ float:left; color:#393939; text-indent:115px; font-size:16px; margin-top:10px;}
 
-.register_mail ul.register_list li input.register_list_regree{background:url(../imgs/NEW_images/NEWS_login.png) no-repeat 0 -51px; width:171px; height:43px; border:none; font-size:18px; color:#fff; margin:10px 0 0 120px; cursor:pointer}
+.register_mail ul.register_list li input.register_list_regree{background:url(../imgs/NEWS_login.png) no-repeat 0 -51px; width:171px; height:43px; border:none; font-size:18px; color:#fff; margin:10px 0 0 120px; cursor:pointer}
 
-.register_mail ul.register_list li input.register_list_regree{background:url(../imgs/NEW_images/NEWS_login.png) no-repeat 0 -51px; width:171px; height:43px; border:none; font-size:18px; color:#fff; margin:10px 0 0 120px; cursor:pointer}
+.register_mail ul.register_list li input.register_list_regree{background:url(../imgs/NEWS_login.png) no-repeat 0 -51px; width:171px; height:43px; border:none; font-size:18px; color:#fff; margin:10px 0 0 120px; cursor:pointer}
 
 .register_mail ul.register_list li .register_list_tishi{ margin-top:3px;}
 .register_right{width: 360px;margin: 40px 0 0 30px;}

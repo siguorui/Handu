@@ -29,6 +29,7 @@ class CateController extends Controller
     		}
     	}
 
+
         //前端代码实现按如下格式
         // foreach ($data as $k1 => $v1) {
         //  echo $v1 -> title."<br/>";  //获取父级title
@@ -60,7 +61,6 @@ class CateController extends Controller
             }
 
         }
-        
 
     	if(strlen($id)==8)
         {
@@ -83,6 +83,7 @@ class CateController extends Controller
 
             return view('home.cate.index',['dateData'=>$dateData,'num'=>3,'fdata'=>$fdata,'data1'=>$data1,'data2'=>$data2,'datenum'=>$datenum]);
         }
+
     	
         //商品列表遍历
         $res = DB::table('category') -> where('id',$id) -> first();
@@ -141,5 +142,35 @@ class CateController extends Controller
         }
 
     }
+
+    public function nana($id)
+    {
+
+        $data = DB::table('category') -> where([['id','5'],['status','1']]) -> first();
+        // dd($data);
+
+        
+            $data1 = DB::table('category') -> where([['pid',$data->id],['status','1'],]) -> get();
+
+            foreach ($data1 as $key => $value) {
+                $data2[] = DB::table('category') -> where([['pid',$value->id],['status','1'],]) -> get();
+                
+                
+                foreach ($data2[$key] as $kk => $vv){
+                   
+                    $res[] = DB::table('goods_list') -> where('cate_id',$vv->id) -> get();
+                    // dd($res);
+                    
+                }
+
+
+            }
+            // dd($data2);
+            // dd($res);
+        return view('home.nana.nana',['data' => $data,'data1' => $data1,'data2' => $data2,'res' => $res]);
+        
+       
+    }
+ 
 
 }
