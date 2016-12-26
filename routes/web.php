@@ -106,6 +106,14 @@ Route::post('/home/goods/addCart','Home\GoodsController@addCart');
 Route::post('/home/goods/checkStock','Home\GoodsController@checkStock');
 //购物车页面显示
 Route::get('/home/goods/shopingcart','Home\GoodsController@shopingcart');
+//购物车商品移入收藏夹
+Route::post('/home/goods/removeToCollect','Home\GoodsController@removeToCollect');
+Route::post('/home/goods/toPay','Home\GoodsController@toPay');
+
+
+//商品订单
+Route::get('/home/order/add','Home\OrderController@add');
+
 
 
 

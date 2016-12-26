@@ -2,7 +2,7 @@
 <!-- saved from url=(0039)http://www.handu.com/flow.php?step=cart -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <title>购物车中心-韩都衣舍官方网站</title>
 <script charset="utf-8" src="{{asset('/home/js/v.js')}}"></script>
 <script type="text/javascript" id="veConnect" async="" src="{{asset('/home/js/capture-apps-4.18.6.js')}}"></script>
@@ -183,81 +183,56 @@ function dhceng(obj, sType)
             <div class="shop_qx" style="width: 186px;">备注</div>
         </div>
         <div id="cartGoodsList" class="shopping_nr_top">
-         
-<script type="text/javascript">
-function readCookie(name)
-{
-var cookieValue = "";
-var search = name + "=";
-if(document.cookie.length > 0)
-{
-offset = document.cookie.indexOf(search);
-if (offset != -1)
-{
- offset += search.length;
- end = document.cookie.indexOf(";", offset);
- if (end == -1) end = document.cookie.length;
- cookieValue = (document.cookie.substring(offset, end))
-}
-}
-document.write(cookieValue);
-}
 
-</script>        
-<script type="text/javascript">
-readCookie('sc');
-
-</script>  
-<h3> <!--<input type="checkbox" class="brand_checkall" name="" id="" /><span>-->品牌：<!--</span>--></h3>
-<ul id="brand_cart_1">       
-      <li id="rec-6720105">
+@foreach($cartData as $k=>$v)
+<h3> <span>品牌：{{$data[$k]->brand}}</span></h3>
+<ul id="brand_cart_1" class="{{$k}}">       
+      <li id="{{$k}}">
             <!--<div class="cbg xuan"><input name="cartIds" type="checkbox" value="6720105"/></div> -->
             <div class="cbg shop_product">
                 <div class="shop_product_pic">
-                    <a href="http://www.handu.com/goods-1053493.html" target="_blank" title="{{$data->title}}">
-                        <img src="{{asset('/home/imgs/goods')}}/{{$data->pic}}" width="112" border="0" alt="{{$data->title}}">
+                    <a href="http://www.handu.com/goods-1053493.html" target="_blank" title="{{$data[$k]->title}}">
+                        <img src="{{asset('/home/imgs/goods')}}/{{$data[$k]->pic}}" width="112" border="0" alt="{{$data[$k]->title}}">
                     </a>
                 </div>
                 <div class="shop_product_name">
-                    <a href="http://www.handu.com/goods-1053493.html" title="{{$data->title}}" target="_blank">{{$data->title}}</a>
+                    <a href="http://www.handu.com/goods-1053493.html" title="{{$data[$k]->title}}" target="_blank">{{$data[$k]->title}}</a>
                 </div>
                 
                 <div class="shop_product_size">
-                    <span>颜色:{{$cartData['color']}} &nbsp;&nbsp;&nbsp;尺码:{{$cartData['size']}}</span>
+                    <span>颜色:{{$v['color']}} &nbsp;&nbsp;&nbsp;尺码:{{$v['size']}}</span>
                 </div>
             </div>
-            <div class="cbg shop_product_money"> <div class="cprice" style="line-height:20px;"><del>￥{{$data->orign_price}}.00</del><br><span>￥{{$data->promt_price}}</span></div></div>
+            <div class="cbg shop_product_money"> <div class="cprice" style="line-height:20px;"><del>￥{{$data[$k]->orign_price}}.00</del><br><span>￥{{$data[$k]->promt_price}}</span></div></div>
             <div class="cbg shop_product_number">
                 <span class="amount-widget" id="J_AmountWidget">
-                    <span class="increase" onclick="zengjia(this)">+</span>
-                    <span class="decrease" onclick="jianshao(this)">-</span>
-                     <input name="recId" type="hidden" value="6720105">
-                     <input type="text" onchange="gaibian(this)" name="goods_number" class="text" old="1" value="{{$cartData['goodsNumber']}}" maxlength="3" title="请输入购买量">
-                     <input name="goodsPrice" type="hidden" value="">
+                    <span class="increase" onclick="zengjia({{$k}})">+</span>
+                    <span class="decrease" onclick="jianshao({{$k}})">-</span>
+                     <input name="recId[]" type="hidden" value="{{$k}}">
+                     <input type="text" onchange="gaibian({{$k}})" name="goods_number[]" class="text" old="1" value="{{$v['goodsNumber']}}" maxlength="3" title="请输入购买量">
+                     <!-- <input name="goodsPrice" type="hidden" value=""> -->
                 </span>
             </div>
-            <div class="cbg shop_product_money00">￥{{$data->promt_price}}.00</div>
+            <div class="cbg shop_product_money00">￥{{$data[$k]->promt_price}}.00</div>
             <div class="cbg shop_product_close">
                 <div class="middle">
-                    <a href="javascript:removeToCollect(6720105,1053493);"> 移入收藏夹</a><br>
-                    <a href="javascript:confirm_delgoods(6720105);"> 删除</a>
+                    <a href="javascript:removeToCollect({{$k}});"> 移入收藏夹</a><br>
+                    <a href="javascript:confirm_delgoods({{$k}});"> 删除</a>
                 </div>
             </div>
             <div class="cbg shop_product_tip">
                 <div class="middle"><a href="http://www.handu.com/topic-423.html" target="_blank"><span style="color:#c80a28;">【年终盛典】春季新品6折首发.全场满199包邮.领券满299减30/满399减80/满599减150</span></a></div>
             </div>
             <div class="shop_xinxi" style="display:none">
-                   <input type="hidden" class="goods_id" value="1053493">
+                   <!-- <input type="hidden" class="goods_id" value="1053493">
                    <input type="hidden" class="goods_attr_id" value="584182,584181">  
                    <input type="hidden" class="goods_number" value="1">   
-                   <input type="hidden" class="rec_id" value="6720105">   
-            </div>
-          
-             
-        </li>
-          
-        
+                   <input type="hidden" class="rec_id" value="{{$k}}">    -->
+            </div> 
+        </li>   
 </ul> 
+@endforeach
+
 <script>
 $(".cart_good_type").each(function(index,item){
   if(index==0){
@@ -274,9 +249,9 @@ $(".cart_good_type").each(function(index,item){
               <div class="accumulated fr">
                 <table>
                  <tbody><tr>
-                      <td><span id="goods_allnum" class="p_color">{{$cartData['goodsNumber']}}</span>件商品</td>
+                      <td><span id="goods_allnum" class="p_color">{{$num}}</span>件商品</td>
                       <td class="td_len1">总计：</td>
-                        <td id="total_Price" class="td_len">￥{{$cartData['total']}}</td>
+                        <td id="total_Price" class="td_len">￥{{$total}}</td>
                   </tr>
                   <tr>  
                           
@@ -295,10 +270,7 @@ $(".cart_good_type").each(function(index,item){
               
             </div>
         </div>
-         
-  
 
-        
         <div class="shopping_car_bottom shopping_car_bottom_bg">
             <!--<div class="shopping_car_bottom_left hg2">
                       <a id="batchDelete" href="javascript:void(0);">
@@ -316,7 +288,7 @@ $(".cart_good_type").each(function(index,item){
                         购物金额总计：
                         <span style="min-width:75px;display:inline-block;text-align:right;">
                           <span style="color:#bf0000; font-size:18px;">￥</span>
-                          <span id="totalAmount">{{$cartData['total']}}</span>
+                          <span id="totalAmount">{{$total}}</span>
                         </span>
                     </span>
                 </span>
@@ -326,8 +298,8 @@ $(".cart_good_type").each(function(index,item){
          
 
     </form>
-    <a href="http://www.handu.com/"><div class="cart_btn btn9 fl" style="margin-right:10px;margin-top:12px;" onclick="_czc.push([&#39;_trackEvent&#39;, &#39;购物车&#39;, &#39;继续购物&#39;]);"></div></a>
-    <a href="http://www.handu.com/flow.php?step=checkout" id="btn_goto_checkout"><div class="cart_btn btn1 fr" style="margin-top:12px;position:relative;" onclick="_czc.push([&#39;_trackEvent&#39;, &#39;购物车&#39;, &#39;去结算&#39;]);">
+    <a href="{{url('/')}}"><div class="cart_btn btn9 fl" style="margin-right:10px;margin-top:12px;" onclick="_czc.push([&#39;_trackEvent&#39;, &#39;购物车&#39;, &#39;继续购物&#39;]);"></div></a>
+    <a href="javascript:toPay()" id="btn_goto_checkout"><div class="cart_btn btn1 fr" style="margin-top:12px;position:relative;">
       <div class="turnOrder">
         正在转向订单信息,请稍候！
       </div>
@@ -361,16 +333,17 @@ $(".cart_good_type").each(function(index,item){
 
 
           <div class="slide" style="position: absolute; top: 0px; left: 1220px; z-index: 0;"> -->
-         
+            @foreach($keepData as $k=>$v)
               <div class="item">
                   <a href="http://www.handu.com/goods-1032502.html" title="" target="_blank">
-                       <img src="{{asset('/home/imgs/goods')}}/{{$data->pic}}" alt="" title="{{$data->title}}">
+                       <img src="{{asset('/home/imgs/goods')}}/{{$v->pic}}" alt="" title="{{$v->title}}">
                   </a>
-                  <p><a href="http://www.handu.com/goods-1032502.html" title="" target="_blank">{{$data->title}}</a></p>
-                  <p><span class="price">{{$data->promt_price}}.00</span></p>
+                  <p><a href="http://www.handu.com/goods-1032502.html" title="" target="_blank">{{$v->title}}</a></p>
+                  <p><span class="price">{{$v->promt_price}}.00</span></p>
               </div>
+            @endforeach
 
-          </div>
+          <!-- </div> -->
           <div class="slide" style="position: absolute; top: 0px; left: 1220px; z-index: 0; display: none;">       
           </div>
 
@@ -393,7 +366,7 @@ $(".cart_good_type").each(function(index,item){
 
 </div>
   
-<script charset="utf-8" type="text/javascript" src="{{asset('/home/js/dialog.js')}}" id="dialog_js"></script>
+<script type="text/javascript" src="{{asset('/home/js/dialog.js')}}" ></script>
 <script type="text/javascript">
 /*检查是否登录*/
 $('#btn_goto_checkout').click(function (){
@@ -537,44 +510,66 @@ function login_suc(){
         <script src="{{asset('/home/js/cert.js')}}"></script>
         <script type="text/javascript" src="{{asset('/home/js/certShow')}}"></script>
     </center>
-     
-  
- 
-   
-
 </div>
 
-<script type="text/javascript">
 
+<style type="text/css">
+.ajax_login_form .login_other{width:100%;position:relative;top:-12px;}
+.ajax_login_form .login_other .login_other_title{height:30px;line-height:30px;}
+.ajax_login_form .login_other .login_other_btn a span{background-image: url(themes/handuyishe/images/login_lh.png)}
+.ajax_login_form .login_other .login_other_btn .login_other_btn00{background-position:-11px -24px;width: 80px;height: 30px;display:inline-block;margin-right:15px;}
+.ajax_login_form .login_other .login_other_btn .login_other_btn11{background-position:-11px -62px;}
+.ajax_login_form .login_other .login_other_btn .login_other_btn22{background-position:-11px -101px;}
+.ajax_login_form .login_other .login_other_btn .login_other_btn33{background-position:-11px -139px;}
+</style>
 
-/*
- *  以后可以替换 login_ajax.lbi 中的isLogin
- * @param callback 若是已登录状态或点登录按钮后的回调函数
- * @param 点击登录按钮后的回调函数
- * 依赖： js/dialog/dialog.js" id="dialog_js" 
- * 此函数定义在footer中，所有页面引入dialog.js后均可直接使用，callback在各自页面中自行定义。
- **/
-function _is_login (callback){
-    if(typeof(callback)=='undefined'){
-         callback=function(){};
-    }
-    var login_callbackname='login_callback_'+parseInt(Math.random()*1000000000000); 
-    this[login_callbackname]=function(d){
-        DialogManager.close('L_ajax_login');
-        callback(d);
-    }
-  $.get("user.php?act=isLogin",{rid:Math.random()},function(data){
-    if(parseInt(data.user_id) > 0 && data.username){
-             callback(data);
-    }else{
-      //显示登录框
-            var url='/user.php?act=act_login_ajax&login_callback='+login_callbackname;
-            ajax_form(url,'L_ajax_login', 450 ,'登录');
-    }
-  },'JSON');
-}
- 
-</script>
+<div class="ajax_login_form" id="ajax_login_form" style="display: none">
+  <div id="dialog_object_L_ajax_login" did="L_ajax_login" class="dialog_wrapper dialog_has_title" style="z-index: 9999; position: absolute; width: 450px; left: 406.5px; top: 318.5px;"><div class="dialog_body" style="z-index: 9991; position: relative;"><h3 class="dialog_head"><div class="dialog_ornament1"></div><div class="dialog_ornament2"></div><span class="dialog_title"><span class="dialog_title_icon">登录</span></span><span class="dialog_close_button" style="position: absolute; text-indent: -9999px; cursor: pointer; overflow: hidden;">close</span></h3><div class="dialog_content" style="margin: 0px; padding: 0px;">
+  <form name="formLogin" action="{{url('/home/login')}}" method="post">
+        {{ csrf_field() }}
+    <ul>
+    <li>
+      <label for="ajax_username">用户名：</label>
+      <input id="ajax_username" name="ajax_username" type="text">
+    </li>
+    <li>
+            <label for="ajax_password">密&#12288;码：</label>
+      <input id="ajax_password" name="ajax_password" type="password">
+      <span id="ajax_login_nr_tishi" class="notice_msg"></span>
+    </li>
+        <li id="captcha_li">
+            <label for="ajax_captcha">验证码：</label>
+      <input id="captcha" name="captcha" style="width:100px;" type="text">&nbsp;<a onclick="javascript:re_captcha();" ><img src="{{ URL('kit/captcha/1') }}" id="c2c98f0de5a04167a9e427d883690ff6" width="86" height="29" alt="验证码" title="刷新图片" align="absmiddle"></a>
+        <script>  
+            function re_captcha() {
+              $url = "{{ URL('kit/captcha') }}";
+                  $url = $url + "/" + Math.random();
+                  document.getElementById('c2c98f0de5a04167a9e427d883690ff6').src=$url;
+            }
+          </script>
+      </li>
+    <li> 
+      <button type="submit" onclick="__ajaxLogin();" id="ajax_loginSubmit" style="margin-left:114px;"> </button>
+            <a class="ajax_reg_link" href="{{url('home/user/register')}}" target="_blank">
+            <span style="color:#c80a28;">注册</span>
+            </a>
+            <a class="ajax_reg_link" href="{{url('/home/login')}}" target="_blank">忘记密码</a> 
+    </li>
+  </ul>
+  </form>
+  <div class="login_other">
+    <div class="login_other_title">其他登录方式：</div>
+    <div class="login_other_btn" style="margin-left:30px;">
+      <a href="javascript:void(0);" onclick="toQQLogin();_czc.push(['_trackEvent', '登陆', 'QQ']);"><span class="login_other_btn00"></span></a>
+      <a href="javascript:void(0);" onclick="toSinaLogin();_czc.push(['_trackEvent', '登陆', 'Sina']);"><span class="login_other_btn00 login_other_btn11"></span></a>
+      <a href="javascript:void(0);" onclick="toXunleiLogin();_czc.push(['_trackEvent', '登陆', 'Thunder']);"><span class="login_other_btn00 login_other_btn22"></span></a>
+      <a href="javascript:void(0);" onclick="toAlypayLogin();_czc.push(['_trackEvent', '登陆', 'Alipay']);"><span class="login_other_btn00 login_other_btn33"></span></a>
+    </div>
+  </div>
+</div>
+
+</div></div><div style="clear:both;display:block;"></div><div class="dialog_border" style="left: -5px; top: -5px; z-index: 9990; display: block; position: absolute; width: 460px;"></div></div>
+
 
 <script type="text/javascript">
 
@@ -607,7 +602,7 @@ $(function() {
 </script> 
 
 
-<div class="float_box" style="display: none;">
+<div class="float_box" style="display: block;">
   
   <div class="float_app"></div>
   <a href="http://www.handu.com/flow.php?step=cart" target="_blank" class="a1" onclick="_czc.push([&#39;_trackEvent&#39;, &#39;悬浮&#39;, &#39;购物车&#39;]);"></a>
@@ -650,10 +645,6 @@ itemparam: "size=41|color=red|brand=tata",
       erpparam: "sid=eadfddeeel|utm=adfe|source=baidu" 
 
 } 
-</script><script type="text/javascript" charset="utf-8" src="http://www.handu.com/flow.php?step=cart"></script>
- 
-  
- 
    
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -693,13 +684,6 @@ var _hmt = _hmt || [];
 .gwd_toolbar_info{display:none !important; visibility:hidden !important; margin-left: -1000000px !important;}
 </style>
 <script src="{{asset('/home/js/tag.js')}}" type="text/javascript" async=""></script>
-
-
-
-
-
-
-
 
 
 <script type="text/javascript">
@@ -801,55 +785,145 @@ $(function(){
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /*左右增加减少*/
-function zengjia(obj){
-    var num = $(obj).siblings("input[name='goods_number']").val();
-    num++;
-    if(num>999){num=999;}
-    $(obj).siblings("input[name='goods_number']").val(num);
-    rec_id = $(obj).siblings("input[name='recId']").val();
-    changeCart(rec_id,num)
-}
-function jianshao(obj){
-    var num =   $(obj).siblings("input[name='goods_number']").val();
-    num--;
-    if(num<1){num=1;}
-    $(obj).siblings("input[name='goods_number']").val(num);
-    rec_id = $(obj).siblings("input[name='recId']").val();
-    changeCart(rec_id,num)
-}
-function gaibian(obj){
-    var num =   $(obj).val();
-    if(isNaN(num) || num <= 0 ) {
-        alert('请输入正确的购买数量');
-        return;
+function zengjia(rec_id){
+     var id ='#'+rec_id;
+    var number = $(id).find("input[name='goods_number[]']").val();
+    number = parseInt(number)+1;
+    var price = $(id).find('del').next().next('span').html();
+    $('#goods_allnum').html(parseInt($('#goods_allnum').html()) + 1);
+    var totalAmount = $('#totalAmount').html();
+    // var price = parseInt(price);
+    nprice = price.split('￥')[1];
+    if(parseInt(totalAmount)>=0){
+       totalAmount = parseInt(totalAmount) + parseInt(nprice);
     }
-    
-    $(obj).val(num);
-    rec_id = $(obj).siblings("input[name='recId']").val();
-    changeCart(rec_id,num)
+
+    $('#total_Price').html('￥'+totalAmount);
+    $('#totalAmount').html(totalAmount);
+    $(id).find("input[name='goods_number[]']").val(number);
+}
+function jianshao(rec_id){
+    var id ='#'+rec_id;
+    var number = $(id).find("input[name='goods_number[]']").val();
+    if(number==1){
+      return false;
+    }
+    number = number-1;
+    var price = $(id).find('del').next().next('span').html();
+    $('#goods_allnum').html($('#goods_allnum').html()- 1);
+    var totalAmount = $('#totalAmount').html();
+    // var price = parseInt(price);
+    nprice = price.split('￥')[1];
+    if(parseInt(totalAmount)>=0){
+        totalAmount = totalAmount - nprice;
+    }
+
+    $('#total_Price').html('￥'+totalAmount);
+    $('#totalAmount').html(totalAmount);
+    $(id).find("input[name='goods_number[]']").val(number);
 }
 
+function gaibian(rec_id){
+   var id ='#'+rec_id;
+    var number = $(id).find("input[name='goods_number[]']").val();
+    if(number<=0){
+      alert('请输入正确的购买数量');
+      $(id).find("input[name='goods_number[]']").val(1);
+      return false;
+    }
+
+
+    
+}
+
+function toPay(){
+  $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+    });
+  
+
+  var formElement = $("#formCart")[0]; 
+  var formData = new FormData(formElement);
+  // console.log(str);
+
+  $.ajax({
+                type:'POST',
+                url:"{{url('/home/goods/toPay')}}",
+                data:formData,
+                processData: false,    //必须设置
+                contentType: false,    //必须设置
+                success:function(data)
+                {
+                    
+                    
+                },
+                error:function()
+                {
+                    alert("异常");
+                }
+
+            });
+
+    // JSON.parse(arr);
+    // console.log(arr);
+
+}
 /*
  * 改变库存价格的方法
  * rec_id:购物车的id号，goods_number 商品的数量
  */
 function changeCart(rec_id,goods_number){
-    $.post('flow.php?step=ajax_update_cart',{rec_id: rec_id,goods_number:goods_number,rid:Math.random()},function(result){
-        var $num_input=$('#rec-'+rec_id).find('input[name=goods_number]');
-        if(result.error == 0) { 
-            _update_cart_info(result);
-            $num_input.attr('old',goods_number);
-        }else{
-            popMsg(result.message);
-            //恢复修改前数量
-            $num_input.val($num_input.attr('old'));
+    // $.post('flow.php?step=ajax_update_cart',{rec_id: rec_id,goods_number:goods_number,rid:Math.random()},function(result){
+    //     var $num_input=$('#rec-'+rec_id).find('input[name=goods_number]');
+    //     if(result.error == 0) { 
+    //         _update_cart_info(result);
+    //         $num_input.attr('old',goods_number);
+    //     }else{
+    //         popMsg(result.message);
+    //         //恢复修改前数量
+    //         $num_input.val($num_input.attr('old'));
             
-        }
-    },'JSON');
+    //     }
+    // },'JSON');
+    
 }
-function removeToCollect(rec_id,goods_id){
-    collect(goods_id);
-    delgoods(rec_id);
+function removeToCollect(rec_id){
+     $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+      });
+    var id ='#'+rec_id;
+    var number = $(id).find("input[name='goods_number[]']").val();
+    $.ajax({
+                type:'POST',
+                url:"{{url('/home/goods/removeToCollect')}}",
+                data:{id:rec_id,number:number},
+                success:function(data)
+                {
+                   if(data==0){
+                      window.location.href="{{url('home/login/login')}}";
+                      return false;
+                   }else if(data==1){
+                      alert('移入收藏夹成功');
+                      return false;
+                   }else if(data==2){
+                      alert('该商品已在收藏夹');
+                      return false;
+                   }else {
+                      alert('移入收藏夹失败');
+                      return false;
+                   }
+                    
+                },
+                error:function()
+                {
+                    alert("异常");
+                }
+
+            });
 }
 function confirm_delgoods(rec_id){
     var op={'text':'确认要从购物车中删除吗？',
@@ -861,27 +935,49 @@ function confirm_delgoods(rec_id){
    
 }
 //删除商品ajax
+var li = null;
 function delgoods(rec_id){
-  var str='';
-  $.post('flow.php?step=delete_goods',{id: rec_id},function(result){
-        var goods=result.goods_list;
-      
-        if(goods){
-            str+='<li id="del-'+goods.goods_id+'"><ul class="deleted_ul">';
-            str+='<li style="width:5%;"> <img title="'+goods.goods_name+'" class="fl" alt="'+goods.goods_name+'" src="'+goods.goods_thumb+'"></li>';
-            str+='<li style="width:48%;"><p><a target="_blank" title="'+goods.goods_name+'" href="goods-'+goods.goods_id+'.html">'+goods.goods_name+'</a></p><p><span>'+goods.goods_attr+'</span></p></li>';
-            str+='<li style="width:13%;">'+goods.goods_price+'</li>';
-            str+='<li style="width:23%">'+goods.goods_number+'</li>';
-            str+='<li><a href="javascript:tobuy('+goods.goods_id+');">重新购买</a>&nbsp;|&nbsp;<a href="javascript:collect('+goods.goods_id+')">收藏夹</a> </li>';
-            str+='<li style="display:none"><input class="goods_id" type="hidden" value="'+goods.goods_id+'"><input class="goods_attr_id" type="hidden" value="'+goods.goods_attr_id+'"><input class="goods_number" type="hidden" value="'+goods.goods_number+'"><input class="rec_id" type="hidden" value="'+goods.rec_id+'"></li>';
-            str+='</ul></li>';
-            
-        }
-        $('.deleted').append(str);
-        _update_cart_info(result);
-    
-  },'json');
+    var id ='#'+rec_id;
   
+    var src = $(id).find('.shop_product_pic img').attr('src');
+    var title = $(id).find('.shop_product_pic img').attr('alt');
+    var number = $(id).find("input[name='goods_number[]']").val();
+    var sc = $(id).find('.shop_product_size span').html();
+    var price = $(id).find('del').next().next('span').html();
+
+    // $(id).css('display','none');
+   
+    $(id).parent().css('display','none');
+    $(id).parent().prev('h3').css('display','none');
+    li = $(id).remove();
+
+    //更新数量、总价信息
+    $('#goods_allnum').html($('#goods_allnum').html()-number);
+    var total_Price = $('#total_Price').html();
+    var ntotal_Price = total_Price.split('￥')[1];
+    // var price = parseInt(price);
+    nprice = price.split('￥')[1];
+    if(parseInt(ntotal_Price)>=0){
+    var total = ntotal_Price - nprice*number;
+    }
+
+    $('#total_Price').html('￥'+total);
+    $('#totalAmount').html(total);
+    
+
+  var str='';
+
+  str+='<div class="del'+rec_id+'">';
+  str+='<li id="del-'+rec_id+'"><ul class="deleted_ul">';
+  str+='<li style="width:5%;"> <img title="'+ title+'" class="fl" alt="'+title+'" src="'+src+'"></li>';
+  str+='<li style="width:48%;"><p><a target="_blank" title="'+title+'" href="goods-'+title+'.html">'+title+'</a></p><p><span>'+sc+'</span></p></li>';
+  str+='<li style="width:13%;">'+price+'</li>';
+  str+='<li style="width:23%">'+number+'</li>';
+  str+='<li><a href="javascript:tobuy('+rec_id+');">重新购买</a>&nbsp;|&nbsp;<a href="javascript:removeToCollect('+rec_id+')">收藏夹</a> </li>';
+  str+='<li style="display:none"><input class="goods_id" type="hidden" value="'+rec_id+'"><input class="goods_attr_id" type="hidden" value="'+sc+'"><input class="goods_number[]" type="hidden" value="'+number+'"><input class="rec_id" type="hidden" value="'+rec_id+'"></li>';
+  str+='</ul></li></div>';
+            
+  $('.deleted').append(str);
   $('#show_del_msg'). html('您已删除的商品，您可以重新购买或放入收藏夹');
   
 }
@@ -890,29 +986,33 @@ function delgoods(rec_id){
 
 //重新购买方法
 function tobuy(goodsId){
-    var goodsNumber = $("#del-"+goodsId).find('.goods_number').val();
-    var specId=$("#del-"+goodsId).find('.goods_attr_id').val();
-    var specIdArr=specId.split(",");
-    var goods        = new Object();
-    goods.quick    = 0;
-    goods.spec     = specIdArr;
-    goods.goods_id = goodsId;
-    goods.number   = goodsNumber;
-    goods.parent   = 0;
-    goods.is_tocart   = 1;      
-    $.post("flow.php?step=add_to_cart&need_carts=1&confirmType=1", {id: specId, goods:$.toJSON(goods)},function(result){
-    
-        if(result.error=='0' && result.confirm_type == '1'){
-            _update_cart_info(result);    
-            
-            $('#del-'+goods.goods_id).remove();
-            if($('.deleted').find('li').length ==0){
-                $('#show_del_msg'). html('');
-            }
+    var id ='#'+goodsId;
+    var res = $('.deleted').find('img').length;
 
-        }
-        
-    },'JSON');
+    if(res==1){
+        $('#show_del_msg'). html('');
+    }
+
+    // $(id).css('display','block');
+    // $(id).parent().css('display','block');
+    // $(id).parent().append(li);
+    // $(id).parent().prev('h3').css('display','block');
+    $('.'+goodsId).css('display','block');
+    $('.'+goodsId).append(li);
+    $('.'+goodsId).prev('h3').css('display','block');
+
+    var cla = '.del'+goodsId;
+    var totalAmount = $('#totalAmount').html();
+    var number = $(cla).find('.deleted_ul li').eq(3).html();
+    var price = $(cla).find('.deleted_ul li').eq(2).html();
+    price = price.split('￥')[1];
+
+    totalAmount = parseInt(totalAmount) + parseInt(price*number);
+    $('#goods_allnum').html(parseInt($('#goods_allnum').html())+parseInt(number));
+    $('#total_Price').html('￥'+totalAmount);
+    $('#totalAmount').html(totalAmount);
+    
+    $(cla).remove();
 
 }
 //更新购物车内容 商品数量 优惠价格，总价等信息

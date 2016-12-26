@@ -382,12 +382,6 @@
 <script type="text/javascript">
 
 $(function($){
-  $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-      });
-
   $("#size li:first").addClass('sel');
   $("#color li:first").addClass('sel');
   $('#goodsNumber').val('1');
@@ -396,6 +390,11 @@ $(function($){
  
 //定义函数供给(#size li)和(#color li)的click方法调用
 function choose(){
+    $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+      });
     var str = '您已选择了';
     if($("#size li").hasClass('sel')){
         var size = $("#size .sel span" ).html();
@@ -493,7 +492,11 @@ function change_num(num)
 }
 
 function insertCart(){
-   
+    $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+      });
 
     if($("#size li").hasClass('sel'))
     {
