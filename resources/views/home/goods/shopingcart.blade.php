@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039)http://www.handu.com/flow.php?step=cart -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -172,7 +172,8 @@ function dhceng(obj, sType)
                 </div>
             </div>
         </div>-->
-    <form id="formCart" name="formCart" method="post" action="">
+    <form id="formCart" name="formCart" method="post" action="{{url('/home/goods/toPay')}}">
+        {{ csrf_field() }}
         <div class="shopping_nr_title">
             <!--<div class="shop_qx" style="width: 110px;"><input id="selectAll" type="checkbox" value=""> 全选</div>-->
             <div class="shop_qx" style="width: 381px;">商品名称</div>
@@ -209,7 +210,7 @@ function dhceng(obj, sType)
                     <span class="increase" onclick="zengjia({{$k}})">+</span>
                     <span class="decrease" onclick="jianshao({{$k}})">-</span>
                      <input name="recId[]" type="hidden" value="{{$k}}">
-                     <input type="text" onchange="gaibian({{$k}})" name="goods_number[]" class="text" old="1" value="{{$v['goodsNumber']}}" maxlength="3" title="请输入购买量">
+                     <input type="text" onchange="gaibian({{$k}})" name="goods_number[]" class="text" old="1" id="goodsNumber" value="{{$v['goodsNumber']}}" maxlength="3" title="请输入购买量">
                      <!-- <input name="goodsPrice" type="hidden" value=""> -->
                 </span>
             </div>
@@ -297,16 +298,16 @@ $(".cart_good_type").each(function(index,item){
         </div>
          
 
-    </form>
+    
     <a href="{{url('/')}}"><div class="cart_btn btn9 fl" style="margin-right:10px;margin-top:12px;" onclick="_czc.push([&#39;_trackEvent&#39;, &#39;购物车&#39;, &#39;继续购物&#39;]);"></div></a>
-    <a href="javascript:toPay()" id="btn_goto_checkout"><div class="cart_btn btn1 fr" style="margin-top:12px;position:relative;">
+    <a id="btn_goto_checkout" onclick="to_pay()"><div class="cart_btn btn1 fr" style="margin-top:12px;position:relative;">
       <div class="turnOrder">
         正在转向订单信息,请稍候！
       </div>
     </div></a>
- 
+    
 </div>
-
+</form>
 
 
 <div class="div_deleted">
@@ -367,21 +368,6 @@ $(".cart_good_type").each(function(index,item){
 </div>
   
 <script type="text/javascript" src="{{asset('/home/js/dialog.js')}}" ></script>
-<script type="text/javascript">
-/*检查是否登录*/
-$('#btn_goto_checkout').click(function (){
-    var url=$(this).attr('href');
-    _is_login(function(data){
-        location=url;
-    });
-    return false;
-});
-function login_suc(){
-  location.reload();
-  DialogManager.close('L_ajax_login');
-  return ;
-}
-</script>
 
 <div class="handu_footer ">
 <div class="footer_info">
@@ -570,36 +556,6 @@ function login_suc(){
 
 </div></div><div style="clear:both;display:block;"></div><div class="dialog_border" style="left: -5px; top: -5px; z-index: 9990; display: block; position: absolute; width: 460px;"></div></div>
 
-
-<script type="text/javascript">
-
-$(function() {
-  //加载页头用户登陆状态
-    $('#HD_MEMBERZONE').load('/online.php?act=get_user_status&ts=' + (new Date().getTime()));
-
-    
-    //添加收藏夹
-    $('#nav_addFavorite a').click(function(){
-        var sURL='http://www.handu.com';
-        var sTitle='韩都衣舍HSTYLE';
-        try {
-            window.external.addFavorite(sURL, sTitle);
-        }
-        catch (e) {
-            try {
-                window.sidebar.addPanel(sTitle, sURL, "");
-            }
-            catch (e) {
-                alert("您可以尝试通过快捷键 Ctrl + D 加入到收藏夹~");
-            }
-        }
-    
-    });
-   
-});
-
-
-</script> 
 
 
 <div class="float_box" style="display: block;">
@@ -870,25 +826,8 @@ function toPay(){
     // console.log(arr);
 
 }
-/*
- * 改变库存价格的方法
- * rec_id:购物车的id号，goods_number 商品的数量
- */
-function changeCart(rec_id,goods_number){
-    // $.post('flow.php?step=ajax_update_cart',{rec_id: rec_id,goods_number:goods_number,rid:Math.random()},function(result){
-    //     var $num_input=$('#rec-'+rec_id).find('input[name=goods_number]');
-    //     if(result.error == 0) { 
-    //         _update_cart_info(result);
-    //         $num_input.attr('old',goods_number);
-    //     }else{
-    //         popMsg(result.message);
-    //         //恢复修改前数量
-    //         $num_input.val($num_input.attr('old'));
-            
-    //     }
-    // },'JSON');
-    
-}
+
+
 function removeToCollect(rec_id){
      $.ajaxSetup({
             headers: {
@@ -935,7 +874,7 @@ function confirm_delgoods(rec_id){
    
 }
 //删除商品ajax
-var li = null;
+var li = new Array();
 function delgoods(rec_id){
     var id ='#'+rec_id;
   
@@ -949,7 +888,7 @@ function delgoods(rec_id){
    
     $(id).parent().css('display','none');
     $(id).parent().prev('h3').css('display','none');
-    li = $(id).remove();
+    li[rec_id] = $(id).remove();
 
     //更新数量、总价信息
     $('#goods_allnum').html($('#goods_allnum').html()-number);
@@ -998,7 +937,7 @@ function tobuy(goodsId){
     // $(id).parent().append(li);
     // $(id).parent().prev('h3').css('display','block');
     $('.'+goodsId).css('display','block');
-    $('.'+goodsId).append(li);
+    $('.'+goodsId).append(li[goodsId]);
     $('.'+goodsId).prev('h3').css('display','block');
 
     var cla = '.del'+goodsId;
@@ -1051,6 +990,38 @@ function collect(goodsId){
     
   },'json');
 
+}
+
+//关闭登录框
+$('.dialog_close_button').click(function(){
+    $('#ajax_login_form').css('display','none');
+});
+
+function to_pay(){
+    //判断购物车内有没有商品
+     var obj = $('#cartGoodsList').find('li').length;
+      if(obj == 0)
+      {
+          alert('购物车内没有商品');
+          return false;
+      }
+
+    @if(!session('master'))
+
+      alert('请先登录');
+      $('#ajax_login_form').css('display','block');
+      return false;
+    @endif
+
+     var goodsNumber = $('#goodsNumber').val();
+     if(goodsNumber<=0)
+    {
+      alert('请输入正确的商品数量');
+      return false;
+    }
+    
+    document.getElementById('formCart').submit();
+    return false;
 }
 
 </script>

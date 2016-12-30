@@ -1,19 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>订单确认中心-韩都衣舍官方网站</title>
 
-<script type="text/javascript" id="veConnect" async="" src="%E8%AE%A2%E5%8D%95%E7%A1%AE%E8%AE%A4%E4%B8%AD%E5%BF%83-%E9%9F%A9%E9%83%BD%E8%A1%A3%E8%88%8D%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99_files/capture-apps-4.js"></script><script src="%E8%AE%A2%E5%8D%95%E7%A1%AE%E8%AE%A4%E4%B8%AD%E5%BF%83-%E9%9F%A9%E9%83%BD%E8%A1%A3%E8%88%8D%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99_files/hm.js"></script><script async="" src="%E8%AE%A2%E5%8D%95%E7%A1%AE%E8%AE%A4%E4%B8%AD%E5%BF%83-%E9%9F%A9%E9%83%BD%E8%A1%A3%E8%88%8D%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99_files/analytics.js"></script><script type="text/javascript" async="" charset="utf-8" src="%E8%AE%A2%E5%8D%95%E7%A1%AE%E8%AE%A4%E4%B8%AD%E5%BF%83-%E9%9F%A9%E9%83%BD%E8%A1%A3%E8%88%8D%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99_files/ntkfstat.js"></script><script type="text/javascript" language="javascript" src="%E8%AE%A2%E5%8D%95%E7%A1%AE%E8%AE%A4%E4%B8%AD%E5%BF%83-%E9%9F%A9%E9%83%BD%E8%A1%A3%E8%88%8D%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99_files/jquery_002.js"></script>
-<script type="text/javascript" language="javascript" src="%E8%AE%A2%E5%8D%95%E7%A1%AE%E8%AE%A4%E4%B8%AD%E5%BF%83-%E9%9F%A9%E9%83%BD%E8%A1%A3%E8%88%8D%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99_files/jquery.js"></script>
+<script type="text/javascript" id="veConnect" async="" src="{{ asset('/home/js/capture-apps-4.js') }}"></script>
+<script src="{{ asset('/home/js/hm.js') }}"></script><script async="" src="{{ asset('/home/js/analytics.js') }}"></script><script type="text/javascript" async="" charset="utf-8" src="{{ asset('/home/js/ntkfstat.js') }}"></script><script type="text/javascript" language="javascript" src="{{ asset('/home/js/jquery_002.js') }}"></script>
+<script type="text/javascript" language="javascript" src="{{ asset('/home/js/jquery.js') }}"></script>
 <script type="text/javascript">
 var isIndex = '';
 var process_request = "正在处理您的请求..."; 
 </script>
 <script type="text/javascript" src="{{ asset('/home/js/utils.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/home/js/jquery-1.8.3.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/home/js/transport_jquery.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/home/js/region.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_base.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_cart.css') }}/">
 <script type="text/javascript" async="async" charset="utf-8" src="{{ asset('/home/js/zh_cn.js') }}" data-requiremodule="lang"></script>
@@ -155,7 +156,7 @@ function dhceng(obj, sType)
 } 
 </script></div>
 
-<form action="flow.php?step=done" method="post" name="theForm" onsubmit="return checkShoppingOrderForm();" id="theForm">
+<!-- <form action="" method="post" name="theForm" onsubmit="return checkShoppingOrderForm();" id="theForm"> -->
 <input name="is_now" id="is_now" value="0" type="hidden">
 <input name="is_package" id="is_package" value="" type="hidden">
 <div class="cart_header" style="width:990px;">
@@ -168,115 +169,362 @@ function dhceng(obj, sType)
       <div class="shopping_order">
           <div class="shopping_order_title">填写并核对订单信息</div>
            <ul class="confirm_list">
-                <li id="shop_address">
-                		
-                    <h2>收货人信息<span style="display:block;position:relative;top:-30px;left:75px;" id="address_info" class="shop_updateinfo" subjectname="收货" onclick="openHide(this,0);" status="hide">[修改]</span></h2>
-                    <div class="shopping_order_currentinfo" style="display:block;">
-                      
-                   </div>
-                   <div id="all_address" class="shopping_order_info_parent" style="display: block;">
+
+<li id="shop_address">	
+    <h2>收货人信息<span style="display:block;position:relative;top:-30px;left:75px;" id="address_info" class="shop_updateinfo" subjectname="收货" onclick="openHide(this,0);" status="hide">[修改]</span></h2>
+    <div class="shopping_order_currentinfo" style="display:block;">
+      
+   </div>
+
+   
+
+   <div id="all_address" class="shopping_order_info_parent" style="display: block;">
                    	
   <ul class="shopping_order_address" id="shopping_order_address" style="width:100%;">
-   	   		<li class="selected">
+      @foreach($address as $value)
+   	   		<li class="{{$value->state==1? "selected":''}} addr_list" ondblclick="edit_show(this)" onclick="save(this)">
           <span class="address_name">
-            <input name="address" value="1259237" checked="checked" style="display:none;" type="radio">&nbsp;&nbsp;&nbsp;
-            汪大爷&nbsp;&nbsp;&nbsp;15313066678          </span>
+            <input name="address" value="{{$value->id}}" checked="checked" style="display:none;" type="radio">&nbsp;&nbsp;&nbsp;
+            {{$value->to_name}}&nbsp;&nbsp;&nbsp;{{$value->phone}}        </span>
           
-          <input class="address_isnow" value="0" type="hidden">
+          <input name="is_default" value="{{$value->state}}" type="hidden">
+          
           <br>
           <span class="address_dizhi" style="word-break: break-all;word-wrap: break-word;overflow:hidden;position:absolute;top:25px;padding: 5px 10px;line-height: 25px;height:40px;">
-            北京            北京市            西城区            北京市西城区复兴门内大街49号          </span>
+            {{$value->addr_area}}             {{$value->addr_deta}}</span>
         		 
           <br>
        		<span style="display:none;" id="addr_edit">
             <input class="hide_address_id" value="1259237" type="hidden">
-            <a class="edit" style="cursor:pointer;" onclick="edit_address($(this),0);">[编辑]</a>
-            <a class="edit" href="javascript:void(0);" onclick="if (confirm('你确认要删除该收货地址吗？'))dropAddress('1259237');">[删除]</a>
+            <a class="edit" style="cursor:pointer;" onclick="edit_address({{$value->id}},event);">[编辑]</a>
+            <a class="edit" href="javascript:void(0);" onclick="if (confirm('你确认要删除该收货地址吗？'))dropAddress({{$value->id}});">[删除]</a>
           </span>
  			</li>
+      @endforeach
         <li id="newAddress" style="background:none;">
       <span>
         <input class="hide_address_id" value="" type="hidden"> 
         <input class="address_isnow" value="0" type="hidden">
         <input name="address" value=" " style="display:none;" type="radio">&nbsp;&nbsp;&nbsp;
-        <input name="" value="使用新地址" style="display: inline-block;padding: 0 10px;overflow: hidden;border: 1px solid #ccc;border-width: 0 1px;border-radius: 2px;background: #ccc url({{asset('/home/imgs/btn_cart.png')}}) 0 -380px repeat-x;cursor: pointer;color: #333;height: 25px;line-height: 25px;" type="button">
+        <input name="" value="使用新地址" onclick="show_addr()" style="display: inline-block;padding: 0 10px;overflow: hidden;border: 1px solid #ccc;border-width: 0 1px;border-radius: 2px;background: #ccc url({{asset('/home/imgs/btn_cart.png')}}) 0 -380px repeat-x;cursor: pointer;color: #333;height: 25px;line-height: 25px;" type="button">
       </span>
     </li>
   </ul>
+
+ <form action="{{url('/home/order/add_address')}}" id="formCart" method="post">
+ 
   <ul class="shopping_order_addressContent" id="edit_address" style="display:none;">
-  </ul>
+   
+      <li>
+        <div class="all_address_name"><em class="star">*</em>收货人姓名：</div> 
+            <input value="" id="consignee" name="to_name" maxlength="20" class="all_address_txt" type="text"> (必填)
+      </li>
+    <li>
+      <div class="all_address_name"><em class="star">*</em>所在地区：</div>
+      <div class="all_address_select">
+            <select id="province" onchange="showcity()"><option value="0">请选择</option> </select>
+            <input id='province1' name="province" type="hidden"/>
+            <select id="city"  onchange="showarea()"><option value="0">请选择</option> </select>
+            <input id='city1' name="city" type="hidden"/>
+            <select id="area" onchange="showdistrict()" ><option value="0">请选择</option></select>
+            <input id='area1' name="district" type="hidden"/>
+       </div>
+    </li>
+    <li>
+      <div class="all_address_name"><em class="star">*</em>详细地址：</div>
+        <input id="address" name="addr_deta" class="all_address_txt00" maxlength="200" value="" type="text">(必填)</li>
+    <li>
+     <div class="all_address_name"><em class="star">*</em>电话：</div>
+    <input value="" id="tel" class="all_address_txt" maxlength="12" name="phone" type="text">  (必填)</li>
 
-                            
+  <li class="all_address_Btn">
+    
+       <!-- <input value="" id="address_id" name="address_id" type="hidden"> -->
+        <div class="cart_btn btn5 fl" onclick="add_address()"></div>
+        <div class="cart_btn btn10 fl" style="margin-left:10px;" onclick="hideorder(this);"></div>&nbsp;&nbsp;<input value="1" checked="checked" name="state" type="checkbox" id='default'>设为默认 
+</li>
+</ul>
+</form>
+
 <script>
-	//地址修改
-    function edit_address(obj,is_now) {
-
-		var address_id = obj.prev('.hide_address_id').val();
-		 
-		 obj.parents().find('.shopping_order_address li').removeClass('selected');
-		 obj.parent().parent().addClass('selected');
-		 
-		$("input[name=address][value="+address_id+"]").attr("checked",'checked');
-        $.ajax({
-            type : 'post',
-            url : 'flow.php?step=ajax_edit_address',
-            cache: false,
-            data: {address_id:address_id,is_now:is_now,rid:Math.random()},
-            dataType:'json',
-            success:function(data) {
-
-            	$("#edit_address").html(data.consignee);
-            	showorder();
-            	
-            }
-        });
+    function show_addr()
+    {
+      $('#edit_address').css('display','block');
+      $('.btn5').attr('onclick','add_address()');
+      $('.all_address_select').find("input[name='id']").remove();
     }
+
+    function add_address()
+    {
+        $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+  
+      var formElement = $("#formCart")[0]; 
+
+      var formData = new FormData(formElement);
+      // console.log(str);
+
+      $.ajax({
+                    type:'POST',
+                    url:"{{url('/home/order/add_address')}}",
+                    data:formData,
+                    processData: false,    //必须设置
+                    contentType: false,    //必须设置
+                    success:function(data)
+                    {
+                        if(data.length == 0)
+                        {
+                            return ;
+                        }
+                        var str = '';
+                        $('#shopping_order_address').find('.addr_list').remove();
+                        $(data).each(function(i,n){
+                          if(n['state']==1){
+                            str += '<li class="selected addr_list" ondblclick="edit_show(this)" onclick="save(this)">';
+                          }else{ 
+                            str += '<li class="addr_list" onclick="edit_show(this)">';
+                          }
+                          str += '<span class="address_name">';
+                          str += '<input name="address" value="'+n['id']+'" checked="checked" style="display:none" type="radio">'+n['to_name']+'&nbsp;&nbsp;&nbsp;'+n['phone']+'</span>';
+
+                          str +=  '<input name="is_default" value="'+n['id']+'" type="hidden"><br>';
+                          str +=  '<span class="address_dizhi" style="word-break: break-all;word-wrap: break-word;overflow:hidden;position:absolute;top:25px;padding: 5px 10px;line-height: 25px;height:40px;">'+n['addr_area']+'             '+n['addr_deta']+'</span><br>';
+                          str += '<span style="display:none;" id="addr_edit">';
+                          str +=  '<input class="hide_address_id" value="1259237" type="hidden">';
+                          str +=  '<a class="edit" style="cursor:pointer;" onclick="edit_address('+n['id']+');">[编辑]</a>';
+                          str +=  '<a class="edit" href="javascript:void(0);" onclick="if (confirm(\'你确认要删除该收货地址吗？\'))dropAddress('+n['id']+');">[删除]</a>';
+                          str += '</span></li>';
+                          // $('#shopping_order_address').prepend(str); 
+                          $('#newAddress').before(str);
+                          str = '';
+                        });
+                        $('#edit_address').css("display","none");
+                        
+                    },
+
+                    error:function()
+                    {
+                        alert("异常");
+                    }
+
+                });
+    }
+
+    function edit_show(obj){
+        $('.addr_list').removeClass('selected');
+        $(obj).find('#addr_edit').css('display','block');
+        $(obj).addClass('selected');
+       
+    }
+
+    function save(obj){
+      $('.addr_list').find("input[name='is_default'][value='1']").parent().addClass('selected');
+      $('.addr_list').find("input[name='is_default'][value='0']").parent().removeClass('selected');
+      
+      $(obj).find('#addr_edit').css('display','none');
+    }
+
+    function edit_address(id,eve){
+        $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+          });
+        $('#edit_address').css('display','block');
+       
+        eve.stopPropagation();
+            $.ajax({
+                type:'POST',
+                url:"{{ url('/home/order/edit_address')}}",
+                data:{id:id},
+                success:function(data)
+                { 
+                   $('#consignee').val(data.to_name);
+                   $('#province').find("option[value='0']").html(data.province);
+                   $('#province1').val(data.province);
+                   $('#province').find("option[value='0']").attr({"selected":true});
+                   $('#city').find("option[value='0']").html(data.city);
+                   $('#city1').val(data.city);
+                   $('#city').find("option[value='0']").attr({"selected":true});
+                   $('#area').find("option[value='0']").html(data.district);
+                   $('#area1').val(data.district);
+                   $('#area').find("option[value='0']").attr({"selected":true});
+                   $('#address').val(data.addr_deta);
+                   $('#tel').val(data.phone);
+                   if(data.state==1)
+                   {
+                      $('#default').attr({"checked":true});
+                   }else 
+                   {
+                      $('#default').attr({"checked":false});
+                   }
+                 
+                    $('.btn5').attr('onclick','update_address()');
+                    $('.all_address_select').append('<input type="hidden" name="id" value="'+data.id+'" />');
+
+                },
+                error:function()
+                {
+                    alert("异常");
+                },
+      
+            });
+
+    }
+
+
+    function update_address()
+    {
+        $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+  
+      var formElement = $("#formCart")[0]; 
+
+      var formData = new FormData(formElement);
+      // console.log(str);
+
+      $.ajax({
+                    type:'POST',
+                    url:"{{url('/home/order/update_address')}}",
+                    data:formData,
+                    processData: false,    //必须设置
+                    contentType: false,    //必须设置
+                    success:function(data)
+                    {
+                        if(data.length == 0 || data == 1)
+                        {
+                            return ;
+                        }
+                        var str = '';
+                        $('#shopping_order_address').find('.addr_list').remove();
+                        $(data).each(function(i,n){
+                          if(n['state']==1){
+                            str += '<li class="selected addr_list" ondblclick="edit_show(this)" onclick="save(this)">';
+                          }else{ 
+                            str += '<li class="addr_list" onclick="edit_show(this)">';
+                          }
+                          str += '<span class="address_name">';
+                          str += '<input name="address" value="'+n['id']+'" checked="checked" style="display:none" type="radio">'+n['to_name']+'&nbsp;&nbsp;&nbsp;'+n['phone']+'</span>';
+
+                          str +=  '<input name="is_default" value="'+n['id']+'" type="hidden"><br>';
+                          str +=  '<span class="address_dizhi" style="word-break: break-all;word-wrap: break-word;overflow:hidden;position:absolute;top:25px;padding: 5px 10px;line-height: 25px;height:40px;">'+n['addr_area']+'             '+n['addr_deta']+'</span><br>';
+                          str += '<span style="display:block;" id="addr_edit">';
+                          str +=  '<input class="hide_address_id" value="1259237" type="hidden">';
+                          str +=  '<a class="edit" style="cursor:pointer;" onclick="edit_address('+n['id']+',event);">[编辑]</a>';
+                          str +=  '<a class="edit" href="javascript:void(0);" onclick="if (confirm(\'你确认要删除该收货地址吗？\'))dropAddress('+n['id']+');">[删除]</a>';
+                          str += '</span></li>';
+                          // $('#shopping_order_address').prepend(str); 
+                          $('#newAddress').before(str);
+                          str = '';
+                        });
+                        $('#edit_address').css("display","none");
+
+                        $('.btn5').attr('onclick','update_address()');
+                        $('#edit_address').css("display","none");
+                        
+                        
+                    },
+
+                    error:function()
+                    {
+                        alert("异常");
+                    }
+
+                });
+    }
+	//地址修改
+    // function edit_address(obj,is_now) {
+
+    //   $(".shopping_order_addressContent").css('display','block');
+    //   console.log(11);
+  //     $.ajaxSetup({
+  //         headers: {
+  //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  //         }
+  //   });
+		// var address_id = obj.prev('.hide_address_id').val();
+  //   console.log(11);
+		//  $("#edit_address").css("display","block");
+		//  obj.parents().find('.shopping_order_address li').removeClass('selected');
+		//  obj.parent().parent().addClass('selected');
+		 
+		// $("input[name=address][value="+address_id+"]").attr("checked",'checked');
+        // $.ajax({
+        //     type : 'post',
+        //     url : 'flow.php?step=ajax_edit_address',
+        //     cache: false,
+        //     data: {address_id:address_id,is_now:is_now,rid:Math.random()},
+        //     dataType:'json',
+        //     success:function(data) {
+
+        //     	$("#edit_address").html(data.consignee);
+        //     	showorder();
+            	
+        //     }
+        // });
+    // }
 	///点radio最后改变配送方式
-	function changeAddress(address,is_now) {
+// 	function changeAddress(address,is_now) {
  
-     if(address.val()==" "){
-       $(".shopping_order_addressContent").css("display","block");
-     }else{
-       $(".shopping_order_addressContent").css("display","none");
-     }
+//      if(address.val()==" "){
+//        $(".shopping_order_addressContent").css("display","block");
+//      }else{
+//        $(".shopping_order_addressContent").css("display","none");
+//      }
  
- 	 	address.parents().find('.shopping_order_address li').removeClass('selected');
+//  	 	address.parents().find('.shopping_order_address li').removeClass('selected');
     
 		
-    address.parent().parent().addClass('selected');
+//     address.parent().parent().addClass('selected');
 		
-		 var address_dizhi=address.parents('.address_name').siblings(".address_dizhi").text();
- 		 var address_name 	=  address.parents('span').text().trim();
-		 var address_tel   = address.parents('.address_name').siblings(".address_tel").text();
+// 		 var address_dizhi=address.parents('.address_name').siblings(".address_dizhi").text();
+//  		 var address_name 	=  address.parents('span').text().trim();
+// 		 var address_tel   = address.parents('.address_name').siblings(".address_tel").text();
 		 
 		 
 		
-		$.get('flow.php?step=ajax_change_address', {address_id:address.val(),is_now:is_now, goods_price:$('#goodsPriceTotal').val(), discount:$('#discountTotal').val()}, function(data) {
- 			 $('#shop_shopping').html(data);  //改变运送方式
-			 //改变显示的内容
-			 $('#address_name').html(address_name+'&nbsp;'+address_tel);
-			 $('#address_address').html(address_dizhi);
+// 		$.get('flow.php?step=ajax_change_address', {address_id:address.val(),is_now:is_now, goods_price:$('#goodsPriceTotal').val(), discount:$('#discountTotal').val()}, function(data) {
+//  			 $('#shop_shopping').html(data);  //改变运送方式
+// 			 //改变显示的内容
+// 			 $('#address_name').html(address_name+'&nbsp;'+address_tel);
+// 			 $('#address_address').html(address_dizhi);
 			 
  
-         }, 'json');
+//          }, 'json');
 		 
-	}
-	//删除地址
+// 	}
+// 	//删除地址
 	
 	    function dropAddress(address_id){
+        $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+
     	$.ajax({
             type : 'post',
-            url : 'flow.php?step=dropAddress',
+            url : "{{url('/home/order/del_address')}}",
             cache: false,
-            data: {address_id:address_id,rid:Math.random()},
+            data: {address_id:address_id},
             dataType:'json',
             success:function(data) {
-				
-             $("input[name=address][value="+address_id+"]").parent().parent().remove();
-                var addrLength = $("#userConsigneeList>li").length;
-		    	if(addrLength <= 0){
-		    		$("#userConsigneeList").append('<li>您没有收货地址,请先添加一个收货地址</li>');
-		    	}
+				      if(data == 0){
+                 $("input[name=address][value="+address_id+"]").parent().parent().remove();
+                    var addrLength = $("#userConsigneeList>li").length;
+        		    	if(addrLength <= 0){
+        		    		$("#userConsigneeList").append('<li>您没有收货地址,请先添加一个收货地址</li>');
+        		    	}
+              }else {
+                  alert('删除失败');
+              }
+
             }
         });
     }
@@ -285,34 +533,34 @@ function dhceng(obj, sType)
 	 ////取消按钮
  function hideorder(item)
  {
-	 openHide(item,0,"save");
+	 // openHide(item,0,"save");
    $('#edit_address').css("display","none");
  }
 /**收货地址绑定事件**/
-$(".shopping_order_address>li").each(function(index,item){
-  $(this).click(function(){
+// $(".shopping_order_address>li").each(function(index,item){
+//   $(this).click(function(){
     
-    var addr =$('#address_info').attr("status");
-    if(addr == "hide"){
-      alert("请先点击[修改]!");
-      return;
-    }
-     $(this).find("input[name='address']").attr("checked",true);
-     var is_now = $(this).find(".address_isnow").val();
-     if($.trim($(this).attr("id"))=="newAddress"){
-       edit_address($(this).find("input[name='address']"),is_now);
-     }else{
-       changeAddress($(this).find("input[name='address']"),is_now);
-       $(this).find("#addr_edit").css("display","block");
-     }
-  });
-});
+//     var addr =$('#address_info').attr("status");
+//     if(addr == "hide"){
+//       alert("请先点击[修改]!");
+//       return;
+//     }
+//      $(this).find("input[name='address']").attr("checked",true);
+//      var is_now = $(this).find(".address_isnow").val();
+//      if($.trim($(this).attr("id"))=="newAddress"){
+//        edit_address($(this).find("input[name='address']"),is_now);
+//      }else{
+//        changeAddress($(this).find("input[name='address']"),is_now);
+//        $(this).find("#addr_edit").css("display","block");
+//      }
+//   });
+// });
 
 </script>                
 
-                   </div>
-                   <div></div> 
-                </li>
+           </div>
+           <div></div> 
+        </li>
 
                 <li id="shop_shopping">
                                       <h2>配送方式<span class="shop_updateinfo" id="shipping_way_xiugai" subjectname="配送" onclick="openHide(this,1);">[修改]</span>
@@ -320,19 +568,17 @@ $(".shopping_order_address>li").each(function(index,item){
                  </h2>
                  <div class="shopping_order_currentinfo">
                    <p id="peisong_way">
-                   	pan>普通快递&nbsp;￥0.00 &nbsp; 送货时间不限 </span>
+                   	<span>普通快递&nbsp;￥0.00 &nbsp;<span>送货时间不限</span></span>
                                                                        		
                    </p>
                    <input name="best_time" value="送货时间不限" type="hidden">
                  </div>
-                 <div class="shopping_order_delivery shopping_order_info_parent" style="display:none;">
-                 
-                  
- 				 <table class="express_list">
+
+      <div class="shopping_order_delivery shopping_order_info_parent" style="display:none;">      <table class="express_list">
                         <thead><tr><th width="15%">送货方式</th> <th width="15%">配送时间</th><th width="20%">运费标准</th></tr></thead>
                         <tbody>
                             
-                                                           <tr class="express_list_tr">
+                            <tr class="express_list_tr">
                                 <td><input name="shipping" class="shopping_order_delivery_radiop" value="6" type="radio">&nbsp; <span class="shipping_name">EMS 国内特快专递</span>
                                 <input class="shipping_is_now" value="0" type="hidden">
                                 </td>
@@ -343,9 +589,9 @@ $(".shopping_order_address>li").each(function(index,item){
                                          <option value="周一至周五">周一至周五</option>
                                     </select>
                                 </td>
-                                <td style="text-indent:20px;"><span class="shipping_fee">￥15.00</span></td>
+                                <td style="text-indent:20px;"><span class="shipping_fee">￥0.00</span></td>
                             </tr> 
-                                                         <tr class="express_list_tr">
+                            <tr class="express_list_tr">
                                 <td><input name="shipping" class="shopping_order_delivery_radiop" checked="checked" value="9" type="radio">&nbsp; <span class="shipping_name">普通快递</span>
                                 <input class="shipping_is_now" value="0" type="hidden">
                                 </td>
@@ -358,15 +604,12 @@ $(".shopping_order_address>li").each(function(index,item){
                                 </td>
                                 <td style="text-indent:20px;"><span class="shipping_fee">￥0.00</span></td>
                             </tr> 
-                                                        
-                            
+
                         </tbody>
                     </table>
                     <div class="cart_btn btn7 fl" onclick="openHide(this,1,'save');"></div>
                  </div>
-
-
-
+          </li>
 <script>
  $(function(){
         
@@ -377,7 +620,7 @@ $(".shopping_order_address>li").each(function(index,item){
 			var arrive_time=$(this).val();
 			
 			
-			$('#peisong_way').html(ship_name+'&nbsp;'+ship_fee+'&nbsp;'+arrive_time);
+			$('#peisong_way').html('<span>'+ship_name+'&nbsp;'+ship_fee+'&nbsp;<span>'+arrive_time+'</span></span>');
 		 
 			$("input[name='best_time']").val(arrive_time);
 			
@@ -395,8 +638,6 @@ $(".shopping_order_address>li").each(function(index,item){
 
 
 ///改变运送方式 改变价格
-
-	
 
  function changeShipping(obj,is_now) {
 		//改变颜色
@@ -436,35 +677,19 @@ $(".shopping_order_address>li").each(function(index,item){
     obj.parents('tr').find('.selDistricts').show();
 		
 		var addrId = $("input:radio:checked[name='address']").val();
-		$.post("flow.php?step=select_shipping",{address_id:addrId,shipping:shippingValue,is_now:is_now},function(result){
-			if(result.error == '')
-			{
-				$(".accumulated2").html(result.content); //改变价格列表
-				$('#total_amount').html(result.total); //改变总价格
-				$('#peisong_way').html('<span >'+shipping_name+'&nbsp;'+shipping_fee+'&nbsp;'+selDistricts+'</span>')//显示配送方式的名称
-			}else
-			{
-				alert(result.error);	
-			}
-		},"JSON");
+		
 		
  }
 
  </script>
+ 
                  
-        
-                  
-                                    </li>
-                 
-                <li>
+            <li>
                     <h2>支付方式<span id="zifu_way_xiugai" class="shop_updateinfo" subjectname="支付" onclick="openHide(this,2);">[修改]</span></h2>
                     <div class="shopping_order_currentinfo">
-                     <p>
+         <p>
             <span id="pay_name">支付宝</span> <input id="pay_id" value="24" name="payment" type="hidden">
-                                                                        
-                                                    	
-                         
-                     </p>
+          </p>
                     </div>
                     <div class="shopping_order_pay">
                    		  <div class="shopping_order_pay02 shopping_order_info_parent" style="display:none;">
@@ -478,278 +703,164 @@ $(".shopping_order_address>li").each(function(index,item){
            		    </ul>
                      <ul class="shopping_order_pay0002">
                         <h2>网银支付</h2>
-                  <li>
-                                        <input name="selectPayment" value="45" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/cib.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="兴业银行网上银行" type="hidden">
+                <li>
+                    <input name="selectPayment" value="45" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/cib.gif')}}" width="125" height="32" border="0">
+                    <input name="payname" value="兴业银行网上银行" type="hidden">
 
-                                    </li>
+                </li>
                            		                                           
            		                                                      		   
-                        			<li>
-                                        <input name="selectPayment" value="26" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_ABC.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="中国农业银行" type="hidden">
+			       <li>
+                <input name="selectPayment" value="26" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_ABC.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="中国农业银行" type="hidden">
 
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="29" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_CCB.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="建设银行" type="hidden">
+            </li>
+   		       <li>                                        		                           			
+                <input name="selectPayment" value="29" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_CCB.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="建设银行" type="hidden">
 
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="27" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_CMB.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="招商银行" type="hidden">
+            </li>
+            <li>
+                <input name="selectPayment" value="27" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_CMB.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="招商银行" type="hidden">
+            </li>
+   		       <li>
+                <input name="selectPayment" value="30" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_ICBCB2C.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="工商银行" type="hidden">
+            </li>
+            <li>
+                <input name="selectPayment" value="31" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_BOCB2C.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="中国银行" type="hidden">
 
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="30" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_ICBCB2C.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="工商银行" type="hidden">
+            </li>
+            <li>
+                <input name="selectPayment" value="32" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_CEBBANK.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="光大银行" type="hidden">
+            </li>
+            <li>
+                <input name="selectPayment" value="33" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_CMBC.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="中国民生银行" type="hidden">
 
-                                    </li>
-                           		                                                      		                           			<
+            </li>
+            <li>
+                <input name="selectPayment" value="34" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_POSTGC.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="中国邮政" type="hidden">
+            </li>
+            <li>
+                <input name="selectPayment" value="28" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_COMM.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="交通银行" type="hidden">
+            </li>
+            <li>
+                <input name="selectPayment" value="36" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_BJBANK.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="北京银行" type="hidden">
 
-                                                                                                                        >
-                                        <input name="selectPayment" value="31" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_BOCB2C.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="中国银行" type="hidden">
+            </li>
+            <li>
+                <input name="selectPayment" value="37" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_NBBANK.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="宁波银行" type="hidden">
 
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="32" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_CEBBANK.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="光大银行" type="hidden">
-
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="33" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_CMBC.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="中国民生银行" type="hidden">
-
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="34" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_POSTGC.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="中国邮政" type="hidden">
-
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="28" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_COMM.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="交通银行" type="hidden">
-
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="36" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_BJBANK.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="北京银行" type="hidden">
-
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="37" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_NBBANK.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="宁波银行" type="hidden">
-
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="38" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_GDB.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="广东发展银行" type="hidden">
-
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="39" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_SDB.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="深圳发展银行" type="hidden">
-
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="40" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_SPDB.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="上海浦东发展银行" type="hidden">
-
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="41" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_SHBANK.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="上海银行" type="hidden">
-
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="42" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_CITIC.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="中信银行" type="hidden">
-
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="43" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_HZCBB2C.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="杭州银行" type="hidden">
-
-                                    </li>
-                           		                                                      		                           			<li>
-                                        <input name="selectPayment" value="44" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_FDB.gif')}}" width="125" height="32" border="0">
-                                        <input name="payname" value="富滇银行" type="hidden">
-
-                                    </li>
-                           		                                                  
-                      </ul>
-              
-                    
-                                          
-                     <div class="cart_btn btn6 fl" onclick="openHide(this,2,'save');"></div>
-                   </div>
+            </li>
+            <li>
+                <input name="selectPayment" value="38" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_GDB.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="广东发展银行" type="hidden">
+            </li>
+            <li>
+                <input name="selectPayment" value="39" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_SDB.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="深圳发展银行" type="hidden">
+            </li>
+            <li>
+                <input name="selectPayment" value="40" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_SPDB.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="上海浦东发展银行" type="hidden">
+            </li>
+            <li>
+                <input name="selectPayment" value="41" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_SHBANK.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="上海银行" type="hidden">
+            </li>
+            <li>
+                <input name="selectPayment" value="42" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_CITIC.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="中信银行" type="hidden">
+            </li>
+            <li>
+                <input name="selectPayment" value="43" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_HZCBB2C.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="杭州银行" type="hidden">
+            </li>
+            <li>
+                <input name="selectPayment" value="44" type="radio">&nbsp;<img class="payment_img" style="cursor:pointer;" src="{{asset('/home/imgs/alipay_FDB.gif')}}" width="125" height="32" border="0">
+                <input name="payname" value="富滇银行" type="hidden">
+            </li>	                                                  
+</ul>
                    
+                  <div class="cart_btn btn6 fl" onclick="save_pay();"></div>
+    </div>
                    
+        </div>
+        </li>
+                
+                 
 <script>
  
-$(function(){
-	//点击图片切换
-		$('.payment_img').click(function(){
-			
-			
-			
-			var pay_id =$.trim($(this).prev("input['name=selectPayment']").val());
-		 	var shipingId  = $.trim($(".shopping_order_delivery_radiop:checked").val());
 
-			
-			if(shipingId == '10' && pay_id!='46')
-			{
-				alert('配送方式请选择货到付款');
-				return false;	
-			}
-			 
-			 
-			if(shipingId != '10' && pay_id=='46')
-			{
-				alert('配送方式请选择货到付款');
-				return false;	
-			}
-			
-			if(pay_id =='24'){
-				$('#zf_tip').show();
-			}else{
-				$('#zf_tip').hide();
-			}
-			
-			
-			 $(this).prev("input['name=payname']").attr('checked',true);
-			 $('#pay_name').html($(this).next("input['name=payname']").val());
-			 $('#pay_id').val($(this).prev("input['name=selectPayment']").val());
- 			 changepayment(pay_id);
- 		});
-	//点radio切换
-		$("input[name='selectPayment']").click(function(){
-			
-			var shipingId  = $.trim($(".shopping_order_delivery_radiop:checked").val());
-			var pay_id =$.trim($(this).val());
-			if(shipingId == '10' && pay_id!='46')
-			{
-				alert('配送方式请选择货到付款');
-				return false;	
-			}
-			 
-			 
-			if(shipingId != '10' && pay_id=='46')
-			{
-				alert('配送方式请选择货到付款');
-				return false;	
-			}
-			if(pay_id =='24'){
-				$('#zf_tip').show();
-			}else{
-				$('#zf_tip').hide();
-			}
-			
-			 $('#pay_name').html($(this).siblings("input['name=payname']").val());
-			 $('#pay_id').val($(this).val());
-			
-			 changepayment(pay_id);
-		})	;
-})
-	 
+function save_pay(){
+    var pay = $("input[name='selectPayment']:checked").siblings('input').val();
+    $('#pay_name').html(pay);
+    $('.shopping_order_pay02').css('display','none');
 
-	
- function changepayment(obj) {
-		
-		//改变颜色
-	  
-		var pay_id = obj
-		 
-		 
-		$.post("flow.php?step=select_payment",{payment:pay_id},function(result){
-				
-		},"JSON");
-		 
-		
- }	 
-	 
-	 
-</script>                                       </div>
-                </li>
-
-              
-                <li>
-                   <h2>发票信息<span class="shop_updateinfo" subjectname="发票" onclick="openHide(this,3);">[修改]</span></h2>
-                   <div class="shopping_order_currentinfo">
-                     <p id="inv_message">不开发票</p>
-                     <input id="inv" name="inv" value="" type="hidden">
-                   </div>
-                  <div id="shopping_inv_msg" class="shopping_order_bill shopping_order_info_parent" style="display:none;">
-                   	  <dl class="invoice">
-                    <dt>类型和抬头</dt>
-                    <dd>
-                        <ul>
-                    	       	
-                             <li> <input name="inv_id" value=" " onclick="select_inv(this)" type="radio">使用新的发票类型</li>                               
-                             <div class="shopping_order_bill_new" style="display:none;">
-                                   <p>发票类型：<input name="inv_type" value="普通发票" type="radio">普通发票</p>
-                                   <p>发票抬头：<input name="inv_payee" value="个人" type="radio">个人
-                                               <input name="inv_payee" value="单位" type="radio">单位
-                                               <input id="inv_payee_text" style="margin-left:10px;height: 26px;line-height: 26px;" type="text">
-                                   </p>
-                                   <p>发票内容：
-                         					 
-                                   <input name="inv_content" value="明细" type="radio">明细 
-                                                                                         
-                          		   </p>
-                             </div>
-                            		  <input class="cart_btn btn8 fl" onclick="add_inv(this);" type="button">
-               					  	  <div class="cart_btn btn11 fl" style="margin-left:10px;" onclick="quxiao_inv(this);"></div>
-                          </ul>
-                    </dd>
-</dl>                  </div>
-                </li>
-            </ul>
+}
+</script>                                      
+ 
 
             <h2>商品清单</h2>
             <a href="http://www.handu.com/flow.php" style="color:#1887E0; float:right;margin-right:50px;" onclick="_czc.push(['_trackEvent', '结算', '返回购物车']);">回到购物车，修改订单&gt;&gt;</a>
 
             <div class="shopping_order_information">
   				 <div class="shopping_order_information_title">
-    <span class="information_title">商品图片</span> 
-    <span class="information_title information_title00">商品名称</span>
-    <span class="information_title">规格</span>
-    <span class="information_title">单价</span>
-    <span class="information_title">数量</span>
-    <span class="information_title">小计</span>
-</div>
- 
-<h3>  <span>品牌：HSTYLE女装</span></h3>
-   
-                     
-    
-                <ul class="shopping_order_information_ul">
-        
+                <span class="information_title">商品图片</span> 
+                <span class="information_title information_title00">商品名称</span>
+                <span class="information_title">规格</span>
+                <span class="information_title">单价</span>
+                <span class="information_title">数量</span>
+                <span class="information_title">小计</span>
+            </div>
+<form action="{{url('/home/order/submit_order')}}" method="post" onsubmit="return checksubmit()">
+{{ csrf_field() }}
+@foreach($order as $v)
+<h3>  <span>品牌：{{$v['brand']}}</span></h3>
+    <ul class="shopping_order_information_ul">
         <li>
             <div class="information_pic">
-                <a href="http://www.handu.com/goods-1050030.html" title="韩都衣舍2016韩版女装冬装新款宽松显瘦加厚连帽羽绒服KY6569湲" target="_blank"><img src="{{asset('/home/imgs/1472659329315336856.jpg')}}" alt="韩都衣舍2016韩版女装冬装新款宽松显瘦加厚连帽羽绒服KY6569湲" width="77" height="77" border="0"></a> </div>
+                <a href="http://www.handu.com/goods-1050030.html" title="{{$v['title']}}" target="_blank"><img src="{{asset('/home/imgs/goods')}}/{{$v['pic']}}" alt="{{$v['title']}}" width="77" height="77" border="0"></a> 
+            </div>
             <div class="information_name">
                 <div class="middle">
-                <a href="http://www.handu.com/goods-1050030.html" title="韩都衣舍2016韩版女装冬装新款宽松显瘦加厚连帽羽绒服KY6569湲" target="_blank">韩都衣舍2016韩版女装冬装新款宽松显瘦加厚连帽羽绒服KY6569湲</a><br>
+                <a href="http://www.handu.com/goods-1050030.html" title="{{$v['title']}}" target="_blank">{{$v['title']}}</a><br>
                 <span>[<a href="http://www.handu.com/topic-423.html" target="_blank"><span style="color:#c80a28;">【年终盛典】春季新品6折首发.全场满199包邮.领券满299减30/满399减80/满599减150</span></a>]</span>                </div>
             </div>
-            <div class="information_xinxi"> <div class="middle">颜色:米白色 &nbsp;&nbsp;&nbsp;尺码:M</div> </div>
-            <div class="information_xinxi"><div class="cprice"><del>￥2694.00</del><br><span>￥348.00 </span></div></div>
-            <div class="information_xinxi"> <div class="middle">1</div></div>
-            <div class="information_subtotal"> <div class="middle">￥348.00</div></div>
+            <div class="information_xinxi"> <div class="middle">颜色:{{$v['color']}} &nbsp;&nbsp;&nbsp;尺码:{{$v['size']}}</div></div>
+            <div class="information_xinxi"><div class="cprice"><del>￥{{$v['orign_price']}}.00</del><br><span>￥{{$v['promt_price']}}.00 </span></div></div>
+            <div class="information_xinxi"> <div class="middle">{{$v['number']}}</div></div>
+            <div class="information_subtotal"> <div class="middle">￥{{$v['smtotal']}}.00</div></div>
+            <input type="hidden" name="gid[]" value="{{$v['id']}}"/>
+            <input type="hidden" name="size[]" value="{{$v['size']}}"/>
+            <input type="hidden" name="color[]" value="{{$v['color']}}"/>
+            <input type="hidden" name="num[]" value="{{$v['number']}}"/>
         </li>
-        
     </ul>
+@endforeach
+  </div>
 
- 
+<div class='submit_data' style="display: none;">
+    <input name="deliver_time" value="" type="hidden">
+    <input name="deliver" value="" type="hidden">
+    <input name="pay" value="" type="hidden">
+    <input name="add_id" value="" type="hidden">
+</div>
 <script>
 $(".cart_good_type").each(function(index,item){
   if(index==0){
     $(this).show();
   }
 });
-</script>            </div>
+</script>           
   			            
             <div class="information_bonus songti">
               <div class="information_bonus_title">
@@ -776,7 +887,7 @@ $(".cart_good_type").each(function(index,item){
                     </tr>
                         
                     <tr class="shop_order_yhq_tr">
-                      <td><input value="13449735" name="bonus" class="ckb_bonus" type="radio"></td>
+                      <td><input value="13449735" class="ckb_bonus" type="radio"></td>
                       <td class="yhq_td"><div class="fl"><span class="p_color">￥50.00</span></div></td>
                       <td class="yhq_td"><span class="grey"> HSTYLE女装 </span></td>
                       <td class="yhq_td"><span class="grey">手机端注册即送【限Hstyle女装1.4-12.31】</span></td>
@@ -786,7 +897,7 @@ $(".cart_good_type").each(function(index,item){
                     </tr>
                        
                     <tr class="shop_order_yhq_tr">
-                      <td><input value="13449737" name="bonus" class="ckb_bonus" type="radio"></td>
+                      <td><input value="13449737" class="ckb_bonus" type="radio"></td>
                       <td class="yhq_td"><div class="fl"><span class="p_color">￥50.00</span></div></td>
                       <td class="yhq_td"><span class="grey"> HSTYLE女装 </span></td>
                       <td class="yhq_td"><span class="grey">PC端注册即送【限Hstyle女装1.4-12.31】</span></td>
@@ -796,13 +907,13 @@ $(".cart_good_type").each(function(index,item){
                     </tr>
                                             
                       <tr class="shop_order_yhq_tr">
-                      <td><input value="0" checked="checked" name="bonus" class="ckb_bonus" type="radio"></td>
+                      <td><input value="0" checked="checked" class="ckb_bonus" type="radio"></td>
                       <td colspan="5"><span class="p_color">不使用优惠券</span> </td>
                     </tr>
                     </tbody></table>
                 </div>
-                                  <div class="bonus_code" style="text-indent:10px;">
-                 <div class="fl"><span class="yhq_redk" style="margin: 18px 0 10px 10px;"></span><div class="yhq_txtCode">激活新优惠券：</div><input name="bonus_sn" id="bonusCode" style="margin-top:7px;" type="text"></div>
+                  <div class="bonus_code" style="text-indent:10px;">
+                 <div class="fl"><span class="yhq_redk" style="margin: 18px 0 10px 10px;"></span><div class="yhq_txtCode">激活新优惠券：</div><input id="bonusCode" style="margin-top:7px;" type="text"></div>
                  <a href="javascript:validateYhq(document.getElementById('bonusCode').value)" class="fl" style="margin-top:7px;"><div class="cart_btn btn14"></div></a>
                 </div>
                 <div class="bonus_code bonus_footer">
@@ -826,20 +937,20 @@ $(".cart_good_type").each(function(index,item){
                      <div class="bonus_list" id="hongbao">
                      <table>
                                                                   <tbody><tr class="bonus_list_tr ">
-                      <td width="3%"><input value="13449736" name="money_bonus" class="ckb_bonus" type="radio"></td>
+                      <td width="3%"><input value="13449736" class="ckb_bonus" type="radio"></td>
                       <td width="20%"><span class="p_color"> ￥10.00</span> </td>
                       <td width="25%"><span class="grey">注册有礼10元红包下半年（限PC端）</span></td>
                       <td width="52%"><span class="grey">有效期至2017-02-28</span></td> 
                       </tr>
                                           <tr class="bonus_list_tr ">
-                      <td width="3%"><input value="13449738" name="money_bonus" class="ckb_bonus" type="radio"></td>
+                      <td width="3%"><input value="13449738" class="ckb_bonus" type="radio"></td>
                       <td width="20%"><span class="p_color"> ￥10.00</span> </td>
                       <td width="25%"><span class="grey">注册有礼10元红包下半年（限手机客户端）</span></td>
                       <td width="52%"><span class="grey">有效期至2017-01-30</span></td> 
                       </tr>
                                           
                     <tr class="bonus_list_tr">
-                      <td width="3%"><input value="0" name="money_bonus" class="ckb_bonus" type="radio"></td>
+                      <td width="3%"><input value="0" class="ckb_bonus" type="radio"></td>
                       <td width="20%"><span class="p_color">不使用红包</span> </td>
                       <td width="25%"><span class="grey"></span></td>
                       <td width="52%"><span class="grey"> </span></td> 
@@ -848,10 +959,7 @@ $(".cart_good_type").each(function(index,item){
                 </div>
                 
                 <div class="bonus_code bonus_footer">
-                   <!--<span>共使用了<span class="p_color">2</span>个红包</span>
-                   &nbsp;
-                   <span>共优惠<span class="p_color">140.00</span>元</spoan>
-                     -->
+        
                 </div>
               </div>
             </div>
@@ -881,7 +989,7 @@ $(".cart_good_type").each(function(index,item){
                 <dd style="margin-top: 7px;">
                   <dl>
                     <dd>
-                      <textarea rows="9" cols="50" id="postscript" name="postscript" onblur="javascript:if(this.value =='')this.value='选填，可以告诉卖家您对商品的特殊要求';" onfocus="javascript:if(this.value =='选填，可以告诉卖家您对商品的特殊要求'){this.value=''};" onkeyup="postscript_len(this, 396)">选填，可以告诉卖家您对商品的特殊要求</textarea>
+                      <textarea rows="9" cols="50" id="postscript" name="message" onblur="javascript:if(this.value =='')this.value='选填，可以告诉卖家您对商品的特殊要求';" onfocus="javascript:if(this.value =='选填，可以告诉卖家您对商品的特殊要求'){this.value=''};" onkeyup="postscript_len(this, 396)">选填，可以告诉卖家您对商品的特殊要求</textarea>
                     </dd>
                     <dd style="close:both;">
                      <span style="color:#ccc;" class="surplusWords">可以输入198个字</span>
@@ -893,8 +1001,8 @@ $(".cart_good_type").each(function(index,item){
             <div class="accumulated2 fr">
              		 <table>
               <tbody><tr>
-                <td class="td_fr songti"><span class="p_color">1</span>件商品，商品金额：</td>
-                <td id="order_totalPrice" class="td_fr td2">￥348.00</td>
+                <td class="td_fr songti"><span class="p_color">{{$gnumber}}</span>件商品，商品金额：</td>
+                <td id="order_totalPrice" class="td_fr td2">￥{{$total}}.00</td>
               </tr>
               <tr>
                 <td class="td_fr songti">满立减：</td>
@@ -914,23 +1022,61 @@ $(".cart_good_type").each(function(index,item){
               </tr> 
               			              <tr>
                 <td class="td_fr songti">应付总额：</td>
-                <td id="order_totalAmount" class="td_fr">￥348.00</td>
+                <td id="order_totalAmount" class="td_fr">￥{{$total}}.00</td>
               </tr>
                           </tbody></table>
 
- 
-		<input id="goodsPriceTotal" name="goodsPriceTotal" value="348" type="hidden">
-		<input id="discountTotal" name="discountTotal" value="0" type="hidden">
-		<input value="done" name="step" type="hidden">
-		<input value="" class="order_buyBtn" type="submit">
              </div>
       </div>
       <div class="information_bonus_pay">
          <div class="information_bonus_total">
-  	       <input value="" name="is_birthday" type="hidden">
-           <input class="cart_btn btn13" onclick="_czc.push(['_trackEvent', '结算', '提交订单']);" value="" type="submit">
+           <input class="cart_btn btn13" type="submit" value="" >
          </div>
-       
+    </form>
+
+    <script>
+        function checksubmit(){
+          var shippingValue = $("input:radio:checked[name='shipping']").val();
+          var deliver_time = $('#peisong_way').find('span').find('span').html();
+          var paymentValue = $("input:radio:checked[name='selectPayment']").val();
+          //获取地址id值
+          var add_val = $("input[name='is_default'][value='1']").val();
+          // console.log(add_val);
+          if(add_val == 1)
+          {
+            var add_id = $("input[name='is_default'][value='1']").prev().find("input[name='address']").val();
+            $('.submit_data input').eq(3).val(add_id);
+            // console.log(add_id);
+          }else {
+              alert('请选择收货地址');
+              return false;
+          }
+
+           if(typeof(shippingValue) == 'undefined' || shippingValue <= 0){
+              alert('请选择配送方式');
+              return false;
+            }
+            if(typeof(paymentValue) == 'undefined' || paymentValue <= 0){
+              alert('请选择支付方式 ');
+              return false;
+            }
+
+          var pay_type = $('#pay_name').html();
+          // console.log(pay_type);
+          $('.submit_data input').eq(2).val(pay_type);
+
+            if($('#postscript').val() == '选填，可以告诉卖家您对商品的特殊要求'){
+                $('#postscript').attr('value','');
+            }
+           $('.submit_data input').eq(1).val(shippingValue);
+           $('.submit_data input').eq(0).val(deliver_time);
+            return true;
+        }
+
+        
+
+    </script>
+
       <div style="width:100%;float:left;clear:both;">
 					<div class="fr score_money">
            <span class="score_span_red">-￥<strong id="exchange_money">0.00</strong></span>
@@ -957,12 +1103,12 @@ $(".cart_good_type").each(function(index,item){
 	        </div>
        <div style="width:100%;float:left;clear:both; color:#999;font-weight:normal">付款后退款或退货，抵现积分不予返还</div>
          <div class="information_bonus_total">
-           您共需要为订单支付:<span id="total_amount">￥348.00</span>
+           您共需要为订单支付:<span id="total_amount">￥{{$total}}.00</span>
          </div>
       </div>
     </div>
 </div>
-</form>
+<!-- </form> -->
 
 
 <div class="hd_footer_w990">
@@ -1282,15 +1428,6 @@ $('.trigger').click(function(){
 			$('#exchange').val('');
 			$('#exchange_money').html('0.0');
 			
-			Ajax.call('flow.php?step=change_exchange', 'exchange_money='+exchange_money+'&exchange=' + exchange + '&is_now=' + is_now, function(data){
-				if(data.error)
-				{
-					alert(data.error);
-				}
-			  $('.accumulated2').html(data.content);
-			  $('#total_amount').html(data.total);
-		
-			}, 'GET', 'JSON');
 			
         }
  });
@@ -1316,16 +1453,6 @@ $('.trigger').click(function(){
 			
 			$('#exchange_money').html(exchange_money);
 		}
-		
-			Ajax.call('flow.php?step=change_exchange', 'exchange_money='+exchange_money+'&exchange=' + exchange + '&is_now=' + is_now, function(data){
-				if(data.error)
-				{
-					alert(data.error);
-				}
-			  $('.accumulated2').html(data.content);
-			  $('#total_amount').html(data.total);
-		
-			}, 'GET', 'JSON');
  
   });
 </script>
@@ -1389,7 +1516,7 @@ function openHide(obj,index,param3){
   }
   
   if(!isNull(param3)){
-	  // var target = $(obj).parents().find(".shop_updateinfo");
+	  var target = $(obj).parents().find(".shop_updateinfo");
 	  target=$(".shop_updateinfo").eq(index);
     openHide(target,index);
   }else{
@@ -1440,6 +1567,7 @@ function closeOpen(obj,index,param3){
 	  $(obj).parents().find(".shop_updateinfo").attr("status","hide");
   }
 }
+
 function isNull(param)
 {
   var bb=false;
@@ -1485,56 +1613,11 @@ function selectYhq(obj)
 	 
 	var is_now = document.getElementById('is_now').value;
 	
-	 
-	
-	
-
 }
 
 
-/*改变优惠券方法 ajax改值*/
-function changeYhq(obj)
-{
-  
-	var bonus_id = $(obj).parent().parent().find(".ckb_bonus").val();
-	var is_now = document.getElementById('is_now').value;
-	var exchange_price = $('#exchange_money').html();
-	
-	 Ajax.call('flow.php?step=change_bonus', 'bonus=' + bonus_id + '&is_now=' + is_now + '&exchange_price='+exchange_price, function(data){
-		
-		
-		$('.accumulated2').html(data.content);
-		$('#total_amount').html(data.total);
-		if(data.error)
-		{
-			alert(data.error);
-			 
-		}else
-		{
-			alert('您已成功使用该优惠券！');
-		}
-		
-		
-	  }, 'GET', 'JSON');
-}
 
 
-function validateYhq(bonusSn)
-{
-	var is_now = document.getElementById('is_now').value;
-	    Ajax.call('flow.php?step=validate_bonus', 'bonus_sn=' + bonusSn + '&is_now=' + is_now, function(data){
- 			if(data.error)
-			{
-				alert(data.error);
-			} else{
-        alert('您已成功使用该优惠券！');
-      }
-			$('.accumulated2').html(data.content);
-		  $('#total_amount').html(data.total);
-	
-		}, 'GET', 'JSON');
-
-}
 /*选择红包*/
 function  changeHongbao(obj)
 {
@@ -1544,205 +1627,9 @@ function  changeHongbao(obj)
 		/*改变样式*/
 		obj.parents('tr').siblings('tr').removeClass('selected');
 	     obj.parents('tr').addClass('selected');
-		  
-      /*if ( typeof($("input:radio:checked[name='bonus']").val()) !='undefined' && $("input:radio:checked[name='bonus']").val() != 0 && $("input:radio:checked[name='money_bonus']").val() != 0)
-        {
-           alert('优惠劵和红包不能同时使用，请选择其一！');
-			obj.attr("checked",false);
-            return false;	
-        }*/
-		
-		
-	    Ajax.call('flow.php?step=change_money_bonus', 'bonus=' + bonus_id + '&is_now=' + is_now, function(data){
-			if(data.error)
-			{
-				alert(data.error);	
-				obj.attr("checked",false);
-			}	
-			$('.accumulated2').html(data.content);//金额列表
-		    $('#total_amount').html(data.total); //最后总价格
-			
-		}, 'GET', 'JSON');
 
 }
 
-/*最后提交订单检查是否内容全*/
-
-function checkShoppingOrderForm(){
- 
-  	var addressValue = $("input:radio:checked[name='address']").val();
-  	var shippingValue = $("input:radio:checked[name='shipping']").val();
-	var paymentValue = $("input:radio:checked[name='selectPayment']").val();
- 
- 	if(typeof(addressValue) == 'undefined' || addressValue <= 0){
-		alert('请选择收货地址');
-		return false;
-	} 
-	if(typeof(shippingValue) == 'undefined' || shippingValue <= 0){
-		alert('请选择配送方式');
-		return false;
-	}
-	if(typeof(paymentValue) == 'undefined' || paymentValue <= 0){
-		alert('请选择支付方式 ');
-		return false;
-	}
-	
-	if($('#postscript').val() == '选填，可以告诉卖家您对商品的特殊要求'){
-		$('#postscript').attr('value','');
-	}
-  
- 
-  return true;
-
-}
-
-
-
-/*发票*/
-
-//点击按钮选择发票
- function select_inv(item)
- {	
- 	//alert(item.value);
- 	if(item.value!=' ')
-	{
-		  $(".shopping_order_bill_new").css("display","none");
-	 	 
-		 
-		  $.ajax({
-            type : 'post',
-            url : 'flow.php?step=ajax_select_inv',
-            cache: false,
-            data: {inv_id:item.value},
-            dataType:'json',
-            success:function(data) {
-				var inv =data.inv;
-            	  $(".shopping_order_bill_new").html(data.consignee);
-
-                  // alert(data.consignee);
-				 $('#inv_message').html(inv.inv_type+'&nbsp;'+inv.inv_payee+'&nbsp;'+inv.inv_content);
-				 $('#inv').val(data.inv.inv_id);
- 				
-            }
-        });
-	
-		 
-	}else
-	{
-		  $(".shopping_order_bill_new").css("display","block");
- 		  
-	}
-	
-	  $(item).parent().siblings('li').removeClass('selected');
-	  $(item).parent().addClass('selected');
-	
- }
-
-
-
-
-//增加和修改发票
-function add_inv(obj)
-{       
-
- 		var inv_id   = $('input[name=inv_id]:checked').val();
-        var inv_type = $('input[name=inv_type]:checked').val();
-        if( $('input[name=inv_payee]:checked').val() =='个人')
-		{
-			inv_payee='个人';	
-		}else
-		{
-			inv_payee=$('#inv_payee_text').val();
-		}
-		
-		var inv_content =$('input[name=inv_content]:checked').val();
-      
-	    if(inv_type=='') {
-            alert('发票类型不能为空');
-            return;
-        }
-        else if(inv_payee=='') {
-            alert('发票抬头不能为空');
-            return;
-        }
-		else if(inv_content=='') {
-            alert('发票内容不能为空');
-            return;
-        }
-  	  
-        $.ajax({
-            url:'flow.php?step=ajax_save_inv',
-            type:'post',
-            data:{inv_id : inv_id, inv_type:inv_type ,inv_payee:inv_payee ,inv_content:inv_content},
-            dataType:'json',
-            cache:false,
-            success:function(data) {
-   
-				  
-  				  $('#shopping_inv_msg').html(data.consignee);
-				  $('#inv_message').html(inv_type+'&nbsp;'+inv_payee+'&nbsp;'+inv_content);
-				  $('#inv').val(data.inv_id);
-				  openHide(obj,3,'save');
-				 
-             }
-        });
-	
-}
-
-
-
-	//删除发票
-	
-  function dropinv(inv_id){
-    	$.ajax({
-            type : 'post',
-            url : 'flow.php?step=drop_inv',
-            cache: false,
-            data: {inv_id:inv_id},
-            dataType:'json',
-            success:function(data) {
-				
-             $("input[name=inv_id][value="+inv_id+"]").parent().remove();
-              
-            }
-        });
-    }
-	
-	//点编辑修改发票
- 
-    function edit_inv(inv_id) {
-		
-		 
-				 
-		$("input[name=inv_id][value="+inv_id+"]").attr("checked",'checked');
-        $.ajax({
-            type : 'post',
-            url : 'flow.php?step=ajax_select_inv',
-            cache: false,
-            data: {inv_id:inv_id},
-            dataType:'json',
-            success:function(data) {
-				var inv =data.inv;
-            	 $('.shopping_order_bill_new').html(data.consignee);
-            	  $('.shopping_order_bill_new').css('display','block'); 
-				 
-				 $('#inv_message').html(inv.inv_type+'&nbsp;'+inv.inv_payee+'&nbsp;'+inv.inv_content);
-				 $('#inv').val(data.inv.inv_id);
-            	
-				
-            }
-        });
-    }
-	
-//取消发票
-function quxiao_inv(item)
-{
-	closeOpen(item,3,'cancel')	;
-	$('#inv_message').html('不开发票');
-	$('#inv').val();
-}	
-
-/*发票*/
 
 
 /*选择包邮卡*/
@@ -1769,22 +1656,78 @@ function  changePostage(obj)
                         }
                         
                     }
-	    Ajax.call('flow.php?step=change_postage', 'shopping=9&postage=' + postage_id + '&is_now=' + is_now, function(data){
-			if(data.error)
-			{
-				alert(data.error);	
-
-				obj.attr("checked",false);
-			}else{
-                            $('.accumulated2').html(data.content);//金额列表
-                            $('#total_amount').html(data.total); //最后总价格
-                        }	
-		
-			
-		}, 'GET', 'JSON');
+	    
 }
 </script>
+<script type="text/javascript">
 
+    var xmldom = null;
+    function showprovince(){
+      $.ajax({
+        url: "{{ url('/home/xml/ChinaArea.xml')}}",
+        type: 'get',
+        dataType: 'xml',
+        success:function(msg)
+        {
+          xmldom = msg;
+          var pros = $(msg).find('province');
+          pros.each(function(k,v){
+            var nm = $(this).attr('province');
+            var id = $(this).attr('provinceID');
+            var str = "<option value='"+id+"'>"+nm+"</option>";
+            $('#province').append(str);
+            
+          });
+
+        }
+      });
+    }
+
+    $(function(){
+      //页面加载完毕显示省份
+      showprovince();
+    });
+
+    function showcity(){
+      area = $('#area').remove();
+       $('#province1').val($("#province option:selected").html());
+      
+      var pid = $('#province option:selected').val();
+
+      var xml_province = $(xmldom).find("province[provinceID='"+pid+"']");
+      var citys = xml_province.find('City');
+      $('#city').empty();
+      // $('#city').append("<option value='0'>-请选择-</option>");
+      citys.each(function() {
+        var nm = $(this).attr('City');
+        var id = $(this).attr('CityID');
+        $('#city').append("<option value='"+id+"'>"+nm+"</option>");
+        
+      });
+    }
+
+    function showarea()
+    {
+      $('.all_address_select').append(area);
+      $('#city1').val($("#city option:selected").html());
+      var pid = $('#city option:selected').val();
+      var areas = $(xmldom).find("City[CityID='"+pid+"']").find('Piecearea');
+      $('#area').empty();
+      // $('#area').append("<option value='0'>-请选择-</option>");
+      areas.each(function() {
+        var nm = $(this).attr('Piecearea');
+        var id = $(this).attr('PieceareaID');
+        $('#area').append("<option value='"+id+"'>"+nm+"</option>");
+        
+      });
+
+    }
+
+    function showdistrict()
+    {
+      $('#area1').val($("#area option:selected").html());
+    }
+  </script>
 
 
 

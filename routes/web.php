@@ -109,11 +109,18 @@ Route::get('/home/goods/shopingcart','Home\GoodsController@shopingcart');
 //购物车商品移入收藏夹
 Route::post('/home/goods/removeToCollect','Home\GoodsController@removeToCollect');
 Route::post('/home/goods/toPay','Home\GoodsController@toPay');
+Route::post('/home/goods/buy_now','Home\GoodsController@buy_now');  //立即购买
 
 
-//商品订单
-Route::get('/home/order/add','Home\OrderController@add');
 
+//订单添加地址
+Route::post('/home/order/add_address','Home\OrderController@add_address');
+//订单删除地址
+Route::post('/home/order/del_address','Home\OrderController@del_address');
+Route::post('/home/order/edit_address','Home\OrderController@edit_address');
+Route::post('/home/order/update_address','Home\OrderController@update_address');
+Route::post('/home/order/submit_order','Home\OrderController@submit_order');
+Route::post('/home/order/pay_now','Home\OrderController@pay_now');
 
 
 

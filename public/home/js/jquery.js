@@ -1,8 +1,4 @@
 /*
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
  * jQuery JSON Plugin
  * version: 1.0 (2008-04-17)
  *
@@ -152,9 +148,8 @@
             throw new SyntaxError("Error parsing JSON, source is not valid.");
     };
 })(jQuery);
-<<<<<<< HEAD
-=======
-=======
+
+/*
  * jQuery slide Plugin 1.5.1
  * http://blog.geekli.cn/
  * Copyright 2011, ksc
@@ -284,5 +279,4 @@ jQuery.extend({
   }//function end
 		 
 }); 
->>>>>>> origin/master
->>>>>>> origin/master
+

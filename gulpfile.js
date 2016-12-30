@@ -1,10 +1,7 @@
 const elixir = require('laravel-elixir');
 
-<<<<<<< HEAD
-require('laravel-elixir-vue');
-=======
 require('laravel-elixir-vue-2');
->>>>>>> origin/master
+
 
 /*
  |--------------------------------------------------------------------------

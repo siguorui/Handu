@@ -290,30 +290,6 @@
   var r=new Region();
     r.init('2','52','502');
   </script> 
-
-  <script type="text/javascript">
-    $("button").on('click', function(){
-            $.ajax({
-                url:'./3.php',
-                async:true,//超时时间只对异步操作有效。
-                data:{name:'张三',age:18},
-                type:"POST",
-                success:function(data){
-                    // alert(typeof(data));
-                    num ++;
-                },
-                error:function()
-                {
-                    alert('异常了');
-                },
-                dataType:'json',
-                timeout:'1030'
-
-            });
-
-            // alert(num);
-        });
-  </script>
     </div>
     
   </div>

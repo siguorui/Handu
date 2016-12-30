@@ -1,4 +1,4 @@
-﻿@extends('home.layout')
+@extends('home.layout')
 @section('content')
 <!-- <link rel="stylesheet" type="text/css" href="{{asset('/home/css/handu_base_1.css') }}" /> -->
 <link rel="stylesheet" type="text/css" href="{{asset('/home/css/handu_detail_1.css') }}" />
@@ -11,125 +11,53 @@
 <script src='/js/common_1.js'></script>
 
 <div class='detail_wrap'>
-<div class="handu_crumb" id='detail_crumb'> 您所在的位置 <code> &gt;</code> <a href=".">韩都衣舍</a> <code>&gt;</code> <a href="category-225-b0.html">HSTYLE女装</a> <code>&gt;</code> <a href="category-366-b0.html">上装</a> <code>&gt;</code> <a href="category-10645-b0.html">短外套/休闲外套</a> <code>&gt;</code> 韩都衣舍2016冬季新款韩版宽松毛呢外套女OU6246堯</div>
+<div class="handu_crumb" id='detail_crumb'> 您所在的位置 <code> &gt;</code> <a href=".">韩都衣舍</a> <code>&gt;</code> <a href="category-225-b0.html">{{$position['one']}}</a> <code>&gt;</code> <a href="category-366-b0.html">{{$position['two']}}</a> <code>&gt;</code> <a href="category-10645-b0.html">{{$position['three']}}</a> <code>&gt;</code> {{$position['four']}}</div>
 <div class='side_bar'>
   <ul id="cate_guide">
       <h1>商品分类</h1>
-              <li><a href="category-10727-b0.html" title="毛呢外套" target="_blank">毛呢外套</a></li>
-              <li><a href="category-255-b0.html" title="羽绒服" target="_blank">羽绒服</a></li>
-              <li><a href="category-10519-b0.html" title="棉衣/棉服" target="_blank">棉衣/棉服</a></li>
-              <li><a href="category-240-b0.html" title="毛针织衫" target="_blank">毛针织衫</a></li>
-              <li><a href="category-241-b0.html" title="卫衣/绒衫" target="_blank">卫衣/绒衫</a></li>
-              <li><a href="category-10645-b0.html" title="短外套/休闲外套" target="_blank">短外套/休闲外套</a></li>
-              <li><a href="category-242-b0.html" title="T恤" target="_blank">T恤</a></li>
-              <li><a href="category-246-b0.html" title="衬衫" target="_blank">衬衫</a></li>
-              <li><a href="category-57-b0.html" title="套装" target="_blank">套装</a></li>
-              <li><a href="category-10734-b0.html" title="风衣" target="_blank">风衣</a></li>
-              <li><a href="category-254-b0.html" title="蕾丝衫/雪纺衫" target="_blank">蕾丝衫/雪纺衫</a></li>
-              <li><a href="category-257-b0.html" title="马夹" target="_blank">马夹</a></li>
-               </ul>
+              @foreach($category as $v)
+              <li><a href="{{ url('/home/cate/index') }}/{{$v->id}}" title="{{$v->title}}" target="_blank">{{$v->title}}</a></li>
+              @endforeach
+              
+    </ul>
   
               <a href="http://www.handu.com/topic-423.html" target="_blank" title="新品" class="gg">
         <img src="{{asset('/home/imgs/1470880931507587404.png')}}" alt="新品" width="170" height="125" />
       </a>
                   
   <div class="share new_goods">
+      <!-- 新品上市 -->
     <h1></h1>
     <ul>
-    
+        @foreach($new_goods as $v)
           <li class="new_boxs">
-        <a href="goods-1049728.html" title="韩都衣舍2016韩版女冬新款毛呢外套CQ5578莀" target="_blank">
-          <img src="{{asset('/home/imgs/20160826050834_cq5578.jpg')}}" alt="韩都衣舍2016韩版女冬新款毛呢外套CQ5578莀" title="韩都衣舍2016韩版女冬新款毛呢外套CQ5578莀"/>
+        <a href="{{ url('/home/goods/goods') }}/{{$v->id}}" title="{{$v->title}}" target="_blank">
+          <img src="{{asset('/home/imgs/goods')}}/{{$v->pic}}" alt="{{$v->title}}" title="{{$v->title}}"/>
         </a>
         <ul>
-          <li class="name"><a href="goods-1049728.html" target="_blank" title="韩都衣舍2016韩版女冬新款毛呢外套CQ5578莀">韩都衣舍2016韩版女冬新款毛呢外套CQ5578莀</a></li>
+          <li class="name"><a href="{{ url('/home/goods/goods') }}/{{$v->id}}" target="_blank" title="{{$v->title}}">{{$v->title}}</a></li>
           <li class="price">
-            <span class="new_price"><span class="arrow">￥</span>378.00</span>
-            <del class="old_price">￥949.00</del>
+            <span class="new_price"><span class="arrow">￥</span>{{$v->promt_price}}.00</span>
+            <del class="old_price">￥{{$v->orign_price}}.00</del>
           </li>
         </ul>
       </li>
-           <li class="new_boxs">
-        <a href="goods-1050804.html" title="韩都衣舍2016韩版女装冬装新款显瘦拼接毛呢外套GY5753" target="_blank">
-          <img src="{{asset('/home/imgs/20160912100947_gy5753.jpg')}}" alt="韩都衣舍2016韩版女装冬装新款显瘦拼接毛呢外套GY5753" title="韩都衣舍2016韩版女装冬装新款显瘦拼接毛呢外套GY5753"/>
-        </a>
-        <ul>
-          <li class="name"><a href="goods-1050804.html" target="_blank" title="韩都衣舍2016韩版女装冬装新款显瘦拼接毛呢外套GY5753">韩都衣舍2016韩版女装冬装新款显瘦拼接毛呢外套GY5753</a></li>
-          <li class="price">
-            <span class="new_price"><span class="arrow">￥</span>296.00</span>
-            <del class="old_price">￥858.00</del>
-          </li>
-        </ul>
-      </li>
-           <li class="new_boxs">
-        <a href="goods-1049492.html" title="韩都衣舍2016韩版女装冬装新款宽松显瘦百搭纯色毛呢外套EK6116囡" target="_blank">
-          <img src="{{asset('/home/imgs/1049492_g_1481263520747.jpg')}}" alt="韩都衣舍2016韩版女装冬装新款宽松显瘦百搭纯色毛呢外套EK6116囡" title="韩都衣舍2016韩版女装冬装新款宽松显瘦百搭纯色毛呢外套EK6116囡"/>
-        </a>
-        <ul>
-          <li class="name"><a href="goods-1049492.html" target="_blank" title="韩都衣舍2016韩版女装冬装新款宽松显瘦百搭纯色毛呢外套EK6116囡">韩都衣舍2016韩版女装冬装新款宽松显瘦百搭纯色毛呢外套EK6116囡</a></li>
-          <li class="price">
-            <span class="new_price"><span class="arrow">￥</span>358.00</span>
-            <del class="old_price">￥828.00</del>
-          </li>
-        </ul>
-      </li>
-           <li class="new_boxs">
-        <a href="goods-1049823.html" title="韩都衣舍2016韩版冬新女毛呢外套LF5944" target="_blank">
-          <img src="{{asset('/home/imgs/20160827050842_lf5944.jpg')}}" alt="韩都衣舍2016韩版冬新女毛呢外套LF5944" title="韩都衣舍2016韩版冬新女毛呢外套LF5944"/>
-        </a>
-        <ul>
-          <li class="name"><a href="goods-1049823.html" target="_blank" title="韩都衣舍2016韩版冬新女毛呢外套LF5944">韩都衣舍2016韩版冬新女毛呢外套LF5944</a></li>
-          <li class="price">
-            <span class="new_price"><span class="arrow">￥</span>278.00</span>
-            <del class="old_price">￥798.00</del>
-          </li>
-        </ul>
-      </li>
-           <li class="new_boxs">
-        <a href="goods-1051353.html" title="韩都衣舍2016韩版女装冬装新宽松纯色中长款毛呢外套IG5884" target="_blank">
-          <img src="{{asset('/home/imgs/20160921000943_ig5884.jpg')}}" alt="韩都衣舍2016韩版女装冬装新宽松纯色中长款毛呢外套IG5884" title="韩都衣舍2016韩版女装冬装新宽松纯色中长款毛呢外套IG5884"/>
-        </a>
-        <ul>
-          <li class="name"><a href="goods-1051353.html" target="_blank" title="韩都衣舍2016韩版女装冬装新宽松纯色中长款毛呢外套IG5884">韩都衣舍2016韩版女装冬装新宽松纯色中长款毛呢外套IG5884</a></li>
-          <li class="price">
-            <span class="new_price"><span class="arrow">￥</span>288.00</span>
-            <del class="old_price">￥928.00</del>
-          </li>
-        </ul>
-      </li>
-          
-     
+      @endforeach
     </ul>
   </div>
   
   <div class="share hot_goods">
+    <!-- 人气热卖 -->
     <h1></h1>
     <ul>
-    
-          <li class="hstyle_boxs">
-        <a href="goods-1049734.html" alt="韩都衣舍16冬装女装新款显瘦毛呢外套NH6246" title="韩都衣舍16冬装女装新款显瘦毛呢外套NH6246" target="_blank">
-          <img src="{{asset('/home/imgs/20160826050851_nh6246.jpg')}}" alt="韩都衣舍16冬装女装新款显瘦毛呢外套NH6246" title="韩都衣舍16冬装女装新款显瘦毛呢外套NH6246"/>
-        </a>
-        <ul>
-          <li class="name">
-            <a href="goods-1049734.html" target="_blank" title="韩都衣舍16冬装女装新款显瘦毛呢外套NH6246">韩都衣舍16冬装女装新款显瘦毛呢外套NH6246</a>
-          </li>
-          <li class="price">
-            <span class="arrow">￥</span>
-            <span class="new_price">299.00</span>
-            <del class="old_price">￥838.00</del>
-          </li>
-      
-        </ul>
-      </li>
       
          <li class="hstyle_boxs">
-        <a href="goods-1052213.html" alt="{{$data->title}}" title="{{$data->title}}" target="_blank">
+        <a href="{{ url('/home/goods/goods') }}/{{$data->id}}" alt="{{$data->title}}" title="{{$data->title}}" target="_blank">
           <img src="{{asset('/home/imgs/goods')}}/{{$data->pic}}" alt="{{$data->title}}" title="{{$data->title}}"/>
         </a>
         <ul>
           <li class="name">
-            <a href="goods-1052213.html" target="_blank" title="{{$data->title}}">{{$data->title}}</a>
+            <a href="{{ url('/home/goods/goods') }}/{{$data->id}}" target="_blank" title="{{$data->title}}">{{$data->title}}</a>
           </li>
           <li class="price">
             <span class="arrow">￥</span>
@@ -139,31 +67,13 @@
       
         </ul>
       </li>
-      
-         <li class="hstyle_boxs">
-        <a href="goods-1049797.html" alt="{{$data->title}}" title="{{$data->title}}" target="_blank">
-          <img src="{{asset('/home/imgs/20160827050832_cq5963.jpg')}}" alt="{{$data->title}}" title="{{$data->title}}"/>
-        </a>
-        <ul>
-          <li class="name">
-            <a href="goods-1049797.html" target="_blank" title="{{$data->title}}">{{$data->title}}</a>
-          </li>
-          <li class="price">
-            <span class="arrow">￥</span>
-            <span class="new_price">{{$data->promt_price}}.00</span>
-            <del class="old_price">￥{{$data->orign_price}}.00</del>
-          </li>
-      
-        </ul>
-      </li>
-      
-    
+
     </ul>
   </div>
   
-                           <a href="http://www.handu.com/user.php?act=register" target="_blank" title="维新运动" class="gg">
+    <a href="#" target="_blank" title="维新运动" class="gg">
           <img src="{{asset('/home/imgs/1439186924043865480.jpg')}}" alt="维新运动" width="170" height="125"/>
-        </a>
+    </a>
             
 </div>
 <div class='product_detail'>
@@ -271,7 +181,7 @@
             <em><a href="http://www.handu.com/topic-1506.html" target="_blank"><span class="blink_1" style="color:#c80a28;">【毛呢特惠 5折封顶】全场毛呢外套满499减100/满699减180/满899减300/满1099减400！库存有限，先到先得！毛呢外套只限以上满减优惠，不可使用HSTYLE品牌优惠券</span></a></em></h1>
            <ul> 
             <li>
-             商品货号：&nbsp;&nbsp;<span class='code'>OU6246</span>&nbsp;&nbsp;&nbsp;&nbsp;
+             商品货号：&nbsp;&nbsp;<span class='code'>{{'HD'.str_pad($data->cate_id,3,"0",STR_PAD_LEFT).str_pad($data->cate_id,6,"0",STR_PAD_LEFT)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                           售价：<span class='y'>￥</span><del class='market_price'>{{$data -> orign_price}}</del>
                         </li>
           <li class="li_relative">
@@ -282,11 +192,7 @@
                                 促 销 价：
                 <em class='promote_price' ><span class='yy'>￥</span>{{$data -> promt_price}}</em>
                 <em class='discount'style="display:none">3.5折</em>                
-                  <!-- <em class='discount' style="background:#c80a28;"><a onclick="_is_login(login_suc);">登录</a>即享5折封顶价</em>-->               <!--      
-                 <em class='discount' style="background:#c80a28;">【携入场资格】<a onclick="_is_login(login_suc);">登录</a>,立享５折封顶价!</em>
-                -->
-            
-                        
+              
                           
               <span class="vipPrice">
                 <!--<span class="vipPrice_span1">会员专享价</span>
@@ -336,15 +242,18 @@
           </div>      
         </div>
 
+    <form action="{{url('/home/goods/buy_now')}}" method="post" id="formCart">
+            {{ csrf_field() }}
         <div id="goods_detail_2" class="product_detail_info">
             <div class="set">
               <span class='label'>数　　量：   &nbsp;</span>
-              <span class="amount-widget" id="J_AmountWidget">
+              <span class="amount-widget" id="J_AmountWidget" style="margin:0px">
                   <span class="increase" onclick="change_num(1)">+</span>
                   <span class="decrease" onclick="change_num(-1)">-</span>
-                  <input name="recId" id="cartRecId" type="hidden" value="0">
+                  <input name="recId" id="goods_id" type="hidden" value="{{$data->id}}">
                   <input type="text" onchange="gaibian(this)" name="goods_number" id="goodsNumber" class="text" value="1" maxlength="3" title="请输入购买量">
-                  <input name="goodsPrice" type="hidden" value="46">
+                  <input name="color" type="hidden" value="">
+                  <input name="size" type="hidden" value="" />
               </span>
               <span id="goodsInventory">
                   <font class="loading">loading..</font>
@@ -353,13 +262,16 @@
               </span>
             </div>
           <p id='GoodsAttrSelectedString'></p>
-            <input type="hidden" name="GoodsId" id="goods_id" value="{{$data->id}}" />
+            
               <p class='detail_btn_set'>
-                                <a onclick="_is_login(goods_login_suc)" class='fl detail_btn buy' href="javascript:void(0);" title='点击购买'></a>
+                                <a class='fl detail_btn buy' onclick="buy_now()" title='点击购买'></a>
                                 <a onclick="insertCart()" class='fl detail_btn addCart' href="javascript:void(0);" title='加入购物车'></a>
                                 
                               </p>
-        </div>  
+        </div>
+    </form>
+
+
 <script type="text/javascript">
   /*字体闪烁*/
   var index = 0;
@@ -386,6 +298,23 @@ $(function($){
   $("#color li:first").addClass('sel');
   $('#goodsNumber').val('1');
   choose();
+
+  //商品详情，评论详情显示
+  $('#J_TabBar').find('a').eq(0).click(function(){
+      $('#J_TabBar').find('li').removeClass('current');
+      $(this).parent().addClass('current');
+      $('.flat_content').find('li').eq(0).css('display','block');
+      $('.flat_content').find('li').eq(1).css('display','none');
+  });
+
+  $('#J_TabBar').find('a').eq(1).click(function(){
+      $('#J_TabBar').find('li').removeClass('current');
+      $(this).parent().addClass('current');
+      $('.flat_content').find('li').eq(0).css('display','none');
+      $('.flat_content').find('li').next('li').css('display','list-item');
+  });
+
+
 });
  
 //定义函数供给(#size li)和(#color li)的click方法调用
@@ -519,6 +448,14 @@ function insertCart(){
     }
 
     var goodsNumber = $('#goodsNumber').val();
+    var stock = $('.inventory').attr('total');
+
+    if(stock-goodsNumber<0)
+    {
+        alert('库存不足,请重新选择');
+        return false;
+    }
+
     if(goodsNumber<=0)
     {
       alert('请输入正确的商品数量');
@@ -552,251 +489,62 @@ function insertCart(){
 
 }
 
-// var sku_list= [{"goods_attr":"575044|575046","product_number":"87"},{"goods_attr":"575044|575047","product_number":"105"}];
-// $(function(){
-//     update_sku_list();
-// });
-// function set_def_selected(){
-//     if(sku_list.length>0){
-//         var def=sku_list[0];
-//         $.each(def['goods_attr'].split('|'),function(k,v){
-           
-//              $(".goods_attr li[val="+v+"]").addClass('sel');
-        
-//         });
-//         $('.goods_attr li.sel').eq(0).click().click();//锁定不可选的属性值
-//     }
-//     showSelectSKU();
-// }
-// function update_sku_list(){
-//     var goodsId= $("#goods_id").val();
-//     var url='goods.php?act=get_products_v2&id='+goodsId;
-//     $.getJSON(url,function(data){
-//         //console.log(data);
-//         sku_list=data;
-//         set_def_selected();
-//     });
-// }
- 
-// //获取所有包含指定节点的路线
-// function filterProduct(ids){
-//     var result=[];
-//     $(sku_list).each(function(k,v){
-//         _attr='|'+v['goods_attr']+'|';
-//         _all_ids_in=true;
-//         for( k in ids){
-//             if(_attr.indexOf('|'+ids[k]+'|')==-1){
-//                 _all_ids_in=false;
-//                 break;
-//             }
-//         }
-//         if(_all_ids_in){
-//             result.push(v);    
-//         }
-    
-//     });
-//     return result;
-// }
-    
-// //获取 经过已选节点 所有线路上的全部节点
-// // 根据已经选择得属性值，得到余下还能选择的属性值
-// function filterAttrs(ids){
-//     var products=filterProduct(ids);
-    
-//     var result=[];
-//     $(products).each(function(k,v){
-//         result=result.concat(v['goods_attr'].split('|'));
-    
-//     });
-//     return result;
-// }
-// //已选择的节点数组
-// function getSelAttrId(){
-    
-//      var list=[];
-//      $('.goods_attr li.sel').each(function(){
-//         list.push($(this).attr('val'));
-//      });
-//      return list;
-// }
-// $('.goods_attr li').click(function(){
-//     // if($(this).hasClass('b')){
-//     //     return ;//被锁定了
-//     // }
-//     if($(this).hasClass('sel')){
-//         $(this).removeClass('sel');
-//         //alert(22);
-//     }else{
-//         $(this).siblings().removeClass('sel');
-//         $(this).addClass('sel');
+function buy_now(){
+    @if(!session('master'))
+
+      alert('请先登录');
+      window.location.href="{{ url('/home/login') }}";
+      return false;
+    @endif
+
+    if($("#size li").hasClass('sel'))
+    {
+      var size = $("#size .sel span" ).html();
+      $('#J_AmountWidget').find("input[name='size']").val(size);
      
-//     }
-//     var select_ids=getSelAttrId();
-//     var filterP=filterProduct(select_ids);
-//     if(filterP.length==1){
-//         _show_product_num(filterP[0]['product_number']);
-//     }
-//     //已经选择了的规格
-//     var $_sel_goods_attr=$('li.sel').parents('.goods_attr');
-    
-//     // step 1
-//     var all_ids=filterAttrs(select_ids);     
-    
-//     //获取未选择的
-//     var $other_notsel_attr=$('.goods_attr').not($_sel_goods_attr);
-    
-//     //设置为选择属性中的不可选节点
-//     $other_notsel_attr.each(function(){
-//        set_block($(this),all_ids);
-      
-//     });
-    
-//     //step 2
-//     //设置已选节点的同级节点是否可选
-//     $_sel_goods_attr.each(function(){ 
-//         update_2($(this));  
-//     });
-    
-//     showSelectSKU();
-// });
-// function update_2($goods_attr){
-//     // 若该属性值 $li 是未选中状态的话，设置同级的其他属性是否可选
-//     var select_ids=getSelAttrId();
-//     var $li=$goods_attr.find('li.sel');
-    
-//     var select_ids2=del_array_val(select_ids,$li.attr('val'));
-    
-//     var all_ids=filterAttrs(select_ids2);
-    
-//     set_block($goods_attr,all_ids);
-// }
-// function set_block($goods_attr,all_ids){
-// // 根据 $goods_attr下的所有节点是否在可选节点中（all_ids） 来设置可选状态
-//     $goods_attr.find('li').each(function(k2,li2){
-            
-//         if($.inArray($(li2).attr('val'),all_ids)==-1){
-//             $(li2).addClass('b');
-//         }else{
-//             $(li2).removeClass('b');
-//         }
-        
-//     });
-// }
-// function del_array_val(arr,val){
-// //去除 数组 arr中的 val ，返回一个新数组
-//     var a=[];
-//     for(k in arr){
-//         if(arr[k]!=val){
-//             a.push(arr[k]);
-//         }
-//     }
-//     return a;
-// }
-// var a = ''; 
-// var b = '';
-// var c = 'size';
-// var d = 'color';
-// var goods = [];
-// // var sc[] = '';  
-// function showSelectSKU(){
-//     var $li_sel = $(".goods_attr li.sel");
-//     var goodsSelectedString ='你已选择了 ';
-//     var not_choose=true;
-    
-//     //设置选择的属性字符串
-//     $li_sel.each(function(){
-        
-//         _label = $(this).attr('title');
-//         //a[] = _label;
-//         if( typeof(_label) !='undefined'){
-//             goodsSelectedString +='&nbsp;'+'['+_label+']';
-//             not_choose=false;
-//         }
-        
-//     });
-//     $li_sel.each(function(){
-//         _label = $(this).attr('l');
-//         //a[] = _label;
-//         if( typeof(_label) !='undefined'){
-//             a = _label;
-//             not_choose=false;
-//         }
-        
-//     });
-//     $li_sel.each(function(){
-//         _label = $(this).attr('val');
-//         //a[] = _label;
-//         if( typeof(_label) !='undefined'){
-//             b = _label;
-//             not_choose=false;
-//         }
-        
-//     });
+    }else 
+    {
+      alert('请选择商品尺码');
+      return false;
+    }
 
-//     // document.cookie="name="+a;
-//     console.log(a);
-//     console.log(b);
-//     // var goods = [];    
-//     goods[0]=a;
-//     goods[1]=b;
-//     console.log(goods);
+    if($("#color li").hasClass('sel'))
+    {
+      var color = $("#color .sel span" ).html();
+      $('#J_AmountWidget').find("input[name='color']").val(color);
+     
+    }else 
+    {
+      alert('请选择商品颜色');
+      return false;
+    }
 
-//     if(not_choose){
-//         goodsSelectedString='您未选择';
-//     }
-//     $('#GoodsAttrSelectedString').show().html(goodsSelectedString);
-// }
+    var goodsNumber = $('#goodsNumber').val();
+    var stock = $('.inventory').attr('total');
 
-// //添加至cookie
+    if(stock-goodsNumber<0)
+    {
+        alert('库存不足,请重新选择');
+        return false;
+    }
+
+    if(goodsNumber<=0)
+    {
+      alert('请输入正确的商品数量');
+      return false;
+    }
+    
+    document.getElementById('formCart').submit();
+    return false;
+}
 
 
-// //n =-1 显示原有库存
-// function _show_product_num(n){
-//     $("#goodsInventory .loading").hide();
-//     if(n>0 || n==-1){
-//         $("#goodsInventory .inventory").show();
-//         if(n==-1){//设为总库存
-//             n=$("#goodsInventory .inventory").attr('total');
-//         }
-//         $("#goodsInventory b").html(n).show();
-        
-        
-//     }else{
-//         $("#goodsInventory .no_inventory").show();
-//     }
-// }
-// $('.goods_attr.img li').click(function(){
-//     var img=$(this).find('img').attr('bigsrc');
-//     if(typeof(img)!=='undefined'){
-//         $('.videoplayer').hide();
-//         $(".colorImg").show().html('<img src="'+img+'" alt="" />');
-       
-//     }
-// })
 
 </script>
         
         
         
-<script src="/js/tag_1.js" type="text/javascript" async></script>
-<script type="text/javascript">
-// function goods_login_suc_addCart(data){ 
-//     goods_addToCart(1053493,'0','0','');
-//     DialogManager.close('L_ajax_login');
-//     return ;
-// }
-// function goods_login_suc(data){ 
-//     goods_addToCart(1053493,'0','1','');
-//     DialogManager.close('L_ajax_login');
-//     return ;
-// }
-function login_suc(){
-  
-  location.assign('shopingcart');
-  // DialogManager.close('L_ajax_login');
-  return ;
-}
-</script>           
+<script src="/js/tag_1.js" type="text/javascript" async></script>          
             
         <div class='  product_detail_info' style='border-bottom:none;'>       
             
@@ -853,28 +601,28 @@ function login_suc(){
         <ul class="flat_content">
            <li style="display: block;">
             
-                <div class="attributes-list" id="J_AttrList">
-                  <ul id="J_AttrUL">
-                    <li id="J_attrBrandName" title="清仓特惠商品">品牌:&nbsp;清仓特惠商品</li>
-                    <li>货号：OU6246</li>
-                                                                <li>尺码:
-                                                &nbsp;S                                                &nbsp;M                                                &nbsp;L                                                &nbsp;XS                        </li>
-                                            <li>颜色:
-                                                &nbsp;粉蓝色                                                &nbsp;酒红色                        </li>
-                                      </ul>
-                </div>
-                                <div class="New_goodCONpic"><style type="text/css">
-.quanbu{ width:750px; margin:0 auto; float:none}.quanbu img{ float:left; border:0}
-area{ border:0; outline:none}
-</style>
+            <div class="attributes-list" id="J_AttrList">
+                <ul id="J_AttrUL">
+                  <li id="J_attrBrandName" title="清仓特惠商品">品牌:&nbsp;清仓特惠商品</li>
+                  <li>货号：OU6246</li>
+                  <li>尺码:&nbsp;XS &nbsp;S &nbsp;M &nbsp;L &nbsp;XL</li>
+                  <li>颜色: &nbsp;粉蓝色&nnbsp;酒红色  </li>
+                </ul>
+            </div>
+            <div class="New_goodCONpic">
+              <style type="text/css">
+                .quanbu{ width:750px; margin:0 auto; float:none}.quanbu img{ float:left; border:0}
+                area{ border:0; outline:none}
+              </style>
+
 <div id="top" class="quanbu">
-  <a href="http://www.handu.com/topic-640.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_01.jpg')}}" width="750" height="86" /></a> <img border="0" alt="" src="{{asset('/home/imgs/sx_02.jpg')}}" width="750" height="170" usemap="#Map" /> 
+  <a href="topic-640.html" target="_blank"><img alt="" src="{{asset('/home/imgs/sx_01.jpg')}}" width="750" height="86" /></a> <img border="0" alt="" src="{{asset('/home/imgs/sx_02.jpg')}}" width="750" height="170" usemap="#Map" /> 
   <map name="Map">
-    <area href="http://www.handu.com/topic-1509.html" shape="rect" target="_blank" coords="2,2,255,167" /><area href="http://www.handu.com/topic-1364.html" shape="rect" target="_blank" coords="261,6,518,164" /><area href="http://www.handu.com/topic-1198.html" shape="rect" target="_blank" coords="522,4,747,165" />
+    <area href="topic-1509.html" shape="rect" target="_blank" coords="2,2,255,167" /><area href="http://www.handu.com/topic-1364.html" shape="rect" target="_blank" coords="261,6,518,164" /><area href="http://www.handu.com/topic-1198.html" shape="rect" target="_blank" coords="522,4,747,165" />
   </map>
 <img border="0" alt="" src="{{asset('/home/imgs/sx_03.jpg')}}" width="750" height="694" usemap="#Map2" /> 
   <map name="Map2">
-    <area href="http://www.handu.com/brand_topic.php?id=10330" shape="rect" target="_blank" coords="14,115,113,252" /><area href="http://www.handu.com/topic-423.html" shape="rect" target="_blank" coords="121,118,224,251" /><area href="http://www.handu.com/brand_topic.php?id=10314" shape="rect" target="_blank" coords="233,116,338,249" /><area href="http://www.handu.com/brand_topic.php?id=319" shape="rect" target="_blank" coords="348,116,443,249" /><area href="http://www.handu.com/brand_topic.php?id=10142" shape="rect" target="_blank" coords="456,120,553,249" /><area href="http://www.handu.com/brand_topic.php?id=10442" shape="rect" target="_blank" coords="567,114,675,251" /><area href="http://www.handu.com/brand_topic.php?id=328" shape="rect" target="_blank" coords="63,266,166,384" /><area href="http://www.handu.com/brand_topic.php?id=10687" shape="rect" target="_blank" coords="174,266,280,385" /><area href="http://www.handu.com/brand_topic.php?id=10593" shape="rect" target="_blank" coords="288,265,391,386" /><area href="http://www.handu.com/brand_topic.php?id=10470" shape="rect" target="_blank" coords="396,266,503,387" /><area href="http://www.handu.com/topic-1492.html" shape="rect" target="_blank" coords="510,266,611,386" /><area href="http://www.handu.com/brand_topic.php?id=155" shape="rect" target="_blank" coords="-1,399,106,521" /><area href="http://www.handu.com/brand_topic.php?id=10686" shape="rect" target="_blank" coords="113,398,220,520" /><area href="http://www.handu.com/topic-1496.html" shape="rect" target="_blank" coords="227,397,335,520" /><area href="http://www.handu.com/brand_topic.php?id=22" shape="rect" target="_blank" coords="339,397,442,522" /><area href="http://www.handu.com/brand_topic.php?id=10469" shape="rect" target="_blank" coords="451,393,559,521" /><area href="http://www.handu.com/brand_topic.php?id=10361" shape="rect" target="_blank" coords="565,397,675,530" /><area href="http://www.handu.com/topic-1526.html" shape="rect" target="_blank" coords="59,535,165,676" /><area href="http://www.handu.com/brand_topic.php?id=196" shape="rect" target="_blank" coords="175,534,283,668" /><area href="http://www.handu.com/brand_topic.php?id=10534" shape="rect" target="_blank" coords="291,535,400,668" /><area href="http://www.handu.com/brand_topic.php?id=10765" shape="rect" target="_blank" coords="411,534,514,666" /><area href="http://www.handu.com/brand_topic.php?id=10407" shape="rect" target="_blank" coords="522,534,623,659" /><area href="http://www.handu.com/brand_topic.php?id=10745" shape="rect" target="_blank" coords="632,534,736,664" />
+    <area href="" shape="rect" target="_blank" coords="14,115,113,252" /><area href="http://www.handu.com/topic-423.html" shape="rect" target="_blank" coords="121,118,224,251" /><area href="http://www.handu.com/brand_topic.php?id=10314" shape="rect" target="_blank" coords="233,116,338,249" /><area href="http://www.handu.com/brand_topic.php?id=319" shape="rect" target="_blank" coords="348,116,443,249" /><area href="http://www.handu.com/brand_topic.php?id=10142" shape="rect" target="_blank" coords="456,120,553,249" /><area href="http://www.handu.com/brand_topic.php?id=10442" shape="rect" target="_blank" coords="567,114,675,251" /><area href="http://www.handu.com/brand_topic.php?id=328" shape="rect" target="_blank" coords="63,266,166,384" /><area href="http://www.handu.com/brand_topic.php?id=10687" shape="rect" target="_blank" coords="174,266,280,385" /><area href="http://www.handu.com/brand_topic.php?id=10593" shape="rect" target="_blank" coords="288,265,391,386" /><area href="http://www.handu.com/brand_topic.php?id=10470" shape="rect" target="_blank" coords="396,266,503,387" /><area href="http://www.handu.com/topic-1492.html" shape="rect" target="_blank" coords="510,266,611,386" /><area href="http://www.handu.com/brand_topic.php?id=155" shape="rect" target="_blank" coords="-1,399,106,521" /><area href="http://www.handu.com/brand_topic.php?id=10686" shape="rect" target="_blank" coords="113,398,220,520" /><area href="http://www.handu.com/topic-1496.html" shape="rect" target="_blank" coords="227,397,335,520" /><area href="http://www.handu.com/brand_topic.php?id=22" shape="rect" target="_blank" coords="339,397,442,522" /><area href="http://www.handu.com/brand_topic.php?id=10469" shape="rect" target="_blank" coords="451,393,559,521" /><area href="http://www.handu.com/brand_topic.php?id=10361" shape="rect" target="_blank" coords="565,397,675,530" /><area href="http://www.handu.com/topic-1526.html" shape="rect" target="_blank" coords="59,535,165,676" /><area href="http://www.handu.com/brand_topic.php?id=196" shape="rect" target="_blank" coords="175,534,283,668" /><area href="http://www.handu.com/brand_topic.php?id=10534" shape="rect" target="_blank" coords="291,535,400,668" /><area href="http://www.handu.com/brand_topic.php?id=10765" shape="rect" target="_blank" coords="411,534,514,666" /><area href="http://www.handu.com/brand_topic.php?id=10407" shape="rect" target="_blank" coords="522,534,623,659" /><area href="http://www.handu.com/brand_topic.php?id=10745" shape="rect" target="_blank" coords="632,534,736,664" />
   </map>
 <a href="http://www.handu.com/topic-1566.html" target="_blank"><img alt="" src="{{asset('/home/imgs/750.jpg')}}" width="750" height="374" /></a> 
   <div style="padding-top:10px;clear:both;">
@@ -1825,62 +1573,72 @@ area{ border:0; outline:none}
       </tr>
     </tbody>
   </table>
+
 </div>
-<div style="width:100.0%;max-width:750.0px;min-width:480.0px;margin:0 auto 30.0px;height:auto;line-height:50.0px;text-align:center;font-family:microsoft yahei;" align="center">
-  &nbsp;
-</div>
-<div style="width:100.0%;height:auto;padding:20.0px 0;background:#ffffff;" align="center">
-  <div style="width:400.0px;margin:0 auto;">
-    <img class="img-ks-lazyload" alt="" src="{{asset('/home/imgs/tb2be6vjvxxxxa3xxxxxxxxxxxx-263817957.gif')}}" height="80" width="400" /> 
-  </div>
-</div>
-<div align="center">
-  <img class="img-ks-lazyload" src="{{asset('/home/imgs/tb2i6kmxygo.ebjszfpxxckcxxa-263817957.jpg')}}" /><br/>
-</div>                </div>
-<style>
- .baidu_hdys{width:100%;float:left;}
- .baidu_hdys_img{margin:0 auto;float:none;width:750px;}
-</style>
-              
-  <div style=" margin: 0 auto;font-size: 14px;text-align: center;font-family: 微软雅黑;color: #5c5c5c;flaot:none;line-height:25px;">
-      <span style="color:#000">没空去韩国？就来韩都衣舍官网！韩都衣舍官网，网上购物首选。</span>
+    <div style="width:100.0%;max-width:750.0px;min-width:480.0px;margin:0 auto 30.0px;height:auto;line-height:50.0px;text-align:center;font-family:microsoft yahei;" align="center">
+      &nbsp;
     </div>
+
+    <div style="width:100.0%;height:auto;padding:20.0px 0;background:#ffffff;" align="center">
+      <div style="width:400.0px;margin:0 auto;">
+        <img class="img-ks-lazyload" alt="" src="{{asset('/home/imgs/tb2be6vjvxxxxa3xxxxxxxxxxxx-263817957.gif')}}" height="80" width="400" /> 
+      </div>
+    </div>
+
+    <div align="center">
+      <img class="img-ks-lazyload" src="{{asset('/home/imgs/tb2i6kmxygo.ebjszfpxxckcxxa-263817957.jpg')}}" /><br/>
+    </div>                
+
+</div>
+      <style>
+       .baidu_hdys{width:100%;float:left;}
+       .baidu_hdys_img{margin:0 auto;float:none;width:750px;}
+      </style>
+              
+      <div style=" margin: 0 auto;font-size: 14px;text-align: center;font-family: 微软雅黑;color: #5c5c5c;flaot:none;line-height:25px;">
+      <span style="color:#000">没空去韩国？就来韩都衣舍官网！韩都衣舍官网，网上购物首选。</span>
+      </div>
         
-            </li>
-            <li ><div id="ECS_COMMENT" style="width:1100px;margin:0 auto;float:none;">
+  </li>
+
+  <li style="display: none;">
+  <div id="ECS_COMMENT" style="width:1100px;margin:0 auto;float:none;">
+
   <div class="New_goodCONtitle" id="userConmentList" name="userConmentList">商品评论</div>
   <ul class="New_goodCONPLlist">
-                <li>
-    <div class="New_goodPLTime New_goodPLNR_star">
-        <span style="float:left;margin-right:5px; color:#7b7b7b"><strong>是否合身：</strong>正好</span>                  
-      <div class="New_goodPLNR_top">
-        <div class="New_goodPLNR">质量不错，我在这里领了优惠券之后更优惠了，打折不少，如果好用可以分享一下网址，记得收藏哦，每周都会更新网址：http://t.cn/RANJ7RH?ks</div>
-        <div class="New_goodPLuserName">vml***@163.com</div>
+      <li>
+      <div class="New_goodPLTime New_goodPLNR_star">
+          <span style="float:left;margin-right:5px; color:#7b7b7b"><strong>是否合身：</strong>正好</span> 
       </div>
-              <div class="New_goodPLTime New_goodPLNR_star">
-                                    <span style="float:left;margin-right:5px; color:#7b7b7b"><strong>规格：</strong>颜色:酒红色 
-尺码:M</span>
-                                    
-                  <span style="float:left; color:#7b7b7b"><strong>评分：</strong></span>
-                                    <img src="/home/imgs/pingfen_pic.png" />
-                                    <img src="/home/imgs/pingfen_pic.png" />
-                                    <img src="/home/imgs/pingfen_pic.png" />
-                                    <img src="/home/imgs/pingfen_pic.png" />
-                                    <img src="/home/imgs/pingfen_pic.png" />
-                                 </div>
-      <div class="New_goodPLTime">[2016-11-18 23:10:30]</div>
-      <div  class="New_goodPLNR_top" style=" color:#7b7b7b; margin-left:5px;">
-               </div>
-    </li>
-                  </ul>
-  <div class="New_goodPage">
-      <span class="f_l f6" style="margin-right:10px; padding:5px 10px;">共 <b>1</b> 条评论</span>
+
+        <div class="New_goodPLNR_top">
+          <div class="New_goodPLNR">质量不错，我在这里领了优惠券之后更优惠了，打折不少，如果好用可以分享一下网址，记得收藏哦，每周都会更新网址：http://t.cn/RANJ7RH?ks</div>
+          <div class="New_goodPLuserName">vml***@163.com</div>
         </div>
-</div></li>
-            <li></li>
-           
-           
-        </ul>
+
+        <div class="New_goodPLTime New_goodPLNR_star">
+                <span style="float:left;margin-right:5px; color:#7b7b7b"><strong>规格：</strong>颜色:酒红色 尺码:M</span>            
+            <span style="float:left; color:#7b7b7b"><strong>评分：</strong></span>
+                  <img src="/home/imgs/pingfen_pic.png" />
+                  <img src="/home/imgs/pingfen_pic.png" />
+                  <img src="/home/imgs/pingfen_pic.png" />
+                  <img src="/home/imgs/pingfen_pic.png" />
+                  <img src="/home/imgs/pingfen_pic.png" />
+        </div>
+
+        <div class="New_goodPLTime">[2016-11-18 23:10:30]</div>
+        <div  class="New_goodPLNR_top" style=" color:#7b7b7b; margin-left:5px;"></div>
+                 
+      </li>
+  </ul>
+
+    <div class="New_goodPage">
+        <span class="f_l f6" style="margin-right:10px; padding:5px 10px;">共 <b>1</b> 条评论</span>
+    </div>
+</div>
+</li>
+        <li></li> 
+</ul>
     </div>
     
     </div>
