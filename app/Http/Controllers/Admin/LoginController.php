@@ -45,7 +45,7 @@ class LoginController extends Controller
     			$request -> flash();
     			return back() -> with(['info' => '用户名或密码错误']);
     		}
-    		Session::set('master', $res);
+    		Session::set('adminmaster', $res);
     		return redirect('/admin/index') -> with(['info' => '登录成功']);
 
     	}
@@ -56,7 +56,7 @@ class LoginController extends Controller
 
     public function logout()
     {
-    	Session::forget('master');
+    	Session::forget('adminmaster');
     	return redirect('/admin/login') -> with(['info' => '退出成功']);
     }
 

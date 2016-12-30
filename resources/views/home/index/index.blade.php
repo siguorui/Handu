@@ -1,4 +1,3 @@
-
 @extends('home.layoutmy')
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns:wb="http://open.weibo.com/wb"><head>
@@ -19,11 +18,13 @@
 <script src="{{ asset('/home/js/hm.js') }}"></script>
 <script async="" src="{{ asset('/home/js/analytics.js') }}"></script>
 <script type="text/javascript" async="" charset="utf-8" src="{{ asset('/home/js/ntkfstat.js') }}"></script>
+<script src="{{ asset('/home/js/hm.js') }}"></script>
 <script src="{{ asset('/home/js/jquery-1.js') }}"></script>
 <script src="{{ asset('/home/js/jquery.js') }}"></script>
 <script src="{{ asset('/home/js/jquery_002.js') }}"></script>
 <script src="{{ asset('/home/js/wb.js') }}" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" src="{{ asset('/home/js/goods_no1214.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/home/js/jquery.slide.js') }}"></script>
 <style>
 /**泰山压顶*/
 .seven{
@@ -59,6 +60,8 @@ $(function() {
     'Cmouseover':'wait',
     'on':'hover'
   });
+
+
 });
 </script>
 <script type="text/javascript" async="async" charset="utf-8" src="{{ asset('/home/js/zh_cn.js') }}" data-requiremodule="lang"></script>
@@ -229,44 +232,19 @@ window.onscroll=function(){
   
   
   <div id="index_lb">
-          <div class="content" style="display: none; z-index: 2;">
-        <a rel="nofollow" target="_blank" href="http://www.handu.com/topic-423.html">
-          <div style="width:100%;background:url({{ asset('/home/imgs/lbb_01.jpg') }}) no-repeat center 0px;height:90px;"></div>
-<div style="width:100%;background:url({{ asset('/home/imgs/lbb_02.jpg') }}) no-repeat center 0px;height:90px;"></div>
-<div style="width:100%;background:url({{ asset('/home/imgs/lbb_03.jpg') }}) no-repeat center 0px;height:90px;"></div>
-<div style="width:100%;background:url({{ asset('/home/imgs/lbb_04.jpg') }}) no-repeat center 0px;height:90px;"></div>
-<div style="width:100%;background:url({{ asset('/home/imgs/lbb_05.jpg') }}) no-repeat center 0px;height:90px;"></div>        </a>
-      </div>
+        @foreach($col as $v)
           <div class="content" style="z-index: 2; display: block; opacity: 1;">
         <a rel="nofollow" target="_blank" href="http://www.handu.com/topic-1566.html">
-          <div style="height:90px;width:100%;background:url({{ asset('/home/imgs/ql_01.jpg') }}) no-repeat center 0px;">
-</div>
-<div style="height:90px;width:100%;background:url({{ asset('/home/imgs/ql_02.jpg') }}) no-repeat center 0px;">
-</div>
-<div style="height:90px;width:100%;background:url({{ asset('/home/imgs/ql_03.jpg') }}) no-repeat center 0px;">
-</div>
-<div style="height:90px;width:100%;background:url({{ asset('/home/imgs/ql_04.jpg') }}) no-repeat center 0px;">
-</div>
-<div style="height:90px;width:100%;background:url({{ asset('/home/imgs/ql_05.jpg') }}) no-repeat center 0px;">
-</div>        </a>
+          <div style="height:450px;width:100%;background:url('/uploads/imgs/{{$v -> pic}}') no-repeat center 0px;">
       </div>
-          <div class="content" style="z-index: 4; display: block; opacity: 1;">
-        <a rel="nofollow" target="_blank" href="http://www.handu.com/topic-1506.html">
-          <div style="width:100%;background:url({{ asset('/home/imgs/xt_01.jpg') }}) no-repeat center top;height:90px;">
-</div>
-<div style="width:100%;background:url({{ asset('/home/imgs/xt_02.jpg') }}) no-repeat center top;height:90px;">
-</div>
-<div style="width:100%;background:url({{ asset('/home/imgs/xt_03.jpg') }}) no-repeat center top;height:90px;">
-</div>
-<div style="width:100%;background:url({{ asset('/home/imgs/xt_04.jpg') }}) no-repeat center top;height:90px;">
-</div>
-<div style="width:100%;background:url({{ asset('/home/imgs/xt_05.jpg') }}) no-repeat center top;height:90px;">
-</div>        </a>
+        </a>
       </div>
+      @endforeach
+          
         <ul class="tab">
-              <li class="">1212年终盛典</li>
-              <li class="">毛呢外套5折封顶</li>
-              <li class="on">99元封顶</li>
+        @foreach($col as $v)
+              <li class="">{{$v -> title}}</li>              
+        @endforeach
           </ul>
  </div>
  
@@ -563,6 +541,7 @@ $(".firstP a").hover(function(){
         @endforeach  
         
     </ul>
+
     <ul class="floor_con" style="z-index: 4; display: none;">
             @foreach($data2 as $v)
               <li class="new_boxs">
@@ -1572,7 +1551,7 @@ function getsec(str)
   $(document).ready(function(){
  //这里设置DIV层的样式名 
  
-    $(".pullDList").attr("display","block");
+    $(".pullDList").css("display","block");
     $("#gdtw").imgscroll({
       speed: 40,    //滚动速度
       amount: 0,    //滚动过渡时间

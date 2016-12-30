@@ -5,11 +5,11 @@
   <div class="user_wrap">
     
     <h1 class="crumbs">
-      您当前的位置:<a href="http://www.handu.com/" target="_blank">韩都衣舍</a> &gt; <a href="http://www.handu.com/user.php" target="_blank">我的韩都</a>
+      您当前的位置:<a href="{{asset('/')}}" target="_blank">韩都衣舍</a> &gt; <a href="{{asset('/home/user/myCenter')}}" target="_blank">我的韩都</a>
           </h1>
     
     <div class="user_left">
-      <a href="http://www.handu.com/user.php" class="home">
+      <a href="{{asset('/home/user/myCenter')}}" class="home">
         <span>我的韩都</span>
       </a>
       
@@ -34,7 +34,7 @@
               <li key="return_list"><a href="http://www.handu.com/user.php?act=return_list">售后服务</a></li>
               <li key="comment_list"><a href="http://www.handu.com/user.php?act=comment_list">我的评价</a></li>
               <!--<li key="recommend" ><a href="user.php?act=recommend">推荐有礼</a></li>-->
-              <li><a href="http://www.handu.com/msg.php" target="_blank">建议/反馈</a></li>
+              <li><a href="{{asset('home/user/idea')}}" target="_blank">建议/反馈</a></li>
               <li class="last"><a href="javascript:NTKF.im_openInPageChat();">在线客服</a></li>
             </ul>
           </dd>
@@ -43,7 +43,7 @@
           <dt>账户管理<span class="arrow"></span></dt>
           <dd>
             <ul>
-              <li key="privilege"><a href="http://www.handu.com/user.php?act=privilege">我的特权</a></li>
+              <li key="privilege"><a href="{{asset('/home/user/vip')}}">我的特权</a></li>
               <li key="exchange"><a href="http://www.handu.com/user.php?act=exchange">我的积分</a></li>
               <li key="bonus"><a href="http://www.handu.com/user.php?act=bonus">我的优惠券</a></li>
               <li key="postage"><a href="http://www.handu.com/user.php?act=postage">我的包邮卡</a></li>
@@ -59,8 +59,8 @@
           <dd>
             <ul>
               <li key="profile"><a href="{{ url('/home/user/details')}}">基本资料</a></li>
-              <li key="edit_password"><a href="http://www.handu.com/user.php?act=edit_password">修改密码</a></li>
-              <li key="address_list"><a href="http://www.handu.com/user.php?act=address_list">地址管理</a></li>
+              <li key="edit_password"><a href="{{asset('/home/user/password')}}">修改密码</a></li>
+              <li key="address_list"><a href="{{url('/home/user/address')}}">地址管理</a></li>
               <li key="validate"><a href="http://www.handu.com/user.php?act=validate">安全验证</a></li>
             </ul>
           </dd>
@@ -82,22 +82,22 @@
 
  <div class="userinfo">
         <div class="img">
-          <a href="http://www.handu.com/user.php?act=profile">
-           <img src="{{ asset('/home/imgs/default_avatarbig.png') }}" width="120">
+          <a href="{{asset('/home/user/details')}}">
+           <img src="{{$data1 -> photo}}" width="120">
            <div class="upd_img">修改头像</div>
           </a>
-          <a href="http://www.handu.com/user.php?act=profile" target="_blank" class="upd_ifo">编辑个人资料</a>
+          <a href="{{asset('/home/user/details/')}}" target="_blank" class="upd_ifo">编辑个人资料</a>
         </div>
         <ul class="info">
-          <li><span class="user_name">15313066678</span>欢迎您！</li>
+          <li><span class="user_name">{{$data -> email}}</span>欢迎您！</li>
           <li>
-                              <span class="lv lv0"></span>          <span>您的<a href="http://www.handu.com/helper-61-724.html" target="_blank" class="blue">经验值</a>为0， 
+                              <span class="lv lv0"></span>          <span>您的<a href="http://www.handu.com/helper-61-724.html" target="_blank" class="blue">经验值</a>为{{$data2 -> expr_val}}， 
           只要有一笔购物就能升级为普通会员哦            </span>
            
             </li>
-          <li><a href="http://www.handu.com/user.php?act=profile" target="_blank" class="blue">完善账户信息，随时随地享受快乐购物！还能获得100积分哦~</a></li>
+          <li><a href="{{asset('/home/user/details')}}" target="_blank" class="blue">完善账户信息，随时随地享受快乐购物！还能获得100积分哦~</a></li>
           <li class="favor">我的优惠信息：
-            <a href="http://www.handu.com/user.php?act=bonus" target="_blank">韩都优惠券<span class="red">（4）</span></a> 
+            <a href="http://www.handu.com/user.php?act=bonus" target="_blank">韩都优惠券<span class="red">（{{$data2 -> coupon}}）</span></a> 
             <a href="http://www.handu.com/user.php?act=address_list" target="_blank">我的收货地址</a>
           </li>
         </ul>

@@ -26,14 +26,14 @@ li{list-style:none}
 .cate_tree dl{font:12px/20px '宋体';color:#333;text-indent:8px;height:39px;overflow:hidden;}
 
 .cate_tree dt{font:bold 14px/30px 'microsfot yahei';border-bottom:1px solid #DDD;padding-top:8px;margin-bottom:8px;position:relative;cursor:pointer}
-.cate_tree dt i{background:url(/Images/tri.png) no-repeat -2px -6px;width:5px;height:8px;right: 11px;position:absolute;top:18px}
+.cate_tree dt i{background:url(../imgs/tri.png) no-repeat -2px -6px;width:5px;height:8px;right: 11px;position:absolute;top:18px}
 .cate_tree dt a {text-decoration: none;color: #333;}
 .cate_tree dl.on{height:auto; border-bottom:1px solid #DDD;}
 .cate_tree dl.on dt i{background-position:0 0;width:8px;height:5px;right:10px;}
 .cate_tree span{color:#999;padding-left:4px}
 
 
-.cate_tree h3{background:url(/Images/plus.png) no-repeat 10px center;padding-left:20px;font:12px/26px '宋体';cursor:pointer}
+.cate_tree h3{background:url(../imgs/plus.png) no-repeat 10px center;padding-left:20px;font:12px/26px '宋体';cursor:pointer}
 .cate_tree h3 a{color:#333;}
 
 .cate_tree ul{display:none}
@@ -41,7 +41,7 @@ li{list-style:none}
 .cate_tree li a{ color:#666;}
 .cate_tree li.on a{ color:#c80a28;}
 .cate_tree dd.on ul{display:block}
-.cate_tree dd.on  h3{background:url(/Images/minus.png) no-repeat 10px center;}
+.cate_tree dd.on  h3{background:url(../imgs/minus.png) no-repeat 10px center;}
 .cate_tree .no_child h3{ background:none;}
 .cate_tree .no_child.on h3{ background:none;}
 .cate_tree .no_child.on a{color:#c80a28;}
@@ -111,11 +111,11 @@ li{list-style:none}
 .productOrder-tips{position:absolute;background-image:url(about:blank);background-color:rgba(135,113,90,.85);filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#d987715a,endcolorstr=#d987715a);*zoom:1;height:30px;line-height:30px;width:auto;right:0;top:0;color:#fff;overflow:hidden}
 .ie9 .productOrder-tips,.ks-ie9 .productOrder-tips{background-color:transparent}
 .productOrder-tips span{display:none}
-.productOrder-tips i{position:absolute;top:7px;left:5px;height:16px;width:16px;display:inline-block;background:url(/Images/t1kq8vfgfbxxasqp_x-16-16.png)}
+.productOrder-tips i{position:absolute;top:7px;left:5px;height:16px;width:16px;display:inline-block;background:url(../imgs/t1kq8vfgfbxxasqp_x-16-16.png)}
 .productOrder-tips em{font-weight:700;margin:0 5px 0 25px}
 .productOrder-end{background-image:url(about:blank);background-color:rgba(102,102,102,.5);filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#80666666,endcolorstr=#80666666);*zoom:1}
 .ie9 .productOrder-end,.ks-ie9 .productOrder-end{background-color:transparent}
-.productOrder-end i{background-image:url(/Images/t1g0brxbxbxxasqp_x-16-16.png)}
+.productOrder-end i{background-image:url(../imgs/t1g0brxbxbxxasqp_x-16-16.png)}
 .productPrice-text{float:left;color:#cbcbcb;margin-left:3px}
 .productPrice-tips{position:relative;margin-top:5px;margin-bottom:5px;display:none}
 .pPt-con{background:#fff;padding:11px 3%;top:-85px;width:94%;border:1px solid #eae5e1;border-radius:2px;box-shadow:2px 2px 3px #ececec}
@@ -128,7 +128,7 @@ li{list-style:none}
 .miniView .productOrder-tips span{font-size:12px}
 
 
-.pPt-con i{position:absolute;display:inline-block;left:10px;top:-8px;width:14px;height:9px;line-height:9px;overflow:hidden;background:url(/Images/t1rjt_xwndxxbgdxjx-14-9.png)}
+.pPt-con i{position:absolute;display:inline-block;left:10px;top:-8px;width:14px;height:9px;line-height:9px;overflow:hidden;background:url(../imgs/t1rjt_xwndxxbgdxjx-14-9.png)}
 .pPt-con ul{height:70px}
 .pPt-con li{position:relative;word-wrap:break-word;float:left;width:32%;_width:33%;height:56px;padding-top:14px;text-align:center;border-right:1px solid #eae5e1;font-family:arial,verdana,sans-serif;line-height:1.7}
 .pPt-con li b{position:absolute;display:inline-block;height:6px;line-height:6px;overflow:hidden;width:100%;background:#dbdbdb;top:0;left:-1px;border-left:1px solid #fff}
@@ -196,9 +196,9 @@ li.pPt-li-curr b{background-color:#87715a}
 .miniView .product .productStatus .ww-light{width:20%}
 .ie8 .product .productStatus .ww-light a,.ks-ie8 .product .productStatus .ww-light a,.ie7 .product .productStatus .ww-light a,.ks-ie7 .product .productStatus .ww-light a,.ie6 .product .productStatus .ww-light a,.ks-ie6 .product .productStatus .ww-light a{width:100px;height:100px;zoom:.16;top:7px;*top:0}
 .ie8 .product .productStatus .ww-light a span,.ks-ie8 .product .productStatus .ww-light a span,.ie7 .product .productStatus .ww-light a span,.ks-ie7 .product .productStatus .ww-light a span,.ie6 .product .productStatus .ww-light a span,.ks-ie6 .product .productStatus .ww-light a span{width:auto;zoom:6;left:-11px;top:106px}
-.product .productStatus .ww-light a{background:url(/Images/t11lggfoxcxxc1v.nr-93-93.png) no-repeat center center!important;background-size:16px!important;position:relative;width:16px;height:16px}
+.product .productStatus .ww-light a{background:url(../imgs/t11lggfoxcxxc1v.nr-93-93.png) no-repeat center center!important;background-size:16px!important;position:relative;width:16px;height:16px}
 .product .productStatus .ww-light a span{padding:0;display:block;white-space:nowrap;color:#999;top:18px;left:-2px;height:14px;position:absolute;width:2em!important;overflow:hidden;margin-left:-2px;border-right:0;font-weight:400;font-size:12px}
-.product .productStatus .ww-light a.ww-offline{background:url(/Images/t1rb.jfijbxxc1v.nr-93-93.png) no-repeat center center!important;background-size:16px!important}
+.product .productStatus .ww-light a.ww-offline{background:url(../imgs/t1rb.jfijbxxc1v.nr-93-93.png) no-repeat center center!important;background-size:16px!important}
 .product .productShop{position:relative;overflow:visible;margin-bottom:7px}
 .product .productShop .productShop-name{color:#999;width:auto}
 .product .productIcons{margin:0;height:auto;line-height:30px;max-height:30px;border-top:1px solid #eee}
@@ -208,5 +208,5 @@ li.pPt-li-curr b{background-color:#87715a}
 
 /*代购商品重写*/
 .product_dg{height:460px}
-.product_dg .cornor{position:absolute;top:0px;left:0px;width: 64px;height: 26px;background: url(/Images/cornor.png) no-repeat;}
+.product_dg .cornor{position:absolute;top:0px;left:0px;width: 64px;height: 26px;background: url(../imgs/cornor.png) no-repeat;}
 .product_dg .productImg-wrap img{width: 222px;height: 317px;}

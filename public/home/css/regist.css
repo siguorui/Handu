@@ -1,0 +1,295 @@
+﻿
+.regist_main,regist_list
+{
+  width:100%;
+  float:left;
+  color:#333;
+  font-weight: '微软雅黑';
+}
+.regist_content
+{
+  width:990px;
+  float:none;
+  margin:20px auto;
+  overflow:hidden;
+}
+.regist_tab
+{
+  width:100%;
+  height:auto;
+  float:left;
+}
+.regist_tab>ul
+{
+  width:100%;
+  float:left;
+  border-bottom:solid 2px #c80a28;
+  margin-bottom:3px;
+}
+.regist_tab>ul>li.registTab
+{
+  background:url('../imgs/regist.png') no-repeat -100px 0;
+  width: 97px;
+  height: 33px;
+  float:left;
+}
+.regist_tab>ul>li.registTab.current
+{
+  background:url('../imgs/regist.png') no-repeat 0 0;
+}
+.regist_tab>ul>li.surveyTab
+{
+  background: url('../imgs/regist.png') no-repeat 0 -36px;
+  width: 97px;
+  height: 33px;
+  float:left;
+  margin-left:8px;
+}
+.regist_tab>ul>li.surveyTab.current
+{
+  background: url('../imgs/regist.png') no-repeat -100px -36px;
+  width: 97px;
+  height: 33px;
+}
+.regist_item
+{
+  width:97.2%;
+  border:solid 1px #ddd;
+  background:#fafafa;
+  float:left;
+  padding:25px 13px;
+}
+.regist_item_head
+{
+  width:100%;
+  float:left;
+  font-size:14px;
+  color:#333;
+  font-family: '微软雅黑';
+  margin-bottom:20px;
+}
+/**意见反馈 table*/
+.regist_item_body
+{
+  width:100%;
+  float:left;
+  font-size:12px;
+  color:#333;
+}
+table.regist_tb
+{
+  width:100%;
+  float:left;
+}
+table.regist_tb tr td
+{
+  padding: 7px;
+}
+.regist_tb_lefttd
+{
+  text-align:right;
+  width:12%;
+}
+.regist_tb_righttd>ul
+{
+  width:100%;
+  float:left;
+  list-style: none;
+}
+.regist_tb_righttd>ul>li
+{
+  float:left;
+  width:10%;
+  text-align: left;
+}
+input.regist_title
+{
+  width:542px;
+  height:29px;
+  line-height:29px;
+  border:#DEDEDE 1px solid;
+  color:#999;
+}
+input.regist_title:focus
+{
+  color:#333;
+}
+textarea.regist_area
+{
+  width:532px;
+  height:180px;
+  border:#DEDEDE 1px solid;
+  color:#999;
+  padding:5px;
+  float: left;
+  font-size:12px;
+}
+textarea.regist_area:focus
+{
+  color:#333;
+}
+.lenWrong
+{
+  color:#c80a28;
+  padding:3px;
+  display:none;
+}
+.regist_submit
+{
+  background: url('../imgs/regist.png') no-repeat 0 -75px;
+  width: 75px;
+  height: 30px;
+  float:left;
+  cursor: pointer;
+}
+.regist_submit:active
+{
+  background-position:0 -111px;
+}
+.regist_title.borderColor,.regist_area.borderColor
+{
+  border:solid 1px #c80a28;
+}
+.default_txt
+{
+  display:none;
+}
+.surplusWords
+{
+  width:100%;
+  float:left;
+  color:#999;
+}
+h2.regist_title
+{
+  width:100%;
+  float:left;
+  font-size:18px;
+  color:#333;
+  margin-bottom:25px;
+}
+.regist_radio
+{
+  float:left;
+  margin-right:5px;
+  *margin-top:-5px!important;
+  margin-top:0px;
+}
+/**调查问卷*/
+.question_survey
+{
+  width:100%;
+  float:left;
+}
+.question_survey li
+{
+  width:100%;
+  float:left;
+  height:40px;
+}
+.question_survey_title
+{
+  font-size:14px;
+  color:#333;
+  font-weight: bold;
+}
+.radio_item
+{
+  float:left;
+  margin-right:50px;
+}
+/**弹出框**/
+.popup_box
+{
+  width: 383px;
+  height: auto;
+  border: 10px solid #CCC;
+  text-align: center;
+  float: none;
+  margin: 20px auto;
+  position: fixed;
+  top:60%;
+  left:50%;
+  margin-top:-110px;
+  margin-left:-180px;
+  background:#fff;
+  z-index:10001;
+}
+.popup_box_close{
+  background: url('../imgs/c_close1.png') no-repeat center center;
+  height: 30px;
+  width: 30px;
+  float:right;
+  margin:4px;
+}
+.popup_box_close:hover 
+{
+  background: url('../imgs/c_close2.png') no-repeat center center;
+}
+.popup_box_content
+{
+  width: 100%;
+  color: #666666;
+  font-size: 12px;
+  float: left;
+}
+.popup_box_head
+{
+  color:#333;
+  font-size:14px;
+  font-family: 'Mcrosoft YaHe';
+  text-align:left;
+  width:100%;
+  font-weight: bold;
+}
+.popup_box_txt
+{
+   float: none;
+   margin: 0px auto;
+   overflow: hidden;
+   width: 90%;
+   text-align:center;
+}
+h1.warn_info
+{
+  color:#666;
+  font-size:16px;
+  font-weight: bold;
+  text-align: center;
+  width:100%;
+  float:left;
+  padding:15px 0 ;
+}
+.popup_box_txt p
+{
+  line-height: 25px;
+  width:100%;
+  float:left;
+}
+.popup_box_txt p.tint_color
+{
+  color:#999;
+}
+.popup_box_btn
+{
+  background: url('../imgs/return_headerpage.png') no-repeat 0 0;
+  width: 103px;
+  height: 31px;
+  cursor:pointer;
+  float:none;
+  margin:10px auto;
+}
+.popup_box_btn:active
+{
+  background-position:0 -35px
+}
+input[type=text].nogood_reason
+{
+  width:178px;
+  height:15px;
+  border:none;
+  background:none;
+  border-bottom:solid 1px #ddd;
+  float:left;
+  margin-left:5px;
+}

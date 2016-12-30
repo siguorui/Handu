@@ -269,8 +269,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ url('/ad/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
                             <span class="hidden-xs">
-                            @if(session('master'))
-                                {{session('master') -> user_name}}
+                            @if(session('adminmaster'))
+                                {{session('adminmaster') -> user_name}}
                             @else
                                 请登录
                             @endif
@@ -282,35 +282,35 @@
                                 <img src="{{ url('/ad/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                                 <p>
 
-                                       @if(session('master'))
-                                        {{session('master') -> user_name}}
+                                       @if(session('adminmaster'))
+                                        {{session('adminmaster') -> user_name}}
                                         @else
                                             请登录
                                         @endif - PHP工程师
 
-                                    <small>Member since Nov. 2012</small>
+                                    <small>Member since Nov. 2017</small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
                             <li class="user-body">
                                 <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
+                                    <a href="#">欢迎你!</a>
                                 </div>
                                 <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
+                                    <a href="#">亲爱的</a>
                                 </div>
                                 <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
+                                    <a href="#">大管家</a>
                                 </div>
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    (*^__^*)(*^__^*)
                                 </div>
                                 <div class="pull-right">
 
-                                    <a href="{{url('/admin/logout')}}" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{{url('/admin/logout')}}" class="btn btn-default btn-flat">退出</a>
 
                                 </div>
                             </li>
@@ -334,7 +334,11 @@
                     <img src="{{ url('/ad/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Alexander Pierce</p>
+                    <p>@if(session('adminmaster'))
+                                        {{session('adminmaster') -> user_name}}
+                                        @else
+                                            请登录
+                                        @endif</p>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
@@ -396,11 +400,11 @@
                         <i class="fa fa-files-o"></i>
 
                         <span> 订单管理</span>
-                        <span class="label label-primary pull-right">4</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{url('/admin/cate/add')}}"><i class="fa fa-circle-o"></i> 订单处理</a></li>
-                        <li><a href="{{url('/admin/cate/index')}}"><i class="fa fa-circle-o"></i> 订单完成</a></li>
+                        <li><a href="{{url('/admin/orders/index')}}"><i class="fa fa-circle-o"></i> 订单处理</a></li>
+                        <li><a href="{{url('/admin/orders/finish')}}"><i class="fa fa-circle-o"></i> 订单完成</a></li>
 
                     </ul>
                 </li>
@@ -409,7 +413,7 @@
                         <i class="fa fa-files-o"></i>
 
                         <span> 友情链接管理</span>
-                        <span class="label label-primary pull-right">4</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{url('/admin/friendlinks/add')}}"><i class="fa fa-circle-o"></i> 添加链接</a></li>
@@ -417,7 +421,19 @@
 
                     </ul>
                 </li>
- 
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-files-o"></i>
+
+                        <span>前台轮播图</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('/admin/carcoul/add')}}"><i class="fa fa-circle-o"></i> 添加主题</a></li>
+                        <li><a href="{{url('/admin/carcoul/index')}}"><i class="fa fa-circle-o"></i> 主题列表</a></li>
+
+                    </ul>
+                </li>
             </ul>
         </section>
         <!-- /.sidebar -->

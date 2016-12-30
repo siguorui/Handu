@@ -5,10 +5,14 @@
 Route::match(['get','post'],'/home/login', 'Home\LoginController@login');
 //前台退出
 Route::get('home/logout', 'Home\LoginController@logout');
-//迪葵纳页面展示
-Route::get('home/dequanna/dequanna', 'Home\BrandController@dequanna');
 
 
+//前台登录
+Route::get('home/login/login','Home\LoginController@login');
+Route::get('home/login/login/{tmp}', 'Home\LoginController@captcha');
+
+//后台中间件
+// Route::group(['middleware' => 'login'], function(){});
 //后台登录
 Route::match(['get','post'],'/admin/login', 'Admin\LoginController@login');
 //后台退出
@@ -36,16 +40,27 @@ Route::get('home/user/register','Home\UserController@register');  //注册
 Route::post('home/user/add','Home\UserController@add');
 Route::get('/home/user/active/{remember_token}','Home\UserController@active');  //激活用户
 Route::get('/home/user/myCenter','Home\MyCenterController@myCenter');  //个人中心
-Route::get('/home/user/details','Home\MyCenterController@details');
+Route::get('/home/user/details','Home\MyCenterController@details');		//基本资料
+Route::get('/home/user/password','Home\MyCenterController@password');	//修改密码
+Route::post('/home/user/updateP','Home\MyCenterController@updateP');	//修改密码
+Route::post('/home/update','Home\DetailsController@update');	//更新个人信息
+Route::get('/home/user/vip','Home\DetailsController@vip');	//特权
+Route::get('/home/user/idea','Home\DetailsController@idea');	//意见反馈
+Route::post('/home/user/addidea','Home\DetailsController@addidea');	//意见反馈
+Route::get('/home/user/address','Home\DetailsController@address');	//意见反馈
 
 //前台商品列表
-Route::get('/home/cate/index','Home\CateController@index');
-Route::get('/home/cate/show','Home\GoodsController@show');
+
+Route::get('/home/cate/index/{id}','Home\CateController@index');    //
+// Route::get('/home/cate/list','Home\CateController@list');
+Route::get('/home/nana/nana/{id}', 'Home\CateController@nana');
 
 //前台首页
 Route::get('/','Home\IndexController@index');
-//搜索
+
+//前台搜索
 Route::get('/home/search','Home\IndexController@search');
+
 //后台首页
 Route::get('/admin/index','Admin\IndexController@index');
 
@@ -74,8 +89,6 @@ Route::get('admin/friendlinks/delete/{id}', 'Admin\LinkController@delete');
 
 
 
-
-
 Route::get('/admin/goods/add/{id}','Admin\GoodsController@add');
 Route::post('/admin/goods/insert/{id}','Admin\GoodsController@insert');
 Route::get('/admin/goods/index/{id}','Admin\GoodsController@index');  
@@ -85,5 +98,40 @@ Route::post('/admin/goods/update/{id}/{urlid}','Admin\GoodsController@update'); 
 Route::get('/admin/goods/delete/{id}/{urlid}','Admin\GoodsController@delete');  //商品删除
 
 
+//商品详情
+// 前台商品详情展示
+Route::get('/home/goods/goods/{id}','Home\GoodsController@goods');
+Route::post('/home/goods/addCart','Home\GoodsController@addCart');
+//单击颜色尺寸查询库存
+Route::post('/home/goods/checkStock','Home\GoodsController@checkStock');
+//购物车页面显示
+Route::get('/home/goods/shopingcart','Home\GoodsController@shopingcart');
+//购物车商品删除
+Route::post('/home/goods/deleteCart','Home\GoodsController@deleteCart');
+
+
+//张伟订单列表页
+Route::get('/admin/orders/index','Admin\OrderController@index');
+//详情页
+Route::get('/admin/orders/details/{id}','Admin\OrderController@details');
+//张伟订单完成页
+Route::get('/admin/orders/finish','Admin\OrderController@finish');
+Route::get('/admin/orders/detailsfinish/{id}','Admin\OrderController@detailsfinish');
+Route::get('/admin/orders/delete/{id}','Admin\OrderController@delete');
+//更改状态页
+Route::get('/admin/orders/edit/{id}','Admin\OrderController@edit');
+Route::post('/admin/orders/update/{id}','Admin\OrderController@update');
+
+//张伟前台轮播图
+Route::get('admin/carcoul/add','Admin\CarcoulController@add');
+Route::post('admin/carcoul/insert','Admin\CarcoulController@insert');
+Route::get('admin/carcoul/index','Admin\CarcoulController@index');
+Route::get('admin/carcoul/delete/{id}','Admin\CarcoulController@delete');
+
+//张伟前台订单页
+Route::get('/home/orders/myOrders','Home\MyCenterController@myOrders');
+//评价列表
+Route::get('/home/orders/ue','Home\MyCenterController@ue');
+Route::post('/home/orders/insert/{id}','Home\MyCenterController@insert');
 
 

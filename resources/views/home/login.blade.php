@@ -48,11 +48,11 @@
 				        <p class="text-red">{{session('info')}}</p>
 				        @endif</span>	
                           <span>
-							<input type="hidden" name="back_act" value="http://www.handu.com/">
-                            
+							
 							<input type="submit" name="submit" class="login_btn" onclick="login();_czc.push([&#39;_trackEvent&#39;, &#39;登陆&#39;, &#39;立即登录&#39;]);" value="立即登录" style="float:left; cursor:pointer;">
 							<div style="height:35px;line-height:50px;">
-							  <input class="news_loginRadio" type="checkbox" value="1" name="remember" id="remember">保存登录信息
+							  <!-- <input class="news_loginRadio" type="checkbox"
+							   value="1" name="remember" id="remember"> -->自动保存登录信息
 							</div>
 							</span>
 						</li>

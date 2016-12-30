@@ -10,6 +10,7 @@ class IndexController extends Controller
     //加载首页面
     public function index()
     {
+
     	//获取父级分类数据
     	// $fdata = DB::table('category') -> where([['pid','0'],['status','1'],]) -> get();
     	$data = DB::table('goods_list') -> where('cate_id',92) ->limit(5) -> get();
@@ -20,10 +21,10 @@ class IndexController extends Controller
     	$data5 = DB::table('goods_list') -> where('cate_id',213) ->limit(5) -> get();
     	$res = DB::table('friendslinks') -> where('status',1)-> get();
     	// dd($data);
+        $col = DB::table('carsoul') -> get();
 
 
-
-    	return view('home.index.index',['data' => $data,'data1' => $data1,'data2' => $data2,'data3' => $data3,'data4' => $data4,'data5' => $data5,'res' => $res]);
+    	return view('home.index.index',['data' => $data,'data1' => $data1,'data2' => $data2,'data3' => $data3,'data4' => $data4,'data5' => $data5,'res' => $res,'col' => $col]);
     }
     public function search(Request $request)
     {
@@ -41,5 +42,6 @@ class IndexController extends Controller
     	
         return view('home.search', ['data' => $data, 'res' => $res, 'request' => $request -> all()]);
     	// return view('home.search');
+
     }
 }

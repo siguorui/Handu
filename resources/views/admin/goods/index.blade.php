@@ -7,12 +7,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Data Tables
+                商品管理
                 <small>advanced tables</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Tables</a></li>
+                <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+                <li><a href="#">商品管理</a></li>
                 <li class="active"></li> 
             </ol>
         </section>
@@ -32,7 +32,7 @@
                         @endif
                         <div class="box-body">
                             <table id="example2" class="table table-bordered table-hover">
-                        
+                       
                                         <!-- 分页展示 --> 
                                         <form action="{{url('admin/goods/index')}}">
                         <div class="row"><div class="col-sm-8"><div class="dataTables_length" id="example1_length"><label><select name="num" aria-controls="example1" class="form-control input-sm">
@@ -47,6 +47,7 @@
                         </span>
                             </div></label></div></div></div>
                         </form>
+
                                 <thead>
                                 <tr>
                                     <th>序号</th>
@@ -80,7 +81,7 @@
                                 </tr>
                                @endforeach
                                 </tbody>
-                                
+
                             @endif
 
 
@@ -133,6 +134,7 @@
                                 @endforeach
                                @endforeach
                                @endforeach
+
                                {{$data -> links()}}
                                 </tbody>
 
@@ -142,6 +144,7 @@
                         
                         </div><!-- /.box-body -->
                     </div><!-- /.box -->      
+
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </section><!-- /.content -->

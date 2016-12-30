@@ -126,7 +126,7 @@ class UserController extends Controller
         $oldPath = '.'.$oldPic;
         $time = time();
         $data['add_time'] = $time;
-        $data['password'] = Crypt::encrypt($data['password']);
+        $data['password'] = Hash::make($data['password']);
 
 
         //处理图片
@@ -140,22 +140,21 @@ class UserController extends Controller
                 $fileName = str_random(32).'.'.$extension;
                 $d = date('Ymd');
                 $dir = './uploads/imgs/'.$d;
-                $picd = '/uploads/imgs/'.$d.'/'.$fileName;
+                
                 if(!file_exists($dir))
                 {
                     mkdir($dir,0777,true);
                 }
                 //移动文件
                 $move = $request -> file('pic') -> move($dir,$fileName);
+                $picd = '/uploads/imgs/'.$d.'/'.$fileName;
                 if($move)
                 {
                     $data['pic'] = $picd;
                 }
-
-
             }
         }
-
+    
        $res = DB::table('managers') -> where('id', $id) -> update($data);
        if($res)
        {

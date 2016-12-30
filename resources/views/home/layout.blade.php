@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Keywords" content="" />
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="Description" content="" />
 
 <!-- <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_base.css') }}"> -->
@@ -64,7 +65,7 @@ function closeDt(){
 </script>-->
 
 
-<div style="width:100%;height:200px;min-width:1200px;background:url({{ asset('/home/imgs/584a93b2Nfe89bf16.jpg') }}) no-repeat center top;">
+<!-- <div style="width:100%;height:200px;min-width:1200px;background:url({{ asset('/home/imgs/584a93b2Nfe89bf16.jpg') }}) no-repeat center top;">
  <div style="width:1400px; height:100%; position:relative; margin:0 auto;">
   	<a href="http://www.handu.com/topic-423.html" target="_blank" style="display:block; width:100%; height:100%"> 
 		<div style="width:1200px; position:absolute;">
@@ -73,7 +74,7 @@ function closeDt(){
     
   </div>
 
-</div>
+</div> -->
 
 
 
@@ -105,6 +106,7 @@ function closeDt(){
 </style>
 
 @if(session('master'))
+
 <li class="on">
   <a href="http://www.handu.com/user.php" target="_blank" title="15313066678" class="user_name">欢迎您，{{session('master') -> email}}</a>
   
@@ -120,7 +122,7 @@ function closeDt(){
 </li>
 
 <li class="integral">
-  <a href="http://www.handu.com/user.php?act=exchange" target="_blank"><span>积分</span><b>100</b></a>
+  <a href="http://www.handu.com/user.php?act=exchange" target="_blank"><span>积分</span><b>{{session('master') -> score}}</b></a>
 </li> 
 <li><a href="{{url('home/logout')}}">退出</a></li>
 <li class="">
@@ -1089,7 +1091,7 @@ margin-top: 3px;}
         <a href="http://www.handu.com/themes/handuyishe/html/yyzz.html" target="_blank"><img src="{{ asset('/home/imgs/zxmbutton05_sy.jpg') }}" alt="" width="103" height="38" border="0" style="margin:5px 5px 0 5px;"></a>
 
 
-    <a href="https://ss.knet.cn/verifyseal.dll?sn=e14071837010051457jcgb000000&ct=df&a=1&pa=0.6688498684670776" target="_blank" style="display:inline-block;position:relative;width:102px;height:37px;">
+    <a href="" target="_blank" style="display:inline-block;position:relative;width:102px;height:37px;">
        <img src="{{ asset('/home/imgs/cnnic.png') }}" alt="" width="102" height="37" border="0"></a>
 
         <!--<a href="http://si.trustutn.org/info?sn=615140701004909923565" target="_blank">
@@ -1372,7 +1374,8 @@ $(function(){
 .gwd_toolbar_info{display:none !important; visibility:hidden !important; margin-left: -1000000px !important;}
 </style>
 
-<script src="{{ asset('/home/js/tag.js') }}" type="text/javascript" async></script><script type="text/javascript">
+
+<script type="text/javascript">
 
 $(function(){
   var regTitleList = $('#regTitle>a');

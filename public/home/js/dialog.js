@@ -43,7 +43,7 @@ var DialogManager = {
         //var _path    = _dialog_js_path.split('/');
         //var _dialog_css = _path.slice(0, _path.length - 1).join('/') + '/dialog.css';
         var _dialog_css ='dialog.css'/*tpa=http://s.handu.com/js/dialog/dialog.css*/;
-        $('head').append('<link href="' + _dialog_css + '" rel="stylesheet" type="text/css" />');
+        $('head').append('<link href="../css/' + _dialog_css + '" rel="stylesheet" type="text/css" />');
     }
 };
 var ScreenLocker = {

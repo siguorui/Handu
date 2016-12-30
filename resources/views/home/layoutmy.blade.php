@@ -45,8 +45,61 @@
 </head>
 <body>
 
-  @if(session('master'))
+@if(session('master'))
+<div id="global_nav">
+  <div class="global_nav">
+    <div class="global_info fl">
+      <ul id="HD_MZONE">
+        <li class="on">
+          <em><a href="http://www.handu.com">返回首页</a></em>
+        </li>
+        <li id="nav_addFavorite">
+          <a rel="nofollow" href="javascript:window.external.addFavorite()"><b></b>收藏网站</a>
+        </li>
+      </ul>
+    </div>
+    <div class="global_info fr">
+      <ul id="HD_MEMBERZONE"><style type="text/css">
+#HD_MEMBERZONE li.zhuce_main&gt;img {position: absolute;top: 15px;left: -71px;z-index: 222;display: none;}
+#HD_MEMBERZONE li.zhuce_main:hover&gt;img {display: block;}
+#HD_MEMBERZONE li.on&gt;img {position: absolute;top: 15px;left: 4px;z-index: 222;}
+</style>
+<li class="on">
+  <a class="user_name" title="" target="_blank" href="{{asset('/home/user/myCenter')}}">欢迎您，{{session('master') -> email}}</a>
+  
+  <a target="_blank" title="注册会员" href="{{asset('/home/user/vip')}}">
+    
+          <em class="lv lv0"></em>
+      
+  </a>
+  <!--<img src="http://img01.handu.com/hdysweb/20141222/gwgl.png"  alt="官网会员内部攻略" border="0" usemap="#Map" />
+  <map name="Map" id="Map">
+    <area shape="rect" coords="0,2,151,27" href="http://www.handu.com/topic-1276.html" target="_blank" />
+  </map>-->
+</li>
 
+<li class="integral">
+  <a target="_blank" href="http://www.handu.com/user.php?act=exchange"><span>积分</span><b>{{session('master') -> score}}</b></a>
+</li>
+<li><a href="{{asset('/home/logout')}}">退出</a></li>
+<li class="">
+    <div class="more-active">
+    <a class="bn-more" href="{{asset('/home/user/myCenter')}}"><span>我的韩都</span></a><b></b>
+    <div class="more-items">
+        <table cellspacing="0" cellpadding="0">
+            <tbody>
+              <tr><td><a target="_blank" href="http://www.handu.com/user.php?act=order_list">我的订单</a></td></tr>
+              <tr><td><a target="_blank" href="http://www.handu.com/user.php?act=bonus">我的优惠券</a></td></tr>
+              <tr><td><a target="_blank" href="http://www.handu.com/user.php?act=collection_list">我的收藏</a></td></tr>
+              <tr><td><a target="_blank" href="http://www.handu.com/user.php?act=return_list">退货办理</a></td></tr>
+                         </tbody>
+        </table>
+    </div>
+    </div>
+</li>
+
+
+@else
 <div id="global_nav">
   <div class="global_nav">
     <div class="global_info fl">
@@ -79,59 +132,6 @@
   </map>-->
 </li>
 
-@else
-
-<div id="global_nav">
-  <div class="global_nav">
-    <div class="global_info fl">
-      <ul id="HD_MZONE">
-        <li class="on">
-          <em><a href="http://www.handu.com">返回首页</a></em>
-        </li>
-        <li id="nav_addFavorite">
-          <a rel="nofollow" href="javascript:window.external.addFavorite()"><b></b>收藏网站</a>
-        </li>
-      </ul>
-    </div>
-    <div class="global_info fr">
-      <ul id="HD_MEMBERZONE"><style type="text/css">
-#HD_MEMBERZONE li.zhuce_main&gt;img {position: absolute;top: 15px;left: -71px;z-index: 222;display: none;}
-#HD_MEMBERZONE li.zhuce_main:hover&gt;img {display: block;}
-#HD_MEMBERZONE li.on&gt;img {position: absolute;top: 15px;left: 4px;z-index: 222;}
-</style>
-<li class="on">
-  <a class="user_name" title="" target="_blank" href="{{asset('/home/user/myCenter')}}">欢迎您，汪世兵大爷！</a>
-  
-  <a target="_blank" title="注册会员" href="http://www.handu.com/user.php?act=privilege">
-    
-          <em class="lv lv0"></em>
-      
-  </a>
-  <!--<img src="http://img01.handu.com/hdysweb/20141222/gwgl.png"  alt="官网会员内部攻略" border="0" usemap="#Map" />
-  <map name="Map" id="Map">
-    <area shape="rect" coords="0,2,151,27" href="http://www.handu.com/topic-1276.html" target="_blank" />
-  </map>-->
-</li>
-
-<li class="integral">
-  <a target="_blank" href="http://www.handu.com/user.php?act=exchange"><span>积分</span><b>190</b></a>
-</li>
-<li><a href="{{asset('/home/logout')}}">退出</a></li>
-<li class="">
-    <div class="more-active">
-    <a class="bn-more" href="{{asset('/home/user/myCenter')}}"><span>我的韩都</span></a><b></b>
-    <div class="more-items">
-        <table cellspacing="0" cellpadding="0">
-            <tbody>
-              <tr><td><a target="_blank" href="http://www.handu.com/user.php?act=order_list">我的订单</a></td></tr>
-              <tr><td><a target="_blank" href="http://www.handu.com/user.php?act=bonus">我的优惠券</a></td></tr>
-              <tr><td><a target="_blank" href="http://www.handu.com/user.php?act=collection_list">我的收藏</a></td></tr>
-              <tr><td><a target="_blank" href="http://www.handu.com/user.php?act=return_list">退货办理</a></td></tr>
-                         </tbody>
-        </table>
-    </div>
-    </div>
-</li>
 
 
 @endif
