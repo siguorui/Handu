@@ -23,6 +23,7 @@ Route::post('home/upwd','Home\ForgetPasswordController@upwd');
 
 
 
+
 //后台登录
 Route::match(['get','post'],'/admin/login', 'Admin\LoginController@login');
 //后台退出
@@ -74,8 +75,10 @@ Route::post('/home/details/defadd','Home\DetailsController@defadd');	//是否默
 
 Route::get('/home/cate/index/{id}','Home\CateController@index');    //
 // Route::get('/home/cate/list','Home\CateController@list');
+
 Route::get('/home/cate/list/{id}', 'Home\CateController@list');
 Route::post('/home/cate/ajaxupdate', 'Home\CateController@ajaxupdate');
+
 
 //前台首页
 Route::get('/','Home\IndexController@index');
@@ -128,9 +131,11 @@ Route::post('/home/goods/addCart','Home\GoodsController@addCart');
 Route::post('/home/goods/checkStock','Home\GoodsController@checkStock');
 //购物车页面显示
 Route::get('/home/goods/shopingcart','Home\GoodsController@shopingcart');
+
 //购物车商品移入收藏夹
 Route::post('/home/goods/removeToCollect','Home\GoodsController@removeToCollect');
 Route::post('/home/goods/toPay','Home\GoodsController@toPay');
+
 
 
 //评价列表

@@ -1,5 +1,7 @@
   @extends('home.layoutcenter')
   @section('content')
+
+
  <div class="user_right">
       
       <div id="user_info">

@@ -3,7 +3,10 @@
 <head>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+
+<meta name="Keywords" content="" />
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_base.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/web_index.css') }}">
@@ -964,7 +967,7 @@ margin-top: 3px;}
         <a href="http://www.handu.com/themes/handuyishe/html/yyzz.html" target="_blank"><img src="{{ asset('/home/imgs/zxmbutton05_sy.jpg') }}" alt="" width="103" height="38" border="0" style="margin:5px 5px 0 5px;"></a>
 
 
-    <a href="https://ss.knet.cn/verifyseal.dll?sn=e14071837010051457jcgb000000&ct=df&a=1&pa=0.6688498684670776" target="_blank" style="display:inline-block;position:relative;width:102px;height:37px;">
+    <a href="" target="_blank" style="display:inline-block;position:relative;width:102px;height:37px;">
        <img src="{{ asset('/home/imgs/cnnic.png') }}" alt="" width="102" height="37" border="0"></a>
 
         <!--<a href="http://si.trustutn.org/info?sn=615140701004909923565" target="_blank">

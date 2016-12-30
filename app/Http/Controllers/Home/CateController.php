@@ -173,6 +173,7 @@ class CateController extends Controller
        // $data = DB::table('goods_list') -> where('user_name', 'like', '%'.$keyword.'%') -> paginate($num);
     }
 
+
     public function ajaxupdate(Request $request)
     {
         $data = $request -> all();
@@ -183,6 +184,4 @@ class CateController extends Controller
         return response()->json($data);
 
     }
- 
-
 }

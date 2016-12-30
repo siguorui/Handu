@@ -8,6 +8,7 @@ use DB;
 use Cookie;
 use Session;
 
+
 class GoodsController extends Controller
 {
    	
@@ -21,6 +22,7 @@ class GoodsController extends Controller
         $res = DB::table('attr_colors') -> where('gid', $id) -> get();
         // dd($res);
         $size = DB::table('attr_sizes') -> where('gid', $id) -> get();
+
         return view('home.goods.goods',['data' => $data,'res' => $res,'size' => $size]);
         // return view('home.shopingcart.goods');
     }
@@ -29,8 +31,7 @@ class GoodsController extends Controller
     public function addCart(Request $request)
     {
     	$data = $request->all();
-    	
-            
+    	           
     		$res = Cookie::get('cartGoods1');
     		// dd('111');
     		if(empty($res))
@@ -54,6 +55,7 @@ class GoodsController extends Controller
 
     	$cart = Cookie::get('cartGoods1');
     	Cookie::queue('cart',$cart, 1440);   //cookie存24小时
+
     	// $res[0] = Cookie::get('cart');
     	// var_dump($data);
     	// dd($res);
