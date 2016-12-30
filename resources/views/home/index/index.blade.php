@@ -1,4 +1,7 @@
-@extends('home.layoutmy')
+
+@extends('home.layout')
+@section('content')
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns:wb="http://open.weibo.com/wb"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,8 +16,8 @@
 <title>韩都衣舍-韩都集团旗下品牌官网，涵盖品牌女装、男装、童装、妈妈装、鞋包等品类。正品保证，货到付款！</title>
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_base.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/web_index.css') }}">
-<script charset="utf-8" src="%E9%9F%A9%E9%83%BD%E8%A1%A3%E8%88%8D-%E9%9F%A9%E9%83%BD%E9%9B%86%E5%9B%A2%E6%97%97%E4%B8%8B%E5%93%81%E7%89%8C%E5%AE%98%E7%BD%91%EF%BC%8C%E6%B6%B5%E7%9B%96%E5%93%81%E7%89%8C%E5%A5%B3%E8%A3%85%E3%80%81%E7%94%B7%E8%A3%85%E3%80%81%E7%AB%A5%E8%A3%85%E3%80%81%E5%A6%88%E5%A6%88%E8%A3%85%E3%80%81%E9%9E%8B%E5%8C%85%E7%AD%89%E5%93%81%E7%B1%BB%E3%80%82%E6%AD%A3%E5%93%81%E4%BF%9D%E8%AF%81%EF%BC%8C%E8%B4%A7%E5%88%B0%E4%BB%98%E6%AC%BE%EF%BC%81_files/v.htm">
-</script><script type="text/javascript" id="veConnect" async="" src="{{ asset('/home/js/capture-apps-4.js') }}"></script>
+
+<script type="text/javascript" id="veConnect" async="" src="{{ asset('/home/js/capture-apps-4.js') }}"></script>
 <script src="{{ asset('/home/js/hm.js') }}"></script>
 <script async="" src="{{ asset('/home/js/analytics.js') }}"></script>
 <script type="text/javascript" async="" charset="utf-8" src="{{ asset('/home/js/ntkfstat.js') }}"></script>
@@ -179,7 +182,7 @@ window.onscroll=function(){
 </div> -->
      
 
-@section('content')
+
 
     <script>
     $(function(){
@@ -659,7 +662,7 @@ $(".firstP a").hover(function(){
       </div>
       <div class="R fl">
         <div class="fl_img">
-                                    <a href="http://www.handu.com/topic-423.html" target="_blank"><img data-original="{{ asset('/home/imgs/1481165727968740526.jpg') }}" class="sad1 lazy" alt="夏季清仓" title="夏季清仓" src="{{ asset('/home/imgs/1481165727968740526.jpg') }}" style="display: block;" width="580" height="423"></a>
+                                    <a href="{{url('/home/cate/list')}}/1" target="_blank"><img data-original="{{ asset('/home/imgs/1481165727968740526.jpg') }}" class="sad1 lazy" alt="夏季清仓" title="夏季清仓" src="{{ asset('/home/imgs/1481165727968740526.jpg') }}" style="display: block;" width="580" height="423"></a>
                       
                                     <a href="http://www.handu.com/category-255-b0-1-add_time-desc.html" target="_blank"><img data-original="{{ asset('/home/1478063505592900293.jpg') }}" class="sad2 lazy" alt="羽绒服专区" title="羽绒服专区" src="{{ asset('/home/imgs/1478063505592900293.jpg') }}" style="display: block;" width="200" height="253"></a>
                               
@@ -1027,7 +1030,7 @@ $(".firstP a").hover(function(){
       
       <div class="R fl">
         <div class="fl_img">
-                                    <a href="http://www.handu.com/brand_topic.php?id=10142" alt="dequanna" title="dequanna" target="_blank"><img data-original="{{ asset('/home/imgs/1479201998458670029.jpg') }}" class="sad4 lazy" alt="dequanna" title="dequanna" src="{{ asset('/home/imgs/1479201998458670029.jpg') }}" style="display: block;" width="790" height="423"></a>
+                                    <a href="{{url('/home/cate/list/7')}}" alt="dequanna" title="dequanna" target="_blank"><img data-original="{{ asset('/home/imgs/1479201998458670029.jpg') }}" class="sad4 lazy" alt="dequanna" title="dequanna" src="{{ asset('/home/imgs/1479201998458670029.jpg') }}" style="display: block;" width="790" height="423"></a>
                               </div>
         <div class="fr_img">
                                     <a href="http://www.handu.com/category-10144-b0.html" alt="新款T恤" title="新款T恤" target="_blank"><img data-original="{{ asset('/home/imgs/1473843032943779769.jpg') }}" class="sad6 lazy" alt="新款T恤" title="新款T恤" src="{{ asset('/home/imgs/1473843032943779769.jpg') }}" style="display: block;" width="200" height="293"></a>
@@ -1099,7 +1102,7 @@ $(".firstP a").hover(function(){
       
       <div class="R fl">
         <div class="fl_img">
-                                    <a href="http://www.handu.com/brand_topic.php?id=10330" alt="娜娜日记甜美女装" title="娜娜日记甜美女装" target="_blank"><img data-original="{{ asset('/home/imgs/1479264165103436988.jpg') }}" class="sad4 lazy" alt="娜娜日记甜美女装" title="娜娜日记甜美女装" src="{{ asset('/home/imgs/1479264165103436988.jpg') }}" style="display: block;" width="790" height="423"></a>
+                                    <a href="{{ url('/home/cate/list')}}/5" alt="娜娜日记甜美女装" title="娜娜日记甜美女装" target="_blank"><img data-original="{{ asset('/home/imgs/1479264165103436988.jpg') }}" class="sad4 lazy" alt="娜娜日记甜美女装" title="娜娜日记甜美女装" src="{{ asset('/home/imgs/1479264165103436988.jpg') }}" style="display: block;" width="790" height="423"></a>
                               </div>
         <div class="fr_img">
            
@@ -1198,7 +1201,7 @@ $(".firstP a").hover(function(){
       
       <div class="R fl">
         <div class="fl_img">
-                                    <a href="http://www.handu.com/brand_topic.php?id=196" alt="Minizaru童装" title="Minizaru童装" target="_blank"><img data-original="{{ asset('/home/imgs/1479262852372666217.jpg') }}" class="sad4 lazy" alt="Minizaru童装" title="Minizaru童装" src="{{ asset('/home/imgs/1479262852372666217.jpg') }}" style="display: block;" width="790" height="423"></a>
+                                    <a href="{{url('/home/cate/list')}}/4" alt="Minizaru童装" title="Minizaru童装" target="_blank"><img data-original="{{ asset('/home/imgs/1479262852372666217.jpg') }}" class="sad4 lazy" alt="Minizaru童装" title="Minizaru童装" src="{{ asset('/home/imgs/1479262852372666217.jpg') }}" style="display: block;" width="790" height="423"></a>
                               </div>
         <div class="fr_img">
            
@@ -1212,7 +1215,7 @@ $(".firstP a").hover(function(){
     <ul>
               @foreach($data4 as $v)
               <li class="new_boxs">
-          <a href="http://www.handu.com/goods-1052720.html" title="米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵" target="_blank">
+          <a href="" title="米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵" target="_blank">
             <img src="/home/imgs/{{$v -> pic}}" alt="米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵" title="米妮哈鲁童装2016冬装新款女童中大童韩版儿童上衣棉服宝宝棉衣YO4477畵">
       <em class="price_11">{{$v -> promt_price}}</em>
           </a>
@@ -1278,7 +1281,7 @@ $(".firstP a").hover(function(){
       
       <div class="R fl">
         <div class="fl_img">
-                                    <a href="http://www.handu.com/brand_topic.php?id=328" title="niBBuns女装" target="_blank"><img data-original="{{ asset('/home/imgs/1479194830306011154.jpg') }}" class="sad4 lazy" alt="niBBuns女装" title="niBBuns女装" src="{{ asset('/home/imgs/1479194830306011154.jpg') }}" style="display: block;" width="790" height="423"></a>
+                                    <a href="{{url('/home/cate/list')}}/8" title="niBBuns女装" target="_blank"><img data-original="{{ asset('/home/imgs/1479194830306011154.jpg') }}" class="sad4 lazy" alt="niBBuns女装" title="niBBuns女装" src="{{ asset('/home/imgs/1479194830306011154.jpg') }}" style="display: block;" width="790" height="423"></a>
                               </div>
         <div class="fr_img">
            

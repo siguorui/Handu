@@ -143,22 +143,25 @@ class CateController extends Controller
 
     }
 
-    public function nana($id)
+
+    public function list(Request $request,$id)
     {
 
-        $data = DB::table('category') -> where([['id','5'],['status','1']]) -> first();
+        $data = DB::table('category') -> where([['id',$id],['status','1']]) -> first();
         // dd($data);
 
         
             $data1 = DB::table('category') -> where([['pid',$data->id],['status','1'],]) -> get();
 
+            // dd($data1);
             foreach ($data1 as $key => $value) {
                 $data2[] = DB::table('category') -> where([['pid',$value->id],['status','1'],]) -> get();
                 
-                
+                $num = 6;
                 foreach ($data2[$key] as $kk => $vv){
                    
-                    $res[] = DB::table('goods_list') -> where('cate_id',$vv->id) -> get();
+                    $res[] = DB::table('goods_list') -> where('cate_id',$vv->id) ->paginate($num);
+
                     // dd($res);
                     
                 }
@@ -169,8 +172,22 @@ class CateController extends Controller
             // dd($res);
         return view('home.nana.nana',['data' => $data,'data1' => $data1,'data2' => $data2,'res' => $res]);
         
-       
+
+       // $num = $request -> input('num', 10);
+       // $data = DB::table('goods_list') -> where('user_name', 'like', '%'.$keyword.'%') -> paginate($num);
+
     }
  
 
+
+    public function ajaxupdate(Request $request)
+    {
+        $data = $request -> all();
+        $id = $data['id'];
+
+        $data = DB::table('goods_list') -> where('cate_id',$id) -> get();
+        
+        return response()->json($data);
+
+    }
 }

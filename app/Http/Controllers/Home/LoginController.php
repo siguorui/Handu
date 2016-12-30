@@ -10,7 +10,9 @@ use Gregwar\Captcha\CaptchaBuilder;
 use Session;
 use DB;
 use Hash;
-use Cookie;
+
+use Mail;
+
 class LoginController extends Controller
 {
     //登录页
@@ -52,6 +54,7 @@ class LoginController extends Controller
                 return back() -> with(['info' => '账号或密码错误']);
             }           
             Session::set('master', $res);
+
             return redirect('/') -> with(['info' => '登录成功']);
         }
     	return view('home.login');
@@ -62,4 +65,6 @@ class LoginController extends Controller
         Session::forget('master');
         return redirect('/home/login') -> with(['info' => '退出成功']);
     }
+
+    
 }

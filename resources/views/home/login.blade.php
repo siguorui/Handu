@@ -57,9 +57,9 @@
 							</span>
 						</li>
 						<li style="margin-left:80px;height:30px;line-height:30px;">
-						  <a href="http://www.handu.com/user.php?act=register" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;登陆&#39;,&#39;注册&#39;]);" style="float:left;">注册</a>
+						  <a href="{{ asset('/home/user/register')}}" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;登陆&#39;,&#39;注册&#39;]);" style="float:left;">注册</a>
 						  <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-						  <a href="http://www.handu.com/user.php?act=qpassword_name" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;登陆&#39;,&#39;忘记密码&#39;]);">忘记密码?</a>
+						  <a href="{{ asset('/home/forgetPassword/forgetPassword')}}" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;登陆&#39;,&#39;忘记密码&#39;]);">忘记密码?</a>
 						</li>
 						<li style="margin-left:80px;height:20px;"></li>
 					</ul>

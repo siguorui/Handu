@@ -22,8 +22,22 @@ class MyCenterController extends Controller
 
         $data3 = DB::table('address') -> where('uid',$data -> id) -> first();
 
-        // dd($data3);
-    	return view('home.user.myCenter',['data' => $data,'data1' => $data1,'data2' => $data2,'data3' => $data3]);
+        $data4 = DB::table('goods_collection') -> where('uid',$id) -> get();
+        // dd($data4);
+        if(count($data4) != 0)
+        {
+            foreach($data4 as $k => $v){
+
+                $data5[$k] = DB::table('goods_list') ->where('id',$v->gid) -> first();
+            }
+            return view('home.user.myCenter',['data' => $data,'data1' => $data1,'data2' => $data2,'data3' => $data3,'data5' => $data5]);
+        }else
+        {
+            return view('home.user.myCenter',['data' => $data,'data1' => $data1,'data2' => $data2,'data3' => $data3,]);
+        }
+        
+    	
+
     }
 
     public function details()
@@ -39,6 +53,7 @@ class MyCenterController extends Controller
     public function password()
     {
     	return view('home.user.password');
+
     }
 
     public function updateP(Request $request)
@@ -131,5 +146,6 @@ class MyCenterController extends Controller
         // return view('home.orders.ue',['data' => $data]);
 
     }
+
 
 }
