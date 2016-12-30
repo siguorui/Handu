@@ -1,32 +1,32 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="Keywords" content="" />
-<meta name="Description" content="" />
-
-<!-- <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_base.css') }}"> -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_base.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/web_index.css') }}">
-<script type="text/javascript"  src="{{ asset('/home/js/ntkfstat.js') }}"></script>
-<link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_search.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_list.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('/home/css/user_common.css') }}">
-<script type="text/javascript" src="{{ asset('/home/js/jquery.slide.js') }}"></script>
+<link type="text/css" href="{{ asset('/home/css/NEWS_login.css') }}" rel="stylesheet" />
 <script type="text/javascript"  src="{{ asset('/home/js/jquery.min.js') }}"></script>
-<script type="text/javascript"  src="{{ asset('/home/js/jquery-migrate-1.1.0.js') }}"></script>
-<script type="text/javascript"  src="{{ asset('/home/js/goods_no1214.js') }}"></script>
-<script type="text/javascript"  src="{{ asset('/home/js/jquery-1.9.1.min.js') }}"></script>
-<!-- <script type="text/javascript"  src="{{ asset('/home/js/jquery-1.1.0.min.js') }}"></script> -->
 <script type="text/javascript"  src="{{ asset('/home/js/jquery-1.8.3.min.js') }}"></script>
 <script type="text/javascript"  src="{{ asset('/home/js/jquery.json.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/home/js/utils.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/home/js/common.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/home/js/user.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/home/js/dialog.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/home/js/users.js') }}"></script>
-<link type="text/css" href="{{ asset('/home/css/NEWS_login.css') }}" rel="stylesheet" />
+<script type="text/javascript" src="{{ asset('/home/js/utils.js') }}"></script><script type="text/javascript" src="{{ asset('/home/js/users.js') }}"></script>
+<script type="text/javascript" id="veConnect" async="" src="{{ asset('/home/js/capture-apps-4.js') }}"></script>
+<script src="{{ asset('/home/js/hm.js') }}"></script>
+<script async="" src="{{ asset('/home/js/analytics.js') }}"></script>
+<script type="text/javascript" async="" charset="utf-8" src="{{ asset('/home/js/ntkfstat.js') }}"></script>
+<script src="{{ asset('/home/js/jquery-1.js') }}"></script>
+<script src="{{ asset('/home/js/jquery.js') }}"></script>
+<script src="{{ asset('/home/js/jquery_002.js') }}"></script>
+<script src="{{ asset('/home/js/wb.js') }}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="{{ asset('/home/js/goods_no1214.js') }}"></script>
+<script type="text/javascript" async="async" charset="utf-8" src="{{ asset('/home/js/zh_cn.js') }}" data-requiremodule="lang"></script>
+<script type="text/javascript" async="async" charset="utf-8" src="{{ asset('/home/js/chat.js') }}" data-requiremodule="chatManage">
+</script>
+<script type="text/javascript" async="async" charset="utf-8" src="{{ asset('/home/js/mqtt31.js') }}" data-requiremodule="MQTT"></script>
+<script type="text/javascript" async="async" charset="utf-8" src="{{ asset('/home/js/mqtt.js') }}" data-requiremodule="Connection"></script>
+<script type="text/javascript" src="{{ asset('/home/js/jquery.slide.js') }}"></script>
 <style type="text/css">
 /* tagscloud */
 #tagscloud{width:360px;height:250px;position:relative;font-size:12px;color:#333;margin:0px auto;text-align:center;right: 70px;}
@@ -45,51 +45,66 @@
 </head>
 
 <body>
-	
-	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
-<!--[if IE 6]>
-<div id="ie6_upgrade_tip" >
-  <div class="ie6_tips">温馨提示：尊敬的用户，现在检测到您正在使用IE6浏览器。为了确保您的购物安全和更好的用户体验，请
-  <a class="se6_download" style="color:#1C79A1" href="http://chrome.360.cn/" target="_blank">下载360极速浏览器</a>或者升级更高版本的IE浏览器</div>
-  <div id="yellowtipclose" style="display:none;"></div>
-</div>
-<![endif]-->
-
-
-<!-- 大顶通
-<script type="text/javascript">
-function closeDt(){
-  $(".dt").hide();
-}
-</script>-->
-
-
-<!-- <div style="width:100%;height:200px;min-width:1200px;background:url({{ asset('/home/imgs/584a93b2Nfe89bf16.jpg') }}) no-repeat center top;">
- <div style="width:1400px; height:100%; position:relative; margin:0 auto;">
-  	<a href="http://www.handu.com/topic-423.html" target="_blank" style="display:block; width:100%; height:100%"> 
-		<div style="width:1200px; position:absolute;">
-		</div>
-</a>
+@if(session('master'))
+<div id="global_nav">
+  <div class="global_nav">
+    <div class="global_info fl">
+      <ul id="HD_MZONE">
+        <li class="on">
+          <em><a href="{{asset('/')}}">返回首页</a></em>
+        </li>
+        <li id="nav_addFavorite">
+          <a rel="nofollow" href="javascript:window.external.addFavorite()"><b></b>收藏网站</a>
+        </li>
+      </ul>
+    </div>
+    <div class="global_info fr">
+      <ul id="HD_MEMBERZONE"><style type="text/css">
+#HD_MEMBERZONE li.zhuce_main&gt;img {position: absolute;top: 15px;left: -71px;z-index: 222;display: none;}
+#HD_MEMBERZONE li.zhuce_main:hover&gt;img {display: block;}
+#HD_MEMBERZONE li.on&gt;img {position: absolute;top: 15px;left: 4px;z-index: 222;}
+</style>
+<li class="on">
+  <a class="user_name" title="" target="_blank" href="{{asset('/home/user/myCenter')}}">欢迎您，{{session('master') -> email}}</a>
+  
+  <a target="_blank" title="注册会员" href="{{asset('/home/user/vip')}}">
     
-  </div>
+          <em class="lv lv0"></em>
+  </a>
+  
+  <map name="Map" id="Map">
+    <area shape="rect" coords="0,2,151,27" href="http://www.handu.com/topic-1276.html" target="_blank" />
+  </map>
+</li>
 
-</div> -->
+<li class="integral">
+  <a target="_blank" href="http://www.handu.com/user.php?act=exchange"><span>积分</span><b>190</b></a>
+</li>
+<li><a href="{{asset('/home/logout')}}">退出</a></li>
+<li class="">
+    <div class="more-active">
+    <a class="bn-more" href="{{asset('/home/user/myCenter')}}"><span>我的韩都</span></a><b></b>
+    <div class="more-items">
+        <table cellspacing="0" cellpadding="0">
+            <tbody>
+              <tr><td><a target="_blank" href="">我的订单</a></td></tr>
+              <tr><td><a target="_blank" href="#">我的优惠券</a></td></tr>
+              <tr><td><a target="_blank" href="">我的收藏</a></td></tr>
+              <tr><td><a target="_blank" href="">退货办理</a></td></tr>
+                         </tbody>
+        </table>
+    </div>
+    </div>
+</li>
 
 
-
-
-
-<!--普通顶通
-<div style="width:100%;height:100px;min-width:1200px;" class="dt">
-  <div style="height:100px;background:url(http://img01.handu.com/hdysweb/20150512/01.jpg) center top no-repeat;"></div>
-</div>
--->
+@else
 <div id="global_nav">
   <div class="global_nav">
     <div class="global_info fl">
       <ul id="HD_MZONE" >
         <li class="on">
-          <em><a href="http://www.handu.com" >返回首页</a></em>
+         <em><a href="{{asset('/')}}" >返回首页</a></em>
         </li>
         <li id="nav_addFavorite">
           <a href="javascript:window.external.addFavorite()" rel="nofollow" ><b></b>收藏网站</a>
@@ -99,58 +114,25 @@ function closeDt(){
     <div class="global_info fr">
       <ul id="HD_MEMBERZONE" >
         <style type="text/css">
-#HD_MEMBERZONE li.zhuce_main>img {position: absolute;top: 15px;left: -71px;z-index: 222;display: none;}
-#HD_MEMBERZONE li.zhuce_main:hover>img {display: block;}
-#HD_MEMBERZONE li.on>img {position: absolute;top: 15px;left: 4px;z-index: 222;}
-</style>
-
-@if(session('master'))
-<li class="on">
-  <a href="http://www.handu.com/user.php" target="_blank" title="15313066678" class="user_name">欢迎您，{{session('master') -> email}}</a>
-  
-  <a href="http://www.handu.com/user.php?act=privilege" title="注册会员" target="_blank">
-    
-          <em class="lv lv0"></em>
-      
-  </a>
-  <!--<img src="http://img01.handu.com/hdysweb/20141222/gwgl.png"  alt="官网会员内部攻略" border="0" usemap="#Map" />
-  <map name="Map" id="Map">
-    <area shape="rect" coords="0,2,151,27" href="http://www.handu.com/topic-1276.html" target="_blank" />
-  </map>-->
-</li>
-
-<li class="integral">
-  <a href="http://www.handu.com/user.php?act=exchange" target="_blank"><span>积分</span><b>100</b></a>
-</li> 
-<li><a href="{{url('home/logout')}}">退出</a></li>
-<li class="">
-    <div class="more-active">
-    <a href="http://www.handu.com/user.php" class="bn-more"><span>我的韩都</span></a><b></b>
-    <div class="more-items">
-        <table cellpadding="0" cellspacing="0">
-            <tbody>
-              <tr><td><a href="http://www.handu.com/user.php?act=order_list" target="_blank">我的订单</a></td></tr>
-              <tr><td><a href="http://www.handu.com/user.php?act=bonus" target="_blank">我的优惠券</a></td></tr>
-              <tr><td><a href="http://www.handu.com/user.php?act=collection_list" target="_blank">我的收藏</a></td></tr>
-              <tr><td><a href="http://www.handu.com/user.php?act=return_list" target="_blank">退货办理</a></td></tr>
-                         </tbody>
-        </table>
-    </div>
-    </div>
-</li>
-@else
+          #HD_MEMBERZONE li.zhuce_main>img {position: absolute;top: 15px;left: -71px;z-index: 222;display: none;}
+          #HD_MEMBERZONE li.zhuce_main:hover>img {display: block;}
+          #HD_MEMBERZONE li.on>img {position: absolute;top: 15px;left: 4px;z-index: 222;}
+    </style>
 <li>您好，欢迎光临韩都衣舍！</li>
 <li>
-  <a href="http://www.handu.com/user.php?act=login"  target="_blank">登录</a>
+  <a href="{{asset('/home/login/login')}}"  target="_blank">登录</a>
  <!--<span style="position: absolute;top: 12px;right: -4px;"><img src="http://img01.handu.com//hdysweb/20150821/180-263.png"></span>-->
 </li>
 <li class="zhuce_main">
-  <a href="http://www.handu.com/user.php?act=register" style="color:#c70a28;width:30px;height:30px;display:inline-block;" target="_blank">注册</a>
+  <a href="{{asset('/home/user/register')}}" style="color:#c70a28;width:30px;height:30px;display:inline-block;" target="_blank">注册</a>
   <!--<img src="http://img01.handu.com/hdysweb/20141014/zhuce.png"  alt="注册" border="0" usemap="#zc_Map"/>
   <map name="zc_Map" id="zc_Map">
     <area shape="rect" coords="2,8,165,189" href="http://www.handu.com/user.php?act=register" target="_blank"/>
   </map>-->
 </li>
+
+
+
 @endif
 
 <li><a href="http://www.handu.com/flow.php?step=cart" style="margin-right:10px"  target="_blank">购物车</a></li>      </ul>
@@ -170,51 +152,51 @@ function closeDt(){
       <div class="hot">
           <h1>大家都在买<span>Hot</span></h1>
           <ul>
-                <li><a href="http://www.handu.com/category-242-b0-1-add_time-desc.html" target="_blank">t恤</a></li>
-                <li><a href="http://www.handu.com/category-247-b0-1-add_time-desc.html" target="_blank">连衣裙</a></li>
-                <li><a href="http://www.handu.com/category-249-b0-1-add_time-desc.html" target="_blank">牛仔裤</a></li>
-                <li><a href="http://www.handu.com/category-240-b0.html" target="_blank">毛衣针织</a></li>
-                <li><a href="hhttp://www.handu.com/category-241-b0.html" target="_blank">卫衣绒衫</a></li>
-                <li><a href="http://www.handu.com/category-57-b0.html" target="_blank">休闲套装</a></li>
+                <li><a href="" target="_blank">t恤</a></li>
+                <li><a href="" target="_blank">连衣裙</a></li>
+                <li><a href="" target="_blank">牛仔裤</a></li>
+                <li><a href="" target="_blank">毛衣针织</a></li>
+                <li><a href="" target="_blank">卫衣绒衫</a></li>
+                <li><a href="" target="_blank">休闲套装</a></li>
             </ul>
         </div>
       <div class="Hstyle">
           <h1>女装<span>Women</span></h1>
           <ul>
-                <li><a href="http://hstyle.handu.com/" target="_blank">韩风快时尚女装</a></li>
-                <li><a href="http://www.handu.com/topic-748.html" target="_blank">韩风快时尚妈妈装</a></li>
-                <li><a href="http://www.handu.com/topic-1173.html" target="_blank">韩风甜美少女装</a></li>
-                <li><a href="http://www.handu.com/topic-417.html" target="_blank">东方复古设计师女装</a></li>
-                <li><a href="http://www.handu.com/topic-502.html" target="_blank">韩风名媛时尚女装</a></li>
-                <li><a href="http://www.handu.com/topic-1226.html" target="_blank">欧美浪漫田园风女装</a></li>
-                <li><a href="http://www.handu.com/topic-1168.html" target="_blank">韩风大码女装</a></li>
-                <li><a href="http://www.handu.com/topic-503.html" target="_blank">欧美快时尚女装</a></li>
+                <li><a href="" target="_blank">韩风快时尚女装</a></li>
+                <li><a href="" target="_blank">韩风快时尚妈妈装</a></li>
+                <li><a href="" target="_blank">韩风甜美少女装</a></li>
+                <li><a href="" target="_blank">东方复古设计师女装</a></li>
+                <li><a href="" target="_blank">韩风名媛时尚女装</a></li>
+                <li><a href="" target="_blank">欧美浪漫田园风女装</a></li>
+                <li><a href="" target="_blank">韩风大码女装</a></li>
+                <li><a href="" target="_blank">欧美快时尚女装</a></li>
             </ul>
         </div>
       <div class="AMH">
           <h1>男装<span>Men</span></h1>
           <ul>
-                <li><a href="http://www.handu.com/topic-406.html" target="_blank">韩风快时尚男装</a></li>
-                <li><a href="http://www.handu.com/topic-1184.html" target="_blank">东方禅意设计师男装</a></li>
-                <li><a href="http://www.handu.com/topic-1225.html" target="_blank">欧美街头轻潮男装</a></li>
+                <li><a href="" target="_blank">韩风快时尚男装</a></li>
+                <li><a href="" target="_blank">东方禅意设计师男装</a></li>
+                <li><a href="" target="_blank">欧美街头轻潮男装</a></li>
             </ul>
         </div>
       <div class="mini">
           <h1>童装<span>Children</span></h1>
           <ul>
-                <li><a href="http://www.handu.com/topic-347.html" target="_blank">韩风快时尚童装</a></li>
-                <li><a href="http://www.handu.com/topic-1196.html" target="_blank">东方简约设计师童装</a></li>
+                <li><a href="" target="_blank">韩风快时尚童装</a></li>
+                <li><a href="" target="_blank">东方简约设计师童装</a></li>
             </ul>
         </div>
       <div class="help">
           <h1>帮助中心<span>Help</span></h1>
           <ul>
-                <li><a href="http://www.handu.com/helper-61-723.html" target="_blank">会员制度</a></li>
-                <li><a href="http://www.handu.com/helper-11-743.html" target="_blank">售后服务</a></li>
-                <li><a href="http://www.handu.com/helper-21-701.html" target="_blank">购物流程</a></li>
-                <li><a href="http://www.handu.com/helper-5-750.html" target="_blank">关于发票</a></li>
-                <li><a href="http://www.handu.com/helper-10-737.html" target="_blank">配送方式</a></li>
-                <li><a href="http://zhaopin.handu.com/index.php" target="_blank">韩都招聘</a></li>
+                <li><a href="" target="_blank">会员制度</a></li>
+                <li><a href="" target="_blank">售后服务</a></li>
+                <li><a href="" target="_blank">购物流程</a></li>
+                <li><a href="" target="_blank">关于发票</a></li>
+                <li><a href="" target="_blank">配送方式</a></li>
+                <li><a href="" target="_blank">韩都招聘</a></li>
             </ul>
         </div>
     </div>
@@ -343,8 +325,8 @@ left: 4px;}
      	<div class="hd_header">
 	<div class="hdtop_header">
 		<div class="hdls_logo">
-     <a href="http://www.handu.com"></a>
-     <a href="http://www.handu.com/topic-1246.html" target="_blank" style="width:100px;"></a>
+     <a href="{{ url('/')}}"></a>
+     <a href="" target="_blank" style="width:100px;"></a>
     </div>
     <div id="hd_search">
       <div class="hdi-search">
@@ -378,12 +360,12 @@ left: 4px;}
 		
       </script>
       <div id="hotwords">
-        <a href="http://www.handu.com/brand_topic.php?id=196" target="_blank">韩风童装</a><s> | </s>
-        <a href="http://www.handu.com/brand_topic.php?id=196" target="_blank">可爱童装</a><s> | </s>
-        <a href="http://www.handu.com/brand_topic.php?id=10686" target="_blank">简约女装</a><s> | </s>
-        <a href="http://www.handu.com/brand_topic.php?id=10330" target="_blank">甜美女装</a><s> | </s>
-        <a href="http://www.handu.com/brand_topic.php?id=10142" target="_blank">时尚妈妈</a><s> | </s>
-        <a href="http://www.handu.com/topic.php?topic_id=1558" target="_blank">明星同款</a>
+        <a href="{{asset('/home/cate/list')}}/4" target="_blank">韩风童装</a><s> | </s>
+        <a href="{{asset('/home/cate/list')}}/14" target="_blank">可爱童装</a><s> | </s>
+        <a href="{{asset('/home/cate/list')}}/1" target="_blank">简约女装</a><s> | </s>
+        <a href="{{asset('/home/cate/list')}}/5" target="_blank">甜美女装</a><s> | </s>
+        <a href="{{asset('/home/cate/list')}}/7" target="_blank">时尚妈妈</a><s> | </s>
+        <a href="" target="_blank">明星同款</a>
        </div>
     </div>
     
@@ -484,38 +466,40 @@ margin-top: 3px;}
 .itContent_h a:last-child{background:none;}
 .menu_line_1{width:380px;border-bottom:1px dotted #ddd; margin:6px 0 4px 0;}
 </style>
+
+
 <div class="yHeader">
 
 		<div class="yNavIndex">
        
         	<ul class="yMenuIndex">
               <li class="nav_menuLi">
-            <a href="http://www.handu.com/topic-1363.html" target="_blank">
+            <a href="" target="_blank">
             	2016秋冬新品
             </a>
             </li>
 				
             <li class="nav_menuLi">
-            <a href="http://www.handu.com/topic-1430.html" target="_blank" >
+            <a href="" target="_blank" >
               团购批发
             </a>
             </li>
             
             
              <li class="nav_menuLi fright">
-           <a href="http://zhaopin.handu.com/" target="_blank">
+           <a href="" target="_blank">
             	招兵买马</a></li>
             </li>
              <li class="nav_menuLi fright"  onmouseover="zixun('hdzx', 'show');" onMouseOut="zixun('hdzx', 'hide');"  style="position:relative;">
-            <a href="http://www.handu.com/news/" target="_blank">
+            <a href="" target="_blank">
             	韩都资讯
                 <img src="{{ asset('/home/imgs/sjt.png') }}"/>
             </a>
               <div class="zix_x" id="hdzx">
           <ul>
              
-               <li><a href="http://www.handu.com/topic-1367.html" target="_blank">韩都设计</a></li>
-           		<li> <a href="http://www.handu.com/topic-511.html" target="_blank">
+               <li><a href="" target="_blank">韩都设计</a></li>
+           		<li> <a href="" target="_blank">
             	品牌故事</a></li>
              
           </ul>
@@ -523,14 +507,14 @@ margin-top: 3px;}
             </li>
             
              <li class="nav_menuLi fright"  onmouseover="zixun('jhb', 'show');" onMouseOut="zixun('jhb', 'hide');" style="padding: 1px 5px;width: 95px;position: relative;top: 0px;height: 33px;">
-            <a href="http://www.handu.com/user_center.php" target="_blank" >
+            <a href="" target="_blank" >
             	会员俱乐部
               <img src="{{ asset('/home/imgs/sjt.png') }}"/>
             </a>
             <div class="zix_x" id="jhb">
           <ul>
-              <li><a href="http://www.handu.com/news/list/111_1.html" target="_blank">韩都真人秀</a></li>
-              <li><a href="http://www.handu.com/topic-640.html" target="_blank">好评有礼</a></li>
+              <li><a href="" target="_blank">韩都真人秀</a></li>
+              <li><a href="" target="_blank">好评有礼</a></li>
              
           </ul>
            <script>
@@ -563,8 +547,7 @@ margin-top: 3px;}
 					全部商品分类
 				</h2>
 				<ul class="pullDList" style="display:none;">
-					
-					
+
 				<li>
 						<h3  class="pullDH3_t">
                            <i class="listi5"><img src="{{ asset('/home/imgs/tb1.png') }}"/>
@@ -572,9 +555,9 @@ margin-top: 3px;}
                         </i>
                          全部商品分类
                         </h3>
-						<a href="http://www.handu.com/topic-1363.html" target="_blank">本周新品</a>
-						<a href="http://www.handu.com/category-366-b0-1-shop_price-asc.html" target="_blank">按价格</a>
-                        <a href="http://www.handu.com/category-225-b0-1-sell_count-desc.html" target="_blank">按销量</a>
+						<a href="" target="_blank">本周新品</a>
+						<a href="" target="_blank">按价格</a>
+                        <a href="" target="_blank">按销量</a>
                         <span></span>
 						
 					</li>
@@ -586,9 +569,9 @@ margin-top: 3px;}
                         
                          精选推荐
                         </h3>
-						<a href="http://www.handu.com/category-255-b0.html" target="_blank" style="color:#f00">羽绒服</a>
-						<a href="http://www.handu.com/topic-423.html" target="_blank">潮流爆款</a>
-                         <a href="http://www.handu.com/zhekou.php" target="_blank">品牌特惠 </a>
+						<a href="" target="_blank" style="color:#f00">羽绒服</a>
+						<a href="" target="_blank">潮流爆款</a>
+                         <a href="" target="_blank">品牌特惠 </a>
                         <span></span>
 						
 					</li>
@@ -600,9 +583,9 @@ margin-top: 3px;}
                        
                          潮流女装
                         </h3>
-						<a href="http://www.handu.com/category-255-b0.html" target="_blank" style="color:#f00">羽绒服</a>
-						<a href="http://www.handu.com/category-10727-b0-1-add_time-desc.html" target="_blank">毛呢外套</a>
-                        <a href="http://www.handu.com/category-10519-b0-1-add_time-desc.html" target="_blank">棉衣</a>
+						<a href="" target="_blank" style="color:#f00">羽绒服</a>
+						<a href="" target="_blank">毛呢外套</a>
+                        <a href="" target="_blank">棉衣</a>
                         <span></span>
 						
 					</li>
@@ -617,9 +600,8 @@ margin-top: 3px;}
                         </h3>
 						<a  href="http://www.handu.com/brand_topic.php?id=196" target="_blank">童装新品</a>
 						<a  href="http://www.handu.com/category-210-b0.html" target="_blank" style="color:#f00">套装</a>
-                        <a href="http://www.handu.com/category-200-b0.html" target="_blank">毛衣/针织衫</a>
+                        <a href="http://www.handu.com/category-200-b0.html" target="_blank">毛衣/针织</a>
                         <span></span>
-						
 					</li>
                   <li style="padding:10px 13px;">
 					<h3  class="pullDH3_t">
@@ -628,9 +610,9 @@ margin-top: 3px;}
                         </i>
                          时尚妈妈
                      </h3>
-					 <a href="http://www.handu.com/category-10147-b0.html" target="_blank">棉衣</a>
-					 <a href="http://www.handu.com/category-10146-b0.html" target="_blank">毛针织衫</a>
-                     <a href="http://www.handu.com/category-10746-b0.html" target="_blank">毛呢外套</a>
+					 <a href="" target="_blank">棉衣</a>
+					 <a href="" target="_blank">毛针织衫</a>
+                     <a href="" target="_blank">毛呢外套</a>
                      
                      <span></span>
 						
@@ -643,9 +625,9 @@ margin-top: 3px;}
                         
                          鞋包配饰
                       </h3>
-					  <a href="http://www.handu.com/category-370-b0.html" target="_blank" style="color:#f00">鞋子</a>
-					  <a href="http://www.handu.com/category-371-b0.html" target="_blank">箱包</a>
-                 	  <a href="http://www.handu.com/topic-1506.html" target="_blank" style="color:#f00">99元封顶</a>
+					  <a href="" target="_blank" style="color:#f00">鞋子</a>
+					  <a href="" target="_blank">箱包</a>
+                 	  <a href="" target="_blank" style="color:#f00">99元封顶</a>
                       <span></span>
 						
 					</li>				
@@ -671,66 +653,28 @@ margin-top: 3px;}
                     	<div class="itemtc_h">
                         		 <div class="itemtcul_h">
                                   <div style="width:70px; float:left;">
-                                    <a href="http://www.handu.com/brand_topic.php?id=10330" target="_blank" class="fl_ah"><img src="{{ asset('/home/imgs/nana.png') }}" alt="娜娜日记">
+                                  @foreach(Session::get('index') as $d)
+                                    <a href="http://www.handu.com/brand_topic.php?id=10330" target="_blank" class="fl_ah"><img src="/home/imgs/{{$d -> assit_logo}}" alt="{{$d -> title}}">
                                 </a>
-                                    <a href="http://www.handu.com/topic-423.html" target="_blank" class="fl_ah" ><img  src="{{ asset('/home/imgs/hstyle.png') }}" alt="HSTYLE"/>
-                                </a>
-                                <a href="http://www.handu.com/brand_topic.php?id=10314" target="_blank" class="fl_ah"><img src="{{ asset('/home/imgs/forqueen.png') }}" alt="范奎恩">
-                                </a>
-                                <a href="http://www.handu.com/brand_topic.php?id=319" target="_blank" class="fl_ah"><img src="{{ asset('/home/imgs/soneed.png') }}" alt="soneed">
-                                </a>
-                                <a target="_blank" href="http://www.handu.com/brand_topic.php?id=10142" class="fl_ah"><img src="{{ asset('/home/imgs/hanyunyixiang.png') }}" alt="韩韵衣香">
-                                </a>
-                                <a href="http://www.handu.com/brand_topic.php?id=10442" target="_blank" class="fl_ah">
-                                    <img src="{{ asset('/home/imgs/ytxz.png') }}" alt="樱桃小镇">
-                                    </a>
-                                <a href="http://www.handu.com/brand_topic.php?id=328" target="_blank" class="fl_ah">
-                                    <img src="{{ asset('/home/imgs/nibbuns.png') }}" alt="nibbuns">
-                                    </a>
-                                     <a href="http://www.handu.com/brand_topic.php?id=10687" target="_blank" class="fl_ah">
-                                      <img src="{{ asset('/home/imgs/cx.png') }}" alt="池希">
-                                    </a>
-                                     <a href="http://www.handu.com/brand_topic.php?id=10593" target="_blank"class="fl_ah" >
-                                      <img src="{{ asset('/home/imgs/bly.png') }}" alt="白鹿语">
-                                    </a>
-                                     
-                                
-                               
+                                   
+                                    @endforeach 
+                          
                                     </div>
                                     <div style="width:70px; float:left; margin-left:10px;">
-                                     
+                                     @foreach(Session::get('index1') as $d1)
                                      <a href="http://www.handu.com/brand_topic.php?id=10470" target="_blank" class="fl_ah" >
-                                      <img src="{{ asset('/home/imgs/laola.png') }}" alt="劳拉的誓约">
+                                      <img src="/home/imgs/{{$d1 -> assit_logo}}" alt="{{$d1 -> title}}">
                                     </a>
-                                     <a target="_blank" href="http://www.handu.com/brand_topic.php?id=155" class="fl_ah"><img src="{{ asset('/home/imgs/sulv.png') }}" alt="原创素缕">
-                                     </a>
-                                     <a href="http://www.handu.com/brand_topic.php?id=10686" target="_blank" class="fl_ah" >
-                                      <img src="{{ asset('/home/imgs/zc.png') }}" alt="哲初">
-                                    </a>
-                                    <a href="http://www.handu.com/brand_topic.php?id=22" target="_blank" class="fl_ah" ><img src="{{ asset('/home/imgs/amh.png') }}" alt="AMH">
-                                </a>
-                            
-                                <a target="_blank" href="http://www.handu.com/brand_topic.php?id=10469" class="fl_ah"><img src="{{ asset('/home/imgs/anma.png') }}" alt="暗码">
-                                </a>
-                                  <a target="_blank" href="http://www.handu.com/brand_topic.php?id=10361" class="fl_ah"  ><img src="{{ asset('/home/imgs/zg.png') }}" alt="自古">
-                                  </a>
-                                <a href="http://www.handu.com/brand_topic.php?id=196" target="_blank" class="fl_ah" ><img src="{{ asset('/home/imgs/mini.png') }}" alt="童装minizaru">
-                                </a>
-                                  
-                                <a target="_blank" href="http://www.handu.com/brand_topic.php?id=10534" class="fl_ah"  ><img src="{{ asset('/home/imgs/hp.png') }}" alt="HoneyPig">
-                                </a>
-                                   <a href="http://www.handu.com/brand_topic.php?id=10765" target="_blank" class="fl_ah" >
-                                    	<img src="{{ asset('/home/imgs/dx1.png') }}" alt="户外童装">
-                                    </a>  
+                                    @endforeach
                                     </div>
                               <div style="width:70px; float:left; margin-left:10px;">
                                 
-                                 
+                                 @foreach(Session::get('index2') as $d2)
                                      <a target="_blank" href="http://www.handu.com/brand_topic.php?id=10407" class="fl_ah" >
-                                     <img src="{{ asset('/home/imgs/guoya.png') }}" alt="果芽">
+                                     <img src="/home/imgs/{{$d2 -> assit_logo}}" alt="{{$d2 -> title}}">
                                   </a>
                                        
-                                      
+                                   @endforeach   
                               </div>
                                     
 </div>
@@ -784,160 +728,88 @@ margin-top: 3px;}
          
          	<div class="yMenuLConin" style="width:400px;">
 				 <div class="itemtc_h itemtc_h02">
-         		 <div class="itContent_h"> <div class="divH3">韩风时尚HSTYLE</div> <div>
- <a href="http://www.handu.com/category-242-b0.html" target="_blank" style="color:#f00;">T恤</a>  <a href="http://www.handu.com/category-246-b0.html" target="_blank">衬衫</a>  <a href="http://www.handu.com/category-57-b0.html" target="_blank"><em>套装</em></a><a href="http://www.handu.com/category-247-b0.html" target="_blank" style="color:#f00;">连衣裙</a>  <a href="http://www.handu.com/category-248-b0.html" target="_blank">半身裙</a>  <a href="http://www.handu.com/category-249-b0.html" target="_blank" style="color:#f00;">牛仔裤</a>  <a href="http://www.handu.com/category-250-b0.html" target="_blank">休闲裤</a><a href="http://www.handu.com/category-255-b0-1-add_time-desc.html" target="_blank" style="color:#f00;">羽绒服</a>  <a href="http://www.handu.com/category-10727-b0-1-add_time-desc.html" target="_blank" style="color:#f00;">毛呢外套</a> 
-  <a href="http://www.handu.com/category-10519-b0-1-add_time-desc.html" target="_blank" style="color:#f00;">棉衣</a>
-  <a href="http://www.handu.com/category-240-b0.html" target="_blank" style="color:#f00;">毛针织衫</a>
-            </div>
-          </div>
-           <div  class="menu_line_1"></div>
-          
-          <div class="itContent_h"> <div class="divH3">时尚名媛SONEED</div> <div>
- <a href="http://www.handu.com/category-324-b0.html" target="_blank">T恤</a>  <a href="http://www.handu.com/category-323-b0.html" target="_blank" style="color:#f00;">衬衫</a> <a href="http://www.handu.com/category-358-b0.html" target="_blank">毛针织衫</a>  <a href="http://www.handu.com/category-10438-b0.html" target="_blank">卫衣/绒衫</a> <a href="http://www.handu.com/category-10631-b0.html" target="_blank">套装</a>  <a href="http://www.handu.com/category-10205-b0.html" target="_blank">风衣</a> <a href="http://www.handu.com/category-405-b0.html" target="_blank">毛呢外套</a>  <a href="http://www.handu.com/category-320-b0.html" target="_blank">连衣裙</a>  <a href="http://www.handu.com/category-410-b0.html" target="_blank">牛仔裤</a>  <a href="http://www.handu.com/category-325-b0.html" target="_blank">休闲裤</a> 
-            </div>
-          </div>
-           <div  class="menu_line_1"></div>
+         
+          @foreach(Session::get('index3') as $k2 =>$v2)
+
+                    		 <div class="itContent_h"> 
+             
+             <div class="divH3">{{$v2 -> title}}</div> 
+              
+             <div>
+             
+            @foreach(Session::get('index4')[$k2] as $d3)
            
-          <div class="itContent_h" style="height:78px;"> <div class="divH3">欧美风尚 尼班诗</div> <div>
- <a href="http://www.handu.com/category-329-b0.html" target="_blank">T恤</a>  <a href="http://www.handu.com/category-330-b0.html" target="_blank">衬衫</a> <a href="http://www.handu.com/category-331-b0.html" target="_blank">蕾丝衫/雪纺衫</a>  <a href="http://www.handu.com/category-365-b0.html" target="_blank">卫衣/绒衫</a>  <a href="http://www.handu.com/category-386-b0.html" target="_blank">毛针织衫</a>  <a href="http://www.handu.com/category-10198-b0.html" target="_blank">风衣</a>  <a href="http://www.handu.com/category-397-b0.html" target="_blank">毛呢外套</a> <a href="http://www.handu.com/category-10288-b0.html" target="_blank" style="color:#f00;">牛仔裤</a>  <a href="http://www.handu.com/category-10287-b0.html" target="_blank">休闲裤</a>  <a href="http://www.handu.com/category-388-b0.html" target="_blank">打底裤</a> <a href="http://www.handu.com/category-332-b0.html" target="_blank">连衣裙</a> 
+
+              <a href="http://www.handu.com/category-242-b0.html" target="_blank">{{$d3 -> title}}</a>
+          
+              @endforeach
+            
             </div>
+            
           </div>
            <div  class="menu_line_1"></div>
+
+              @endforeach
              
-          <div class="itContent_h"> <div class="divH3">甜美少女NanaDay</div> <div>
- <a href="http://www.handu.com/category-10340-b0.html" target="_blank">毛针织衫</a>  <a href="http://www.handu.com/category-10334-b0.html" target="_blank" style="color:#f00;">T恤</a>  <a href="http://www.handu.com/category-10380-b0.html" target="_blank">短外套</a>  <a href="http://www.handu.com/category-10338-b0.html" target="_blank">衬衫</a>  <a href="http://www.handu.com/category-10353-b0.html" target="_blank"><em>棉衣棉服</em></a>  <a href="http://www.handu.com/category-10341-b0.html" target="_blank">卫衣/绒衫</a>  <a href="http://www.handu.com/category-10385-b0.html" target="_blank">套装</a>  <a href="http://www.handu.com/category-10352-b0.html" target="_blank">连衣裙</a>  <a href="http://www.handu.com/category-10351-b0.html" target="_blank">半身裙</a><a href="http://www.handu.com/category-10758-b0.html" target="_blank">毛呢外套</a><a href="http://www.handu.com/category-10757-b0.html" target="_blank">羽绒服</a><a href="http://www.handu.com/category-10332-b0.html" target="_blank">裤装</a>
+          <div class="itContent_h"  style="border:none; height:auto;"> 
+          @foreach(Session::get('index5') as $d4)
+          <div class="itContent_zpp">
+ 						<a href="http://www.handu.com/topic-423.html" target="_blank" class="fl_ah aFirst"><img  src="/home/imgs/{{$d4 -> assit_logo}}" alt="{{$d4 -> title}}"/>
+                                </a>        
             </div>
+          @endforeach
           </div>
-           <div  class="menu_line_1"></div>
-             
-          <div class="itContent_h"  style="border:none; height:auto;"> <div class="itContent_zpp">
- 						<a href="http://www.handu.com/topic-423.html" target="_blank" class="fl_ah aFirst"><img  src="{{ asset('/home/imgs/hstyle.png') }}" alt="HSTYLE"/>
-                                </a>
-                                 <a target="_blank" href="http://www.handu.com/topic-417.html" class="fl_ah"><img src="{{ asset('/home/imgs/sulv.png') }}" alt="原创素缕"></a>
-                                	<a href="http://www.handu.com/topic-502.html" target="_blank" class="fl_ah"><img src="{{ asset('/home/imgs/soneed.png') }}" alt="soneed">
-                                </a>
-                                 <a href="http://www.handu.com/topic-503.html" target="_blank" class="fl_ah">
-                                   	<img src="{{ asset('/home/imgs/nibbuns.png') }}" alt="nibbuns">
-                                    </a>  
-                                <a href="http://www.handu.com/topic-1168.html" target="_blank" class="fl_ah aFirst"><img src="{{ asset('/home/imgs/forqueen.png') }}" alt="范奎恩">
-                                </a>	
-                                <a href="http://www.handu.com/topic-1173.html" target="_blank" class="fl_ah"><img src="{{ asset('/home/imgs/nana.png') }}" alt="娜娜日记">
-                                </a>  
-                                  <a href="http://www.handu.com/topic-1226.html" target="_blank" class="fl_ah">
-                                    	<img src="{{ asset('/home/imgs/ytxz.png') }}" alt="樱桃小镇">
-                                    </a>  
-                                <a href="http://www.handu.com/topic-1240.html" target="_blank" class="fl_ah">
-                                    	<img src="{{ asset('/home/imgs/laola.png') }}" alt="劳拉的誓约">
-                                    </a> 
-                               
-                                      <a href="http://www.handu.com/topic-1338.html" target="_blank"class="fl_ah aFirst">
-                                    	<img src="{{ asset('/home/imgs/bly.png') }}" alt="白鹿语">
-                                    </a> 
-                                <a href="http://www.handu.com/topic-1441.html" target="_blank" class="fl_ah">
-                                    	<img src="{{ asset('/home/imgs/zc.png') }}" alt="哲初">
-                                    </a>
-                                 <a href="http://www.handu.com/topic-1448.html" target="_blank" class="fl_ah">
-                                    	<img src="{{ asset('/home/imgs/cx.png') }}" alt="池希">
-                                    </a>
-                                    
-                                   
-                                                        
-                    
-                               
-                             
-            </div>
-          </div>
+
    				 </div>
 				</div>
-         
-				 <!--<div class="yMenuLConin" style="width:400px; top:160px; height:294px;">
-				 <div class="itemtc_h itemtc_h02">
-         		 <div class="itContent_h"> <div class="divH3">韩风时尚AMH</div> <div>
- <a href="http://www.handu.com/category-67-b0.html" target="_blank" style="color:#f00;">T恤</a>  <a href="http://www.handu.com/category-288-b0.html" target="_blank">POLO衫</a>  <a href="http://www.handu.com/category-127-b0.html" target="_blank">衬衫</a>  <a href="http://www.handu.com/category-126-b0.html" target="_blank">毛衣/针织</a>  <a href="http://www.handu.com/category-124-b0.html" target="_blank">卫衣</a>  <a href="http://www.handu.com/category-144-b0.html" target="_blank">外套</a>  <a href="http://www.handu.com/category-401-b0.html" target="_blank">夹克</a>  <a href="http://www.handu.com/category-137-b0.html" target="_blank" style="color:#f00;">风衣</a>  <a href="http://www.handu.com/category-10533-b0.html" target="_blank" style="color:#f00;">棉衣棉服</a>  <a href="http://www.handu.com/category-145-b0.html" target="_blank" style="color:#f00;">羽绒服</a>  <a href="http://www.handu.com/category-226-b0.html" target="_blank">休闲裤</a>  <a href="http://www.handu.com/category-116-b0.html" target="_blank">牛仔裤</a>  <a href="http://www.handu.com/category-10190-b0.html" target="_blank">腰带</a>  <a href="http://www.handu.com/category-281-b0.html" target="_blank">男鞋</a>  <a href="http://www.handu.com/category-304-b0.html" target="_blank">帽子</a>  <a href="http://www.handu.com/category-305-b0.html" target="_blank">男包</a>  
-            </div>
-          </div>
-           <div  class="menu_line_1"></div>
-          
-          <div class="itContent_h"> <div class="divH3">欧美街头 暗码</div> <div>
- <a href="http://www.handu.com/category-10494-b0.html" target="_blank">T恤</a>  <a href="http://www.handu.com/category-10493-b0.html" target="_blank">PLLO衫</a>  <a href="http://www.handu.com/category-10492-b0.html" target="_blank">衬衫</a>  <a href="http://www.handu.com/category-10490-b0.html" target="_blank">毛衣/针织衫</a>  <a href="http://www.handu.com/category-10495-b0.html" target="_blank">卫衣</a>  <a href="http://www.handu.com/category-10500-b0.html" target="_blank">夹克</a>  <a href="http://www.handu.com/category-10497-b0.html" target="_blank" style="color:#f00;">休闲裤</a>  <a href="http://www.handu.com/category-10496-b0.html" target="_blank">牛仔裤</a>
-            </div>
-          </div>
-           
-          <div class="itContent_h" > <div class="divH3">东方禅意 自古</div> <div>
- <a href="http://www.handu.com/category-10362-b0.html" target="_blank">T恤</a>  <a href="http://www.handu.com/category-10363-b0.html" target="_blank" style="color:#f00">衬衫</a>  <a href="http://www.handu.com/category-10364-b0.html" target="_blank">针织衫</a>  <a href="http://www.handu.com/category-10366-b0.html" target="_blank">风衣</a>  <a href="http://www.handu.com/category-10372-b0.html" target="_blank">休闲裤</a>
-            </div>
-          </div>
-          <div  class="menu_line_1"></div>
-          
-             
-          <div class="itContent_h"  style="border:none; height:auto;"> <div class="itContent_zpp">
- 	
-                                	<a href="http://www.handu.com/topic-406.html" target="_blank" class="fl_ah aFirst"><img src="http://img01.handu.com/hdysweb/20150428/amh.png" alt="AMH">
-                                </a>
-                              
-                                 <a target="_blank" href="http://www.handu.com/topic-1225.html" class="fl_ah"><img src="http://img01.handu.com/hdysweb/20150428/anma.png" alt="暗码"></a>
-                                
-                            
-                                <a target="_blank" href="http://www.handu.com/topic-1184.html" class="fl_ah"><img src="http://img01.handu.com/hdysweb/20150428/zg.png" alt="自古"></a>
-                            
-            </div>
-          </div>
-   				 </div>
-				</div>-->
            
            <div class="yMenuLConin" style="width:400px; top:140px; height:314px;">
 				 <div class="itemtc_h itemtc_h02">
-         		 <div class="itContent_h"> <div class="divH3">韩风时尚Minizaru</div> <div>
- <a href="http://www.handu.com/category-206-b0.html" target="_blank" style="color:#f00;">T恤</a>  <a href="http://www.handu.com/category-227-b0.html" target="_blank">衬衫</a>  <a href="http://www.handu.com/category-207-b0.html" target="_blank">卫衣</a>  <a href="http://www.handu.com/category-210-b0.html" target="_blank">套装</a>  <a href="http://www.handu.com/category-200-b0.html" target="_blank">毛衣/针织衫</a>  <a href="http://www.handu.com/category-209-b0.html" target="_blank">毛呢/外套</a>  <a href="http://www.handu.com/category-10397-b0.html" target="_blank">羽绒服饰</a>  <a href="http://www.handu.com/category-215-b0.html" target="_blank">半身裙</a>  <a href="http://www.handu.com/category-211-b0.html" target="_blank">连衣裙</a>  <a href="http://www.handu.com/category-214-b0.html" target="_blank">休闲裤</a>
- <a href="http://www.handu.com/category-212-b0.html" target="_blank">牛仔裤</a> 
- <a href="http://www.handu.com/category-213-b0.html" target="_blank"><em>打底裤</em></a> 
- <a href="http://www.handu.com/category-219-b0.html" target="_blank">短裤</a> <a href="http://www.handu.com/category-10394-b0.html" target="_blank">马甲</a>   
-            </div>
-          </div>
-            <div  class="menu_line_1"></div>
-          
-          <div class="itContent_h"> <div class="divH3">欧美风尚HoneyPig</div> <div>
- <a href="http://www.handu.com/category-10542-b0.html" target="_blank">T恤</a>  <a href="http://www.handu.com/category-10544-b0.html" target="_blank">衬衫</a>  <a href="http://www.handu.com/category-10543-b0.html" target="_blank">卫衣</a> <a href="http://www.handu.com/category-10536-b0.html" target="_blank">毛衣/针织衫</a>  <a href="http://www.handu.com/category-10538-b0.html" target="_blank">外套/夹克/大衣</a>  <a href="http://www.handu.com/category-10537-b0.html" target="_blank">套装</a>  <a href="http://www.handu.com/category-10549-b0.html" target="_blank">连衣裙</a>  <a href="http://www.handu.com/category-10550-b0.html" target="_blank">半身裙</a>  <a href="http://www.handu.com/category-10553-b0.html" target="_blank">短裤</a>  <a href="http://www.handu.com/category-10554-b0.html" target="_blank" style="color:#f00">休闲裤</a>  <a href="http://www.handu.com/category-10551-b0.html" target="_blank">打底裤</a>  <a href="http://www.handu.com/category-10552-b0.html" target="_blank">牛仔裤</a> 
-            </div>
-          </div>
-            <div  class="menu_line_1"></div>
-           
-          <div class="itContent_h"> <div class="divH3">东方简约 果芽</div> <div>
- <a href="http://www.handu.com/category-10413-b0.html" target="_blank" style="color:#f00">T恤/吊带衫</a>  <a href="http://www.handu.com/category-10419-b0.html" target="_blank" style="color:#333">毛衣/针织衫</a>  <a href="http://www.handu.com/category-10417-b0.html" target="_blank">衬衫</a>  <a href="http://www.handu.com/category-10420-b0.html" target="_blank">卫衣/绒衫</a>  <a href="http://www.handu.com/category-10418-b0.html" target="_blank">外套</a>  <a href="http://www.handu.com/category-10416-b0.html" target="_blank">裤子</a>  <a href="http://www.handu.com/category-10414-b0.html" target="_blank">半身裙</a>  <a href="http://www.handu.com/category-10415-b0.html" target="_blank">连衣裙</a><a href="http://www.handu.com/category-10421-b0.html" target="_blank">棉衣/棉服</a> 
-            </div>
-          </div>
-          <div  class="menu_line_1"></div>
+         @foreach(Session::get('index6') as $k => $d4)
+         		 <div class="itContent_h"> <div class="divH3">{{$d4 -> title}}</div> <div>
+             @foreach(Session::get('index7')[$k] as $d5)
              
+ <a href="http://www.handu.com/category-206-b0.html" target="_blank">{{$d5 ->title}}</a> 
+              
+              @endforeach 
+            </div>
+          </div>
+            <div  class="menu_line_1"></div>
+
+          @endforeach
+         
+            <div  class="menu_line_1"></div>
+
           <div class="itContent_h"  style="border:none; height:auto;">  <div class="itContent_zpp">
- 	
-                                <a href="http://www.handu.com/topic-347.html" target="_blank" class="fl_ah aFirst"><img src="{{ asset('/home/imgs/mini.png') }}" alt="童装minizaru">
+ 	                      @foreach(Session::get('index6') as $k => $d4)
+                                <a href="http://www.handu.com/topic-347.html" target="_blank" class="fl_ah aFirst"><img src="/home/imgs/{{$d4 -> assit_logo}}" alt="{{$d4 -> title}}">
                                 </a>
-                          
-                                <a target="_blank" href="http://www.handu.com/topic-1265.html" class="fl_ah"><img src="{{ asset('/home/imgs/hp.png') }}" alt="HoneyPig"></a>
-                            
-                                <a target="_blank" href="http://www.handu.com/topic-1196.html" class="fl_ah"><img src="{{ asset('/home/imgs/guoya.png') }}" alt="果芽"></a>
-                                <a target="_blank" href="http://www.handu.com/topic-1510.html" class="fl_ah"><img src="{{ asset('/home/imgs/dx1.png') }}" alt="户外童装"></a>
-               
+                        @endforeach 
             </div>
           </div>
    				 </div>
 				</div>
-              
               <div class="yMenuLConin" style="width:400px; top:300px; height:154px">
 				 <div class="itemtc_h itemtc_h02">
-         		 <div class="itContent_h"> <div class="divH3">妈妈装</div> <div>
- <a href="http://www.handu.com/category-10144-b0.html" target="_blank" style="color:#f00">T恤</a>  <a href="http://www.handu.com/category-10145-b0.html" target="_blank"><em>衬衫</em></a>  <a href="http://www.handu.com/category-10646-b0.html" target="_blank" >外套</a>  <a href="http://www.handu.com/category-10146-b0.html" target="_blank">毛衣/针织</a>  <a href="http://www.handu.com/category-10176-b0.html" target="_blank">风衣</a>  <a href="http://www.handu.com/category-10147-b0.html" target="_blank"><em>棉衣/棉服</em></a>  <a href="http://www.handu.com/category-10215-b0.html" target="_blank">马甲</a>  <a href="http://www.handu.com/category-10152-b0.html" target="_blank">裤子</a>  <a href="http://www.handu.com/category-10151-b0.html" target="_blank">连衣裙</a>  <a href="http://www.handu.com/category-10378-b0.html" target="_blank">半身裙</a>  <a href="http://www.handu.com/category-10294-b0.html" target="_blank">套装</a>  
+         		 <div class="itContent_h"> 
+            @foreach(Session::get('index8') as $d6)
+             <div class="divH3">{{$d6 -> title}}</div> 
+            @endforeach 
+             <div>
+            @foreach(Session::get('index9') as $d7)
+ <a href="http://www.handu.com/category-10144-b0.html" target="_blank" >{{$d7 -> title}}</a> 
+            @endforeach
             </div>
           </div>
    <div  class="menu_line_1"></div>
           
              
           <div class="itContent_h"  style="border:none; height:auto;"><div class="itContent_zpp">
- 
+                                  @foreach(Session::get('index8') as $d6)
                                  <a href="http://www.handu.com/topic-748.html" target="_blank" class="fl_ah aFirst">
-                                    	<img src="{{ asset('/home/imgs/hanyunyixiang.png') }}" alt="韩韵衣香">
+                                    	<img src="/home/imgs/{{$d6 -> assit_logo}}" alt="韩韵衣香">
                                     </a>  
-                                  
+                                  @endforeach 
             </div>
           </div>
    				 </div>
@@ -1080,7 +952,10 @@ margin-top: 3px;}
       山东韩都衣舍电商集团有限公司，禁止非法复制
       </span>
       
-                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5484197'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s25.cnzz.com/stat.php%3Fid%3D5484197%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script> 
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5484197'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s25.cnzz.com/stat.php%3Fid%3D5484197%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+                <span id="cnzz_stat_icon_5484197"><a href="http://www.cnzz.com/stat/website.php?web_id=5484197" target="_blank" title="站长统计"><img src="{{ asset('/home/imgs/pic.gif')}}" vspace="0" hspace="0" border="0"></a></span>
+                <!-- <script src="./stat.php" type="text/javascript"></script> -->
+                <!-- <script src="./core.php" charset="utf-8" type="text/javascript"></script>   -->
                 <br>
              <center>
 
@@ -1099,16 +974,10 @@ margin-top: 3px;}
         </center>
 
         <script src="{{ asset('/home/js/cert.js') }}"></script>
-
-        <script src="{{ asset('/home/js/c0525d7220d264a19bc23df20352f4f19.js') }}"></script>
-
         <script type="text/javascript"   src="{{ asset('/home/js/certShow.js') }}"></script>
     </center>
-     
-  
- 
-   
 
+    @yield('friendLink')
 </div>
 
 <script type="text/javascript">
@@ -1249,118 +1118,6 @@ var _hmt = _hmt || [];
  
 
 
-<!--底部悬浮条 start
-<style>
-.saohuo{background:url(http://img01.handu.com//hdysweb/20150713/dt.png) center top no-repeat; position:fixed;width:100%;z-index: 999; height:40px;bottom:0px;left:0px;text-align: center; font-family:"微软雅黑"}
-.saohuoco{width:1200px;margin:0 auto;position:relative;}
-.lxftime{position:absolute; color: #ffd200; font-family:Arial, Helvetica, sans-serif;font-size: 26px; font-weight: bold; left:620px; top:5px; text-align:left; word-spacing:26px;}
-.lxftime span{color:#fff; font-size:22px; font-weight:lighter; margin:0 2px; font-weight:bold;}
-</style> 
-<a href="http://www.handu.com/topic-1007.html" target="_blank">
-<div class="saohuo"> 
-  <div class="saohuoco">
-      <div class="lxftime" endtime="07/17/2015 10:00:00" lxfday="no"></div>
-  </div>
-</div>
-</a>
-<script>
-function lxfEndtime(){
-  $(".lxftime").each(function(){
-    var lxfday=$(this).attr("lxfday");//用来判断是否显示天数的变量
-    var endtime = new Date($(this).attr("endtime")).getTime();//取结束日期(毫秒值)
-    endtime = 1437098400000;
-    var nowtime = new Date().getTime();        //今天的日期(毫秒值)
-    var youtime = endtime-nowtime;//还有多久(毫秒值)
-    var seconds = youtime/1000;
-    var minutes = Math.floor(seconds/60);
-    var hours = Math.floor(minutes/60);
-    var days = Math.floor(hours/24);
-    var CDay= days ;
-    var CHour= hours % 24;
-    var CMinute= minutes % 60;
-    var CSecond= Math.floor(seconds%60);//"%"是取余运算，可以理解为60进一后取余数，然后只要余数。
-    if(CSecond<10){
-      CSecond="0"+CSecond;
-    }
-    if(CMinute<10){
-      CMinute="0"+CMinute;
-    }
-    if(CHour<10){
-      CHour="0"+CHour;
-    }    
-    if(endtime<=nowtime){
-      $(this).html("已过期")//如果结束日期小于当前日期就提示过期啦
-    }else{
-      if($(this).attr("lxfday")=="no"){
-      $(this).html(hours+"<span>时</span>"+CMinute+"<span>分</span>"+CSecond+"<span>秒</span>");          //输出没有天数的数据
-      }else{
-      $(this).html(CHour);          //输出有天数的数据
-      }
-    }
-  });
-};
-function auto_hide(){                                                 //到期自动隐藏掉倒计时悬浮条
-  var endtime = new Date($(".lxftime").attr("endtime")).getTime();    //取结束日期(毫秒值)
-  var nowtime = new Date().getTime();                                 //今天的日期(毫秒值)服务器时间
-  if(endtime <= nowtime){
-    $(".saohuo").hide();
-  }else{
-    lxfEndtime();
-  }
-}
-$(function(){
-   auto_hide();
-   setInterval("auto_hide()",1000);
- //setInterval("lxfEndtime()",1000);
-});
-</script>-->
-
-
-
-<!--20150908底部弹出
-<style>
-.btm_box_b{position:fixed;width:100%;z-index: 999; height:205px;bottom:-200px;left:0px;text-align: center; font-family:"微软雅黑"; background:url(http://img01.handu.com/hdysweb/20161108/dit4.png) no-repeat center 0;transition:0.8s;}
-.guanb_btn{
-  position:absolute;
-  left:1074px;
-  top:7px;
-  z-index:1000;
-  width:16px;
-  height:16px;
-  background:url(http://img01.handu.com/hdysweb/20161108/close.png) no-repeat;
-}
-.guanb_btn:hover{background:url(http://img01.handu.com/hdysweb/20161108/close0.png) no-repeat;cursor:pointer}
-.btm_box_bb{bottom:0;}
-</style>
-
-
-<script>
-
-  $(function(){
-    $("#btm_0828").addClass("btm_box_bb");
-    $(".guanb_btn").click(function(){
-      $("#btm_0828").css("display","none")
-      })
-      $(".dengl_btn").click(function(){
-      $("#btm_0828").css("display","none")
-      })
-    })
-
-</script>
-<div class="btm_box_b" id="btm_0828">
-<div style="width:1200px; margin:0 auto; position:relative; height:100%;">
-
-<div class="guanb_btn"></div>
-<a href="http://www.handu.com/user.php?act=login" target="_blank"><div style="position:absolute; width:90px; height:20px; left:81%; bottom:10px;" class="dengl_btn"></div></a>
-
-</div>
-</div>
--->
-
-
-<!-- 广告位：底部悬浮
-<script type='text/javascript' charset='gb2312' src='http://js.adm.cnzz.net/s.php?sid=304928'></script>-->
-
 <style type="text/css">
 .gwd_toolbar_container{display:none; visibility:hidden;}
 .gwd_float_curve_trigger{display:none; visibility:hidden;}
@@ -1371,9 +1128,7 @@ $(function(){
 .gwd_toolbar_goods_list .gwd_toolbar_goods_item_pic {display:none !important;}
 .gwd_toolbar_info{display:none !important; visibility:hidden !important; margin-left: -1000000px !important;}
 </style>
-
-
-<script type="text/javascript">
+<script src="{{ asset('/home/js/tag.js') }}" type="text/javascript" async></script><script type="text/javascript">
 
 $(function(){
   var regTitleList = $('#regTitle>a');
@@ -1442,5 +1197,6 @@ $(function(){
     }
   
 </script>
+
 </body>
 </html>

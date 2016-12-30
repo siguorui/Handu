@@ -20,9 +20,21 @@ class MyCenterController extends Controller
         $data2 = DB::table('user_extra') -> where('uid',$data -> id) -> first();
 
         $data3 = DB::table('address') -> where('uid',$data -> id) -> first();
+        $data4 = DB::table('goods_collection') -> where('uid',$id) -> get();
+        // dd($data4);
+        if(count($data4) != 0)
+        {
+            foreach($data4 as $k => $v){
 
-        // dd($data3);
-    	return view('home.user.myCenter',['data' => $data,'data1' => $data1,'data2' => $data2,'data3' => $data3]);
+                $data5[$k] = DB::table('goods_list') ->where('id',$v->gid) -> first();
+            }
+            return view('home.user.myCenter',['data' => $data,'data1' => $data1,'data2' => $data2,'data3' => $data3,'data5' => $data5]);
+        }else
+        {
+            return view('home.user.myCenter',['data' => $data,'data1' => $data1,'data2' => $data2,'data3' => $data3,]);
+        }
+        
+    	
     }
 
     public function details()
@@ -77,4 +89,39 @@ class MyCenterController extends Controller
 			return back() -> with(['info' => '原密码不正确']);
 		}
     }
+
+    public function myOrders(Request $request)
+    {
+
+        $id = Session::get('master') -> zid;
+        //搜索
+        $keyword = $request -> input('keyword','');
+        $data = DB::table('goods_orders as c3') 
+             ->leftjoin('users as c1', 'c3.uid', '=', 'c1.id')
+             ->leftjoin('address as c2', 'c1.id', '=', 'c2.uid')
+             -> select('c3.*','c3.id as oid', 'c3.id as oid','c1.email','c2.*')
+             -> where([['c2.state','=', '1'],['c3.uid', $id],['order_num', 'like', '%'.$keyword.'%']]) -> get();
+        
+        foreach($data as $k => $v)
+        {
+            $res = DB::table('goods_list') -> where('id', $v->gid) -> first();
+            $v -> title = $res -> title;
+            $v -> promt_price = $res -> promt_price;
+        }
+        // dd($data);
+        $num = count($data);
+        // dd($num);
+        return view('home.orders.myOrders', ['data' => $data,'num' => $num, 'request' => $request -> all()]);
+    }
+    
+
+    public function ue()
+    {
+        return view('home.orders.ue');
+    }
+
+    // public function insert(Request $request,$id)
+    // {
+        
+    // }
 }

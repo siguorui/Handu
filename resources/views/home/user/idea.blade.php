@@ -1,4 +1,3 @@
-
 @extends('home.layout')
 @section('content')
 <script charset="utf-8" type="text/javascript" src="{{ asset('/home/js/dialog.js')}}" id="dialog_js"></script>

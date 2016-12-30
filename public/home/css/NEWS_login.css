@@ -109,7 +109,7 @@ input.news_login_00_btn{background:url(../imgs/NEWS_login.png) no-repeat -0 -102
 .register_mail ul.register_list{ margin:0; padding:0; width:580px;}
 .register_mail ul.register_list li{ width:580px; line-height:33px;float:left;}
 .register_mail ul.register_list li .register_list_name{ width:115px; text-align:right; float:left; color:#393939}
-.register_mail ul.register_list li input.register_list_txt{background:url(../imgs/shopping_login.png) no-repeat -0 -182px; width:210px; height:33px; border:none; float:left; text-indent:5px; line-height:33px;}
+.register_mail ul.register_list li input.register_list_txt{background:url(../imgs/shopping_login.png) no-repeat -0 -182px; width:210px; height:33px; border:block; float:left; text-indent:5px; line-height:33px;}
 .register_mail ul.register_list li .register_list_tishi{  text-align:right; float:left; color:#bf0000}
 .register_mail ul.register_list li .register_list_neirong{ float:left; color:#7b7b7b; text-indent:115px; width:600px;}
 .register_mail ul.register_list li .register_list_xieyi{ float:left; color:#393939; text-indent:115px; font-size:16px; margin-top:10px;}

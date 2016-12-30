@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use Session;
 class IndexController extends Controller
 {
     //加载首页面
@@ -22,9 +23,51 @@ class IndexController extends Controller
     	$res = DB::table('friendslinks') -> where('status',1)-> get();
     	// dd($data);
 
+        $data6 = DB::table('category') -> where('pid',0) -> limit(9) -> get();
+        $data7 = DB::table('category') -> where([['pid',0],['id', '>=','10']]) -> limit(9) -> get();
+        $data8 = DB::table('category') -> where([['pid',0],['id', '>=','19']]) -> get();
+        $data9 = DB::table('fashion_wdress') -> get();
 
+        foreach($data9 as $key => $value)
+        {
+            $data10[$key] = DB::table('category') -> where('pid',$value->sid) -> get();
+        }
+        $data11 = DB::table('category') -> where('state',1) -> get();
 
-    	return view('home.index.index',['data' => $data,'data1' => $data1,'data2' => $data2,'data3' => $data3,'data4' => $data4,'data5' => $data5,'res' => $res]);
+        $data12 = DB::table('category') -> where('state',2) -> get();
+
+        foreach($data12 as $key => $value)
+        {
+            $data13[$key] = DB::table('category') -> where('pid',$value->id) -> get();
+            foreach($data13 as $k => $v){
+                
+            }
+            $dd[] = $v[0];
+            
+        }
+        foreach($dd as $key => $value)
+        {
+            $data14[] = DB::table('category') -> where('pid',$value ->id) -> get();
+        }
+        $data15 = DB::table('category') -> where('state',3) -> get();
+        $data16 = DB::table('category') -> where('pid',7) -> get();
+        $d1[] = $data16[0];
+        $data17 = DB::table('category') -> where('pid',45) -> get();
+        // dd($d1);
+        // dd($data17);
+        Session::set('index', $data6);
+        Session::set('index1', $data7);
+        Session::set('index2', $data8);
+        Session::set('index3', $data9);
+        Session::set('index4', $data10);
+        Session::set('index5', $data11);
+        Session::set('index6', $data12);
+        Session::set('index7', $data14);
+        Session::set('index8', $data15);
+        Session::set('index9', $data17);
+
+        // dd(Session::get('index7'));
+    	return view('home.index.index',['data' => $data,'data1' => $data1,'data2' => $data2,'data3' => $data3,'data4' => $data4,'data5' => $data5,'res' => $res,]);
     }
     public function search(Request $request)
     {

@@ -1,4 +1,4 @@
-@extends('home.layoutmy')
+@extends('home.layout')
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('/home/css/handu_base.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('/home/css/handu_search.css')}}">
@@ -7,14 +7,14 @@
 <script type="text/javascript" id="veConnect" async="" src="{{asset('/home/js/capture-apps-4.18.6.js')}}"></script>
 <script src="{{asset('/home/js/hm.js')}}"></script>
 <script async="" src="{{asset('/home/js/analytics.js')}}"></script>
-<script type="text/javascript" async="" charset="utf-8" src="{{asset('/home/dequanna/js/ntkfstat.js')}}"></script>
+<!-- <script type="text/javascript" async="" charset="utf-8" src="{{asset('/home/dequanna/js/ntkfstat.js')}}"></script> -->
 <script type="text/javascript" src="{{asset('/home/js/goods_no1214.js')}}"></script>
 <script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/js/zh_cn.js')}}" data-requiremodule="lang"></script>
 <script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/js/chat.in.js')}}" data-requiremodule="chatManage"></script>
 <script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/js/mqtt31.js')}}" data-requiremodule="MQTT"></script>
 <script type="text/javascript" async="async" charset="utf-8" src="{{asset('/home/js/mqtt.chat.js')}}" data-requiremodule="Connection"></script>
 <div style="width:100%;">
-<div style="width:100%;background:url(/home/imgs/goods/{{$data -> logo}}) no-repeat center 0px;height:600px;">
+<div style="width:100%;background:url(/home/imgs/bj.jpg) no-repeat center 0px;height:600px;">
 </div>
 </div>
 
@@ -142,8 +142,8 @@
     
                         	<ul class="caul_0317">
                             @foreach($data2[$k] as $d2)
-
-            	            	<li><a href="http://www.handu.com/brand_topic.php?id=10144" title="{{$d2 -> title}}">{{$d2 -> title}}</a></li>
+                            
+            	            	<li class="cname" idname="{{$d2 -> id}}"><p  title="{{$d2 -> title}}">{{$d2 -> title}}</p></li>
             	            	
                             @endforeach
                             </ul>
@@ -154,6 +154,64 @@
           
     
 </div>
+
+
+<script type="text/javascript">
+    
+  $(function()
+  {
+    
+    var tmp = $('.did');
+    $(".cname").on('click',function(){
+         $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+      });
+      var id = $(this).attr('idname');
+      $('.did').remove();
+      $.ajax({
+     
+        type:'POST',
+        url:"{{ url('/home/cate/ajaxupdate')}}",
+        data:{id:id},
+        success:function(data)
+        {
+          $('#did').css('display','block');
+          $('#ddd').css('display','none');
+          if(data.length!=0){
+          $(data).each(function(i,n){
+            // var oldDiv = $('#ddd');
+            var newDiv = tmp.clone(true);
+            newDiv.find('img').attr('src','/home/imgs/goods/'+n['pic']);
+            newDiv.find('img').attr('alt',n['title']);
+            newDiv.find('a').attr('title',n['title']);
+            newDiv.find('em').attr('title',n['promt_price']);
+            newDiv.find('em').html(n['promt_price']);
+            newDiv.find('del').attr('title','市场价'+n['rign_price']);
+            newDiv.find('del').html(n['rign_price']);
+            // newDiv.css('display','block');
+            // oldDiv.css('display','none');
+            $('.grid_wrap').append(newDiv);
+          }); 
+          }
+          
+          $('.grid_wrap').append("<br class='clear'>");  
+        },
+        error:function()
+        {
+          alert("异常");
+        },
+      
+      });
+    });
+  });
+
+</script>
+
+
+
+
 <script>
 $(function(){
 	var dd =$('.cadl_0317 dd');
@@ -218,36 +276,52 @@ $(function(){
 </form>
 <div class="productGrid">
  
-    <div class="grid_wrap">
+    <div id='ddd' class="grid_wrap" style="display:block;">
             @foreach($res as $kk => $vv)
             @foreach($vv as $r)
-        	<div class="product " style="height:280px;">
+        	<div  class="product ddd" style="height:280px;">
             <div class="product-iWrap">
                 <div class="productImg-wrap">
-                                        <a href="http://www.handu.com/goods-1054011.html" title="{{$r -> title}}" class="productImg" target="_blank">
+                                        <a href="{{url('/home/goods/goods')}}/{{$r -> id}}" title="{{$r -> title}}" class="productImg" target="_blank">
                     <img src="/home/imgs/goods/{{$r -> pic}}" alt="{{$r -> title}}">
-                    </a>
-                     <!--<div style="position: absolute;width: 68px;height: 41px;background: url(http://img01.handu.com/hdysweb/20141105/1111.png) no-repeat 0 0;top: 0;left: 0;"></div> -->
-                    <script>
-                 //  getGood_price("WD6223");
-                    </script>      
+                    </a>     
                 </div>
-            
                <p class="productPrice" style="width:100%; text-align:center">
                     <em title="{{$r -> promt_price}}" style="float:none"><b>¥</b>{{$r -> promt_price}}</em>
-                    <del title="市场价 {{$r -> orign_price}}" style="float:none">¥{{$r -> orign_price}}</del>
-                    <!--<em title="10.10狂欢价" style="margin: 6px 0 0 6px;"><img src="http://img01.handu.com/hdysweb/20141009/10.10.png" /></em>-->
+                    <del id="dde" title="市场价 {{$r -> orign_price}}" style="float:none">¥{{$r -> orign_price}}</del>
                 </p>
             </div>
         </div>
         @endforeach
         @endforeach
-    
+  
 <!-- ============================================= -->
     
         <br class="clear">
     </div>
+
+     <div id='did' class="grid_wrap" style="display:none;">
+     
+        <div class="product did" style="height:280px;">
+            <div class="product-iWrap">
+                <div class="productImg-wrap">
+                                        <a href="http://www.handu.com/goods-1054011.html" title="" class="productImg" target="_blank">
+                    <img src="/home/imgs/goods/" alt="">
+                    </a>     
+                </div>
+               <p class="productPrice" style="width:100%; text-align:center">
+                    <em title="" style="float:none"><b>¥</b></em>
+                    <del id="dde" title="市场价 " style="float:none">¥</del>
+                </p>
+            </div>
+        </div>
+    
+       
+    </div>
+
+
     <div class="search_page">
+    {{$res -> appends($request) ->link()}}
                 <strong class="current">1</strong>
                       <a class="page" href="http://www.handu.com/brand_topic.php?id=10142&amp;price_min=0&amp;price_max=0&amp;page=2&amp;sort=add_time&amp;order=desc">2</a>
                       <a class="page" href="http://www.handu.com/brand_topic.php?id=10142&amp;price_min=0&amp;price_max=0&amp;page=3&amp;sort=add_time&amp;order=desc">3</a>

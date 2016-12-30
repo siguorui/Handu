@@ -306,7 +306,7 @@ input[type=text]:focus,input[type=password]:focus,textarea:focus{background:#FFF
 .sub_logo img{margin:5px 10px 0 0}
 
 /*新改首页头部品牌栏*/
-.brand-logo{width:100%;height:40px;overflow:hidden;padding-top: 6px;}
+/*.brand-logo{width:100%;height:40px;overflow:hidden;padding-top: 6px;}*/
 .brand-logo .con{width:1200px;margin:0 auto;}
 .brand-logo .con .brandColumn_s{position:relative;float:right;}
 

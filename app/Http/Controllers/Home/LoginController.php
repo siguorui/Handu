@@ -9,6 +9,7 @@ use Gregwar\Captcha\CaptchaBuilder;
 use Session;
 use DB;
 use Hash;
+use Mail;
 class LoginController extends Controller
 {
     //登录页
@@ -57,4 +58,6 @@ class LoginController extends Controller
         Session::forget('master');
         return redirect('/home/login') -> with(['info' => '退出成功']);
     }
+
+    
 }
