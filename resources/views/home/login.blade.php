@@ -48,18 +48,18 @@
 				        <p class="text-red">{{session('info')}}</p>
 				        @endif</span>	
                           <span>
-							<input type="hidden" name="back_act" value="http://www.handu.com/">
-                            
+							
 							<input type="submit" name="submit" class="login_btn" onclick="login();_czc.push([&#39;_trackEvent&#39;, &#39;登陆&#39;, &#39;立即登录&#39;]);" value="立即登录" style="float:left; cursor:pointer;">
 							<div style="height:35px;line-height:50px;">
-							  <input class="news_loginRadio" type="checkbox" value="1" name="remember" id="remember">保存登录信息
+							  <!-- <input class="news_loginRadio" type="checkbox"
+							   value="1" name="remember" id="remember"> -->自动保存登录信息
 							</div>
 							</span>
 						</li>
 						<li style="margin-left:80px;height:30px;line-height:30px;">
-						  <a href="http://www.handu.com/user.php?act=register" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;登陆&#39;,&#39;注册&#39;]);" style="float:left;">注册</a>
+						  <a href="{{ asset('/home/user/register')}}" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;登陆&#39;,&#39;注册&#39;]);" style="float:left;">注册</a>
 						  <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-						  <a href="http://www.handu.com/user.php?act=qpassword_name" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;登陆&#39;,&#39;忘记密码&#39;]);">忘记密码?</a>
+						  <a href="{{ asset('/home/forgetPassword/forgetPassword')}}" onclick="_czc.push([&#39;_trackEvent&#39;,&#39;登陆&#39;,&#39;忘记密码&#39;]);">忘记密码?</a>
 						</li>
 						<li style="margin-left:80px;height:20px;"></li>
 					</ul>

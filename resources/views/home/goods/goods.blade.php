@@ -78,78 +78,229 @@
 </div>
 <div class='product_detail'>
     <div class='detail_top '>
-        
         <div class='goods_detail_left '>
-    <script type="text/javascript"  src="{{asset('/home/js/goods_no1214.js')}}"></script>
+    <!-- <script type="text/javascript"  src="{{asset('/home/js/goods_no1214.js')}}"></script> --> 
     <style>
       .gallery_content a{position:relative;display:block;float:left;}
-      em.price_11{background:url("/Images/jb01.png") no-repeat 0 0;width: 125px;height:109px;position:absolute;right:0px;bottom:-76px;text-align:center;font-size: 34px;font-weight: bold;color:#fff;font-family: 'Arial';z-index:300; padding-top:76px; line-height:20px;}
+      em.price_11{background:url("http://img01.handu.com/hdysweb/20161209/jb/jb01.png") no-repeat 0 0;width: 125px;height:109px;position:absolute;right:0px;bottom:-76px;text-align:center;font-size: 34px;font-weight: bold;color:#fff;font-family: 'Arial';z-index:300; padding-top:76px; line-height:20px;}
+    </style>   
+    <style type="text/css">
+        *
+        {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #con
+        {
+            position: relative;
+            width: 900px;
+            height: 660px;
+            /*border: 1px solid #ccc;*/
+            margin: 0 auto;
+        }
+        #small
+        {
+            position: absolute;
+            left: 1px;
+            top: 1px;
+            float: left;
+            width: 479px;
+            height: 479px;
+            /*border: 1px solid #fcc;*/
+        }
+        #big
+        {
+            position: absolute;
+            left: 490px;
+            top: 1px;
+            float: left;
+            width: 490px;
+            height: 479px;
+            /*border: 1px solid #00f;*/
+            overflow: hidden;
+            display: none;
+        }
+        #move
+        {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url({{ asset('/home/imgs/bg.png') }});
+        }
+        #uid
+        {
+            position: absolute;
+            left: 20px;
+            top: 500px;
+            width: 400px;
+            height: 90px;
+            border: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        #uid li
+        {
+            float: left;
+            width:88px;
+            height: 88px;
+            margin: 5px;
+        }
     </style>
-    
-     
-    <div class='gallery' >
-        <div class='gallery_content'>
-            <a href="{{asset('/home/imgs/20161027181029_ou6246.jpg')}}" class="jqzoom" title="商品大图" rel="gal1"><img id="masterImage" width="480" src='{{asset('/home/imgs/20161027181029_ou6246.jpg')}}' /></a>
-            <div class="videoplayer"></div>
-            <div class="colorImg"></div>
-            
-                
-            <script>
-         // getGood_price("OU6246");
-            </script>
-                  
-             
+     <div id="con">
+        <div id="small">
+            <img id="smallImg" src='{{asset('/home/imgs/20161027181029_ou6246.jpg')}}' width="100%" />
+            <div id="move"></div>
         </div>
-        <ul class='gallery_nav'>
-                                    <li>
-            <a  href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: '{{asset('/home/imgs/201610271810290_OU6246.jpg')}}',largeimage: '{{asset('/home/imgs/201610271810290_OU6246.jpg')}}'}">
-            <s></s>
-            <img src="{{asset('/home/imgs/goods')}}/{{$data->pic}}" />
-            </a>
-            </li>
-                        <li>
-            <a  href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: '{{asset('/home/imgs/201610271810291_OU6246.jpg')}}',largeimage: '{{asset('/home/imgs/201610271810291_OU6246.jpg')}}'}">
-            <s></s>
-            <img src="{{asset('/home/imgs/1477565789661614256.jpg')}}" />
-            </a>
-            </li>
-                        <li>
-            <a  href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: '{{asset('/home/imgs/201610271810292_OU6246.jpg')}}',largeimage: '{{asset('/home/imgs/201610271810292_OU6246.jpg')}}'}">
-            <s></s>
-            <img src="{{asset('/home/imgs/1477565790858763009.jpg')}}" />
-            </a>
-            </li>
-                        <li>
-            <a  href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: '{{asset('/home/imgs/201610271810293_OU6246.jpg')}}',largeimage: '{{asset('/home/imgs/201610271810293_OU6246.jpg')}}'}">
-            <s></s>
-            <img src="{{asset('/home/imgs/1477565790375739681.jpg')}}" />
-            </a>
-            </li>
-                        <li>
-            <a  href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: '{{asset('/home/imgs/201610271810294_OU6246.jpg')}}',largeimage: '{{asset('/home/imgs/201610271810294_OU6246.jpg')}}'}">
-            <s></s>
-            <img src="{{asset('/home/imgs/1477565790122593968.jpg')}}" />
-            </a>
-            </li>
-             
+        <div id="big">
+            <img id="bigImg" style="position:absolute;display:block;z-index:1 ;" src='{{asset('/home/imgs/20161027181029_ou6246.jpg')}}' />
+        </div>
+
+        <ul id="uid">
+            <li><img src='{{asset('/home/imgs/20161027181029_ou6246.jpg')}}' width="100%" /></li>
+            <li><img src='{{asset('/home/imgs/20160912100947_gy5753.jpg')}}' width="100%" /></li>
+            <li><img src='{{asset('/home/imgs/20160921000943_ig5884.jpg')}}' width="100%" /></li>
+            <li><img src='{{asset('/home/imgs/20160827050842_lf5944.jpg')}}' width="100%" /></li>
         </ul>
     </div>
-    
-<script type="text/javascript">
-    $('.gallery_nav a').click(function(){
-        $('.videoplayer').hide();
-        $('.colorImg').hide();
-    });
-    $('.btn_playvideo').click(function(){  
-        var _vsrc='';
-        if($(".videoplayer embed").length==0){
-            $(".videoplayer").html('<embed src="'+_vsrc+'" allowFullScreen="true" quality="high" width="480" height="480" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>');
+
+    <script type="text/javascript">
+        
+        // 获取元素
+        var small = document.getElementById('small');
+        var big = document.getElementById('big');
+        var bigImg = document.getElementById('bigImg');
+        var move = document.getElementById('move');
+        var con = document.getElementById('con');
+        var smallImg = document.getElementById('smallImg');
+
+
+        // 全局变量
+        var moveWidth = 0;
+        var moveHeight = 0;
+        var smallWidth = 0;
+        var smallHeight = 0;
+        var bigImgWidth = 0;
+        var bigImgHeight = 0;
+
+        // 添加移入事件
+        small.onmouseover = function()
+        {
+            // 显示 big
+            big.style.display = 'block';
+            move.style.display = 'block';
+            this.style.cursor = 'move';
+
+            // 获取尺寸
+            var bigWidth = big.offsetWidth;
+            var bigHeight = big.offsetHeight;
+            bigImgWidth = bigImg.offsetWidth;
+            bigImgHeight = bigImg.offsetHeight;
+            smallWidth = small.offsetWidth;
+            smallHeight = small.offsetHeight;
+
+            // 计算比例
+            var wPer = bigWidth / bigImgWidth;
+            var hPer = bigHeight / bigImgHeight;
+
+            moveWidth = smallWidth * wPer;
+            moveHeight = smallHeight * hPer;
+
+            // console.log(moveWidth);
+            // console.log(moveHeight);
+
+            // 设置 move 的宽度和高度
+            move.style.width = moveWidth + 'px';
+            move.style.height = moveHeight + 'px';
         }
-        $('.colorImg').hide();
-        $(".videoplayer").show();
-   
-    });
-</script>
+
+        // 移动事件
+        small.onmousemove = function(ent)
+        {
+            var mx = ent.pageX;
+            var my = ent.pageY;
+
+            // 获取 con 的 left top
+            var conLeft = con.offsetLeft;
+            var conTop = con.offsetTop;
+            // 获取 small 的 left top
+            var smallLeft = small.offsetLeft;
+            var smallTop = small.offsetTop;
+
+            // 计算 move 的 left top
+            var moveLeft = mx - conLeft - smallLeft - moveWidth / 2;
+            var moveTop = my - conTop - smallTop - moveHeight / 2;
+
+            // 判断
+            if(moveLeft <= 0)
+            {
+                moveLeft = 0;
+            }
+
+            if(moveTop <= 0)
+            {
+                moveTop = 0;
+            }
+
+            if(moveLeft >= smallWidth - moveWidth)
+            {
+                moveLeft = smallWidth - moveWidth;
+            }
+
+            if(moveTop >= smallHeight - moveHeight)
+            {
+                moveTop = smallHeight - moveHeight;
+            }
+
+            // 设置 move 的 left top
+            move.style.left = moveLeft + 'px';
+            move.style.top = moveTop + 'px';
+
+            // 计算 bigImg 移动的比例
+            var wPer = moveLeft / smallWidth;
+            var hPer = moveTop / smallHeight;
+
+            var bigImgLeft = bigImgWidth * wPer;
+            var bigImgTop = bigImgHeight * hPer;
+
+            // 设置 bigImg 的 left top
+            bigImg.style.left = - bigImgLeft + 'px';
+            bigImg.style.top = - bigImgTop + 'px';
+
+        }
+
+        // 移出事件
+        small.onmouseout = function()
+        {
+            big.style.display = 'none';
+            move.style.display = 'none';
+            this.style.cursor = 'default';
+        }
+
+        // 循环
+        var uid = document.getElementById('uid');
+        var imgs = uid.getElementsByTagName('img');
+
+        for(var i = 0; i < imgs.length; i ++)
+        {
+            imgs[i].onmouseover = function()
+            {
+                var src = this.src;
+                smallImg.src = src;
+                bigImg.src = src;
+                this.width -= 4;
+                this.style.border = "2px solid #f00";
+            }
+
+            imgs[i].onmouseout = function()
+            {
+                this.width += 4;
+                this.style.border = 'none';
+            }
+        }
+
+
+    </script>
+
             <div class='dashed'></div>
             
             <p>
@@ -172,8 +323,6 @@
                 
             </p>
         </div>
-        
-        
         <div class="gooods_detail_right">
         <div id="goods_detail_1" class="product_detail_info">
             <h1 class="product_name">
@@ -192,8 +341,7 @@
                                 促 销 价：
                 <em class='promote_price' ><span class='yy'>￥</span>{{$data -> promt_price}}</em>
                 <em class='discount'style="display:none">3.5折</em>                
-              
-                          
+
               <span class="vipPrice">
                 <!--<span class="vipPrice_span1">会员专享价</span>
                 <span class="vipPrice_span2"><img src="/home/imgs/d.png" class="d_list"></span> -->
@@ -242,8 +390,10 @@
           </div>      
         </div>
 
+
     <form action="{{url('/home/goods/buy_now')}}" method="post" id="formCart">
             {{ csrf_field() }}
+
         <div id="goods_detail_2" class="product_detail_info">
             <div class="set">
               <span class='label'>数　　量：   &nbsp;</span>

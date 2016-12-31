@@ -187,8 +187,10 @@ function dhceng(obj, sType)
 
 @foreach($cartData as $k=>$v)
 <h3> <span>品牌：{{$data[$k]->brand}}</span></h3>
+
 <ul id="brand_cart_1" class="{{$k}}">       
       <li id="{{$k}}">
+
             <!--<div class="cbg xuan"><input name="cartIds" type="checkbox" value="6720105"/></div> -->
             <div class="cbg shop_product">
                 <div class="shop_product_pic">
@@ -207,6 +209,7 @@ function dhceng(obj, sType)
             <div class="cbg shop_product_money"> <div class="cprice" style="line-height:20px;"><del>￥{{$data[$k]->orign_price}}.00</del><br><span>￥{{$data[$k]->promt_price}}</span></div></div>
             <div class="cbg shop_product_number">
                 <span class="amount-widget" id="J_AmountWidget">
+
                     <span class="increase" onclick="zengjia({{$k}})">+</span>
                     <span class="decrease" onclick="jianshao({{$k}})">-</span>
                      <input name="recId[]" type="hidden" value="{{$k}}">
@@ -217,6 +220,7 @@ function dhceng(obj, sType)
             <div class="cbg shop_product_money00">￥{{$data[$k]->promt_price}}.00</div>
             <div class="cbg shop_product_close">
                 <div class="middle">
+
                     <a href="javascript:removeToCollect({{$k}});"> 移入收藏夹</a><br>
                     <a href="javascript:confirm_delgoods({{$k}});"> 删除</a>
                 </div>
@@ -739,7 +743,6 @@ $(function(){
 });
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
 /*左右增加减少*/
 function zengjia(rec_id){
      var id ='#'+rec_id;
@@ -915,6 +918,7 @@ function delgoods(rec_id){
   str+='<li><a href="javascript:tobuy('+rec_id+');">重新购买</a>&nbsp;|&nbsp;<a href="javascript:removeToCollect('+rec_id+')">收藏夹</a> </li>';
   str+='<li style="display:none"><input class="goods_id" type="hidden" value="'+rec_id+'"><input class="goods_attr_id" type="hidden" value="'+sc+'"><input class="goods_number[]" type="hidden" value="'+number+'"><input class="rec_id" type="hidden" value="'+rec_id+'"></li>';
   str+='</ul></li></div>';
+
             
   $('.deleted').append(str);
   $('#show_del_msg'). html('您已删除的商品，您可以重新购买或放入收藏夹');

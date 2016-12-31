@@ -1,6 +1,9 @@
 @extends('home.layout')
 @section('content')
- 
+<link rel="stylesheet" type="text/css" href="{{asset('/home/css/handu_base.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/home/css/handu_search.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/home/css/handu_list.css')}}">
+
 <div class="wrap"> 
 <div id="cate_left">
 <div class='cate_tree'> 

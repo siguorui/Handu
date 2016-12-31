@@ -294,7 +294,7 @@ function dhceng(obj, sType)
                           str +=  '<span class="address_dizhi" style="word-break: break-all;word-wrap: break-word;overflow:hidden;position:absolute;top:25px;padding: 5px 10px;line-height: 25px;height:40px;">'+n['addr_area']+'             '+n['addr_deta']+'</span><br>';
                           str += '<span style="display:none;" id="addr_edit">';
                           str +=  '<input class="hide_address_id" value="1259237" type="hidden">';
-                          str +=  '<a class="edit" style="cursor:pointer;" onclick="edit_address('+n['id']+');">[编辑]</a>';
+                           str +=  '<a class="edit" style="cursor:pointer;" onclick="edit_address('+n['id']+',event);">[编辑]</a>';
                           str +=  '<a class="edit" href="javascript:void(0);" onclick="if (confirm(\'你确认要删除该收货地址吗？\'))dropAddress('+n['id']+');">[删除]</a>';
                           str += '</span></li>';
                           // $('#shopping_order_address').prepend(str); 
@@ -414,7 +414,7 @@ function dhceng(obj, sType)
 
                           str +=  '<input name="is_default" value="'+n['id']+'" type="hidden"><br>';
                           str +=  '<span class="address_dizhi" style="word-break: break-all;word-wrap: break-word;overflow:hidden;position:absolute;top:25px;padding: 5px 10px;line-height: 25px;height:40px;">'+n['addr_area']+'             '+n['addr_deta']+'</span><br>';
-                          str += '<span style="display:block;" id="addr_edit">';
+                          str += '<span style="display:none;" id="addr_edit">';
                           str +=  '<input class="hide_address_id" value="1259237" type="hidden">';
                           str +=  '<a class="edit" style="cursor:pointer;" onclick="edit_address('+n['id']+',event);">[编辑]</a>';
                           str +=  '<a class="edit" href="javascript:void(0);" onclick="if (confirm(\'你确认要删除该收货地址吗？\'))dropAddress('+n['id']+');">[删除]</a>';
@@ -427,8 +427,6 @@ function dhceng(obj, sType)
 
                         $('.btn5').attr('onclick','update_address()');
                         $('#edit_address').css("display","none");
-                        
-                        
                     },
 
                     error:function()

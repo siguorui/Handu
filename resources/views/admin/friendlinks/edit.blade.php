@@ -7,12 +7,12 @@
         <section class="content-header">
             <h1>
                 友情链接
-                <small>添加</small>
+                <small>修改</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
                 <li><a href="#">友情链接</a></li>
-                <li class="active">添加</li>
+                <li class="active">修改</li>
             </ol>
         </section>
 

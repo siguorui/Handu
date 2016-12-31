@@ -170,6 +170,7 @@ class GoodsController extends Controller
         }else
         {
             $uid = $request->session()->get('master')->id;
+
             $address = DB::table('address') -> where('uid',$uid) -> get();
         }
 
