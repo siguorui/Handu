@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50709
 File Encoding         : 65001
 
-Date: 2016-12-24 14:52:25
+Date: 2016-12-31 18:49:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,12 +29,16 @@ CREATE TABLE `address` (
   `phone` char(16) COLLATE utf8_unicode_ci NOT NULL,
   `state` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of address
 -- ----------------------------
-INSERT INTO `address` VALUES ('1', '1', '汪世兵', '北京', '北京市西城区复兴门内大街49号', null, '15313066678', '0');
+INSERT INTO `address` VALUES ('41', '24', 'yourarelast', '北京市 县 长治县', '你的东东', null, '18333192903', '0');
+INSERT INTO `address` VALUES ('38', '24', 'testonemore', '天津市 县 静海县', '地址更改测试', null, '18333192903', '1');
+INSERT INTO `address` VALUES ('39', '24', 'test', '福建省 厦门市 海沧区', '东东', null, '18333192903', '0');
+INSERT INTO `address` VALUES ('40', '24', 'yourarelast', '河北省 邯郸市 丛台区', '你的东东', null, '18333192903', '0');
+INSERT INTO `address` VALUES ('37', '24', 'yourarelast', '河北省 邯郸市 丛台区', '你的东东', null, '18333192903', '0');
 
 -- ----------------------------
 -- Table structure for attr_colors
@@ -52,9 +56,9 @@ CREATE TABLE `attr_colors` (
 -- ----------------------------
 INSERT INTO `attr_colors` VALUES ('1', '1', '浅蓝色');
 INSERT INTO `attr_colors` VALUES ('2', '1', '灰色');
-INSERT INTO `attr_colors` VALUES ('3', '2', '粉色');
-INSERT INTO `attr_colors` VALUES ('4', '2', '蓝色');
-INSERT INTO `attr_colors` VALUES ('5', '2', '黑色');
+INSERT INTO `attr_colors` VALUES ('3', '5', '黑色');
+INSERT INTO `attr_colors` VALUES ('4', '6', '粉色');
+INSERT INTO `attr_colors` VALUES ('5', '6', '浅灰色');
 
 -- ----------------------------
 -- Table structure for attr_sizes
@@ -65,7 +69,7 @@ CREATE TABLE `attr_sizes` (
   `gid` int(11) NOT NULL,
   `size` char(32) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of attr_sizes
@@ -73,9 +77,14 @@ CREATE TABLE `attr_sizes` (
 INSERT INTO `attr_sizes` VALUES ('1', '1', 'S');
 INSERT INTO `attr_sizes` VALUES ('2', '1', 'M');
 INSERT INTO `attr_sizes` VALUES ('3', '1', 'L');
-INSERT INTO `attr_sizes` VALUES ('4', '2', 'XL');
-INSERT INTO `attr_sizes` VALUES ('5', '3', '2XL');
-INSERT INTO `attr_sizes` VALUES ('6', '2', '3XL');
+INSERT INTO `attr_sizes` VALUES ('4', '5', 'XS');
+INSERT INTO `attr_sizes` VALUES ('5', '5', 'S');
+INSERT INTO `attr_sizes` VALUES ('6', '5', 'M');
+INSERT INTO `attr_sizes` VALUES ('7', '5', 'L');
+INSERT INTO `attr_sizes` VALUES ('8', '5', 'XL');
+INSERT INTO `attr_sizes` VALUES ('9', '6', 'S');
+INSERT INTO `attr_sizes` VALUES ('10', '6', 'M');
+INSERT INTO `attr_sizes` VALUES ('11', '6', 'L');
 
 -- ----------------------------
 -- Table structure for campaign
@@ -95,6 +104,24 @@ CREATE TABLE `campaign` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for carsoul
+-- ----------------------------
+DROP TABLE IF EXISTS `carsoul`;
+CREATE TABLE `carsoul` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `pic` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of carsoul
+-- ----------------------------
+INSERT INTO `carsoul` VALUES ('1', '1212年终盛典', '111111.jpg');
+INSERT INTO `carsoul` VALUES ('2', '毛呢外套5折封顶', '222222221.jpg');
+INSERT INTO `carsoul` VALUES ('3', '99元封顶', '13333311.jpg');
+
+-- ----------------------------
 -- Table structure for category
 -- ----------------------------
 DROP TABLE IF EXISTS `category`;
@@ -107,386 +134,387 @@ CREATE TABLE `category` (
   `show_pos` tinyint(4) NOT NULL DEFAULT '0',
   `path` char(16) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   `status` tinyint(4) NOT NULL DEFAULT '1',
+  `state` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=375 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO `category` VALUES ('1', 'HSTYLE女装', null, 'hstyle.png', '0', '1', '0', '1');
-INSERT INTO `category` VALUES ('2', 'SONEED女装', null, 'soneed.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('3', 'HSTYLE韩都衣舍男装', null, 'soneed.png', '0', '1', '0', '1');
-INSERT INTO `category` VALUES ('4', 'MiniZaru童装', null, 'mini.png', '0', '1', '0', '1');
-INSERT INTO `category` VALUES ('5', 'nanaday娜娜日记', null, 'nana.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('6', 'Forqueens范奎恩', null, 'forqueen.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('7', 'Dequanna迪葵纳', null, 'hanyunyixiang.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('8', 'niBBuns尼班诗', null, 'nibbuns.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('9', 'R•Maker暗码', null, 'anma.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('10', 'Cherry town樱桃小镇', null, 'ytxz.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('11', 'Laura', null, 'laola.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('12', 'SOULINE素缕', null, 'sulv.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('13', 'zigu自古', null, 'zg.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('14', 'Garbha果芽', null, 'guoya.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('15', 'HoneyPig蜜糖猪', null, 'hp.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('16', '白鹿语', null, 'bly.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('17', '基易', null, 'bly.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('18', '哲初', null, 'zc.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('19', '池希', null, 'cx.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('20', '歩乐斯', null, 'cx.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('21', 'Dicovery Expedition', null, 'dx1.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('22', 'HSTYLE/韩都衣舍母婴', null, 'hanyunyixiang.png', '0', '0', '0', '1');
-INSERT INTO `category` VALUES ('23', '上装', null, null, '1', '0', '0,1', '1');
-INSERT INTO `category` VALUES ('24', '裙装', null, null, '1', '0', '0,1', '1');
-INSERT INTO `category` VALUES ('25', '裤装', null, null, '1', '0', '0,1', '1');
-INSERT INTO `category` VALUES ('26', '配饰', null, null, '1', '0', '0,1', '1');
-INSERT INTO `category` VALUES ('27', '箱包', null, null, '1', '0', '0,1', '1');
-INSERT INTO `category` VALUES ('28', '鞋子', null, null, '1', '0', '0,1', '1');
-INSERT INTO `category` VALUES ('29', '上装', null, null, '2', '0', '0,2', '1');
-INSERT INTO `category` VALUES ('30', '裙装', null, null, '2', '0', '0,2', '1');
-INSERT INTO `category` VALUES ('31', '饰品', null, null, '2', '0', '0,2', '1');
-INSERT INTO `category` VALUES ('32', '裤装', null, null, '2', '0', '0,2', '1');
-INSERT INTO `category` VALUES ('33', '上装', null, null, '3', '0', '0,3', '1');
-INSERT INTO `category` VALUES ('34', '下装', null, null, '3', '0', '0,3', '1');
-INSERT INTO `category` VALUES ('35', '上装', null, null, '4', '0', '0,4', '1');
-INSERT INTO `category` VALUES ('36', '裙装', null, null, '4', '0', '0,4', '1');
-INSERT INTO `category` VALUES ('37', '裤装', null, null, '4', '0', '0,4', '1');
-INSERT INTO `category` VALUES ('38', '鞋包配饰', null, null, '4', '0', '0,4', '1');
-INSERT INTO `category` VALUES ('39', '上装', null, null, '5', '0', '0,5', '1');
-INSERT INTO `category` VALUES ('40', '裙装', null, null, '5', '0', '0,5', '1');
-INSERT INTO `category` VALUES ('41', '裤装', null, null, '5', '0', '0,5', '1');
-INSERT INTO `category` VALUES ('42', '上装', null, null, '6', '0', '0,6', '1');
-INSERT INTO `category` VALUES ('43', '裙装', null, null, '6', '0', '0,6', '1');
-INSERT INTO `category` VALUES ('44', '裤装', null, null, '6', '0', '0,6', '1');
-INSERT INTO `category` VALUES ('45', '上装', null, null, '7', '0', '0,7', '1');
-INSERT INTO `category` VALUES ('46', '裤装', null, null, '7', '0', '0,7', '1');
-INSERT INTO `category` VALUES ('47', '裙装', null, null, '7', '0', '0,7', '1');
-INSERT INTO `category` VALUES ('48', '上装', null, null, '8', '0', '0,8', '1');
-INSERT INTO `category` VALUES ('49', '裙装', null, null, '8', '0', '0,8', '1');
-INSERT INTO `category` VALUES ('50', '裤装', null, null, '8', '0', '0,8', '1');
-INSERT INTO `category` VALUES ('51', '套装', null, null, '8', '0', '0,8', '1');
-INSERT INTO `category` VALUES ('52', '上装', null, null, '9', '0', '0,9', '1');
-INSERT INTO `category` VALUES ('53', '裤装', null, null, '9', '0', '0,9', '1');
-INSERT INTO `category` VALUES ('54', '上装', null, null, '10', '0', '0,10', '1');
-INSERT INTO `category` VALUES ('55', '裤装', null, null, '10', '0', '0,10', '1');
-INSERT INTO `category` VALUES ('56', '裙装', null, null, '10', '0', '0,10', '1');
-INSERT INTO `category` VALUES ('57', '上装', null, null, '11', '0', '0,11', '1');
-INSERT INTO `category` VALUES ('58', '裙装', null, null, '11', '0', '0,11', '1');
-INSERT INTO `category` VALUES ('59', '裤装', null, null, '11', '0', '0,11', '1');
-INSERT INTO `category` VALUES ('60', '配饰', null, null, '11', '0', '0,11', '1');
-INSERT INTO `category` VALUES ('61', '上装', null, null, '12', '0', '0,12', '1');
-INSERT INTO `category` VALUES ('62', '裙装', null, null, '12', '0', '0,12', '1');
-INSERT INTO `category` VALUES ('63', '裤装', null, null, '12', '0', '0,12', '1');
-INSERT INTO `category` VALUES ('64', '鞋包配饰', null, null, '12', '0', '0,12', '1');
-INSERT INTO `category` VALUES ('65', '上装', null, null, '13', '0', '0,13', '1');
-INSERT INTO `category` VALUES ('66', '下装', null, null, '13', '0', '0,13', '1');
-INSERT INTO `category` VALUES ('67', '上装', null, null, '14', '0', '0,14', '1');
-INSERT INTO `category` VALUES ('68', '下装', null, null, '14', '0', '0,14', '1');
-INSERT INTO `category` VALUES ('69', '裙装', null, null, '14', '0', '0,14', '1');
-INSERT INTO `category` VALUES ('70', '上装', null, null, '15', '0', '0,15', '1');
-INSERT INTO `category` VALUES ('71', '裙装', null, null, '15', '0', '0,15', '1');
-INSERT INTO `category` VALUES ('72', '裤装', null, null, '15', '0', '0,15', '1');
-INSERT INTO `category` VALUES ('73', '上装', null, null, '16', '0', '0,16', '1');
-INSERT INTO `category` VALUES ('74', '裙装', null, null, '16', '0', '0,16', '1');
-INSERT INTO `category` VALUES ('75', '下装', null, null, '16', '0', '0,16', '1');
-INSERT INTO `category` VALUES ('76', '上装', null, null, '17', '0', '0,17', '1');
-INSERT INTO `category` VALUES ('77', '裙装', null, null, '17', '0', '0,17', '1');
-INSERT INTO `category` VALUES ('78', '裤装', null, null, '17', '0', '0,17', '1');
-INSERT INTO `category` VALUES ('79', '上装', null, null, '18', '0', '0,18', '1');
-INSERT INTO `category` VALUES ('80', '裙装', null, null, '18', '0', '0,18', '1');
-INSERT INTO `category` VALUES ('81', '裤装', null, null, '18', '0', '0,18', '1');
-INSERT INTO `category` VALUES ('82', '上装', null, null, '19', '0', '0,19', '1');
-INSERT INTO `category` VALUES ('83', '裙装', null, null, '19', '0', '0,19', '1');
-INSERT INTO `category` VALUES ('84', '裤装', null, null, '19', '0', '0,19', '1');
-INSERT INTO `category` VALUES ('85', '围巾/披肩', null, null, '19', '0', '0,19', '1');
-INSERT INTO `category` VALUES ('86', '运动鞋', null, null, '20', '0', '0,20', '1');
-INSERT INTO `category` VALUES ('87', '上装', null, null, '21', '0', '0,21', '1');
-INSERT INTO `category` VALUES ('88', '裤装', null, null, '21', '0', '0,21', '1');
-INSERT INTO `category` VALUES ('89', '男宝宝', null, null, '22', '0', '0,22', '1');
-INSERT INTO `category` VALUES ('90', '新生儿', null, null, '22', '0', '0,22', '1');
-INSERT INTO `category` VALUES ('91', '女宝宝', null, null, '22', '0', '0,22', '1');
-INSERT INTO `category` VALUES ('92', '毛呢外套', null, null, '23', '0', '0,1,23', '1');
-INSERT INTO `category` VALUES ('93', '羽绒服', null, null, '23', '0', '0,1,23', '1');
-INSERT INTO `category` VALUES ('94', '棉衣/棉服', null, null, '23', '0', '0,1,23', '1');
-INSERT INTO `category` VALUES ('95', '毛针织衫', null, null, '23', '0', '0,1,23', '1');
-INSERT INTO `category` VALUES ('96', '卫衣/绒衫', null, null, '23', '0', '0,1,23', '1');
-INSERT INTO `category` VALUES ('97', '短外套/休闲外套', null, null, '23', '0', '0,1,23', '1');
-INSERT INTO `category` VALUES ('98', 'T恤', null, null, '23', '0', '0,1,23', '1');
-INSERT INTO `category` VALUES ('99', '衬衫', null, null, '23', '0', '0,1,23', '1');
-INSERT INTO `category` VALUES ('100', '套装', null, null, '23', '0', '0,1,23', '1');
-INSERT INTO `category` VALUES ('101', '风衣', null, null, '23', '0', '0,1,23', '1');
-INSERT INTO `category` VALUES ('102', '蕾丝衫/雪纺衫', null, null, '23', '0', '0,1,23', '1');
-INSERT INTO `category` VALUES ('103', '马夹', null, null, '23', '0', '0,1,23', '1');
-INSERT INTO `category` VALUES ('104', '连衣裙', null, null, '24', '0', '0,1,24', '1');
-INSERT INTO `category` VALUES ('105', '半身裙', null, null, '24', '0', '0,1,24', '1');
-INSERT INTO `category` VALUES ('106', '牛仔裤', null, null, '25', '0', '0,1,25', '1');
-INSERT INTO `category` VALUES ('107', '休闲裤', null, null, '25', '0', '0,1,25', '1');
-INSERT INTO `category` VALUES ('108', '打底裤', null, null, '25', '0', '0,1,25', '1');
-INSERT INTO `category` VALUES ('109', '短裤', null, null, '25', '0', '0,1,25', '1');
-INSERT INTO `category` VALUES ('110', '项链', null, null, '26', '0', '0,1,26', '1');
-INSERT INTO `category` VALUES ('111', '帽子', null, null, '26', '0', '0,1,26', '1');
-INSERT INTO `category` VALUES ('112', '腰带', null, null, '26', '0', '0,1,26', '1');
-INSERT INTO `category` VALUES ('113', '围巾', null, null, '26', '0', '0,1,26', '1');
-INSERT INTO `category` VALUES ('114', '手提包', null, null, '27', '0', '0,1,27', '1');
-INSERT INTO `category` VALUES ('115', '手拿包', null, null, '27', '0', '0,1,27', '1');
-INSERT INTO `category` VALUES ('116', '双肩包', null, null, '27', '0', '0,1,27', '1');
-INSERT INTO `category` VALUES ('117', '单肩包', null, null, '27', '0', '0,1,27', '1');
-INSERT INTO `category` VALUES ('118', '斜挎包', null, null, '27', '0', '0,1,27', '1');
-INSERT INTO `category` VALUES ('119', '钱包', null, null, '27', '0', '0,1,27', '1');
-INSERT INTO `category` VALUES ('120', '低帮鞋', null, null, '28', '0', '0,1,28', '1');
-INSERT INTO `category` VALUES ('121', '凉鞋', null, null, '28', '0', '0,1,28', '1');
-INSERT INTO `category` VALUES ('122', '高帮鞋', null, null, '28', '0', '0,1,28', '1');
-INSERT INTO `category` VALUES ('123', '靴子', null, null, '28', '0', '0,1,28', '1');
-INSERT INTO `category` VALUES ('124', '毛呢外套', null, null, '29', '0', '0,2,29', '1');
-INSERT INTO `category` VALUES ('125', '毛针织衫', null, null, '29', '0', '0,2,29', '1');
-INSERT INTO `category` VALUES ('126', '风衣', null, null, '29', '0', '0,2,29', '1');
-INSERT INTO `category` VALUES ('127', '羽绒服', null, null, '29', '0', '0,2,29', '1');
-INSERT INTO `category` VALUES ('128', '棉衣棉服', null, null, '29', '0', '0,2,29', '1');
-INSERT INTO `category` VALUES ('129', 'T恤', null, null, '29', '0', '0,2,29', '1');
-INSERT INTO `category` VALUES ('130', '衬衫', null, null, '29', '0', '0,2,29', '1');
-INSERT INTO `category` VALUES ('131', '卫衣绒衫', null, null, '29', '0', '0,2,29', '1');
-INSERT INTO `category` VALUES ('132', '套装', null, null, '29', '0', '0,2,29', '1');
-INSERT INTO `category` VALUES ('133', '西装', null, null, '29', '0', '0,2,29', '1');
-INSERT INTO `category` VALUES ('134', '蕾丝衫/雪纺衫', null, null, '29', '0', '0,2,29', '1');
-INSERT INTO `category` VALUES ('135', '背心吊带', null, null, '29', '0', '0,2,29', '1');
-INSERT INTO `category` VALUES ('136', '外套', null, null, '29', '0', '0,2,29', '1');
-INSERT INTO `category` VALUES ('137', '连衣裙', null, null, '30', '0', '0,2,30', '1');
-INSERT INTO `category` VALUES ('138', '半身裙', null, null, '30', '0', '0,2,30', '1');
-INSERT INTO `category` VALUES ('139', '休闲裤', null, null, '32', '0', '0,2,32', '1');
-INSERT INTO `category` VALUES ('140', '牛仔裤', null, null, '32', '0', '0,2,32', '1');
-INSERT INTO `category` VALUES ('141', '短裤', null, null, '32', '0', '0,2,32', '1');
-INSERT INTO `category` VALUES ('142', '卫衣', null, null, '33', '0', '0,3,33', '1');
-INSERT INTO `category` VALUES ('143', '羽绒服', null, null, '33', '0', '0,3,33', '1');
-INSERT INTO `category` VALUES ('144', '长袖T恤', null, null, '33', '0', '0,3,33', '1');
-INSERT INTO `category` VALUES ('145', '衬衫', null, null, '33', '0', '0,3,33', '1');
-INSERT INTO `category` VALUES ('146', '夹克', null, null, '33', '0', '0,3,33', '1');
-INSERT INTO `category` VALUES ('147', '毛衣针织衫/毛衣', null, null, '33', '0', '0,3,33', '1');
-INSERT INTO `category` VALUES ('148', '呢大衣', null, null, '33', '0', '0,3,33', '1');
-INSERT INTO `category` VALUES ('149', '棉衣', null, null, '33', '0', '0,3,33', '1');
-INSERT INTO `category` VALUES ('150', '背心/马甲', null, null, '33', '0', '0,3,33', '1');
-INSERT INTO `category` VALUES ('151', '牛仔裤', null, null, '34', '0', '0,3,34', '1');
-INSERT INTO `category` VALUES ('152', '休闲裤', null, null, '34', '0', '0,3,34', '1');
-INSERT INTO `category` VALUES ('153', '棉袄/棉服', null, null, '35', '0', '0,4,35', '1');
-INSERT INTO `category` VALUES ('154', '羽绒服饰/羽绒内胆', null, null, '35', '0', '0,4,35', '1');
-INSERT INTO `category` VALUES ('155', '卫衣/绒衫', null, null, '35', '0', '0,4,35', '1');
-INSERT INTO `category` VALUES ('156', '衬衫', null, null, '35', '0', '0,4,35', '1');
-INSERT INTO `category` VALUES ('157', '套装', null, null, '35', '0', '0,4,35', '1');
-INSERT INTO `category` VALUES ('158', '毛呢外套', null, null, '35', '0', '0,4,35', '1');
-INSERT INTO `category` VALUES ('159', '外套/夹克/大衣', null, null, '35', '0', '0,4,35', '1');
-INSERT INTO `category` VALUES ('160', 'T恤', null, null, '35', '0', '0,4,35', '1');
-INSERT INTO `category` VALUES ('161', '毛衣/针织衫', null, null, '35', '0', '0,4,35', '1');
-INSERT INTO `category` VALUES ('162', '马甲', null, null, '35', '0', '0,4,35', '1');
-INSERT INTO `category` VALUES ('163', '连衣裙', null, null, '36', '0', '0,4,36', '1');
-INSERT INTO `category` VALUES ('164', '半身裙', null, null, '36', '0', '0,4,36', '1');
-INSERT INTO `category` VALUES ('165', '牛仔裤', null, null, '37', '0', '0,4,37', '1');
-INSERT INTO `category` VALUES ('166', '打底裤', null, null, '37', '0', '0,4,37', '1');
-INSERT INTO `category` VALUES ('167', '休闲裤', null, null, '37', '0', '0,4,37', '1');
-INSERT INTO `category` VALUES ('168', '短裤', null, null, '37', '0', '0,4,37', '1');
-INSERT INTO `category` VALUES ('169', '低帮鞋', null, null, '38', '0', '0,4,38', '1');
-INSERT INTO `category` VALUES ('170', '羽绒服', null, null, '39', '0', '0,5,39', '1');
-INSERT INTO `category` VALUES ('171', '短外套', null, null, '39', '0', '0,5,39', '1');
-INSERT INTO `category` VALUES ('172', '蕾丝衫/雪纺衫', null, null, '39', '0', '0,5,39', '1');
-INSERT INTO `category` VALUES ('173', '衬衫', null, null, '39', '0', '0,5,39', '1');
-INSERT INTO `category` VALUES ('174', '马甲/马夹', null, null, '39', '0', '0,5,39', '1');
-INSERT INTO `category` VALUES ('175', '棉衣/棉服', null, null, '39', '0', '0,5,39', '1');
-INSERT INTO `category` VALUES ('176', '毛针织衫', null, null, '39', '0', '0,5,39', '1');
-INSERT INTO `category` VALUES ('177', '卫衣/绒衫', null, null, '39', '0', '0,5,39', '1');
-INSERT INTO `category` VALUES ('178', '套装', null, null, '39', '0', '0,5,39', '1');
-INSERT INTO `category` VALUES ('179', 'T恤', null, null, '39', '0', '0,5,39', '1');
-INSERT INTO `category` VALUES ('180', '毛呢外套', null, null, '39', '0', '0,5,39', '1');
-INSERT INTO `category` VALUES ('181', '半身裙', null, null, '40', '0', '0,5,40', '1');
-INSERT INTO `category` VALUES ('182', '连衣裙', null, null, '40', '0', '0,5,40', '1');
-INSERT INTO `category` VALUES ('183', '打底裤', null, null, '41', '0', '0,5,41', '1');
-INSERT INTO `category` VALUES ('184', '休闲裤', null, null, '41', '0', '0,5,41', '1');
-INSERT INTO `category` VALUES ('185', '牛仔裤', null, null, '41', '0', '0,5,41', '1');
-INSERT INTO `category` VALUES ('186', '毛呢外套', null, null, '42', '0', '0,6,42', '1');
-INSERT INTO `category` VALUES ('187', '羽绒服', null, null, '42', '0', '0,6,42', '1');
-INSERT INTO `category` VALUES ('188', 'T恤', null, null, '42', '0', '0,6,42', '1');
-INSERT INTO `category` VALUES ('189', '蕾丝衫/雪纺衫', null, null, '42', '0', '0,6,42', '1');
-INSERT INTO `category` VALUES ('190', '衬衫', null, null, '42', '0', '0,6,42', '1');
-INSERT INTO `category` VALUES ('191', '风衣', null, null, '42', '0', '0,6,42', '1');
-INSERT INTO `category` VALUES ('192', '毛针织衫', null, null, '42', '0', '0,6,42', '1');
-INSERT INTO `category` VALUES ('193', '卫衣/绒衫', null, null, '42', '0', '0,6,42', '1');
-INSERT INTO `category` VALUES ('194', '连衣裙', null, null, '43', '0', '0,6,43', '1');
-INSERT INTO `category` VALUES ('195', '半身裙', null, null, '43', '0', '0,6,43', '1');
-INSERT INTO `category` VALUES ('196', '打底裤', null, null, '44', '0', '0,6,44', '1');
-INSERT INTO `category` VALUES ('197', '牛仔裤', null, null, '44', '0', '0,6,44', '1');
-INSERT INTO `category` VALUES ('198', '短裤', null, null, '44', '0', '0,6,44', '1');
-INSERT INTO `category` VALUES ('199', '休闲裤', null, null, '44', '0', '0,6,44', '1');
-INSERT INTO `category` VALUES ('200', 'T恤', null, null, '45', '0', '0,7,45', '1');
-INSERT INTO `category` VALUES ('201', '衬衫', null, null, '45', '0', '0,7,45', '1');
-INSERT INTO `category` VALUES ('202', '短外套', null, null, '45', '0', '0,7,45', '1');
-INSERT INTO `category` VALUES ('203', '毛针织衫', null, null, '45', '0', '0,7,45', '1');
-INSERT INTO `category` VALUES ('204', '套装', null, null, '45', '0', '0,7,45', '1');
-INSERT INTO `category` VALUES ('205', '风衣', null, null, '45', '0', '0,7,45', '1');
-INSERT INTO `category` VALUES ('206', '棉衣/棉服', null, null, '45', '0', '0,7,45', '1');
-INSERT INTO `category` VALUES ('207', '羽绒服', null, null, '45', '0', '0,7,45', '1');
-INSERT INTO `category` VALUES ('208', '马夹', null, null, '45', '0', '0,7,45', '1');
-INSERT INTO `category` VALUES ('209', '毛呢外套', null, null, '45', '0', '0,7,45', '1');
-INSERT INTO `category` VALUES ('210', '休闲裤', null, null, '46', '0', '0,7,46', '1');
-INSERT INTO `category` VALUES ('211', '连衣裙', null, null, '47', '0', '0,7,47', '1');
-INSERT INTO `category` VALUES ('212', '半身裙', null, null, '47', '0', '0,7,47', '1');
-INSERT INTO `category` VALUES ('213', '毛呢外套', null, null, '48', '0', '0,7,48', '1');
-INSERT INTO `category` VALUES ('214', '毛针织衫', null, null, '48', '0', '0,7,48', '1');
-INSERT INTO `category` VALUES ('215', '羽绒服', null, null, '48', '0', '0,7,48', '1');
-INSERT INTO `category` VALUES ('216', '风衣', null, null, '48', '0', '0,7,48', '1');
-INSERT INTO `category` VALUES ('217', '棉衣/棉服', null, null, '48', '0', '0,7,48', '1');
-INSERT INTO `category` VALUES ('218', '卫衣/绒衫', null, null, '48', '0', '0,7,48', '1');
-INSERT INTO `category` VALUES ('219', 'T恤', null, null, '48', '0', '0,7,48', '1');
-INSERT INTO `category` VALUES ('220', '衬衫', null, null, '48', '0', '0,7,48', '1');
-INSERT INTO `category` VALUES ('221', '西装', null, null, '48', '0', '0,7,48', '1');
-INSERT INTO `category` VALUES ('222', '蕾丝衫/雪纺衫', null, null, '48', '0', '0,7,48', '1');
-INSERT INTO `category` VALUES ('223', '休闲外套', null, null, '48', '0', '0,7,48', '1');
-INSERT INTO `category` VALUES ('224', '连衣裙', null, null, '49', '0', '0,7,49', '1');
-INSERT INTO `category` VALUES ('225', '半身裙', null, null, '49', '0', '0,7,49', '1');
-INSERT INTO `category` VALUES ('226', '休闲裤', null, null, '50', '0', '0,7,50', '1');
-INSERT INTO `category` VALUES ('227', '打底裤', null, null, '50', '0', '0,7,50', '1');
-INSERT INTO `category` VALUES ('228', '牛仔裤', null, null, '50', '0', '0,7,50', '1');
-INSERT INTO `category` VALUES ('229', '短裤', null, null, '50', '0', '0,7,50', '1');
-INSERT INTO `category` VALUES ('230', 'T恤', null, null, '52', '0', '0,8,52', '1');
-INSERT INTO `category` VALUES ('231', 'Polo衫', null, null, '52', '0', '0,8,52', '1');
-INSERT INTO `category` VALUES ('232', '衬衫', null, null, '52', '0', '0,8,52', '1');
-INSERT INTO `category` VALUES ('233', '针织衫/毛衣', null, null, '52', '0', '0,8,52', '1');
-INSERT INTO `category` VALUES ('234', '卫衣', null, null, '52', '0', '0,8,52', '1');
-INSERT INTO `category` VALUES ('235', '短外套', null, null, '52', '0', '0,8,52', '1');
-INSERT INTO `category` VALUES ('236', '夹克', null, null, '52', '0', '0,8,52', '1');
-INSERT INTO `category` VALUES ('237', '棉衣', null, null, '52', '0', '0,8,52', '1');
-INSERT INTO `category` VALUES ('238', '羽绒服', null, null, '52', '0', '0,8,52', '1');
-INSERT INTO `category` VALUES ('239', '毛呢外套', null, null, '52', '0', '0,8,52', '1');
-INSERT INTO `category` VALUES ('240', '休闲裤', null, null, '53', '0', '0,8,53', '1');
-INSERT INTO `category` VALUES ('241', '牛仔裤', null, null, '53', '0', '0,8,53', '1');
-INSERT INTO `category` VALUES ('242', '短裤', null, null, '53', '0', '0,8,53', '1');
-INSERT INTO `category` VALUES ('243', '羽绒服', null, null, '54', '0', '0,9,54', '1');
-INSERT INTO `category` VALUES ('244', '毛呢外套', null, null, '54', '0', '0,9,54', '1');
-INSERT INTO `category` VALUES ('245', '衬衫', null, null, '54', '0', '0,9,54', '1');
-INSERT INTO `category` VALUES ('246', '外套', null, null, '54', '0', '0,9,54', '1');
-INSERT INTO `category` VALUES ('247', '套装', null, null, '54', '0', '0,9,54', '1');
-INSERT INTO `category` VALUES ('248', '西装', null, null, '54', '0', '0,9,54', '1');
-INSERT INTO `category` VALUES ('249', 'T恤', null, null, '54', '0', '0,9,54', '1');
-INSERT INTO `category` VALUES ('250', '蕾丝衫/雪纺衫', null, null, '54', '0', '0,9,54', '1');
-INSERT INTO `category` VALUES ('251', '风衣', null, null, '54', '0', '0,9,54', '1');
-INSERT INTO `category` VALUES ('252', '毛针织衫', null, null, '54', '0', '0,9,54', '1');
-INSERT INTO `category` VALUES ('253', '卫衣/绒衫', null, null, '54', '0', '0,9,54', '1');
-INSERT INTO `category` VALUES ('254', '牛仔裤', null, null, '55', '0', '0,9,55', '1');
-INSERT INTO `category` VALUES ('255', '休闲裤', null, null, '55', '0', '0,9,55', '1');
-INSERT INTO `category` VALUES ('256', '短裤', null, null, '55', '0', '0,9,55', '1');
-INSERT INTO `category` VALUES ('257', '连衣裙', null, null, '56', '0', '0,9,56', '1');
-INSERT INTO `category` VALUES ('258', '半身裙', null, null, '56', '0', '0,9,56', '1');
-INSERT INTO `category` VALUES ('259', '风衣', null, null, '57', '0', '0,10,57', '1');
-INSERT INTO `category` VALUES ('260', '衬衫', null, null, '57', '0', '0,10,57', '1');
-INSERT INTO `category` VALUES ('261', 'T恤', null, null, '57', '0', '0,10,57', '1');
-INSERT INTO `category` VALUES ('262', '毛呢外套', null, null, '57', '0', '0,10,57', '1');
-INSERT INTO `category` VALUES ('263', '羽绒服', null, null, '57', '0', '0,10,57', '1');
-INSERT INTO `category` VALUES ('264', '毛针织衫', null, null, '57', '0', '0,10,57', '1');
-INSERT INTO `category` VALUES ('265', '西装', null, null, '57', '0', '0,10,57', '1');
-INSERT INTO `category` VALUES ('266', '连衣裙', null, null, '58', '0', '0,10,58', '1');
-INSERT INTO `category` VALUES ('267', '半身裙', null, null, '58', '0', '0,10,58', '1');
-INSERT INTO `category` VALUES ('268', '牛仔裤', null, null, '59', '0', '0,10,59', '1');
-INSERT INTO `category` VALUES ('269', '休闲裤', null, null, '59', '0', '0,10,59', '1');
-INSERT INTO `category` VALUES ('270', '棉衣/棉服', null, null, '61', '0', '0,11,61', '1');
-INSERT INTO `category` VALUES ('271', '毛针织衫', null, null, '61', '0', '0,11,61', '1');
-INSERT INTO `category` VALUES ('272', '风衣', null, null, '61', '0', '0,11,61', '1');
-INSERT INTO `category` VALUES ('273', '羽绒服', null, null, '61', '0', '0,11,61', '1');
-INSERT INTO `category` VALUES ('274', 'T恤', null, null, '61', '0', '0,11,61', '1');
-INSERT INTO `category` VALUES ('275', '衬衫', null, null, '61', '0', '0,11,61', '1');
-INSERT INTO `category` VALUES ('276', '卫衣/绒衫', null, null, '61', '0', '0,11,61', '1');
-INSERT INTO `category` VALUES ('277', '背心吊带', null, null, '61', '0', '0,11,61', '1');
-INSERT INTO `category` VALUES ('278', '马夹', null, null, '61', '0', '0,11,61', '1');
-INSERT INTO `category` VALUES ('279', '连衣裙', null, null, '62', '0', '0,11,62', '1');
-INSERT INTO `category` VALUES ('280', '半身裙', null, null, '62', '0', '0,11,62', '1');
-INSERT INTO `category` VALUES ('281', '休闲裤', null, null, '63', '0', '0,11,63', '1');
-INSERT INTO `category` VALUES ('282', '牛仔裤', null, null, '63', '0', '0,11,63', '1');
-INSERT INTO `category` VALUES ('283', '打底裤', null, null, '63', '0', '0,11,63', '1');
-INSERT INTO `category` VALUES ('284', '围巾/披肩', null, null, '64', '0', '0,11,64', '1');
-INSERT INTO `category` VALUES ('285', '高帮鞋', null, null, '64', '0', '0,11,64', '1');
-INSERT INTO `category` VALUES ('286', '手提包', null, null, '64', '0', '0,11,64', '1');
-INSERT INTO `category` VALUES ('287', 'T恤', null, null, '65', '0', '0,12,65', '1');
-INSERT INTO `category` VALUES ('288', '衬衫', null, null, '65', '0', '0,12,65', '1');
-INSERT INTO `category` VALUES ('289', '针织衫/毛衣', null, null, '65', '0', '0,12,65', '1');
-INSERT INTO `category` VALUES ('290', '风衣', null, null, '65', '0', '0,12,65', '1');
-INSERT INTO `category` VALUES ('291', '休闲裤', null, null, '66', '0', '0,12,66', '1');
-INSERT INTO `category` VALUES ('292', 'T恤', null, null, '67', '0', '0,13,67', '1');
-INSERT INTO `category` VALUES ('293', '毛衣/针织衫', null, null, '67', '0', '0,13,67', '1');
-INSERT INTO `category` VALUES ('294', '衬衫', null, null, '67', '0', '0,13,67', '1');
-INSERT INTO `category` VALUES ('295', '卫衣/绒衫', null, null, '67', '0', '0,13,67', '1');
-INSERT INTO `category` VALUES ('296', '外套/夹克/大衣', null, null, '67', '0', '0,13,67', '1');
-INSERT INTO `category` VALUES ('297', '棉袄/棉服', null, null, '67', '0', '0,13,67', '1');
-INSERT INTO `category` VALUES ('298', '裤子', null, null, '68', '0', '0,13,68', '1');
-INSERT INTO `category` VALUES ('299', '连衣裙', null, null, '69', '0', '0,13,69', '1');
-INSERT INTO `category` VALUES ('300', '半身裙', null, null, '69', '0', '0,13,69', '1');
-INSERT INTO `category` VALUES ('301', 'T恤', null, null, '70', '0', '0,14,70', '1');
-INSERT INTO `category` VALUES ('302', '衬衫', null, null, '70', '0', '0,14,70', '1');
-INSERT INTO `category` VALUES ('303', '卫衣/绒衫', null, null, '70', '0', '0,14,70', '1');
-INSERT INTO `category` VALUES ('304', '套装', null, null, '70', '0', '0,14,70', '1');
-INSERT INTO `category` VALUES ('305', '毛衣/针织衫', null, null, '70', '0', '0,14,70', '1');
-INSERT INTO `category` VALUES ('306', '羽绒服饰/羽绒内胆', null, null, '70', '0', '0,14,70', '1');
-INSERT INTO `category` VALUES ('307', '棉袄/棉服', null, null, '70', '0', '0,14,70', '1');
-INSERT INTO `category` VALUES ('308', '外套/夹克/大衣', null, null, '70', '0', '0,14,70', '1');
-INSERT INTO `category` VALUES ('309', '连衣裙', null, null, '71', '0', '0,14,71', '1');
-INSERT INTO `category` VALUES ('310', '半身裙', null, null, '71', '0', '0,14,71', '1');
-INSERT INTO `category` VALUES ('311', '休闲裤', null, null, '72', '0', '0,15,72', '1');
-INSERT INTO `category` VALUES ('312', '牛仔裤', null, null, '72', '0', '0,15,72', '1');
-INSERT INTO `category` VALUES ('313', '短裤', null, null, '72', '0', '0,15,72', '1');
-INSERT INTO `category` VALUES ('314', '打底裤', null, null, '72', '0', '0,15,72', '1');
-INSERT INTO `category` VALUES ('315', '蕾丝雪纺', null, null, '73', '0', '0,16,73', '1');
-INSERT INTO `category` VALUES ('316', '吊带背心', null, null, '73', '0', '0,16,73', '1');
-INSERT INTO `category` VALUES ('317', '衬衫', null, null, '73', '0', '0,16,73', '1');
-INSERT INTO `category` VALUES ('318', '短外套', null, null, '73', '0', '0,16,73', '1');
-INSERT INTO `category` VALUES ('319', '马甲', null, null, '73', '0', '0,16,73', '1');
-INSERT INTO `category` VALUES ('320', '羽绒服', null, null, '73', '0', '0,16,73', '1');
-INSERT INTO `category` VALUES ('321', 'T恤', null, null, '73', '0', '0,16,73', '1');
-INSERT INTO `category` VALUES ('322', '针织衫', null, null, '73', '0', '0,16,73', '1');
-INSERT INTO `category` VALUES ('323', '卫衣', null, null, '73', '0', '0,16,73', '1');
-INSERT INTO `category` VALUES ('324', '半身裙', null, null, '74', '0', '0,16,74', '1');
-INSERT INTO `category` VALUES ('325', '连衣裙', null, null, '74', '0', '0,16,74', '1');
-INSERT INTO `category` VALUES ('326', '连体裤', null, null, '75', '0', '0,16,75', '1');
-INSERT INTO `category` VALUES ('327', '牛仔裤', null, null, '75', '0', '0,16,75', '1');
-INSERT INTO `category` VALUES ('328', '休闲裤', null, null, '75', '0', '0,16,75', '1');
-INSERT INTO `category` VALUES ('329', '短裤', null, null, '75', '0', '0,16,75', '1');
-INSERT INTO `category` VALUES ('330', 'T恤', null, null, '76', '0', '0,17,76', '1');
-INSERT INTO `category` VALUES ('331', '衬衫', null, null, '76', '0', '0,17,76', '1');
-INSERT INTO `category` VALUES ('332', '风衣', null, null, '76', '0', '0,17,76', '1');
-INSERT INTO `category` VALUES ('333', '蕾丝衫/雪纺衫', null, null, '76', '0', '0,17,76', '1');
-INSERT INTO `category` VALUES ('334', '西装', null, null, '76', '0', '0,17,76', '1');
-INSERT INTO `category` VALUES ('335', '连衣裙', null, null, '77', '0', '0,17,76', '1');
-INSERT INTO `category` VALUES ('336', '半身裙', null, null, '77', '0', '0,17,77', '1');
-INSERT INTO `category` VALUES ('337', '休闲裤', null, null, '78', '0', '0,17,78', '1');
-INSERT INTO `category` VALUES ('338', '衬衫', null, null, '79', '0', '0,18,79', '1');
-INSERT INTO `category` VALUES ('339', '棉衣', null, null, '79', '0', '0,18,79', '1');
-INSERT INTO `category` VALUES ('340', '外套', null, null, '79', '0', '0,18,79', '1');
-INSERT INTO `category` VALUES ('341', '卫衣', null, null, '79', '0', '0,18,79', '1');
-INSERT INTO `category` VALUES ('342', 'T恤', null, null, '79', '0', '0,18,79', '1');
-INSERT INTO `category` VALUES ('343', '毛针织衫', null, null, '79', '0', '0,18,79', '1');
-INSERT INTO `category` VALUES ('344', '背心/吊带', null, null, '79', '0', '0,18,79', '1');
-INSERT INTO `category` VALUES ('345', '风衣', null, null, '79', '0', '0,18,79', '1');
-INSERT INTO `category` VALUES ('346', '羽绒服', null, null, '79', '0', '0,18,79', '1');
-INSERT INTO `category` VALUES ('347', '连衣裙', null, null, '80', '0', '0,18,80', '1');
-INSERT INTO `category` VALUES ('348', '半身裙', null, null, '80', '0', '0,18,80', '1');
-INSERT INTO `category` VALUES ('349', '牛仔裤', null, null, '81', '0', '0,18,81', '1');
-INSERT INTO `category` VALUES ('350', '休闲裤', null, null, '81', '0', '0,18,81', '1');
-INSERT INTO `category` VALUES ('351', '羽绒服', null, null, '87', '0', '0,21,87', '1');
-INSERT INTO `category` VALUES ('352', '滑雪服', null, null, '87', '0', '0,21,87', '1');
-INSERT INTO `category` VALUES ('353', '抓绒服', null, null, '87', '0', '0,21,87', '1');
-INSERT INTO `category` VALUES ('354', '外套', null, null, '87', '0', '0,21,87', '1');
-INSERT INTO `category` VALUES ('355', '卫衣/绒衫', null, null, '87', '0', '0,21,87', '1');
-INSERT INTO `category` VALUES ('356', '冲锋衣', null, null, '87', '0', '0,21,87', '1');
-INSERT INTO `category` VALUES ('357', '棉服', null, null, '87', '0', '0,21,87', '1');
-INSERT INTO `category` VALUES ('358', 'T恤', null, null, '87', '0', '0,21,87', '1');
-INSERT INTO `category` VALUES ('359', '越野裤', null, null, '88', '0', '0,21,88', '1');
-INSERT INTO `category` VALUES ('360', '卫裤', null, null, '88', '0', '0,21,88', '1');
-INSERT INTO `category` VALUES ('361', '抓绒裤', null, null, '88', '0', '0,21,88', '1');
-INSERT INTO `category` VALUES ('362', '冲锋裤', null, null, '88', '0', '0,21,88', '1');
-INSERT INTO `category` VALUES ('363', '棉衣/羽绒', null, null, '89', '0', '0,22,89', '1');
-INSERT INTO `category` VALUES ('364', '套装', null, null, '89', '0', '0,22,89', '1');
-INSERT INTO `category` VALUES ('365', '爬服', null, null, '89', '0', '0,22,89', '1');
-INSERT INTO `category` VALUES ('366', '上衣', null, null, '89', '0', '0,22,89', '1');
-INSERT INTO `category` VALUES ('367', '下装', null, null, '89', '0', '0,22,89', '1');
-INSERT INTO `category` VALUES ('368', '爬服', null, null, '90', '0', '0,22,90', '1');
-INSERT INTO `category` VALUES ('369', '爬服', null, null, '91', '0', '0,22,91', '1');
-INSERT INTO `category` VALUES ('370', '连衣裙', null, null, '91', '0', '0,22,91', '1');
-INSERT INTO `category` VALUES ('371', '套装', null, null, '91', '0', '0,22,91', '1');
-INSERT INTO `category` VALUES ('372', '上衣', null, null, '91', '0', '0,22,91', '1');
-INSERT INTO `category` VALUES ('373', '下装', null, null, '91', '0', '0,22,91', '1');
-INSERT INTO `category` VALUES ('374', '棉衣/羽绒', null, null, '91', '0', '0,22,91', '1');
+INSERT INTO `category` VALUES ('1', 'HSTYLE女装', null, 'hstyle.png', '0', '1', '0', '1', '1');
+INSERT INTO `category` VALUES ('2', 'SONEED女装', null, 'soneed.png', '0', '0', '0', '1', '1');
+INSERT INTO `category` VALUES ('3', 'HSTYLE韩都衣舍男装', null, 'amh.png', '0', '1', '0', '1', '4');
+INSERT INTO `category` VALUES ('4', 'MiniZaru童装', null, 'mini.png', '0', '1', '0', '1', '2');
+INSERT INTO `category` VALUES ('5', 'nanaday娜娜日记', null, 'nana.png', '0', '0', '0', '1', '1');
+INSERT INTO `category` VALUES ('6', 'Forqueens范奎恩', null, 'forqueen.png', '0', '0', '0', '1', '1');
+INSERT INTO `category` VALUES ('7', 'Dequanna迪葵纳', null, 'hanyunyixiang.png', '0', '0', '0', '1', '3');
+INSERT INTO `category` VALUES ('8', 'niBBuns尼班诗', null, 'nibbuns.png', '0', '0', '0', '1', '1');
+INSERT INTO `category` VALUES ('9', 'R•Maker暗码', null, 'anma.png', '0', '0', '0', '1', '4');
+INSERT INTO `category` VALUES ('10', 'Cherry town樱桃小镇', null, 'ytxz.png', '0', '0', '0', '1', '1');
+INSERT INTO `category` VALUES ('11', 'Laura', null, 'laola.png', '0', '0', '0', '1', '1');
+INSERT INTO `category` VALUES ('12', 'SOULINE素缕', null, 'sulv.png', '0', '0', '0', '1', '1');
+INSERT INTO `category` VALUES ('13', 'zigu自古', null, 'zg.png', '0', '0', '0', '1', '4');
+INSERT INTO `category` VALUES ('14', 'Garbha果芽', null, 'guoya.png', '0', '0', '0', '1', '2');
+INSERT INTO `category` VALUES ('15', 'HoneyPig蜜糖猪', null, 'hp.png', '0', '0', '0', '1', '2');
+INSERT INTO `category` VALUES ('16', '白鹿语', null, 'bly.png', '0', '0', '0', '1', '1');
+INSERT INTO `category` VALUES ('17', '基易', null, 'bly.png', '0', '0', '0', '1', '4');
+INSERT INTO `category` VALUES ('18', '哲初', null, 'zc.png', '0', '0', '0', '1', '1');
+INSERT INTO `category` VALUES ('19', '池希', null, 'cx.png', '0', '0', '0', '1', '1');
+INSERT INTO `category` VALUES ('20', '歩乐斯', null, 'bls.jpg', '0', '0', '0', '1', '5');
+INSERT INTO `category` VALUES ('21', 'Dicovery Expedition', null, 'dx1.png', '0', '0', '0', '1', '2');
+INSERT INTO `category` VALUES ('22', 'HSTYLE/韩都衣舍母婴', null, 'info3.png', '0', '0', '0', '1', '6');
+INSERT INTO `category` VALUES ('23', '上装', null, null, '1', '0', '0,1', '1', '0');
+INSERT INTO `category` VALUES ('24', '裙装', null, null, '1', '0', '0,1', '1', '0');
+INSERT INTO `category` VALUES ('25', '裤装', null, null, '1', '0', '0,1', '1', '0');
+INSERT INTO `category` VALUES ('26', '配饰', null, null, '1', '0', '0,1', '1', '0');
+INSERT INTO `category` VALUES ('27', '箱包', null, null, '1', '0', '0,1', '1', '0');
+INSERT INTO `category` VALUES ('28', '鞋子', null, null, '1', '0', '0,1', '1', '0');
+INSERT INTO `category` VALUES ('29', '上装', null, null, '2', '0', '0,2', '1', '0');
+INSERT INTO `category` VALUES ('30', '裙装', null, null, '2', '0', '0,2', '1', '0');
+INSERT INTO `category` VALUES ('31', '饰品', null, null, '2', '0', '0,2', '1', '0');
+INSERT INTO `category` VALUES ('32', '裤装', null, null, '2', '0', '0,2', '1', '0');
+INSERT INTO `category` VALUES ('33', '上装', null, null, '3', '0', '0,3', '1', '0');
+INSERT INTO `category` VALUES ('34', '下装', null, null, '3', '0', '0,3', '1', '0');
+INSERT INTO `category` VALUES ('35', '上装', null, null, '4', '0', '0,4', '1', '0');
+INSERT INTO `category` VALUES ('36', '裙装', null, null, '4', '0', '0,4', '1', '0');
+INSERT INTO `category` VALUES ('37', '裤装', null, null, '4', '0', '0,4', '1', '0');
+INSERT INTO `category` VALUES ('38', '鞋包配饰', null, null, '4', '0', '0,4', '1', '0');
+INSERT INTO `category` VALUES ('39', '上装', null, null, '5', '0', '0,5', '1', '0');
+INSERT INTO `category` VALUES ('40', '裙装', null, null, '5', '0', '0,5', '1', '0');
+INSERT INTO `category` VALUES ('41', '裤装', null, null, '5', '0', '0,5', '1', '0');
+INSERT INTO `category` VALUES ('42', '上装', null, null, '6', '0', '0,6', '1', '0');
+INSERT INTO `category` VALUES ('43', '裙装', null, null, '6', '0', '0,6', '1', '0');
+INSERT INTO `category` VALUES ('44', '裤装', null, null, '6', '0', '0,6', '1', '0');
+INSERT INTO `category` VALUES ('45', '上装', null, null, '7', '0', '0,7', '1', '0');
+INSERT INTO `category` VALUES ('46', '裤装', null, null, '7', '0', '0,7', '1', '0');
+INSERT INTO `category` VALUES ('47', '裙装', null, null, '7', '0', '0,7', '1', '0');
+INSERT INTO `category` VALUES ('48', '上装', null, null, '8', '0', '0,8', '1', '0');
+INSERT INTO `category` VALUES ('49', '裙装', null, null, '8', '0', '0,8', '1', '0');
+INSERT INTO `category` VALUES ('50', '裤装', null, null, '8', '0', '0,8', '1', '0');
+INSERT INTO `category` VALUES ('51', '套装', null, null, '8', '0', '0,8', '1', '0');
+INSERT INTO `category` VALUES ('52', '上装', null, null, '9', '0', '0,9', '1', '0');
+INSERT INTO `category` VALUES ('53', '裤装', null, null, '9', '0', '0,9', '1', '0');
+INSERT INTO `category` VALUES ('54', '上装', null, null, '10', '0', '0,10', '1', '0');
+INSERT INTO `category` VALUES ('55', '裤装', null, null, '10', '0', '0,10', '1', '0');
+INSERT INTO `category` VALUES ('56', '裙装', null, null, '10', '0', '0,10', '1', '0');
+INSERT INTO `category` VALUES ('57', '上装', null, null, '11', '0', '0,11', '1', '0');
+INSERT INTO `category` VALUES ('58', '裙装', null, null, '11', '0', '0,11', '1', '0');
+INSERT INTO `category` VALUES ('59', '裤装', null, null, '11', '0', '0,11', '1', '0');
+INSERT INTO `category` VALUES ('60', '配饰', null, null, '11', '0', '0,11', '1', '0');
+INSERT INTO `category` VALUES ('61', '上装', null, null, '12', '0', '0,12', '1', '0');
+INSERT INTO `category` VALUES ('62', '裙装', null, null, '12', '0', '0,12', '1', '0');
+INSERT INTO `category` VALUES ('63', '裤装', null, null, '12', '0', '0,12', '1', '0');
+INSERT INTO `category` VALUES ('64', '鞋包配饰', null, null, '12', '0', '0,12', '1', '0');
+INSERT INTO `category` VALUES ('65', '上装', null, null, '13', '0', '0,13', '1', '0');
+INSERT INTO `category` VALUES ('66', '下装', null, null, '13', '0', '0,13', '1', '0');
+INSERT INTO `category` VALUES ('67', '上装', null, null, '14', '0', '0,14', '1', '0');
+INSERT INTO `category` VALUES ('68', '下装', null, null, '14', '0', '0,14', '1', '0');
+INSERT INTO `category` VALUES ('69', '裙装', null, null, '14', '0', '0,14', '1', '0');
+INSERT INTO `category` VALUES ('70', '上装', null, null, '15', '0', '0,15', '1', '0');
+INSERT INTO `category` VALUES ('71', '裙装', null, null, '15', '0', '0,15', '1', '0');
+INSERT INTO `category` VALUES ('72', '裤装', null, null, '15', '0', '0,15', '1', '0');
+INSERT INTO `category` VALUES ('73', '上装', null, null, '16', '0', '0,16', '1', '0');
+INSERT INTO `category` VALUES ('74', '裙装', null, null, '16', '0', '0,16', '1', '0');
+INSERT INTO `category` VALUES ('75', '下装', null, null, '16', '0', '0,16', '1', '0');
+INSERT INTO `category` VALUES ('76', '上装', null, null, '17', '0', '0,17', '1', '0');
+INSERT INTO `category` VALUES ('77', '裙装', null, null, '17', '0', '0,17', '1', '0');
+INSERT INTO `category` VALUES ('78', '裤装', null, null, '17', '0', '0,17', '1', '0');
+INSERT INTO `category` VALUES ('79', '上装', null, null, '18', '0', '0,18', '1', '0');
+INSERT INTO `category` VALUES ('80', '裙装', null, null, '18', '0', '0,18', '1', '0');
+INSERT INTO `category` VALUES ('81', '裤装', null, null, '18', '0', '0,18', '1', '0');
+INSERT INTO `category` VALUES ('82', '上装', null, null, '19', '0', '0,19', '1', '0');
+INSERT INTO `category` VALUES ('83', '裙装', null, null, '19', '0', '0,19', '1', '0');
+INSERT INTO `category` VALUES ('84', '裤装', null, null, '19', '0', '0,19', '1', '0');
+INSERT INTO `category` VALUES ('85', '围巾/披肩', null, null, '19', '0', '0,19', '1', '0');
+INSERT INTO `category` VALUES ('86', '运动鞋', null, null, '20', '0', '0,20', '1', '0');
+INSERT INTO `category` VALUES ('87', '上装', null, null, '21', '0', '0,21', '1', '0');
+INSERT INTO `category` VALUES ('88', '裤装', null, null, '21', '0', '0,21', '1', '0');
+INSERT INTO `category` VALUES ('89', '男宝宝', null, null, '22', '0', '0,22', '1', '0');
+INSERT INTO `category` VALUES ('90', '新生儿', null, null, '22', '0', '0,22', '1', '0');
+INSERT INTO `category` VALUES ('91', '女宝宝', null, null, '22', '0', '0,22', '1', '0');
+INSERT INTO `category` VALUES ('92', '毛呢外套', null, null, '23', '0', '0,1,23', '1', '0');
+INSERT INTO `category` VALUES ('93', '羽绒服', null, null, '23', '0', '0,1,23', '1', '0');
+INSERT INTO `category` VALUES ('94', '棉衣/棉服', null, null, '23', '0', '0,1,23', '1', '0');
+INSERT INTO `category` VALUES ('95', '毛针织衫', null, null, '23', '0', '0,1,23', '1', '0');
+INSERT INTO `category` VALUES ('96', '卫衣/绒衫', null, null, '23', '0', '0,1,23', '1', '0');
+INSERT INTO `category` VALUES ('97', '短外套/休闲外套', null, null, '23', '0', '0,1,23', '1', '0');
+INSERT INTO `category` VALUES ('98', 'T恤', null, null, '23', '0', '0,1,23', '1', '0');
+INSERT INTO `category` VALUES ('99', '衬衫', null, null, '23', '0', '0,1,23', '1', '0');
+INSERT INTO `category` VALUES ('100', '套装', null, null, '23', '0', '0,1,23', '1', '0');
+INSERT INTO `category` VALUES ('101', '风衣', null, null, '23', '0', '0,1,23', '1', '0');
+INSERT INTO `category` VALUES ('102', '蕾丝衫/雪纺衫', null, null, '23', '0', '0,1,23', '1', '0');
+INSERT INTO `category` VALUES ('103', '马夹', null, null, '23', '0', '0,1,23', '1', '0');
+INSERT INTO `category` VALUES ('104', '连衣裙', null, null, '24', '0', '0,1,24', '1', '0');
+INSERT INTO `category` VALUES ('105', '半身裙', null, null, '24', '0', '0,1,24', '1', '0');
+INSERT INTO `category` VALUES ('106', '牛仔裤', null, null, '25', '0', '0,1,25', '1', '0');
+INSERT INTO `category` VALUES ('107', '休闲裤', null, null, '25', '0', '0,1,25', '1', '0');
+INSERT INTO `category` VALUES ('108', '打底裤', null, null, '25', '0', '0,1,25', '1', '0');
+INSERT INTO `category` VALUES ('109', '短裤', null, null, '25', '0', '0,1,25', '1', '0');
+INSERT INTO `category` VALUES ('110', '项链', null, null, '26', '0', '0,1,26', '1', '0');
+INSERT INTO `category` VALUES ('111', '帽子', null, null, '26', '0', '0,1,26', '1', '0');
+INSERT INTO `category` VALUES ('112', '腰带', null, null, '26', '0', '0,1,26', '1', '0');
+INSERT INTO `category` VALUES ('113', '围巾', null, null, '26', '0', '0,1,26', '1', '0');
+INSERT INTO `category` VALUES ('114', '手提包', null, null, '27', '0', '0,1,27', '1', '0');
+INSERT INTO `category` VALUES ('115', '手拿包', null, null, '27', '0', '0,1,27', '1', '0');
+INSERT INTO `category` VALUES ('116', '双肩包', null, null, '27', '0', '0,1,27', '1', '0');
+INSERT INTO `category` VALUES ('117', '单肩包', null, null, '27', '0', '0,1,27', '1', '0');
+INSERT INTO `category` VALUES ('118', '斜挎包', null, null, '27', '0', '0,1,27', '1', '0');
+INSERT INTO `category` VALUES ('119', '钱包', null, null, '27', '0', '0,1,27', '1', '0');
+INSERT INTO `category` VALUES ('120', '低帮鞋', null, null, '28', '0', '0,1,28', '1', '0');
+INSERT INTO `category` VALUES ('121', '凉鞋', null, null, '28', '0', '0,1,28', '1', '0');
+INSERT INTO `category` VALUES ('122', '高帮鞋', null, null, '28', '0', '0,1,28', '1', '0');
+INSERT INTO `category` VALUES ('123', '靴子', null, null, '28', '0', '0,1,28', '1', '0');
+INSERT INTO `category` VALUES ('124', '毛呢外套', null, null, '29', '0', '0,2,29', '1', '0');
+INSERT INTO `category` VALUES ('125', '毛针织衫', null, null, '29', '0', '0,2,29', '1', '0');
+INSERT INTO `category` VALUES ('126', '风衣', null, null, '29', '0', '0,2,29', '1', '0');
+INSERT INTO `category` VALUES ('127', '羽绒服', null, null, '29', '0', '0,2,29', '1', '0');
+INSERT INTO `category` VALUES ('128', '棉衣棉服', null, null, '29', '0', '0,2,29', '1', '0');
+INSERT INTO `category` VALUES ('129', 'T恤', null, null, '29', '0', '0,2,29', '1', '0');
+INSERT INTO `category` VALUES ('130', '衬衫', null, null, '29', '0', '0,2,29', '1', '0');
+INSERT INTO `category` VALUES ('131', '卫衣绒衫', null, null, '29', '0', '0,2,29', '1', '0');
+INSERT INTO `category` VALUES ('132', '套装', null, null, '29', '0', '0,2,29', '1', '0');
+INSERT INTO `category` VALUES ('133', '西装', null, null, '29', '0', '0,2,29', '1', '0');
+INSERT INTO `category` VALUES ('134', '蕾丝衫/雪纺衫', null, null, '29', '0', '0,2,29', '1', '0');
+INSERT INTO `category` VALUES ('135', '背心吊带', null, null, '29', '0', '0,2,29', '1', '0');
+INSERT INTO `category` VALUES ('136', '外套', null, null, '29', '0', '0,2,29', '1', '0');
+INSERT INTO `category` VALUES ('137', '连衣裙', null, null, '30', '0', '0,2,30', '1', '0');
+INSERT INTO `category` VALUES ('138', '半身裙', null, null, '30', '0', '0,2,30', '1', '0');
+INSERT INTO `category` VALUES ('139', '休闲裤', null, null, '32', '0', '0,2,32', '1', '0');
+INSERT INTO `category` VALUES ('140', '牛仔裤', null, null, '32', '0', '0,2,32', '1', '0');
+INSERT INTO `category` VALUES ('141', '短裤', null, null, '32', '0', '0,2,32', '1', '0');
+INSERT INTO `category` VALUES ('142', '卫衣', null, null, '33', '0', '0,3,33', '1', '0');
+INSERT INTO `category` VALUES ('143', '羽绒服', null, null, '33', '0', '0,3,33', '1', '0');
+INSERT INTO `category` VALUES ('144', '长袖T恤', null, null, '33', '0', '0,3,33', '1', '0');
+INSERT INTO `category` VALUES ('145', '衬衫', null, null, '33', '0', '0,3,33', '1', '0');
+INSERT INTO `category` VALUES ('146', '夹克', null, null, '33', '0', '0,3,33', '1', '0');
+INSERT INTO `category` VALUES ('147', '毛衣针织衫/毛衣', null, null, '33', '0', '0,3,33', '1', '0');
+INSERT INTO `category` VALUES ('148', '呢大衣', null, null, '33', '0', '0,3,33', '1', '0');
+INSERT INTO `category` VALUES ('149', '棉衣', null, null, '33', '0', '0,3,33', '1', '0');
+INSERT INTO `category` VALUES ('150', '背心/马甲', null, null, '33', '0', '0,3,33', '1', '0');
+INSERT INTO `category` VALUES ('151', '牛仔裤', null, null, '34', '0', '0,3,34', '1', '0');
+INSERT INTO `category` VALUES ('152', '休闲裤', null, null, '34', '0', '0,3,34', '1', '0');
+INSERT INTO `category` VALUES ('153', '棉袄/棉服', null, null, '35', '0', '0,4,35', '1', '0');
+INSERT INTO `category` VALUES ('154', '羽绒服饰/羽绒内胆', null, null, '35', '0', '0,4,35', '1', '0');
+INSERT INTO `category` VALUES ('155', '卫衣/绒衫', null, null, '35', '0', '0,4,35', '1', '0');
+INSERT INTO `category` VALUES ('156', '衬衫', null, null, '35', '0', '0,4,35', '1', '0');
+INSERT INTO `category` VALUES ('157', '套装', null, null, '35', '0', '0,4,35', '1', '0');
+INSERT INTO `category` VALUES ('158', '毛呢外套', null, null, '35', '0', '0,4,35', '1', '0');
+INSERT INTO `category` VALUES ('159', '外套/夹克/大衣', null, null, '35', '0', '0,4,35', '1', '0');
+INSERT INTO `category` VALUES ('160', 'T恤', null, null, '35', '0', '0,4,35', '1', '0');
+INSERT INTO `category` VALUES ('161', '毛衣/针织衫', null, null, '35', '0', '0,4,35', '1', '0');
+INSERT INTO `category` VALUES ('162', '马甲', null, null, '35', '0', '0,4,35', '1', '0');
+INSERT INTO `category` VALUES ('163', '连衣裙', null, null, '36', '0', '0,4,36', '1', '0');
+INSERT INTO `category` VALUES ('164', '半身裙', null, null, '36', '0', '0,4,36', '1', '0');
+INSERT INTO `category` VALUES ('165', '牛仔裤', null, null, '37', '0', '0,4,37', '1', '0');
+INSERT INTO `category` VALUES ('166', '打底裤', null, null, '37', '0', '0,4,37', '1', '0');
+INSERT INTO `category` VALUES ('167', '休闲裤', null, null, '37', '0', '0,4,37', '1', '0');
+INSERT INTO `category` VALUES ('168', '短裤', null, null, '37', '0', '0,4,37', '1', '0');
+INSERT INTO `category` VALUES ('169', '低帮鞋', null, null, '38', '0', '0,4,38', '1', '0');
+INSERT INTO `category` VALUES ('170', '羽绒服', null, null, '39', '0', '0,5,39', '1', '0');
+INSERT INTO `category` VALUES ('171', '短外套', null, null, '39', '0', '0,5,39', '1', '0');
+INSERT INTO `category` VALUES ('172', '蕾丝衫/雪纺衫', null, null, '39', '0', '0,5,39', '1', '0');
+INSERT INTO `category` VALUES ('173', '衬衫', null, null, '39', '0', '0,5,39', '1', '0');
+INSERT INTO `category` VALUES ('174', '马甲/马夹', null, null, '39', '0', '0,5,39', '1', '0');
+INSERT INTO `category` VALUES ('175', '棉衣/棉服', null, null, '39', '0', '0,5,39', '1', '0');
+INSERT INTO `category` VALUES ('176', '毛针织衫', null, null, '39', '0', '0,5,39', '1', '0');
+INSERT INTO `category` VALUES ('177', '卫衣/绒衫', null, null, '39', '0', '0,5,39', '1', '0');
+INSERT INTO `category` VALUES ('178', '套装', null, null, '39', '0', '0,5,39', '1', '0');
+INSERT INTO `category` VALUES ('179', 'T恤', null, null, '39', '0', '0,5,39', '1', '0');
+INSERT INTO `category` VALUES ('180', '毛呢外套', null, null, '39', '0', '0,5,39', '1', '0');
+INSERT INTO `category` VALUES ('181', '半身裙', null, null, '40', '0', '0,5,40', '1', '0');
+INSERT INTO `category` VALUES ('182', '连衣裙', null, null, '40', '0', '0,5,40', '1', '0');
+INSERT INTO `category` VALUES ('183', '打底裤', null, null, '41', '0', '0,5,41', '1', '0');
+INSERT INTO `category` VALUES ('184', '休闲裤', null, null, '41', '0', '0,5,41', '1', '0');
+INSERT INTO `category` VALUES ('185', '牛仔裤', null, null, '41', '0', '0,5,41', '1', '0');
+INSERT INTO `category` VALUES ('186', '毛呢外套', null, null, '42', '0', '0,6,42', '1', '0');
+INSERT INTO `category` VALUES ('187', '羽绒服', null, null, '42', '0', '0,6,42', '1', '0');
+INSERT INTO `category` VALUES ('188', 'T恤', null, null, '42', '0', '0,6,42', '1', '0');
+INSERT INTO `category` VALUES ('189', '蕾丝衫/雪纺衫', null, null, '42', '0', '0,6,42', '1', '0');
+INSERT INTO `category` VALUES ('190', '衬衫', null, null, '42', '0', '0,6,42', '1', '0');
+INSERT INTO `category` VALUES ('191', '风衣', null, null, '42', '0', '0,6,42', '1', '0');
+INSERT INTO `category` VALUES ('192', '毛针织衫', null, null, '42', '0', '0,6,42', '1', '0');
+INSERT INTO `category` VALUES ('193', '卫衣/绒衫', null, null, '42', '0', '0,6,42', '1', '0');
+INSERT INTO `category` VALUES ('194', '连衣裙', null, null, '43', '0', '0,6,43', '1', '0');
+INSERT INTO `category` VALUES ('195', '半身裙', null, null, '43', '0', '0,6,43', '1', '0');
+INSERT INTO `category` VALUES ('196', '打底裤', null, null, '44', '0', '0,6,44', '1', '0');
+INSERT INTO `category` VALUES ('197', '牛仔裤', null, null, '44', '0', '0,6,44', '1', '0');
+INSERT INTO `category` VALUES ('198', '短裤', null, null, '44', '0', '0,6,44', '1', '0');
+INSERT INTO `category` VALUES ('199', '休闲裤', null, null, '44', '0', '0,6,44', '1', '0');
+INSERT INTO `category` VALUES ('200', 'T恤', null, null, '45', '0', '0,7,45', '1', '0');
+INSERT INTO `category` VALUES ('201', '衬衫', null, null, '45', '0', '0,7,45', '1', '0');
+INSERT INTO `category` VALUES ('202', '短外套', null, null, '45', '0', '0,7,45', '1', '0');
+INSERT INTO `category` VALUES ('203', '毛针织衫', null, null, '45', '0', '0,7,45', '1', '0');
+INSERT INTO `category` VALUES ('204', '套装', null, null, '45', '0', '0,7,45', '1', '0');
+INSERT INTO `category` VALUES ('205', '风衣', null, null, '45', '0', '0,7,45', '1', '0');
+INSERT INTO `category` VALUES ('206', '棉衣/棉服', null, null, '45', '0', '0,7,45', '1', '0');
+INSERT INTO `category` VALUES ('207', '羽绒服', null, null, '45', '0', '0,7,45', '1', '0');
+INSERT INTO `category` VALUES ('208', '马夹', null, null, '45', '0', '0,7,45', '1', '0');
+INSERT INTO `category` VALUES ('209', '毛呢外套', null, null, '45', '0', '0,7,45', '1', '0');
+INSERT INTO `category` VALUES ('210', '休闲裤', null, null, '46', '0', '0,7,46', '1', '0');
+INSERT INTO `category` VALUES ('211', '连衣裙', null, null, '47', '0', '0,7,47', '1', '0');
+INSERT INTO `category` VALUES ('212', '半身裙', null, null, '47', '0', '0,7,47', '1', '0');
+INSERT INTO `category` VALUES ('213', '毛呢外套', null, null, '48', '0', '0,7,48', '1', '0');
+INSERT INTO `category` VALUES ('214', '毛针织衫', null, null, '48', '0', '0,7,48', '1', '0');
+INSERT INTO `category` VALUES ('215', '羽绒服', null, null, '48', '0', '0,7,48', '1', '0');
+INSERT INTO `category` VALUES ('216', '风衣', null, null, '48', '0', '0,7,48', '1', '0');
+INSERT INTO `category` VALUES ('217', '棉衣/棉服', null, null, '48', '0', '0,7,48', '1', '0');
+INSERT INTO `category` VALUES ('218', '卫衣/绒衫', null, null, '48', '0', '0,7,48', '1', '0');
+INSERT INTO `category` VALUES ('219', 'T恤', null, null, '48', '0', '0,7,48', '1', '0');
+INSERT INTO `category` VALUES ('220', '衬衫', null, null, '48', '0', '0,7,48', '1', '0');
+INSERT INTO `category` VALUES ('221', '西装', null, null, '48', '0', '0,7,48', '1', '0');
+INSERT INTO `category` VALUES ('222', '蕾丝衫/雪纺衫', null, null, '48', '0', '0,7,48', '1', '0');
+INSERT INTO `category` VALUES ('223', '休闲外套', null, null, '48', '0', '0,7,48', '1', '0');
+INSERT INTO `category` VALUES ('224', '连衣裙', null, null, '49', '0', '0,7,49', '1', '0');
+INSERT INTO `category` VALUES ('225', '半身裙', null, null, '49', '0', '0,7,49', '1', '0');
+INSERT INTO `category` VALUES ('226', '休闲裤', null, null, '50', '0', '0,7,50', '1', '0');
+INSERT INTO `category` VALUES ('227', '打底裤', null, null, '50', '0', '0,7,50', '1', '0');
+INSERT INTO `category` VALUES ('228', '牛仔裤', null, null, '50', '0', '0,7,50', '1', '0');
+INSERT INTO `category` VALUES ('229', '短裤', null, null, '50', '0', '0,7,50', '1', '0');
+INSERT INTO `category` VALUES ('230', 'T恤', null, null, '52', '0', '0,8,52', '1', '0');
+INSERT INTO `category` VALUES ('231', 'Polo衫', null, null, '52', '0', '0,8,52', '1', '0');
+INSERT INTO `category` VALUES ('232', '衬衫', null, null, '52', '0', '0,8,52', '1', '0');
+INSERT INTO `category` VALUES ('233', '针织衫/毛衣', null, null, '52', '0', '0,8,52', '1', '0');
+INSERT INTO `category` VALUES ('234', '卫衣', null, null, '52', '0', '0,8,52', '1', '0');
+INSERT INTO `category` VALUES ('235', '短外套', null, null, '52', '0', '0,8,52', '1', '0');
+INSERT INTO `category` VALUES ('236', '夹克', null, null, '52', '0', '0,8,52', '1', '0');
+INSERT INTO `category` VALUES ('237', '棉衣', null, null, '52', '0', '0,8,52', '1', '0');
+INSERT INTO `category` VALUES ('238', '羽绒服', null, null, '52', '0', '0,8,52', '1', '0');
+INSERT INTO `category` VALUES ('239', '毛呢外套', null, null, '52', '0', '0,8,52', '1', '0');
+INSERT INTO `category` VALUES ('240', '休闲裤', null, null, '53', '0', '0,8,53', '1', '0');
+INSERT INTO `category` VALUES ('241', '牛仔裤', null, null, '53', '0', '0,8,53', '1', '0');
+INSERT INTO `category` VALUES ('242', '短裤', null, null, '53', '0', '0,8,53', '1', '0');
+INSERT INTO `category` VALUES ('243', '羽绒服', null, null, '54', '0', '0,9,54', '1', '0');
+INSERT INTO `category` VALUES ('244', '毛呢外套', null, null, '54', '0', '0,9,54', '1', '0');
+INSERT INTO `category` VALUES ('245', '衬衫', null, null, '54', '0', '0,9,54', '1', '0');
+INSERT INTO `category` VALUES ('246', '外套', null, null, '54', '0', '0,9,54', '1', '0');
+INSERT INTO `category` VALUES ('247', '套装', null, null, '54', '0', '0,9,54', '1', '0');
+INSERT INTO `category` VALUES ('248', '西装', null, null, '54', '0', '0,9,54', '1', '0');
+INSERT INTO `category` VALUES ('249', 'T恤', null, null, '54', '0', '0,9,54', '1', '0');
+INSERT INTO `category` VALUES ('250', '蕾丝衫/雪纺衫', null, null, '54', '0', '0,9,54', '1', '0');
+INSERT INTO `category` VALUES ('251', '风衣', null, null, '54', '0', '0,9,54', '1', '0');
+INSERT INTO `category` VALUES ('252', '毛针织衫', null, null, '54', '0', '0,9,54', '1', '0');
+INSERT INTO `category` VALUES ('253', '卫衣/绒衫', null, null, '54', '0', '0,9,54', '1', '0');
+INSERT INTO `category` VALUES ('254', '牛仔裤', null, null, '55', '0', '0,9,55', '1', '0');
+INSERT INTO `category` VALUES ('255', '休闲裤', null, null, '55', '0', '0,9,55', '1', '0');
+INSERT INTO `category` VALUES ('256', '短裤', null, null, '55', '0', '0,9,55', '1', '0');
+INSERT INTO `category` VALUES ('257', '连衣裙', null, null, '56', '0', '0,9,56', '1', '0');
+INSERT INTO `category` VALUES ('258', '半身裙', null, null, '56', '0', '0,9,56', '1', '0');
+INSERT INTO `category` VALUES ('259', '风衣', null, null, '57', '0', '0,10,57', '1', '0');
+INSERT INTO `category` VALUES ('260', '衬衫', null, null, '57', '0', '0,10,57', '1', '0');
+INSERT INTO `category` VALUES ('261', 'T恤', null, null, '57', '0', '0,10,57', '1', '0');
+INSERT INTO `category` VALUES ('262', '毛呢外套', null, null, '57', '0', '0,10,57', '1', '0');
+INSERT INTO `category` VALUES ('263', '羽绒服', null, null, '57', '0', '0,10,57', '1', '0');
+INSERT INTO `category` VALUES ('264', '毛针织衫', null, null, '57', '0', '0,10,57', '1', '0');
+INSERT INTO `category` VALUES ('265', '西装', null, null, '57', '0', '0,10,57', '1', '0');
+INSERT INTO `category` VALUES ('266', '连衣裙', null, null, '58', '0', '0,10,58', '1', '0');
+INSERT INTO `category` VALUES ('267', '半身裙', null, null, '58', '0', '0,10,58', '1', '0');
+INSERT INTO `category` VALUES ('268', '牛仔裤', null, null, '59', '0', '0,10,59', '1', '0');
+INSERT INTO `category` VALUES ('269', '休闲裤', null, null, '59', '0', '0,10,59', '1', '0');
+INSERT INTO `category` VALUES ('270', '棉衣/棉服', null, null, '61', '0', '0,11,61', '1', '0');
+INSERT INTO `category` VALUES ('271', '毛针织衫', null, null, '61', '0', '0,11,61', '1', '0');
+INSERT INTO `category` VALUES ('272', '风衣', null, null, '61', '0', '0,11,61', '1', '0');
+INSERT INTO `category` VALUES ('273', '羽绒服', null, null, '61', '0', '0,11,61', '1', '0');
+INSERT INTO `category` VALUES ('274', 'T恤', null, null, '61', '0', '0,11,61', '1', '0');
+INSERT INTO `category` VALUES ('275', '衬衫', null, null, '61', '0', '0,11,61', '1', '0');
+INSERT INTO `category` VALUES ('276', '卫衣/绒衫', null, null, '61', '0', '0,11,61', '1', '0');
+INSERT INTO `category` VALUES ('277', '背心吊带', null, null, '61', '0', '0,11,61', '1', '0');
+INSERT INTO `category` VALUES ('278', '马夹', null, null, '61', '0', '0,11,61', '1', '0');
+INSERT INTO `category` VALUES ('279', '连衣裙', null, null, '62', '0', '0,11,62', '1', '0');
+INSERT INTO `category` VALUES ('280', '半身裙', null, null, '62', '0', '0,11,62', '1', '0');
+INSERT INTO `category` VALUES ('281', '休闲裤', null, null, '63', '0', '0,11,63', '1', '0');
+INSERT INTO `category` VALUES ('282', '牛仔裤', null, null, '63', '0', '0,11,63', '1', '0');
+INSERT INTO `category` VALUES ('283', '打底裤', null, null, '63', '0', '0,11,63', '1', '0');
+INSERT INTO `category` VALUES ('284', '围巾/披肩', null, null, '64', '0', '0,11,64', '1', '0');
+INSERT INTO `category` VALUES ('285', '高帮鞋', null, null, '64', '0', '0,11,64', '1', '0');
+INSERT INTO `category` VALUES ('286', '手提包', null, null, '64', '0', '0,11,64', '1', '0');
+INSERT INTO `category` VALUES ('287', 'T恤', null, null, '65', '0', '0,12,65', '1', '0');
+INSERT INTO `category` VALUES ('288', '衬衫', null, null, '65', '0', '0,12,65', '1', '0');
+INSERT INTO `category` VALUES ('289', '针织衫/毛衣', null, null, '65', '0', '0,12,65', '1', '0');
+INSERT INTO `category` VALUES ('290', '风衣', null, null, '65', '0', '0,12,65', '1', '0');
+INSERT INTO `category` VALUES ('291', '休闲裤', null, null, '66', '0', '0,12,66', '1', '0');
+INSERT INTO `category` VALUES ('292', 'T恤', null, null, '67', '0', '0,13,67', '1', '0');
+INSERT INTO `category` VALUES ('293', '毛衣/针织衫', null, null, '67', '0', '0,13,67', '1', '0');
+INSERT INTO `category` VALUES ('294', '衬衫', null, null, '67', '0', '0,13,67', '1', '0');
+INSERT INTO `category` VALUES ('295', '卫衣/绒衫', null, null, '67', '0', '0,13,67', '1', '0');
+INSERT INTO `category` VALUES ('296', '外套/夹克/大衣', null, null, '67', '0', '0,13,67', '1', '0');
+INSERT INTO `category` VALUES ('297', '棉袄/棉服', null, null, '67', '0', '0,13,67', '1', '0');
+INSERT INTO `category` VALUES ('298', '裤子', null, null, '68', '0', '0,13,68', '1', '0');
+INSERT INTO `category` VALUES ('299', '连衣裙', null, null, '69', '0', '0,13,69', '1', '0');
+INSERT INTO `category` VALUES ('300', '半身裙', null, null, '69', '0', '0,13,69', '1', '0');
+INSERT INTO `category` VALUES ('301', 'T恤', null, null, '70', '0', '0,14,70', '1', '0');
+INSERT INTO `category` VALUES ('302', '衬衫', null, null, '70', '0', '0,14,70', '1', '0');
+INSERT INTO `category` VALUES ('303', '卫衣/绒衫', null, null, '70', '0', '0,14,70', '1', '0');
+INSERT INTO `category` VALUES ('304', '套装', null, null, '70', '0', '0,14,70', '1', '0');
+INSERT INTO `category` VALUES ('305', '毛衣/针织衫', null, null, '70', '0', '0,14,70', '1', '0');
+INSERT INTO `category` VALUES ('306', '羽绒服饰/羽绒内胆', null, null, '70', '0', '0,14,70', '1', '0');
+INSERT INTO `category` VALUES ('307', '棉袄/棉服', null, null, '70', '0', '0,14,70', '1', '0');
+INSERT INTO `category` VALUES ('308', '外套/夹克/大衣', null, null, '70', '0', '0,14,70', '1', '0');
+INSERT INTO `category` VALUES ('309', '连衣裙', null, null, '71', '0', '0,14,71', '1', '0');
+INSERT INTO `category` VALUES ('310', '半身裙', null, null, '71', '0', '0,14,71', '1', '0');
+INSERT INTO `category` VALUES ('311', '休闲裤', null, null, '72', '0', '0,15,72', '1', '0');
+INSERT INTO `category` VALUES ('312', '牛仔裤', null, null, '72', '0', '0,15,72', '1', '0');
+INSERT INTO `category` VALUES ('313', '短裤', null, null, '72', '0', '0,15,72', '1', '0');
+INSERT INTO `category` VALUES ('314', '打底裤', null, null, '72', '0', '0,15,72', '1', '0');
+INSERT INTO `category` VALUES ('315', '蕾丝雪纺', null, null, '73', '0', '0,16,73', '1', '0');
+INSERT INTO `category` VALUES ('316', '吊带背心', null, null, '73', '0', '0,16,73', '1', '0');
+INSERT INTO `category` VALUES ('317', '衬衫', null, null, '73', '0', '0,16,73', '1', '0');
+INSERT INTO `category` VALUES ('318', '短外套', null, null, '73', '0', '0,16,73', '1', '0');
+INSERT INTO `category` VALUES ('319', '马甲', null, null, '73', '0', '0,16,73', '1', '0');
+INSERT INTO `category` VALUES ('320', '羽绒服', null, null, '73', '0', '0,16,73', '1', '0');
+INSERT INTO `category` VALUES ('321', 'T恤', null, null, '73', '0', '0,16,73', '1', '0');
+INSERT INTO `category` VALUES ('322', '针织衫', null, null, '73', '0', '0,16,73', '1', '0');
+INSERT INTO `category` VALUES ('323', '卫衣', null, null, '73', '0', '0,16,73', '1', '0');
+INSERT INTO `category` VALUES ('324', '半身裙', null, null, '74', '0', '0,16,74', '1', '0');
+INSERT INTO `category` VALUES ('325', '连衣裙', null, null, '74', '0', '0,16,74', '1', '0');
+INSERT INTO `category` VALUES ('326', '连体裤', null, null, '75', '0', '0,16,75', '1', '0');
+INSERT INTO `category` VALUES ('327', '牛仔裤', null, null, '75', '0', '0,16,75', '1', '0');
+INSERT INTO `category` VALUES ('328', '休闲裤', null, null, '75', '0', '0,16,75', '1', '0');
+INSERT INTO `category` VALUES ('329', '短裤', null, null, '75', '0', '0,16,75', '1', '0');
+INSERT INTO `category` VALUES ('330', 'T恤', null, null, '76', '0', '0,17,76', '1', '0');
+INSERT INTO `category` VALUES ('331', '衬衫', null, null, '76', '0', '0,17,76', '1', '0');
+INSERT INTO `category` VALUES ('332', '风衣', null, null, '76', '0', '0,17,76', '1', '0');
+INSERT INTO `category` VALUES ('333', '蕾丝衫/雪纺衫', null, null, '76', '0', '0,17,76', '1', '0');
+INSERT INTO `category` VALUES ('334', '西装', null, null, '76', '0', '0,17,76', '1', '0');
+INSERT INTO `category` VALUES ('335', '连衣裙', null, null, '77', '0', '0,17,76', '1', '0');
+INSERT INTO `category` VALUES ('336', '半身裙', null, null, '77', '0', '0,17,77', '1', '0');
+INSERT INTO `category` VALUES ('337', '休闲裤', null, null, '78', '0', '0,17,78', '1', '0');
+INSERT INTO `category` VALUES ('338', '衬衫', null, null, '79', '0', '0,18,79', '1', '0');
+INSERT INTO `category` VALUES ('339', '棉衣', null, null, '79', '0', '0,18,79', '1', '0');
+INSERT INTO `category` VALUES ('340', '外套', null, null, '79', '0', '0,18,79', '1', '0');
+INSERT INTO `category` VALUES ('341', '卫衣', null, null, '79', '0', '0,18,79', '1', '0');
+INSERT INTO `category` VALUES ('342', 'T恤', null, null, '79', '0', '0,18,79', '1', '0');
+INSERT INTO `category` VALUES ('343', '毛针织衫', null, null, '79', '0', '0,18,79', '1', '0');
+INSERT INTO `category` VALUES ('344', '背心/吊带', null, null, '79', '0', '0,18,79', '1', '0');
+INSERT INTO `category` VALUES ('345', '风衣', null, null, '79', '0', '0,18,79', '1', '0');
+INSERT INTO `category` VALUES ('346', '羽绒服', null, null, '79', '0', '0,18,79', '1', '0');
+INSERT INTO `category` VALUES ('347', '连衣裙', null, null, '80', '0', '0,18,80', '1', '0');
+INSERT INTO `category` VALUES ('348', '半身裙', null, null, '80', '0', '0,18,80', '1', '0');
+INSERT INTO `category` VALUES ('349', '牛仔裤', null, null, '81', '0', '0,18,81', '1', '0');
+INSERT INTO `category` VALUES ('350', '休闲裤', null, null, '81', '0', '0,18,81', '1', '0');
+INSERT INTO `category` VALUES ('351', '羽绒服', null, null, '87', '0', '0,21,87', '1', '0');
+INSERT INTO `category` VALUES ('352', '滑雪服', null, null, '87', '0', '0,21,87', '1', '0');
+INSERT INTO `category` VALUES ('353', '抓绒服', null, null, '87', '0', '0,21,87', '1', '0');
+INSERT INTO `category` VALUES ('354', '外套', null, null, '87', '0', '0,21,87', '1', '0');
+INSERT INTO `category` VALUES ('355', '卫衣/绒衫', null, null, '87', '0', '0,21,87', '1', '0');
+INSERT INTO `category` VALUES ('356', '冲锋衣', null, null, '87', '0', '0,21,87', '1', '0');
+INSERT INTO `category` VALUES ('357', '棉服', null, null, '87', '0', '0,21,87', '1', '0');
+INSERT INTO `category` VALUES ('358', 'T恤', null, null, '87', '0', '0,21,87', '1', '0');
+INSERT INTO `category` VALUES ('359', '越野裤', null, null, '88', '0', '0,21,88', '1', '0');
+INSERT INTO `category` VALUES ('360', '卫裤', null, null, '88', '0', '0,21,88', '1', '0');
+INSERT INTO `category` VALUES ('361', '抓绒裤', null, null, '88', '0', '0,21,88', '1', '0');
+INSERT INTO `category` VALUES ('362', '冲锋裤', null, null, '88', '0', '0,21,88', '1', '0');
+INSERT INTO `category` VALUES ('363', '棉衣/羽绒', null, null, '89', '0', '0,22,89', '1', '0');
+INSERT INTO `category` VALUES ('364', '套装', null, null, '89', '0', '0,22,89', '1', '0');
+INSERT INTO `category` VALUES ('365', '爬服', null, null, '89', '0', '0,22,89', '1', '0');
+INSERT INTO `category` VALUES ('366', '上衣', null, null, '89', '0', '0,22,89', '1', '0');
+INSERT INTO `category` VALUES ('367', '下装', null, null, '89', '0', '0,22,89', '1', '0');
+INSERT INTO `category` VALUES ('368', '爬服', null, null, '90', '0', '0,22,90', '1', '0');
+INSERT INTO `category` VALUES ('369', '爬服', null, null, '91', '0', '0,22,91', '1', '0');
+INSERT INTO `category` VALUES ('370', '连衣裙', null, null, '91', '0', '0,22,91', '1', '0');
+INSERT INTO `category` VALUES ('371', '套装', null, null, '91', '0', '0,22,91', '1', '0');
+INSERT INTO `category` VALUES ('372', '上衣', null, null, '91', '0', '0,22,91', '1', '0');
+INSERT INTO `category` VALUES ('373', '下装', null, null, '91', '0', '0,22,91', '1', '0');
+INSERT INTO `category` VALUES ('374', '棉衣/羽绒', null, null, '91', '0', '0,22,91', '1', '0');
 
 -- ----------------------------
 -- Table structure for detail_pic
@@ -503,6 +531,26 @@ CREATE TABLE `detail_pic` (
 -- ----------------------------
 -- Records of detail_pic
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for fashion_wdress
+-- ----------------------------
+DROP TABLE IF EXISTS `fashion_wdress`;
+CREATE TABLE `fashion_wdress` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `gid` int(11) NOT NULL,
+  `title` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `sid` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of fashion_wdress
+-- ----------------------------
+INSERT INTO `fashion_wdress` VALUES ('1', '1', '韩风时尚HSTYLE', '23');
+INSERT INTO `fashion_wdress` VALUES ('2', '5', '时尚名媛SONEED', '39');
+INSERT INTO `fashion_wdress` VALUES ('3', '8', '欧美风尚 尼班诗', '48');
+INSERT INTO `fashion_wdress` VALUES ('4', '10', '甜美少女NanaDay', '54');
 
 -- ----------------------------
 -- Table structure for feedback
@@ -535,7 +583,7 @@ CREATE TABLE `friendslinks` (
   `add_time` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of friendslinks
@@ -545,6 +593,7 @@ INSERT INTO `friendslinks` VALUES ('2', '网易', 'www.163.com', '1482197192', '
 INSERT INTO `friendslinks` VALUES ('3', '搜狗', 'www.sougou.com', '1482197707', '1');
 INSERT INTO `friendslinks` VALUES ('4', '360', 'www.360.com', '1482508836', '1');
 INSERT INTO `friendslinks` VALUES ('7', '游戏频道', 'www.17173.com', '1482508865', '1');
+INSERT INTO `friendslinks` VALUES ('8', '万万万', 'www.www.com', '1483180192', '1');
 
 -- ----------------------------
 -- Table structure for goods_cancels
@@ -570,16 +619,21 @@ CREATE TABLE `goods_collection` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(11) NOT NULL,
   `gid` int(11) NOT NULL,
-  `size` tinyint(4) NOT NULL,
+  `size` char(12) COLLATE utf8_unicode_ci NOT NULL,
   `color` char(12) COLLATE utf8_unicode_ci NOT NULL,
   `num` tinyint(4) NOT NULL,
   `collect_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of goods_collection
 -- ----------------------------
+INSERT INTO `goods_collection` VALUES ('1', '1', '6', 'M', '粉色', '2', '1482725538');
+INSERT INTO `goods_collection` VALUES ('2', '1', '6', 'L', '粉色', '1', '1482725560');
+INSERT INTO `goods_collection` VALUES ('3', '2', '5', 'S', '黑色', '1', '1482725576');
+INSERT INTO `goods_collection` VALUES ('4', '2', '1', 'S', '浅蓝色', '2', '1482725593');
+INSERT INTO `goods_collection` VALUES ('5', '2', '6', 'M', '粉色', '1', '1482732530');
 
 -- ----------------------------
 -- Table structure for goods_comments
@@ -591,14 +645,16 @@ CREATE TABLE `goods_comments` (
   `gid` int(11) NOT NULL,
   `oid` int(11) NOT NULL,
   `content` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fit` tinyint(4) NOT NULL,
+  `fit` tinyint(4) NOT NULL DEFAULT '0',
   `comment_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of goods_comments
 -- ----------------------------
+INSERT INTO `goods_comments` VALUES ('1', '24', '3', '5', '<p>sadadasdasdsad</p>', '0', '1483029779');
+INSERT INTO `goods_comments` VALUES ('2', '24', '5', '39', '<p>asdasdsadasda<br/></p>', '0', '1483179224');
 
 -- ----------------------------
 -- Table structure for goods_list
@@ -624,7 +680,7 @@ CREATE TABLE `goods_list` (
 -- ----------------------------
 -- Records of goods_list
 -- ----------------------------
-INSERT INTO `goods_list` VALUES ('1', '92', '1', '1482462013', '289', '1658', '582', '0', '0', '0', '韩都衣舍2016韩版冬新女宽松显瘦条纹印花纽扣毛呢外套OZ5191', '中国', '1049800_thumb_G_1481011973792.jpg');
+INSERT INTO `goods_list` VALUES ('1', '92', '1', '1482462013', '289', '1658', '586', '0', '0', '0', '韩都衣舍2016韩版冬新女宽松显瘦条纹印花纽扣毛呢外套OZ5191', '中国', '1049800_thumb_G_1481011973792.jpg');
 INSERT INTO `goods_list` VALUES ('2', '92', '1', '1482158430', '368', '1788', '262', '0', '0', '0', '韩都衣舍2016韩版女冬新款显瘦贴布双排扣中长款毛呢外套RW5982', '中国', '1048030_thumb_G_1480921653434.jpg');
 INSERT INTO `goods_list` VALUES ('3', '92', '1', '1482158430', '296', '1738', '224', '0', '0', '0', '韩都衣舍2016韩版女装冬装新款显瘦拼接毛呢外套GY5753', '中国', '1048049_thumb_G_1480921676152.jpg');
 INSERT INTO `goods_list` VALUES ('4', '92', '1', '1482241595', '398', '1868', '216', '0', '0', '0', '韩都衣舍2016韩版女装冬新款翻领宽松中长款毛呢外套IG5808', '中国', '1048062_thumb_G_1480921732987.jpg');
@@ -901,22 +957,48 @@ CREATE TABLE `goods_orders` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(11) NOT NULL,
   `gid` int(11) NOT NULL,
-  `size` tinyint(4) NOT NULL,
+  `size` char(12) COLLATE utf8_unicode_ci NOT NULL,
   `color` char(12) COLLATE utf8_unicode_ci NOT NULL,
   `num` tinyint(4) NOT NULL,
   `message` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `order_num` char(16) COLLATE utf8_unicode_ci NOT NULL,
   `pay` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
-  `deliver` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `deliver_time` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `deliver` tinyint(4) NOT NULL,
   `order_time` int(11) NOT NULL,
   `order_type` int(11) NOT NULL DEFAULT '0',
   `order_state` tinyint(4) NOT NULL,
+  `aid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of goods_orders
 -- ----------------------------
+INSERT INTO `goods_orders` VALUES ('4', '24', '1', 'S', '浅蓝色', '1', '', '2016122918393', '支付宝', '送货时间不限', '9', '1482992077', '0', '0', '38');
+INSERT INTO `goods_orders` VALUES ('5', '24', '5', 'M', '黑色', '1', '', '2016122918393', '支付宝', '送货时间不限', '9', '1482992078', '0', '3', '39');
+INSERT INTO `goods_orders` VALUES ('6', '24', '5', 'S', '黑色', '1', '', '2016122918393', '支付宝', '送货时间不限', '9', '1482992078', '0', '0', '40');
+INSERT INTO `goods_orders` VALUES ('30', '24', '1', 'S', '浅蓝色', '1', '', '2016122965706', '支付宝', '送货时间不限', '9', '1482994677', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('31', '24', '5', 'M', '黑色', '1', '', '2016122965706', '支付宝', '送货时间不限', '9', '1482994678', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('32', '24', '5', 'S', '黑色', '1', '', '2016122965706', '支付宝', '送货时间不限', '9', '1482994678', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('33', '24', '5', 'XS', '黑色', '1', '', '2016122965706', '支付宝', '送货时间不限', '9', '1482994678', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('34', '24', '1', 'S', '浅蓝色', '1', '', '2016122979650', '支付宝', '送货时间不限', '9', '1482996061', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('35', '24', '1', 'S', '浅蓝色', '1', '', '2016122956848', '支付宝', '送货时间不限', '9', '1482997698', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('36', '24', '1', 'S', '浅蓝色', '1', '', '2016122929484', '支付宝', '送货时间不限', '9', '1482997757', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('37', '24', '5', 'M', '黑色', '1', '', '2016122926817', '支付宝', '送货时间不限', '9', '1482998711', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('38', '24', '6', 'M', '粉色', '1', '', '2016122926817', '支付宝', '送货时间不限', '9', '1482998711', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('39', '24', '5', 'M', '黑色', '1', '', '2016122946175', '支付宝', '送货时间不限', '9', '1482999750', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('40', '24', '6', 'M', '粉色', '1', '', '2016122946175', '支付宝', '送货时间不限', '9', '1482999750', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('41', '24', '6', 'S', '粉色', '1', '', '2016122973234', '支付宝', '送货时间不限', '9', '1482999818', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('42', '24', '6', 'S', '粉色', '1', '', '2016122964129', '支付宝', '送货时间不限', '9', '1482999979', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('43', '24', '6', 'S', '粉色', '1', '', '2016122954662', '支付宝', '送货时间不限', '9', '1482999990', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('44', '24', '6', 'S', '粉色', '1', '', '2016122929830', '支付宝', '送货时间不限', '9', '1483000958', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('45', '24', '6', 'S', '粉色', '1', '', '2016122917286', '支付宝', '送货时间不限', '9', '1483000986', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('46', '24', '6', 'S', '粉色', '1', '', '2016122976557', '支付宝', '送货时间不限', '9', '1483002898', '0', '0', null);
+INSERT INTO `goods_orders` VALUES ('47', '24', '5', 'XS', '黑色', '1', '', '2016122988923', '支付宝', '送货时间不限', '9', '1483011306', '0', '1', null);
+INSERT INTO `goods_orders` VALUES ('48', '24', '1', 'S', '浅蓝色', '1', '', '2016122988923', '支付宝', '送货时间不限', '9', '1483011306', '0', '1', null);
+INSERT INTO `goods_orders` VALUES ('49', '24', '1', 'S', '浅蓝色', '1', '', '2016122950509', '支付宝', '送货时间不限', '9', '1483014831', '0', '1', null);
+INSERT INTO `goods_orders` VALUES ('50', '24', '1', 'M', '浅蓝色', '1', '', '2016122950509', '支付宝', '送货时间不限', '9', '1483014831', '0', '1', null);
 
 -- ----------------------------
 -- Table structure for managers
@@ -932,17 +1014,20 @@ CREATE TABLE `managers` (
   `add_time` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_name` (`user_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of managers
 -- ----------------------------
 INSERT INTO `managers` VALUES ('1', 'aaaaaa', 'eyJpdiI6InhXak5VaXFqSU02aHhkN2V1bnFVT1E9PSIsInZhbHVlIjoia3JBeWhkWXZCVUpLVlRSY1llb3ladz09IiwibWFjIjoiZTk4M2FmMzU4YzExNjY4NTU1NWJlNTU4OWQ0M2E0MjAxOTM1NWUzMTRjNjIyZGI3ZDkxYWM4YWQ1NGQ3NWY5YiJ9', '/uploads/imgs/default.jpg', '0', '1', '1481805559');
-INSERT INTO `managers` VALUES ('2', 'admin', 'eyJpdiI6IklWMDNcL3BKSWJLZFI0UHJMdmk0cDBBPT0iLCJ2YWx1ZSI6ImpIWUpWc1FDU29ZZ3Q2Mld0b1hrR2c9PSIsIm1hYyI6ImIwYWJjNDdjMzRjMTk4ZmY5MDI1YjI1ZDU1ZmQ1YzA2Mjk3MTJkNGUxMjVmYmY0OTkxZmM4Nzg3MTMwMjFiODkifQ==', '/uploads/imgs/default.jpg', '1', '1', '1481805574');
+INSERT INTO `managers` VALUES ('11', 'admin', '$2y$10$OygMneUYUuL.EB1zZRkK4uogtRByUEayyuVxy27jCWWtx2N86Doha', '/uploads/imgs/default.jpg', '1', '1', '1483181056');
 INSERT INTO `managers` VALUES ('3', 'wwwwww', 'eyJpdiI6IkpneHBodFNYRFpTcThjYkhzZWV5YXc9PSIsInZhbHVlIjoieHJ6amY4dWUrWUxIMHIxSzVJdnMwdz09IiwibWFjIjoiMzhiNzExNDM4NDBkNjIyMWMxMDlhMWRhM2ZmNTYwNjg1ZThjODM3YWRjNDlkZWJlYjQwMTY1YmJjYTM1ZTIwYyJ9', '/uploads/imgs/default.jpg', '0', '1', '1481807609');
 INSERT INTO `managers` VALUES ('4', '111111', 'eyJpdiI6IjBmaXNOM2NWdDZTSUl6WUZ0NlNwQkE9PSIsInZhbHVlIjoidGFTRU5HQzhYWDJzVE5YaFwvQWRtZFE9PSIsIm1hYyI6ImIyZDdlZmYxZjIzZWMxMDQxZjBkM2ZjNTVhNTk2MDNhYzE1MDM5YmEwMTE2Mjk3Njk1OTI4MzBiYjY1ZjljN2MifQ==', '/uploads/imgs/20161215/ABInWvDeYgUs38CgoLQ8aaAkJ1gEC60G.jpg', '0', '1', '1481813794');
 INSERT INTO `managers` VALUES ('6', 'ffffffff', 'eyJpdiI6IlwvSXRWcTV2dFdDN3h2aU9aN2JTMTVBPT0iLCJ2YWx1ZSI6InJQTzJQNlJTWU1qemxYZkhSVWxSUVE9PSIsIm1hYyI6ImI1MGVhMmExYTVhZTkyOTcyNmMwNDQzOWNkYjE3MmFkNThkMTA1OTA0YmU5Y2VjMzJmMGU5NGE2M2M5YTE4M2QifQ==', '/uploads/imgs/default.jpg', '0', '1', '1481813829');
 INSERT INTO `managers` VALUES ('7', 'xxxxxx', 'eyJpdiI6IkdLUHVlMGFUV2NFRmw4Z1h4MG92TWc9PSIsInZhbHVlIjoiM1R0eFNmZ25KR25vNkw5Smcrck1hZz09IiwibWFjIjoiOGYyZDQ4YWZkMzA1MWY0ODUwN2RlMTNlMjA1YWQzZTc3Mzk3OWZmNWE0ZDlmYTljODI3YzJjMjdiM2FlNmViYiJ9', '/uploads/imgs/20161215/O6RN4QV6POWm699Pd66JdKo8PCwGIyLX.jpg', '0', '1', '1481813922');
+INSERT INTO `managers` VALUES ('8', 'admin11', 'eyJpdiI6InhkVmhyZ0Rlb2hBYldBOVpjSWpmaGc9PSIsInZhbHVlIjoiOG9Pb3ZDRlhCVkdwSkh0ZHZSb0VVUT09IiwibWFjIjoiYzQ1OTdlZTdmY2UyZGE1ZTFkY2EyNDBlYTdhYTRjZTNmMGYxZTliMDc5Y2JlMWJkNDM0N2M1MTk1NDY4NDI2NiJ9', '/uploads/imgs/20161227/L5x8IBvlQjy0Unx3N5BHmRLDg0HWZZLS.jpg', '1', '1', '1482830551');
+INSERT INTO `managers` VALUES ('9', 'weishao', '$2y$10$hr8pW8N28yDIYQXViS4CE.CJlfLJZxgKmPLaRG4l4Md/XNOQUw85K', '/uploads/imgs/20161228/D3jYILuiHTL0ajuZ6fW243DZC9B4bTey.jpg', '1', '1', '1482891060');
+INSERT INTO `managers` VALUES ('10', '1111111', '$2y$10$TLXuzlnITzGc1DHQMoCvCO1NKBny3v77cvdQfiZDUNTo0bXXwmdHy', '/uploads/imgs/20161228/DLBnwYK2eX6CUGc2e0f2AZc7pNCDmCnQ.jpg', '0', '1', '1482891737');
 
 -- ----------------------------
 -- Table structure for show_pic
@@ -971,17 +1056,28 @@ CREATE TABLE `stock` (
   `sid` int(11) NOT NULL,
   `stock_num` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of stock
 -- ----------------------------
-INSERT INTO `stock` VALUES ('1', '1', '1', '1', '71');
-INSERT INTO `stock` VALUES ('2', '1', '1', '2', '100');
+INSERT INTO `stock` VALUES ('1', '1', '1', '1', '67');
+INSERT INTO `stock` VALUES ('2', '1', '1', '2', '97');
 INSERT INTO `stock` VALUES ('3', '1', '1', '3', '41');
 INSERT INTO `stock` VALUES ('4', '1', '2', '1', '20');
 INSERT INTO `stock` VALUES ('5', '1', '2', '2', '68');
 INSERT INTO `stock` VALUES ('6', '1', '2', '3', '22');
+INSERT INTO `stock` VALUES ('7', '5', '3', '4', '0');
+INSERT INTO `stock` VALUES ('8', '5', '3', '5', '0');
+INSERT INTO `stock` VALUES ('9', '5', '3', '6', '77');
+INSERT INTO `stock` VALUES ('10', '5', '3', '7', '496');
+INSERT INTO `stock` VALUES ('11', '5', '3', '8', '0');
+INSERT INTO `stock` VALUES ('12', '6', '4', '9', '0');
+INSERT INTO `stock` VALUES ('13', '6', '4', '10', '29');
+INSERT INTO `stock` VALUES ('14', '6', '4', '11', '19');
+INSERT INTO `stock` VALUES ('15', '6', '5', '9', '0');
+INSERT INTO `stock` VALUES ('16', '6', '5', '10', '9');
+INSERT INTO `stock` VALUES ('17', '6', '5', '11', '14');
 
 -- ----------------------------
 -- Table structure for users
@@ -1037,44 +1133,52 @@ CREATE TABLE `user_details` (
   `birth_date` char(11) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `live_place` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `mem_type` tinyint(4) DEFAULT '0',
-  `photo` char(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'default.jpg',
+  `photo` char(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '/uploads/default.jpg',
   `mobile_phone` char(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of user_details
 -- ----------------------------
-INSERT INTO `user_details` VALUES ('1', '1', '0', '汪世兵', '', '湖北省孝感市孝昌县', '0', '/uploads/imgs/20161222/PWNUKccn8oVTtqj8R6CC3QVuqyLLuxiF.jpg', '15313066678', '360314105@qq.com');
-INSERT INTO `user_details` VALUES ('2', '2', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('3', '3', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('4', '4', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('5', '5', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('6', '6', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('7', '7', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('8', '8', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('9', '9', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('10', '10', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('11', '11', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('12', '12', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('13', '13', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('14', '14', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('15', '15', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('16', '16', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('17', '17', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('18', '18', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('19', '19', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('20', '20', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('21', '21', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('22', '22', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('23', '23', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('24', '24', '0', '', '', '', '0', '/uploads/imgs/20161222/JA5SkUgEW0XPV4RTYYBDAQzBk0tBRomY.jpg', '', '3366@qq.com');
-INSERT INTO `user_details` VALUES ('25', '25', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('26', '26', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('27', '27', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('28', '28', '0', '', '', '', '0', 'default.jpg', null, null);
-INSERT INTO `user_details` VALUES ('29', '29', '0', '', '', '河北省邢台市', '0', 'default.jpg', '', '1291054704@qq.com');
+INSERT INTO `user_details` VALUES ('1', '1', '0', '汪世兵', '', '湖北省孝感市孝昌县', '0', '/uploads/PWNUKccn8oVTtqj8R6CC3QVuqyLLuxiF.jpg', '15313066678', '360314105@qq.com');
+INSERT INTO `user_details` VALUES ('2', '2', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('3', '3', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('4', '4', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('5', '5', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('6', '6', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('7', '7', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('8', '8', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('9', '9', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('10', '10', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('11', '11', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('12', '12', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('13', '13', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('14', '14', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('15', '15', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('16', '16', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('17', '17', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('18', '18', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('19', '19', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('20', '20', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('21', '21', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('22', '22', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('23', '23', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('24', '24', '0', '', '', '', '0', '/uploads/JA5SkUgEW0XPV4RTYYBDAQzBk0tBRomY.jpg', '', '3366@qq.com');
+INSERT INTO `user_details` VALUES ('25', '25', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('26', '26', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('27', '27', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('28', '28', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('29', '29', '0', '', '', '河北省邢台市', '0', '/uploads/default.jpg', '', '1291054704@qq.com');
+INSERT INTO `user_details` VALUES ('30', '30', '0', '汪世兵', '', '湖北省孝感市孝昌县saudfdsaddsa', '0', '/uploads/wz2BKp9YbaY5Hnzl5syMTlU1UwGoxGAY.jpg', '15313066678', '360314105@qq.com');
+INSERT INTO `user_details` VALUES ('31', '31', '0', '汪世兵', '', '湖北省孝感市孝昌县小悟乡', '0', '/uploads/OExfwsMxawpJoGyc6nbe1bVCEbg3rOSk.jpg', '', '112233@qq.com');
+INSERT INTO `user_details` VALUES ('32', '32', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('33', '33', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('34', '34', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('35', '35', '0', '汪世兵', '', '湖北省孝感市孝昌县中国人民武装警察部队', '0', '/uploads/default.jpg', '15313066678', '360314105@qq.com');
+INSERT INTO `user_details` VALUES ('36', '36', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
+INSERT INTO `user_details` VALUES ('37', '37', '0', '', '', '', '0', '/uploads/default.jpg', null, null);
 
 -- ----------------------------
 -- Table structure for user_extra
