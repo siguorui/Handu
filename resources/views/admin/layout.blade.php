@@ -366,7 +366,7 @@
                         <li class="active"><a href="{{ url('/admin/user/add') }}"><i class="fa fa-circle-o"></i> 用户添加 </a></li>
                         <li><a href="{{ url('/admin/user/index') }}"><i class="fa fa-circle-o"></i> 后台列表 </a></li>
                         <li><a href="{{ url('/admin/user/users') }}"><i class="fa fa-circle-o"></i> 前台列表 </a></li>
-                        <li><a href="{{ url('/admin/user/users') }}"><i class="fa fa-circle-o"></i> 意见反馈 </a></li>
+                        <li><a href="{{ url('/admin/user/idea') }}"><i class="fa fa-circle-o"></i> 意见反馈 </a></li>
 
                     </ul>
                 </li>
@@ -390,8 +390,8 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{url('/admin/goods/add/1')}}"><i class="fa fa-circle-o"></i> 商品添加</a></li>
-                        <li><a href="{{url('/admin/goods/index/1')}}"><i class="fa fa-circle-o"></i> 商品列表</a></li>
+                        <li><a href="{{url('/admin/product/add')}}"><i class="fa fa-circle-o"></i> 商品添加</a></li>
+                        <li><a href="{{url('/admin/product/index')}}"><i class="fa fa-circle-o"></i> 商品列表</a></li>
 
                     </ul>
                 </li>
@@ -432,6 +432,17 @@
                         <li><a href="{{url('/admin/carcoul/add')}}"><i class="fa fa-circle-o"></i> 添加主题</a></li>
                         <li><a href="{{url('/admin/carcoul/index')}}"><i class="fa fa-circle-o"></i> 主题列表</a></li>
 
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-files-o"></i>
+
+                        <span> 网站配置</span>
+                        <span class="label label-primary pull-right"></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('/admin/webConfig/webConfig')}}"><i class="fa fa-circle-o"></i> 网站配置</a></li>
                     </ul>
                 </li>
             </ul>

@@ -7,12 +7,12 @@
         <section class="content-header">
             <h1>
                 商品管理
-                <small>添加</small>
+                <small>商品添加</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
                 <li><a href="#">商品管理</a></li>
-                <li class="active">添加</li>
+                <li class="active">商品添加</li>
             </ol>
         </section>
 
@@ -24,10 +24,10 @@
                     <!-- general form elements -->
                     <div class="box box-default">
                         <div class="box-header with-border">
-                            <h3 class="box-title">快速添加</h3>
+                            <a href="{{ url('/admin/product/index') }}"><h3 class="box-title">查看商品列表</h3></a>
                         </div><!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" action="{{ url('/admin/goods/insert')}}/{{$dataFirst->id}}" enctype="multipart/form-data" method="post">
+                        <form role="form" action="{{ url('/admin/product/insert')}}" enctype="multipart/form-data" method="post">
                         	{{ csrf_field() }}
                         	
                             <div class="box-body">
@@ -46,65 +46,67 @@
                                     <div class="callout callout-info">
                                             <p>{{session('info')}}</p>
                                     </div>
-                                @endif
+                                 @endif
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">父分类</label>
                                     <select name="cate_id" class="form-control">
-                                        <option value="{{$dataFirst->id}}">{{$dataFirst->title}}</option>
+                                        
+                                        @foreach($catedata as $v)
+                                        <option 
+                                        
+                                        @if($v->num!=2)
+                                             disabled
+                                        @endif
+                                        value="{{$v->id}}">{{$v->title}}</option>
+                                        @endforeach
                                     </select>
 
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">名称</label>
                                     <input type="text" name="title" value="{{old('title')}}" class="form-control" id="exampleInputEmail1"
-                                           placeholder="请输入分类名">
+                                           placeholder="请输入商品名称">
                                 </div> 
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">现价</label>
                                     <input type="text" name="promt_price" value="{{old('promt_price')}}" class="form-control" id="exampleInputEmail1"
-                                           placeholder="请输入分类名">
+                                           placeholder="请输入商品现价">
                                 </div>
 
                                 <div class="radio">
                                         <label>
-                                            <input name="type" id="optionsRadios1" value="0" checked="" type="radio">
-                                            按价格
-                                        </label>
-                                        <label>
                                             <input name="type" id="optionsRadios1" value="1" checked="" type="radio">
                                             按折扣
+                                        </label>
+                                        <label>
+                                            <input name="type" id="optionsRadios1" value="0" checked="checked" type="radio">
+                                            按价格
                                         </label>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">原价</label>
                                     <input type="text" name="orign_price" value="{{old('orign_price')}}" class="form-control" id="exampleInputEmail1"
-                                           placeholder="请输入分类名">
+                                           placeholder="请输入商品原价">
                                 </div>
-
-                                <!-- <div class="form-group">
-                                    <label for="exampleInputEmail1">展示位置</label>
-                                    <select name="show_pos" class="form-control">
-                                        <option value="0">非必选</option>
-                                        <option value="1">主页展示</option>
-                                        <option value="2">列表页展示</option>
-                                    </select>
-                                </div> -->
-
+   
                                 <div class="form-group">
                                     <label for="exampleInputFile">商品图片</label>
                                     <input type="file" name="pic" id="exampleInputFile">
                                     <p class="help-block">请选择一张图片</p>
                                 </div>
 
-                                
+                                <div class="">
+                                    <label for="exampleInputEmail1">库存添加</label><br/>
+                                    <button  id="stock" class="btn btn-block btn-default" style="width:100px">添加库存</button>
+                                </div>
 
                             </div><!-- /.box-body -->
 
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">添加</button>
+                                <button type="submit" class="btn btn-primary">提交</button>
                             </div>
                         </form>
                     </div><!-- /.box -->

@@ -216,6 +216,7 @@ class UserController extends Controller
                 -> leftJoin('user_extra as c1', 'c2.id', '=', 'c1.uid') 
                 -> select('c2.id', 'c2.email', 'c2.status', 'c1.expr_val','c1.score','c1.coupon','c1.send_card','c1.vip','c1.excge_code') -> where('email', 'like', '%'.$keyword.'%') -> paginate($num);
                 // dd($data);die();
+            
             return view('admin.user.users', ['data' => $data, 'request' => $request -> all()]);
         }
 
@@ -255,5 +256,40 @@ class UserController extends Controller
             return back() -> with(['info' => '删除失败']);
         }
     }
+
+    public function idea()
+    {
+        $data = DB::table('feedback')  -> get();
+        // dd($data);
+        if(count($data) != 0)
+        {
+            foreach ($data as $key => $value) {
+                $email = DB::table('users') -> where('id',$value ->uid) -> first()->email;
+
+
+                $value->email = $email;
+                // dd($data1);
+            }
+           
+            return view('admin.user.idea',['data' => $data]);
+        }else
+        {
+            return view('admin.user.idea');
+        }
+    }
+
+    public function ajaxdel(Request $request)
+    {
+        $data = $request->all();
+        $id = $data['id'];
+        $res = DB::table('feedback') -> where('id',$id) -> delete();
+        if($res)
+        {
+            $data = DB::table('feedback') -> select('*') -> get();
+            return response() -> json(0);
+    
+        }
+    } 
+
 
 }

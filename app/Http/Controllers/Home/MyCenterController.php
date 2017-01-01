@@ -96,7 +96,13 @@ class MyCenterController extends Controller
     public function myOrders(Request $request)
     {
 
-        $id = Session::get('master') -> id;
+        if(session('master'))
+        {
+            $id = Session::get('master') -> id;
+        }else
+        {
+            $id = null;
+        }
         // dd($id);
         //搜索
         $keyword = $request -> input('keyword','');

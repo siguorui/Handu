@@ -218,7 +218,7 @@ height: 97px;
 position: absolute;
 top: 8px;
 left: 0;
-background: url({{ asset('/home/imgs/logo_new.png') }}) 0 5px no-repeat;
+background: url({{$logo}}) 0 5px no-repeat;
 font-family:"微软雅黑";
 }
 .hdls_logo>a {

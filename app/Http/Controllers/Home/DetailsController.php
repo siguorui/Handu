@@ -138,13 +138,19 @@ class DetailsController extends Controller
     {
         $id = Session('master') -> id;
         $data = DB::table('goods_collection') ->where('uid',$id) -> get();
+        if(count($data) != 0)
+        {
+            foreach($data as $k => $v){
 
-        foreach($data as $k => $v){
-
-            $data1[$k] = DB::table('goods_list') ->where('id',$v->gid) -> first();
-        }   
-        return view('home.user.favorite',['data' => $data],['data1' => $data1]);
+                $data1[$k] = DB::table('goods_list') ->where('id',$v->gid) -> first();
+            }   
+            return view('home.user.favorite',['data' => $data],['data1' => $data1]);
+        }else
+        {
+            return view('home.user.favorite');
+        }
     }
+
 
     public function addaddr(Request $request)
     {

@@ -13,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
+        $data = DB::table('web_config') -> select('web_logo') -> first();
+        $logo = $data->web_logo;
+        // dd($logo);
+        view()->share('logo',$logo);
     }
 
     /**

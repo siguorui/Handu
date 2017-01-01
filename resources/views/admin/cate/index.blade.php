@@ -57,10 +57,13 @@
                                     <th>操作</th>
                                 </tr>
                                 </thead>
+                                
+                                    <?php $key_num = 0 ?>
+
                                 <tbody>
 								@foreach($data as $v)
                                 <tr>
-                                    <td>{{$v->id}}</td>
+                                    <td>{{$key_num += 1}}</td>
                                     <td class="cname">@if($v->num == 0)
                                                 <img src = "{{ url('/admin/imgs/dirfirst.gif') }}"/>
                                             @else
@@ -80,9 +83,9 @@
                                     <td><img src = "{{ url('/home/imgs/category') }}/{{ $v->logo }}" width="30"/></td>
                                     <td>
                                     @if($v->num == 0||$v->num == 1)
-                                    <a href="{{ url('/admin/goods/index') }}/{{$v -> id}}">查看商品</a>　<a href="{{ url('/admin/cate/edit') }}/{{$v -> id}}">编辑</a>　<a href="{{ url('/admin/cate/delete') }}/{{$v -> id}}">删除</a>
+                                    <a href="{{ url('/admin/goods/index') }}/{{$v -> id}}">查看商品</a> | <a href="{{ url('/admin/cate/edit') }}/{{$v -> id}}">编辑</a> | <a href="{{ url('/admin/cate/delete') }}/{{$v -> id}}">删除</a>
                                     @else
-                                    <a href="{{ url('/admin/goods/index') }}/{{$v -> id}}">查看商品</a>　<a href="{{ url('/admin/goods/add') }}/{{$v -> id}}">添加商品</a>　<a href="{{ url('/admin/cate/edit') }}/{{$v -> id}}">编辑</a>　<a href="{{ url('/admin/cate/delete') }}/{{$v -> id}}">删除</a>
+                                    <a href="{{ url('/admin/goods/index') }}/{{$v -> id}}">查看商品</a> | <a href="{{ url('/admin/goods/add') }}/{{$v -> id}}">添加商品</a> | <a href="{{ url('/admin/cate/edit') }}/{{$v -> id}}">编辑</a> | <a href="{{ url('/admin/cate/delete') }}/{{$v -> id}}">删除</a>
                                     </td>
                                     @endif
                                 </tr>

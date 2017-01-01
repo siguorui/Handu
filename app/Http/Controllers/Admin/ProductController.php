@@ -6,18 +6,26 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 
-
-class GoodsController extends Controller
+class ProductController extends Controller
 {
-	//显示商品添加页
-   	public function add($id)
-   	{
-   		$dataFirst = DB::table('category') -> where('id',$id) -> first();
-   		return view('admin.goods.add',['dataFirst' => $dataFirst]);
-   	}
+    public function add()
+    {
+    	$catedata = DB::table('category') -> select('id','path','title',DB::raw("concat(path,',',id) AS sort_str")) -> orderBy('sort_str') -> get();
 
-   	//添加数据到数据库
-   	public function insert(Request $request,$id)
+   		foreach ($catedata as $key => $value) {
+    		$num = substr_count($value->path, ',');
+    		
+			$str = str_repeat('|　　', $num+1);
+			$value->title = $str.'|---'.$value->title;
+			$value->num = $num;
+	
+    	}
+
+    	return view('admin.product.add',['catedata'=>$catedata]);
+    }
+
+    //添加数据到数据库
+   	public function insert(Request $request)
    	{
    		$this -> validate($request,[
     		'title'=>'required',
@@ -83,15 +91,15 @@ class GoodsController extends Controller
 
     	$data['add_time'] = time();
 
-        $data['fid'] = DB::table('category as c1')
-            ->leftJoin('category as c2','c1.pid','=','c2.id')
-            ->select('c2.pid')
-            ->where('c1.id',$data['cate_id'])->first()->pid;
+    	$data['fid'] = DB::table('category as c1')
+    		->leftJoin('category as c2','c1.pid','=','c2.id')
+    		->select('c2.pid')
+    		->where('c1.id',$data['cate_id'])->first()->pid;
 
     	$res = DB::table('goods_list') -> insert($data); 
     	if($res)
     	{ 
-    		return redirect()->action('Admin\GoodsController@index',['id'=>$id])-> with(['info'=>'添加成功']);
+    		return redirect('/admin/product/index')-> with(['info'=>'添加成功']);
     	}else
     	{
     		return back() -> with(['info'=>'添加失败']);
@@ -99,58 +107,17 @@ class GoodsController extends Controller
 
    	}
 
-   	//商品展示
-
-   	public function index(Request $request, $id)
+   	//商品列表
+   	public function index(Request $request)
    	{
-   		$res = DB::table('category') -> where('id',$id) -> first();
-        $pageNum = $request -> input('pageNum', 10);
+   		$pageNum = $request -> input('pageNum', 10);
         $keyword = $request -> input('keyword','');
-   		
-    	$num = substr_count($res->path, ',');
-    		
-		if($num == 2 )      //显示三级分类的商品
-		{
-			$data = DB::table('goods_list') -> where([['cate_id',$id],['title', 'like', '%'.$keyword.'%']]) -> paginate($pageNum);
 
-			//传urlid用于操作成功之后还能跳回
-	
-		}else if($num == 1)     //显示二级分类的商品
-		{
-			//获取二级分类的内容
-			$secate = DB::table('category') -> where('pid',$id) -> get();
-
-            $count = 0;
-			foreach ($secate as $key => $value) {
-
-				$d = DB::table('goods_list') -> where([['cate_id',$value->id],['title', 'like', '%'.$keyword.'%']]) -> paginate($pageNum);
-              
-				if(count($d)!=0)
-				{
-                    $count += 1;
-                    if($count==1){
-                        $data = $d;
-                    }else{
-                       
-                        foreach ($d as $k => $v) {  
-                            $data[]=$v;
-                        } 
-                    }
-				}
-
-			}
-
-
-		}else if($num == 0)     //显示一级分类的商品
-		{
-			$data = DB::table('goods_list') -> where([['fid',$id],['title', 'like', '%'.$keyword.'%']]) -> paginate($pageNum);
-
-		}
-
-        return view('admin.goods.index',['data'=>$data,'num'=>$num,'urlid'=>$id,'request' => $request -> all()]);
+        $data = DB::table('goods_list') ->where('title', 'like', '%'.$keyword.'%') ->orderBy('add_time', 'desc')->paginate($pageNum);
+        return view('admin.product.index',['data'=>$data,'request' => $request -> all()]);
    	}
 
-   	public function edit($id,$urlid)
+   	public function edit($id)
    	{
    		$data = DB::table('goods_list') -> where('id',$id) -> first();
    		 
@@ -164,11 +131,12 @@ class GoodsController extends Controller
 			$value->num = $num;
 	
     	}
+
     	// dd($catedata);
-   		return view('admin.goods.edit',['data'=>$data,'catedata'=>$catedata,'urlid'=>$urlid]);
+   		return view('admin.product.edit',['data'=>$data,'catedata'=>$catedata]);
    	}
 
-   	public function update(Request $request,$id,$urlid)
+   	public function update(Request $request,$id)
    	{
    		$this -> validate($request,[
     		'title'=>'required',
@@ -243,7 +211,8 @@ class GoodsController extends Controller
 
     	if($res)
     	{
-    		return redirect()->action('Admin\GoodsController@index',['id'=>$urlid]);
+
+    		return redirect('/admin/product/index')-> with(['info'=>'更改成功']);
     	}else
     	{
     		return back() -> with(['info'=>'更改失败']);
@@ -251,16 +220,33 @@ class GoodsController extends Controller
 
    	}
 
-   	public function delete($id,$urlid)
+   	public function delete($id)
    	{
    		$res = DB::table('goods_list') -> delete($id);
    		if($res)
     	{
-    		return redirect()->action('Admin\GoodsController@index',['id'=>$urlid]);
+    		return redirect('/admin/product/index')-> with(['info'=>'删除成功']);
     	}else
     	{
     		return back() -> with(['info'=>'删除失败']);
     	}
    	}
 
+   	public function addStock(Request $request)
+   	{
+  
+   		$data = $request->all();
+   		$sid = DB::table('attr_sizes')->insertGetId(['gid'=>$data['id'],'size'=>$data['size']]);
+   		$cid = DB::table('attr_colors')->insertGetId(['gid'=>$data['id'],'color'=>$data['color']]);
+   		$res = DB::table('stock')->insert(['gid'=>$data['id'],'cid'=>$cid,'sid'=>$sid,'stock_num'=>$data['stock_num']]);
+
+   		if($res)
+   		{
+   			return response()->json(0);
+   		}else 
+   		{
+   			return response()->json(1);
+   		}
+
+   	}
 }

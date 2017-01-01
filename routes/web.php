@@ -196,3 +196,21 @@ Route::post('/home/goods/toPay','Home\GoodsController@toPay');
 //评价列表
 Route::get('/home/orders/ue','Home\MyCenterController@ue');
 Route::post('/home/orders/insert/{id}','Home\MyCenterController@insert');
+
+//网站配置
+Route::get('/admin/webConfig/webConfig','Admin\webConfigController@webConfig');
+Route::post('/admin/webConfig/update','Admin\webConfigController@update');
+
+
+//后台商品管理列表
+Route::get('/admin/product/add','Admin\ProductController@add');
+Route::post('/admin/product/insert','Admin\ProductController@insert');
+Route::get('/admin/product/index','Admin\ProductController@index');
+Route::get('/admin/product/edit/{id}','Admin\ProductController@edit');
+Route::post('/admin/product/update/{id}','Admin\ProductController@update');
+Route::get('/admin/product/delete/{id}','Admin\ProductController@delete');
+Route::post('/admin/product/addStock','Admin\ProductController@addStock');
+
+//后台意见反馈
+Route::get('admin/user/idea', 'Admin\UserController@idea');
+Route::post('admin/user/ajaxdel', 'Admin\UserController@ajaxdel');

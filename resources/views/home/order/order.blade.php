@@ -1240,9 +1240,7 @@ $(".cart_good_type").each(function(index,item){
 <script type="text/javascript">
 
 $(function() {
-  //加载页头用户登陆状态
-    $('#HD_MEMBERZONE').load('/online.php?act=get_user_status&ts=' + (new Date().getTime()));
-
+ 
     
     //添加收藏夹
     $('#nav_addFavorite a').click(function(){

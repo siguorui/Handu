@@ -1,7 +1,7 @@
   @extends('home.layoutcenter')
   @section('content')
 <div class="user_right">
-<div id="myCollect">
+<div id="myCollect">@if(isset($data1))
     <h1 class="theme">我的收藏夹</h1>
     <div class="sort_bar">
        <ul>
@@ -19,6 +19,7 @@
       </div>
       <div class="pro_list">
         <ul class="collect_box">
+        
         @foreach($data1 as $d)
           <li id="rec_1036515">
             <div class="img">
@@ -44,6 +45,7 @@
      
           </li>
         @endforeach
+        
         </ul>
 <!--=================================================================-->
   
@@ -335,7 +337,52 @@ function selectPage(sel)
 }
 //-->
 </script>
+ @endif
  
+  
+
+    <h1 class="theme">我的收藏夹</h1>
+    <div class="sort_bar">
+       <ul>
+         <li class="current">
+         <a href="user.php?act=collection_list">全部宝贝</a></li>
+                           <li class="desc">
+         <a href="user.php?act=collection_list&amp;sort=1">收藏时间</a><em></em></li>
+       </ul>
+    </div>
+    <div class="con">
+      <div class="div_allchk">
+        <input name="all" id="sel_all" class="fl" type="checkbox">&nbsp;全选
+        <a href="javascript:void(0)" class="del" id="del_all_checked"><i></i><span>删除</span></a>
+      </div>
+      <div class="pro_list">
+       
+       <div>亲爱的舍友，您的收藏夹没有商品哦~去挑选宝贝吧&gt;&gt;</div>
+             </div>
+    </div>
+         
+ 
+<form name="selectPageForm" action="/user.php" method="get">
+
+
+ <div id="pager" class="pagebar">
+  <span class="f_l f6" style=" width:auto;height:30px; line-height:30px;margin-left:10px;">总计 <b>0</b>  个记录</span>
+      
+    
+</div>
+
+
+</form>
+<script type="Text/Javascript" language="JavaScript">
+<!--
+function selectPage(sel)
+{
+  sel.form.submit();
+}
+//-->
+</script>
+ 
+
 </div> 
 <script type="text/javascript">
 //ajax_form('goods.php?id=7191&act=ajax_goods_sku','L_goods_sku', 450 );

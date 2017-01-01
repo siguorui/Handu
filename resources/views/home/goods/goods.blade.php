@@ -330,7 +330,7 @@
             <em><a href="http://www.handu.com/topic-1506.html" target="_blank"><span class="blink_1" style="color:#c80a28;">【毛呢特惠 5折封顶】全场毛呢外套满499减100/满699减180/满899减300/满1099减400！库存有限，先到先得！毛呢外套只限以上满减优惠，不可使用HSTYLE品牌优惠券</span></a></em></h1>
            <ul> 
             <li>
-             商品货号：&nbsp;&nbsp;<span class='code'>{{'HD'.str_pad($data->cate_id,3,"0",STR_PAD_LEFT).str_pad($data->cate_id,6,"0",STR_PAD_LEFT)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+             商品货号：&nbsp;&nbsp;<span class='code'>{{'HD'.str_pad($data->cate_id,3,"0",STR_PAD_LEFT).str_pad($data->id,6,"0",STR_PAD_LEFT)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                           售价：<span class='y'>￥</span><del class='market_price'>{{$data -> orign_price}}</del>
                         </li>
           <li class="li_relative">
