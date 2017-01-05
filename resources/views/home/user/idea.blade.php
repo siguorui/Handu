@@ -41,7 +41,7 @@
      <h1 class="warn_info">提交成功!</h1>
      <p>亲爱的用户，您已经成功提交意见反馈/问卷调查，我们会根据您的建议不断优化服务，谢谢您的参与！</p>
    </div>
-   <div class="popup_box_btn" onclick="location.href='./'"></div>
+   <div class="popup_box_btn" onclick="location.href='handu.com'"></div>
 </div>
 
 

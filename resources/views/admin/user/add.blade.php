@@ -29,17 +29,17 @@
                         </div><!-- /.box-header -->
                         <!-- form start -->
                         <form role="form" action="{{ url('/admin/user/insert') }}" enctype="multipart/form-data" method="POST">
-                        	{{ csrf_field() }}
+                            {{ csrf_field() }}
 
                             <div class="box-body">
-	                            @if($errors->any())
-									<div class="callout callout-danger">
-				                    <h4>警告！</h4>
-				                    @foreach($errors->all() as $error)
-				                    <p>{{ $error }}</p>
-				                    @endforeach
-				                  	</div>
-								@endif
+                                @if($errors->any())
+                                    <div class="callout callout-danger">
+                                    <h4>警告！</h4>
+                                    @foreach($errors->all() as $error)
+                                    <p>{{ $error }}</p>
+                                    @endforeach
+                                    </div>
+                                @endif
                                 @if(session('info'))
                                     <div class="callout callout-danger">
                                     <p>{{session('info')}}</p>
@@ -59,6 +59,11 @@
                                     <label for="exampleInputPassword1">确认密码</label>
                                     <input type="password" name="repassword" class="form-control" id="exampleInputPassword1"
                                            placeholder="请确认密码">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputFile">个人头像</label>
+                                    <input type="file" name="pic" id="exampleInputFile">
+                                    <p class="help-block">请选择您的照片</p>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInpuPid">管理员权限</label>

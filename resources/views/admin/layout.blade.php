@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="{{ asset('/ad/plugins/daterangepicker/daterangepicker-bs3.css') }}">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="{{ asset('/ad/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/talk.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -65,84 +66,11 @@
                 <ul class="nav navbar-nav">
                     <!-- Messages: style can be found in dropdown.less-->
                     <li class="dropdown messages-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#" onclick="Chat()" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-envelope-o"></i>
                             <span class="label label-success">4</span>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 4 messages</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li><!-- start message -->
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{ url('/ad/dist/img/user2-160x160.jpg') }}" class="img-circle"
-                                                     alt="User Image">
-                                            </div>
-                                            <h4>
-                                                Support Team
-                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li><!-- end message -->
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{ url('/ad/dist/img/user3-128x128.jpg') }}" class="img-circle"
-                                                     alt="User Image">
-                                            </div>
-                                            <h4>
-                                                AdminLTE Design Team
-                                                <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{ url('/ad/dist/img/user4-128x128.jpg') }}" class="img-circle"
-                                                     alt="User Image">
-                                            </div>
-                                            <h4>
-                                                Developers
-                                                <small><i class="fa fa-clock-o"></i> Today</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{ url('/ad/dist/img/user3-128x128.jpg') }}" class="img-circle"
-                                                     alt="User Image">
-                                            </div>
-                                            <h4>
-                                                Sales Department
-                                                <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{ url('/ad/dist/img/user4-128x128.jpg') }}" class="img-circle"
-                                                     alt="User Image">
-                                            </div>
-                                            <h4>
-                                                Reviewers
-                                                <small><i class="fa fa-clock-o"></i> 2 days</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">See All Messages</a></li>
-                        </ul>
+                        
                     </li>
                     <!-- Notifications: style can be found in dropdown.less -->
                     <li class="dropdown notifications-menu">
@@ -684,5 +612,215 @@
         });
     });
 </script>
+
+<!-- 客服在线聊天 -->
+<div id="main" style="display: none;position: absolute;top:120px;left: 500px;z-index: 9999" draggable="true">
+           
+            <div id="right">
+                <div id="content" >
+                    <h2 id="content-title">顾客至上，周到服务</h2>
+                    <hr />
+                    <div id="show_msg">
+                        
+                    </div>
+                </div>
+                <div id="send">
+                    <div id="control">
+                    <form id="Formchat">
+                    颜色：
+                    <select name="color" id="color">
+                        <option value="">请选择</option>
+                        <option style="color:#FF8888" value="#FF8888">爱的暗示</option>
+                        <option style="color:#00BBFF" value="#00BBFF">忧郁的蓝</option>
+                        <option style="color:#0000FF" value="#0000FF">碧空蓝天</option>
+                        <option style="color:#9F88FF" value="#9F88FF">灰蓝种族</option>
+                        <option style="color:#000088" value="#000088 ">蔚蓝海洋</option>
+                        <option style="color:#77FFEE" value="#77FFEE">清清之蓝</option>
+                        <option style="color:#4400B3" value="#4400B3">发亮篮紫</option>
+                        <option style="color:#A500CC" value="#A500CC">紫的拘谨</option>
+                        <option style="color:#B088FF" value="#B088FF">卡其制服</option>
+                        <option style="color:#D1BBFF" value="#D1BBFF">伦敦灰雾</option>
+                        <option style="color:#DC143C" value="#DC143C">卡布其诺</option>
+                        <option style="color:#A52A2A" value="#A52A2A">苦涩心红</option>
+                        <option style="color:#FF0000" value="#FF0000">正宗喜红</option>
+                        <option style="color:#990099" value="#990099">红的发紫</option>
+                        <option style="color:#FF0000" value="#FF0000">红旗飘飘</option>
+                        <option style="color:#D2691E" value="#D2691E ">黄金岁月</option>
+                        <option style="color:#800080" value="#800080">紫金绣贴</option>
+                        <option style="color:#006400" value="#006400">橄榄树绿</option>
+                        <option style="color:#000000" value="#000000">绝对黑色</option> 
+                    </select>
+                   
+                    <br />
+                    <textarea id="msg" name="msg"></textarea><br/>
+                    <input type="button" value="发送" onclick="sendmsg()" style="margin-left: 120px;"/>
+                    <input type="button" value="退出聊天" onclick="outchat()">
+                    <input type="button" value="清空信息" onclick="dropchat()">
+                    
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+  <!-- 客服在线聊天 -->
+  <script type="text/javascript">
+    
+       
+    function Chat(){
+        $('#main').css('display','block');
+        showmsg();
+        inte = setInterval("showmsg()",2000);
+        //每间隔2s就执行一次
+        
+    }
+     //及时显示聊天内容
+    //利用ajax每间隔2s就去服务器获得一次聊天信息
+    var maxID = 0;
+    function showmsg(){
+
+         $.ajax({
+                type:'GET',
+                url:"{{url('/admin/chat/showmsg')}}",
+                data:{maxID:maxID},
+                success:function(data)
+                {
+
+                    var s = "";
+                    $(data).each(function(i,n){
+                        if(n['sender']=='韩都客服'){
+                            var speaker = '我';
+                            s += "<p style='color:#417F4B'>"+speaker+"&nbsp;"+n['add_time']+"</p>";
+                            s += "<p style='color:"+n['color']+"'>"+n['msg']+"</p>";
+                        }else{
+                            speaker = '顾客';
+                            s += "<p style='color:#0075B8'>"+speaker+"&nbsp;"+n['add_time']+"</p>";
+                            s += "<p style='color:"+n['color']+"'>"+n['msg']+"</p>";
+                        }
+
+                        //把已经获得消息的最大id赋予给maxID
+                        maxID = n['id'];
+                    });
+
+                    var showdiv = $('#show_msg');
+                    var msg = showdiv.html();
+                    var aa = msg + s;
+                    showdiv.html(aa);
+
+                    var show = $('#show_msg')[0];
+                    show.scrollTop = show.scrollHeight;
+                    //设置滚动条卷起高度
+                    // showdiv.scrollTop = showdiv.scrollHeight;
+                    
+                },
+                error:function()
+                {
+                    alert("服务器繁忙，请稍等");
+                }
+
+            });
+        
+    }
+   
+
+    function sendmsg(){
+          $.ajaxSetup({
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+            });
+        var fm = $('#Formchat')[0];
+        //FormData收集表单信息
+        var fd = new FormData(fm);
+
+        //ajax提交表单信息到服务器存储
+        
+                    $.ajax({
+                        type:'POST',
+                        url:"{{url('/admin/chat/sendmsg')}}",
+                        data:fd,
+                        processData: false,    //必须设置
+                        contentType: false,
+                        success:function(data){
+                            if(data==0){
+                               $('#color').val('');
+                                $('#msg').val('');
+                            }
+                        },
+                        error:function()
+                        {
+                            alert("发送失败,请重试");
+                        }
+
+                    });
+                        //必须设置
+        }
+
+    function outchat(){
+        $('#main').css('display','none');
+        clearInterval(inte);
+    }
+
+    function dropchat(){
+
+         $.ajax({
+                type:'GET',
+                url:"{{url('/admin/chat/dropchat')}}",
+                success:function(data){
+                            
+                               $('#show_msg').html('');
+                        },
+                error:function(){
+                        
+                           alert('清空数据失败');
+                            return false;
+                        }
+            });
+                
+    }
+
+        var did = document.getElementById('main');
+        var mw = 0;
+        var mh = 0;
+        var isDown = false;
+
+        did.onmousedown = function(e)
+        {
+            isDown = true;
+            var _mx = e.pageX;
+            var _my = e.pageY;
+            var ol = did.offsetLeft;
+            var ot = did.offsetTop;
+
+            mw = _mx - ol;
+            mh = _my - ot;
+
+            did.style.backgroundColor = '#f00';
+            this.style.cursor = 'move';
+
+        }
+
+        window.onmousemove = function(e)
+        {
+            if(!isDown) return;
+            var newmx = e.pageX;
+            var newmy = e.pageY;
+
+            dl = newmx - mw;
+            dt = newmy - mh;
+
+            did.style.left = dl + 'px';
+            did.style.top = dt + 'px';
+        }
+
+        did.onmouseup = function()
+        {
+            isDown = false;
+            did.style.backgroundColor = '#ccc';
+            did.style.cursor = 'default';
+        }
+
+   
+
+  </script>
 </body>
 </html>

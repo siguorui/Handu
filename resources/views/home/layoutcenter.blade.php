@@ -132,7 +132,7 @@ function closeDt(){
     <div class="more-items">
         <table cellpadding="0" cellspacing="0">
             <tbody>
-              <tr><td><a href="http://www.handu.com/user.php?act=order_list" target="_blank">我的订单</a></td></tr>
+              <tr><td><a href="{{asset('/home/orders/myOrders')}}" target="_blank">我的订单</a></td></tr>
               <tr><td><a href="http://www.handu.com/user.php?act=bonus" target="_blank">我的优惠券</a></td></tr>
               <tr><td><a href="{{ asset('/home/user/favorite')}}" target="_blank">我的收藏</a></td></tr>
               <tr><td><a href="http://www.handu.com/user.php?act=return_list" target="_blank">退货办理</a></td></tr>
@@ -156,7 +156,7 @@ function closeDt(){
 </li>
 @endif
 
-<li><a href="http://www.handu.com/flow.php?step=cart" style="margin-right:10px"  target="_blank">购物车</a></li>      </ul>
+<li><a href="{{asset('/home/goods/shopingcart')}}" style="margin-right:10px"  target="_blank">购物车</a></li>      </ul>
       <ul id="HD_HELPZONE" style="border-right:none;">
        
          <!--<li>
@@ -906,7 +906,7 @@ margin-top: 3px;}
           <dd>
             <ul>
               <li><a href="{{asset('/home/goods/shopingcart')}}" target="_blank">我的购物车</a></li>
-              <li key="order_list"><a href="http://www.handu.com/user.php?act=order_list">我的订单</a></li>
+              <li key="order_list"><a href="{{asset('/home/orders/myOrders')}}">我的订单</a></li>
               <li key="collection_list" class="last"><a href="{{ asset('/home/user/favorite')}}">我的收藏</a></li>
             </ul>
           </dd>

@@ -1,0 +1,20 @@
+
+#main {width:550px; background:pink; margin:auto; margin-top:10px;border: 2px solid gray;z-index: 0}
+#main #right {width:550px; background:#C3D8EE; float:left;}
+#main #content {height:379px; padding-top:15px;}
+#main #send {height:180px; background:#74B2F0;}
+#main #control {position:relative; left:48px; top:10px;}
+#main select,textarea {border:1px solid gray;}
+#main #msg {width:450px;height:90px; margin-top:5px;}
+#main #content-title{color:green;font-size:14px;width:200px;margin:10px auto;}
+#main hr {border:1px solid gray; width:490px; margin:auto;}
+#main #show_msg {width:500px; margin-left:47px;margin-top:10px;font-size:14px;font-weight:bold;
+height:328px; 
+overflow:auto;
+}
+
+#main ul {font-size:12px;  list-style:none; width:110px; }
+
+/*#main  {margin-top:280px; margin-left:50px; }*/
+#main input {margin-top:6px; width:98px;height:30px; background:#CD853F; color:white; border:2px solid white;margin-left: 8px;}
+#main input:first-of-type {margin-left: 220px;}

@@ -148,15 +148,15 @@
     </style>
      <div id="con">
         <div id="small">
-            <img id="smallImg" src='{{asset('/home/imgs/20161027181029_ou6246.jpg')}}' width="100%" />
+            <img id="smallImg" src="{{asset('/home/imgs/goods')}}/{{$data->pic}}" width="100%" />
             <div id="move"></div>
         </div>
         <div id="big">
-            <img id="bigImg" style="position:absolute;display:block;z-index:1 ;" src='{{asset('/home/imgs/20161027181029_ou6246.jpg')}}' />
+            <img id="bigImg" style="position:absolute;display:block;z-index:1 ;" src="{{asset('/home/imgs/goods')}}/{{$data->pic}}" />
         </div>
 
         <ul id="uid">
-            <li><img src='{{asset('/home/imgs/20161027181029_ou6246.jpg')}}' width="100%" /></li>
+            <li><img src="{{asset('/home/imgs/goods')}}/{{$data->pic}}" width="100%" /></li>
             <li><img src='{{asset('/home/imgs/20160912100947_gy5753.jpg')}}' width="100%" /></li>
             <li><img src='{{asset('/home/imgs/20160921000943_ig5884.jpg')}}' width="100%" /></li>
             <li><img src='{{asset('/home/imgs/20160827050842_lf5944.jpg')}}' width="100%" /></li>
@@ -330,7 +330,7 @@
             <em><a href="http://www.handu.com/topic-1506.html" target="_blank"><span class="blink_1" style="color:#c80a28;">【毛呢特惠 5折封顶】全场毛呢外套满499减100/满699减180/满899减300/满1099减400！库存有限，先到先得！毛呢外套只限以上满减优惠，不可使用HSTYLE品牌优惠券</span></a></em></h1>
            <ul> 
             <li>
-             商品货号：&nbsp;&nbsp;<span class='code'>{{'HD'.str_pad($data->cate_id,3,"0",STR_PAD_LEFT).str_pad($data->id,6,"0",STR_PAD_LEFT)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+             商品货号：&nbsp;&nbsp;<span class='code'>{{'HD'.str_pad($data->cate_id,3,"0",STR_PAD_LEFT).str_pad($data->cate_id,6,"0",STR_PAD_LEFT)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                           售价：<span class='y'>￥</span><del class='market_price'>{{$data -> orign_price}}</del>
                         </li>
           <li class="li_relative">
@@ -1756,6 +1756,7 @@ function buy_now(){
 
   <div class="New_goodCONtitle" id="userConmentList" name="userConmentList">商品评论</div>
   <ul class="New_goodCONPLlist">
+
       <li>
       <div class="New_goodPLTime New_goodPLNR_star">
           <span style="float:left;margin-right:5px; color:#7b7b7b"><strong>是否合身：</strong>正好</span> 
@@ -1780,6 +1781,7 @@ function buy_now(){
         <div  class="New_goodPLNR_top" style=" color:#7b7b7b; margin-left:5px;"></div>
                  
       </li>
+      
   </ul>
 
     <div class="New_goodPage">

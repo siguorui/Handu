@@ -236,8 +236,24 @@ class ProductController extends Controller
    	{
   
    		$data = $request->all();
-   		$sid = DB::table('attr_sizes')->insertGetId(['gid'=>$data['id'],'size'=>$data['size']]);
-   		$cid = DB::table('attr_colors')->insertGetId(['gid'=>$data['id'],'color'=>$data['color']]);
+
+        $sres = DB::table('attr_sizes')->where(['size'=>$data['size'],'gid'=>$data['id']])->first();
+
+        if($sres){
+            $sid = $sres->id;
+        }else{
+            $sid = DB::table('attr_sizes')->insertGetId(['gid'=>$data['id'],'size'=>$data['size']]);
+        }
+   		
+
+         $cres = DB::table('attr_colors')->where(['color'=>$data['color'],'gid'=>$data['id']])->first();
+
+         if($cres){
+            $cid = $cres->id;
+         }else{
+            $cid = DB::table('attr_colors')->insertGetId(['gid'=>$data['id'],'color'=>$data['color']]);
+         }
+   		
    		$res = DB::table('stock')->insert(['gid'=>$data['id'],'cid'=>$cid,'sid'=>$sid,'stock_num'=>$data['stock_num']]);
 
    		if($res)
@@ -249,4 +265,91 @@ class ProductController extends Controller
    		}
 
    	}
+
+    public function productDetail($id)
+    {
+        date_default_timezone_set('PRC');
+
+        $comment = DB::table('goods_comments as g')
+                -> leftJoin('users as u','g.uid','=','u.id')
+                ->select('u.email','g.content','g.comment_time')
+                ->where('g.gid',$id)
+                ->get();
+
+        $stock = DB::table('stock as s')
+                -> join('attr_colors as c','s.cid','=','c.id')
+                -> join('attr_sizes as sz','s.sid','=','sz.id')
+                ->select('c.color','sz.size','s.stock_num','s.id')
+                ->where('s.gid',$id)
+                ->get();
+
+        $total = 0;
+        foreach ($stock as $key => $value) {
+          $total+=$value->stock_num; 
+        }
+
+        foreach ($comment as $key => $value) {
+          $value->comment_time=date('Y-m-d H:i',$value->comment_time); 
+        }
+        // var_dump($comment);
+        // dd($stock);
+        return view('admin.product.details',['comment'=>$comment,'stock'=>$stock,'total'=>$total,'id'=>$id]);
+
+    }
+
+    public function stockedit($id)
+    {
+        $data = DB::table('stock as s')
+                -> join('attr_colors as c','s.cid','=','c.id')
+                -> join('attr_sizes as sz','s.sid','=','sz.id')
+                ->select('c.color','sz.size','s.stock_num','s.id')
+                ->where('s.id',$id)
+                ->first();
+
+        return view('admin.product.stockedit',['data'=>$data]);
+    }
+
+    public function stockupdate(Request $request,$id)
+    {
+
+       
+        $this -> validate($request,[
+        'color'=>'required',
+        'size'=>'required',
+        'stock_num'=>'required',
+        ],[
+        'color.required'=>'颜色不能为空',
+        'size.required'=>'尺码不能为空',
+        'stock_num.required'=>'库存不能为空',
+        ]);
+
+        $data = $request->except('_token');
+        
+        DB::table('stock')->where('id',$id)->update(['stock_num'=>$data['stock_num']]);
+
+        $stock = DB::table('stock')->where('id',$id)->first();
+
+        DB::table('attr_colors')->where('id',$stock->cid)->update(['color'=>$data['color']]);
+        DB::table('attr_sizes')->where('id',$stock->sid)->update(['size'=>$data['size']]);
+
+        // $data = DB::table('stock as s')
+        //         -> join('attr_colors as c','s.cid','=','c.id')
+        //         -> join('attr_sizes as sz','s.sid','=','sz.id')
+        //         ->select('c.color','sz.size','s.stock_num','s.id')
+        //         ->where('s.id',$id)
+        //         ->first();
+
+        return redirect()->action('Admin\ProductController@productDetail',['id'=>$stock->gid]);
+    }
+
+
+    public function stockdelete($id)
+    {
+       $stock = DB::table('stock')->where('id',$id)->first();
+        DB::table('attr_colors')->where('id',$stock->cid)->delete();
+        DB::table('attr_sizes')->where('id',$stock->sid)->delete();
+        DB::table('stock')->where('id',$id)->delete();
+      return back() -> with(['info'=>'删除成功']);
+
+    }
 }

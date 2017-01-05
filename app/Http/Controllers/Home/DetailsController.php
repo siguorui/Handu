@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use Session;
+
 class DetailsController extends Controller
 {
     //更新个人信息
@@ -52,8 +54,9 @@ class DetailsController extends Controller
                 }
             }
         }
+
         $request -> flash();
-        $res = DB::table('user_details') -> where('id',$id) -> update($data);
+        $res = DB::table('user_details') -> where('uid',$id) -> update($data);
         if($res)
         {
             

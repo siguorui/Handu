@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50709
 File Encoding         : 65001
 
-Date: 2016-12-31 18:49:15
+Date: 2017-01-05 22:14:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,16 +29,18 @@ CREATE TABLE `address` (
   `phone` char(16) COLLATE utf8_unicode_ci NOT NULL,
   `state` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of address
 -- ----------------------------
-INSERT INTO `address` VALUES ('41', '24', 'yourarelast', '北京市 县 长治县', '你的东东', null, '18333192903', '0');
-INSERT INTO `address` VALUES ('38', '24', 'testonemore', '天津市 县 静海县', '地址更改测试', null, '18333192903', '1');
-INSERT INTO `address` VALUES ('39', '24', 'test', '福建省 厦门市 海沧区', '东东', null, '18333192903', '0');
+INSERT INTO `address` VALUES ('41', '24', 'myname', '河北省 邯郸市 复兴区', '你的东东', null, '18333192903', '0');
+INSERT INTO `address` VALUES ('38', '24', 'testonemore', '河北省 邢台市 邢台县', '重新添加地址', null, '18333192903', '0');
+INSERT INTO `address` VALUES ('39', '24', 'test', '福建省 厦门市 海沧区', '东东', null, '18333192903', '1');
 INSERT INTO `address` VALUES ('40', '24', 'yourarelast', '河北省 邯郸市 丛台区', '你的东东', null, '18333192903', '0');
 INSERT INTO `address` VALUES ('37', '24', 'yourarelast', '河北省 邯郸市 丛台区', '你的东东', null, '18333192903', '0');
+INSERT INTO `address` VALUES ('45', '24', 'yourarelast', '北京市 县 长治县', '123abc', null, '18333192903', '0');
+INSERT INTO `address` VALUES ('47', '24', 'siguo', '河南省 商丘市 睢阳区', '南大街', null, '15633986835', '0');
 
 -- ----------------------------
 -- Table structure for attr_colors
@@ -49,7 +51,7 @@ CREATE TABLE `attr_colors` (
   `gid` int(11) NOT NULL,
   `color` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of attr_colors
@@ -59,6 +61,12 @@ INSERT INTO `attr_colors` VALUES ('2', '1', '灰色');
 INSERT INTO `attr_colors` VALUES ('3', '5', '黑色');
 INSERT INTO `attr_colors` VALUES ('4', '6', '粉色');
 INSERT INTO `attr_colors` VALUES ('5', '6', '浅灰色');
+INSERT INTO `attr_colors` VALUES ('6', '52', '浅蓝色');
+INSERT INTO `attr_colors` VALUES ('7', '52', '粉色');
+INSERT INTO `attr_colors` VALUES ('9', '1', '粉色');
+INSERT INTO `attr_colors` VALUES ('10', '150', '黑色');
+INSERT INTO `attr_colors` VALUES ('11', '274', '黑色');
+INSERT INTO `attr_colors` VALUES ('12', '52', '灰色');
 
 -- ----------------------------
 -- Table structure for attr_sizes
@@ -69,7 +77,7 @@ CREATE TABLE `attr_sizes` (
   `gid` int(11) NOT NULL,
   `size` char(32) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of attr_sizes
@@ -85,6 +93,12 @@ INSERT INTO `attr_sizes` VALUES ('8', '5', 'XL');
 INSERT INTO `attr_sizes` VALUES ('9', '6', 'S');
 INSERT INTO `attr_sizes` VALUES ('10', '6', 'M');
 INSERT INTO `attr_sizes` VALUES ('11', '6', 'L');
+INSERT INTO `attr_sizes` VALUES ('13', '52', 'XL');
+INSERT INTO `attr_sizes` VALUES ('14', '52', 'M');
+INSERT INTO `attr_sizes` VALUES ('16', '1', 'M');
+INSERT INTO `attr_sizes` VALUES ('17', '150', 'L');
+INSERT INTO `attr_sizes` VALUES ('18', '274', 'XL');
+INSERT INTO `attr_sizes` VALUES ('19', '52', 'S');
 
 -- ----------------------------
 -- Table structure for campaign
@@ -112,14 +126,14 @@ CREATE TABLE `carsoul` (
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `pic` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of carsoul
 -- ----------------------------
 INSERT INTO `carsoul` VALUES ('1', '1212年终盛典', '111111.jpg');
 INSERT INTO `carsoul` VALUES ('2', '毛呢外套5折封顶', '222222221.jpg');
-INSERT INTO `carsoul` VALUES ('3', '99元封顶', '13333311.jpg');
+INSERT INTO `carsoul` VALUES ('10', '99元封顶', 'YSmS3yU1eoPz5APzoaUhcKhCTM7AlXoj.jpg');
 
 -- ----------------------------
 -- Table structure for category
@@ -130,18 +144,18 @@ CREATE TABLE `category` (
   `title` char(20) COLLATE utf8_unicode_ci NOT NULL,
   `logo` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
   `assit_logo` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `pid` tinyint(4) NOT NULL DEFAULT '0',
+  `pid` int(10) NOT NULL DEFAULT '0',
   `show_pos` tinyint(4) NOT NULL DEFAULT '0',
   `path` char(16) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   `status` tinyint(4) NOT NULL DEFAULT '1',
   `state` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=375 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=378 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO `category` VALUES ('1', 'HSTYLE女装', null, 'hstyle.png', '0', '1', '0', '1', '1');
+INSERT INTO `category` VALUES ('1', 'HSTYLE女装', null, 'hstyle.png', '0', '0', '0', '1', '1');
 INSERT INTO `category` VALUES ('2', 'SONEED女装', null, 'soneed.png', '0', '0', '0', '1', '1');
 INSERT INTO `category` VALUES ('3', 'HSTYLE韩都衣舍男装', null, 'amh.png', '0', '1', '0', '1', '4');
 INSERT INTO `category` VALUES ('4', 'MiniZaru童装', null, 'mini.png', '0', '1', '0', '1', '2');
@@ -232,7 +246,7 @@ INSERT INTO `category` VALUES ('88', '裤装', null, null, '21', '0', '0,21', '1
 INSERT INTO `category` VALUES ('89', '男宝宝', null, null, '22', '0', '0,22', '1', '0');
 INSERT INTO `category` VALUES ('90', '新生儿', null, null, '22', '0', '0,22', '1', '0');
 INSERT INTO `category` VALUES ('91', '女宝宝', null, null, '22', '0', '0,22', '1', '0');
-INSERT INTO `category` VALUES ('92', '毛呢外套', null, null, '23', '0', '0,1,23', '1', '0');
+INSERT INTO `category` VALUES ('92', '毛呢外套', null, null, '23', '0', '0,1,23', '0', '0');
 INSERT INTO `category` VALUES ('93', '羽绒服', null, null, '23', '0', '0,1,23', '1', '0');
 INSERT INTO `category` VALUES ('94', '棉衣/棉服', null, null, '23', '0', '0,1,23', '1', '0');
 INSERT INTO `category` VALUES ('95', '毛针织衫', null, null, '23', '0', '0,1,23', '1', '0');
@@ -515,6 +529,7 @@ INSERT INTO `category` VALUES ('371', '套装', null, null, '91', '0', '0,22,91'
 INSERT INTO `category` VALUES ('372', '上衣', null, null, '91', '0', '0,22,91', '1', '0');
 INSERT INTO `category` VALUES ('373', '下装', null, null, '91', '0', '0,22,91', '1', '0');
 INSERT INTO `category` VALUES ('374', '棉衣/羽绒', null, null, '91', '0', '0,22,91', '1', '0');
+INSERT INTO `category` VALUES ('376', '二级分类', null, null, '1', '0', '0,1', '1', '0');
 
 -- ----------------------------
 -- Table structure for detail_pic
@@ -569,8 +584,6 @@ CREATE TABLE `feedback` (
 -- ----------------------------
 -- Records of feedback
 -- ----------------------------
-INSERT INTO `feedback` VALUES ('1', '29', '0', '123', '1232434345', '1482557523');
-INSERT INTO `feedback` VALUES ('2', '29', '1', '司', '1234', '1482557579');
 
 -- ----------------------------
 -- Table structure for friendslinks
@@ -624,7 +637,7 @@ CREATE TABLE `goods_collection` (
   `num` tinyint(4) NOT NULL,
   `collect_time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of goods_collection
@@ -634,6 +647,8 @@ INSERT INTO `goods_collection` VALUES ('2', '1', '6', 'L', '粉色', '1', '14827
 INSERT INTO `goods_collection` VALUES ('3', '2', '5', 'S', '黑色', '1', '1482725576');
 INSERT INTO `goods_collection` VALUES ('4', '2', '1', 'S', '浅蓝色', '2', '1482725593');
 INSERT INTO `goods_collection` VALUES ('5', '2', '6', 'M', '粉色', '1', '1482732530');
+INSERT INTO `goods_collection` VALUES ('7', '24', '5', 'M', '黑色', '1', '1483456881');
+INSERT INTO `goods_collection` VALUES ('8', '24', '6', 'M', '粉色', '1', '1483456898');
 
 -- ----------------------------
 -- Table structure for goods_comments
@@ -653,8 +668,8 @@ CREATE TABLE `goods_comments` (
 -- ----------------------------
 -- Records of goods_comments
 -- ----------------------------
-INSERT INTO `goods_comments` VALUES ('1', '24', '3', '5', '<p>sadadasdasdsad</p>', '0', '1483029779');
-INSERT INTO `goods_comments` VALUES ('2', '24', '5', '39', '<p>asdasdsadasda<br/></p>', '0', '1483179224');
+INSERT INTO `goods_comments` VALUES ('1', '24', '52', '5', '<p>sadadasdasdsad</p>', '0', '1483029779');
+INSERT INTO `goods_comments` VALUES ('2', '24', '52', '39', '<p>asdasdsadasda<br/></p>', '0', '1483179224');
 
 -- ----------------------------
 -- Table structure for goods_list
@@ -675,18 +690,18 @@ CREATE TABLE `goods_list` (
   `prod_country` char(8) COLLATE utf8_unicode_ci DEFAULT '0',
   `pic` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=274 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=278 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of goods_list
 -- ----------------------------
-INSERT INTO `goods_list` VALUES ('1', '92', '1', '1482462013', '289', '1658', '586', '0', '0', '0', '韩都衣舍2016韩版冬新女宽松显瘦条纹印花纽扣毛呢外套OZ5191', '中国', '1049800_thumb_G_1481011973792.jpg');
+INSERT INTO `goods_list` VALUES ('1', '92', '1', '1482462013', '289', '1658', '589', '0', '0', '0', '韩都衣舍2016韩版冬新女宽松显瘦条纹印花纽扣毛呢外套OZ5191', '中国', '1049800_thumb_G_1481011973792.jpg');
 INSERT INTO `goods_list` VALUES ('2', '92', '1', '1482158430', '368', '1788', '262', '0', '0', '0', '韩都衣舍2016韩版女冬新款显瘦贴布双排扣中长款毛呢外套RW5982', '中国', '1048030_thumb_G_1480921653434.jpg');
 INSERT INTO `goods_list` VALUES ('3', '92', '1', '1482158430', '296', '1738', '224', '0', '0', '0', '韩都衣舍2016韩版女装冬装新款显瘦拼接毛呢外套GY5753', '中国', '1048049_thumb_G_1480921676152.jpg');
 INSERT INTO `goods_list` VALUES ('4', '92', '1', '1482241595', '398', '1868', '216', '0', '0', '0', '韩都衣舍2016韩版女装冬新款翻领宽松中长款毛呢外套IG5808', '中国', '1048062_thumb_G_1480921732987.jpg');
-INSERT INTO `goods_list` VALUES ('5', '92', '1', '1482158430', '288', '1468', '175', '0', '0', '0', '韩都衣舍2016韩版女装冬季新款大衣外套宽松中长款毛呢外套OI5609湲', '中国', '1477536847592267226.jpg');
-INSERT INTO `goods_list` VALUES ('6', '92', '1', '1482158430', '329', '1928', '168', '0', '0', '0', '韩都衣舍2016韩版女冬新款显瘦毛呢外套JZ6469', '中国', '1473329655271637814.jpg');
-INSERT INTO `goods_list` VALUES ('7', '92', '1', '1482158430', '336', '897', '161', '0', '0', '0', '韩都衣舍2016韩版女冬装新款连帽毛呢外套YQ6464儬', '中国', '1477305219498952609.jpg');
+INSERT INTO `goods_list` VALUES ('5', '92', '1', '1482158430', '288', '1468', '176', '0', '0', '0', '韩都衣舍2016韩版女装冬季新款大衣外套宽松中长款毛呢外套OI5609湲', '中国', '20161027101006_oi5609.jpg');
+INSERT INTO `goods_list` VALUES ('6', '92', '1', '1482158430', '329', '1928', '168', '0', '0', '0', '韩都衣舍2016韩版女冬新款显瘦毛呢外套JZ6469', '中国', '20160908180915_jz6469.jpg');
+INSERT INTO `goods_list` VALUES ('7', '92', '1', '1482158430', '336', '897', '161', '0', '0', '0', '韩都衣舍2016韩版女冬装新款连帽毛呢外套YQ6464儬', '中国', '20161024181039_yq6464.jpg');
 INSERT INTO `goods_list` VALUES ('8', '92', '1', '1482158430', '396', '2694', '151', '0', '0', '0', '韩都衣舍2016韩版女装冬新款立领纯色宽松中长款毛呢外套AA6309玎', '中国', '1473158865469237515.jpg');
 INSERT INTO `goods_list` VALUES ('9', '92', '1', '1482158430', '368', '1888', '144', '0', '0', '0', '韩都衣舍2016韩版女装冬毛呢外套OU6306', '中国', '1472486806748313579.jpg');
 INSERT INTO `goods_list` VALUES ('10', '92', '1', '1482158430', '446', '1835', '140', '0', '0', '0', '韩都衣舍2016街头女冬新款中长直筒纯色拼接贴布毛呢外套NJ6079', '中国', '1051158_thumb_g_1474880876180.jpg');
@@ -731,7 +746,7 @@ INSERT INTO `goods_list` VALUES ('48', '179', '5', '1482159451', '168', '267', '
 INSERT INTO `goods_list` VALUES ('49', '179', '5', '1482159451', '168', '504', '15', '0', '0', '0', '娜娜日记甜美女装2016夏装新款圆领刺绣图案百搭短袖T恤NL5395嬛', '0', '1461096625904043365.jpg');
 INSERT INTO `goods_list` VALUES ('50', '179', '5', '1482159451', '138', '414', '14', '0', '0', '0', '娜娜日记甜美女装2016夏装新款镂空宽松上衣短袖白色T恤NP6008媄', '0', '1464120643383761828.jpg');
 INSERT INTO `goods_list` VALUES ('51', '179', '5', '1482159451', '188', '564', '14', '0', '0', '0', '娜娜日记甜美女装2016夏装新款圆领刺绣条纹短袖T恤NL5863嬛', '0', '1459282454087517844.jpg');
-INSERT INTO `goods_list` VALUES ('52', '179', '5', '1482159451', '208', '624', '13', '0', '0', '0', '娜娜日记甜美女装2016夏装新款圆领印花图案花边短袖T恤NM5777菡', '0', '1459282490826307522.jpg');
+INSERT INTO `goods_list` VALUES ('52', '179', '5', '1483244053', '208', '624', '13', '0', '0', '0', '娜娜日记甜美女装2016夏装新款圆领印花图案花边短袖T恤NM5777菡', '0', '1459282490826307522.jpg');
 INSERT INTO `goods_list` VALUES ('53', '179', '5', '1482159451', '188', '564', '12', '0', '0', '0', '娜娜日记甜美女装2016夏装新款宽松圆领字母印花短袖T恤NL5368嬛', '0', '1461096623436850748.jpg');
 INSERT INTO `goods_list` VALUES ('54', '179', '5', '1482159451', '168', '504', '12', '0', '0', '0', '娜娜日记甜美女装2016夏装新款无袖翻领短款纯色T恤NP5338媄0426', '0', '1461701457481519511.jpg');
 INSERT INTO `goods_list` VALUES ('55', '179', '5', '1482159451', '86', '264', '12', '0', '0', '0', '娜娜日记甜美女装2016秋装新款短款纯色破洞长袖T恤NL5677嬛0708', '0', '1046131_thumb_g_1473843851049.jpg');
@@ -947,7 +962,7 @@ INSERT INTO `goods_list` VALUES ('264', '213', '7', '1482198546', '258', '1688',
 INSERT INTO `goods_list` VALUES ('265', '213', '7', '1482198546', '319', '1618', '901', '0', '0', '0', ' 女装时尚百搭中长款宽松连帽棉衣WEZ5054【Nibbuns/尼班诗 2015冬季新品】', '0', '1459280550746091901.jpg');
 INSERT INTO `goods_list` VALUES ('266', '213', '7', '1482198546', '229', '1218', '892', '0', '0', '0', '女装灰色欧美中长落肩袖外套宽松风衣WBZ4709【NIBBUNS/尼班诗 2016春季新品】', '0', '1030352_thumb_g_1440140603390.jpg');
 INSERT INTO `goods_list` VALUES ('272', '93', '1', '1482310682', '388', '1958', '0', '0', '0', '0', '韩都衣舍2016韩版女冬宽松中长款羽绒服EJ6040', '0', 'kn9dgW8xfRHYApaG4zJqkgxitg8Etf3V.jpg');
-INSERT INTO `goods_list` VALUES ('273', '93', '1', '1482310809', '1058', '2118', '0', '0', '0', '0', '韩都衣舍2016韩版女装冬季新款外套毛领中长款羽绒服GQ5717耒', '0', 'MIdizYzJYBjtXj6E9xDVxQBNLSR3NKuO.jpg');
+INSERT INTO `goods_list` VALUES ('274', '170', '5', '1483240138', '198', '1198', '0', '0', '0', '0', '新款带绒羽绒服', '0', 'rr6qQM3LXv63j7yrEHWWzW6w7BtoRnej.jpg');
 
 -- ----------------------------
 -- Table structure for goods_orders
@@ -970,7 +985,7 @@ CREATE TABLE `goods_orders` (
   `order_state` tinyint(4) NOT NULL,
   `aid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=76 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of goods_orders
@@ -978,27 +993,26 @@ CREATE TABLE `goods_orders` (
 INSERT INTO `goods_orders` VALUES ('4', '24', '1', 'S', '浅蓝色', '1', '', '2016122918393', '支付宝', '送货时间不限', '9', '1482992077', '0', '0', '38');
 INSERT INTO `goods_orders` VALUES ('5', '24', '5', 'M', '黑色', '1', '', '2016122918393', '支付宝', '送货时间不限', '9', '1482992078', '0', '3', '39');
 INSERT INTO `goods_orders` VALUES ('6', '24', '5', 'S', '黑色', '1', '', '2016122918393', '支付宝', '送货时间不限', '9', '1482992078', '0', '0', '40');
-INSERT INTO `goods_orders` VALUES ('30', '24', '1', 'S', '浅蓝色', '1', '', '2016122965706', '支付宝', '送货时间不限', '9', '1482994677', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('31', '24', '5', 'M', '黑色', '1', '', '2016122965706', '支付宝', '送货时间不限', '9', '1482994678', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('32', '24', '5', 'S', '黑色', '1', '', '2016122965706', '支付宝', '送货时间不限', '9', '1482994678', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('33', '24', '5', 'XS', '黑色', '1', '', '2016122965706', '支付宝', '送货时间不限', '9', '1482994678', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('34', '24', '1', 'S', '浅蓝色', '1', '', '2016122979650', '支付宝', '送货时间不限', '9', '1482996061', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('35', '24', '1', 'S', '浅蓝色', '1', '', '2016122956848', '支付宝', '送货时间不限', '9', '1482997698', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('36', '24', '1', 'S', '浅蓝色', '1', '', '2016122929484', '支付宝', '送货时间不限', '9', '1482997757', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('37', '24', '5', 'M', '黑色', '1', '', '2016122926817', '支付宝', '送货时间不限', '9', '1482998711', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('38', '24', '6', 'M', '粉色', '1', '', '2016122926817', '支付宝', '送货时间不限', '9', '1482998711', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('39', '24', '5', 'M', '黑色', '1', '', '2016122946175', '支付宝', '送货时间不限', '9', '1482999750', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('40', '24', '6', 'M', '粉色', '1', '', '2016122946175', '支付宝', '送货时间不限', '9', '1482999750', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('41', '24', '6', 'S', '粉色', '1', '', '2016122973234', '支付宝', '送货时间不限', '9', '1482999818', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('42', '24', '6', 'S', '粉色', '1', '', '2016122964129', '支付宝', '送货时间不限', '9', '1482999979', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('43', '24', '6', 'S', '粉色', '1', '', '2016122954662', '支付宝', '送货时间不限', '9', '1482999990', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('44', '24', '6', 'S', '粉色', '1', '', '2016122929830', '支付宝', '送货时间不限', '9', '1483000958', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('45', '24', '6', 'S', '粉色', '1', '', '2016122917286', '支付宝', '送货时间不限', '9', '1483000986', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('46', '24', '6', 'S', '粉色', '1', '', '2016122976557', '支付宝', '送货时间不限', '9', '1483002898', '0', '0', null);
-INSERT INTO `goods_orders` VALUES ('47', '24', '5', 'XS', '黑色', '1', '', '2016122988923', '支付宝', '送货时间不限', '9', '1483011306', '0', '1', null);
-INSERT INTO `goods_orders` VALUES ('48', '24', '1', 'S', '浅蓝色', '1', '', '2016122988923', '支付宝', '送货时间不限', '9', '1483011306', '0', '1', null);
-INSERT INTO `goods_orders` VALUES ('49', '24', '1', 'S', '浅蓝色', '1', '', '2016122950509', '支付宝', '送货时间不限', '9', '1483014831', '0', '1', null);
-INSERT INTO `goods_orders` VALUES ('50', '24', '1', 'M', '浅蓝色', '1', '', '2016122950509', '支付宝', '送货时间不限', '9', '1483014831', '0', '1', null);
+INSERT INTO `goods_orders` VALUES ('30', '24', '1', 'S', '浅蓝色', '1', '', '2016122965706', '支付宝', '送货时间不限', '9', '1482994677', '0', '0', '45');
+INSERT INTO `goods_orders` VALUES ('31', '24', '5', 'M', '黑色', '1', '', '2016122965706', '支付宝', '送货时间不限', '9', '1482994678', '0', '0', '45');
+INSERT INTO `goods_orders` VALUES ('32', '24', '5', 'S', '黑色', '1', '', '2016122965706', '支付宝', '送货时间不限', '9', '1482994678', '0', '0', '45');
+INSERT INTO `goods_orders` VALUES ('33', '24', '5', 'XS', '黑色', '1', '', '2016122965706', '支付宝', '送货时间不限', '9', '1482994678', '0', '0', '45');
+INSERT INTO `goods_orders` VALUES ('34', '24', '1', 'S', '浅蓝色', '1', '', '2016122979650', '支付宝', '送货时间不限', '9', '1482996061', '0', '0', '45');
+INSERT INTO `goods_orders` VALUES ('35', '24', '1', 'S', '浅蓝色', '1', '', '2016122956848', '支付宝', '送货时间不限', '9', '1482997698', '0', '0', '46');
+INSERT INTO `goods_orders` VALUES ('37', '24', '5', 'M', '黑色', '1', '', '2016122926817', '支付宝', '送货时间不限', '9', '1482998711', '0', '0', '38');
+INSERT INTO `goods_orders` VALUES ('38', '24', '6', 'M', '粉色', '1', '', '2016122926817', '支付宝', '送货时间不限', '9', '1482998711', '0', '0', '38');
+INSERT INTO `goods_orders` VALUES ('39', '24', '5', 'M', '黑色', '1', '', '2016122946175', '支付宝', '送货时间不限', '9', '1482999750', '0', '0', '45');
+INSERT INTO `goods_orders` VALUES ('40', '24', '6', 'M', '粉色', '1', '', '2016122946175', '支付宝', '送货时间不限', '9', '1482999750', '0', '0', '45');
+INSERT INTO `goods_orders` VALUES ('47', '24', '5', 'XS', '黑色', '1', '', '2016122988923', '支付宝', '送货时间不限', '9', '1483011306', '0', '1', '45');
+INSERT INTO `goods_orders` VALUES ('48', '24', '1', 'S', '浅蓝色', '1', '', '2016122988923', '支付宝', '送货时间不限', '9', '1483011306', '0', '1', '45');
+INSERT INTO `goods_orders` VALUES ('49', '24', '1', 'S', '浅蓝色', '1', '', '2016122950509', '支付宝', '送货时间不限', '9', '1483014831', '0', '1', '38');
+INSERT INTO `goods_orders` VALUES ('50', '24', '1', 'M', '浅蓝色', '1', '', '2016122950509', '支付宝', '送货时间不限', '9', '1483014831', '0', '1', '38');
+INSERT INTO `goods_orders` VALUES ('70', '24', '1', 'L', '灰色', '1', '', '2017010220967', '支付宝', '送货时间不限', '9', '1483370204', '0', '0', '38');
+INSERT INTO `goods_orders` VALUES ('71', '24', '5', 'M', '黑色', '1', '', '2017010220967', '支付宝', '送货时间不限', '9', '1483370204', '0', '0', '38');
+INSERT INTO `goods_orders` VALUES ('72', '24', '1', 'S', '浅蓝色', '1', '', '2017010220967', '支付宝', '送货时间不限', '9', '1483370204', '0', '0', '38');
+INSERT INTO `goods_orders` VALUES ('73', '24', '1', 'L', '灰色', '1', '', '2017010248232', '支付宝', '送货时间不限', '9', '1483370379', '0', '1', '38');
+INSERT INTO `goods_orders` VALUES ('74', '24', '5', 'M', '黑色', '1', '', '2017010248232', '支付宝', '送货时间不限', '9', '1483370379', '0', '1', '38');
+INSERT INTO `goods_orders` VALUES ('75', '24', '1', 'S', '浅蓝色', '1', '', '2017010248232', '支付宝', '送货时间不限', '9', '1483370379', '0', '1', '38');
 
 -- ----------------------------
 -- Table structure for managers
@@ -1030,6 +1044,29 @@ INSERT INTO `managers` VALUES ('9', 'weishao', '$2y$10$hr8pW8N28yDIYQXViS4CE.CJl
 INSERT INTO `managers` VALUES ('10', '1111111', '$2y$10$TLXuzlnITzGc1DHQMoCvCO1NKBny3v77cvdQfiZDUNTo0bXXwmdHy', '/uploads/imgs/20161228/DLBnwYK2eX6CUGc2e0f2AZc7pNCDmCnQ.jpg', '0', '1', '1482891737');
 
 -- ----------------------------
+-- Table structure for message
+-- ----------------------------
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE `message` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `msg` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `color` char(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `add_time` char(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sender` char(12) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of message
+-- ----------------------------
+INSERT INTO `message` VALUES ('23', '我在审项目呢', '#FF8888', '2017-01-05 19:37:51', '韩都客服');
+INSERT INTO `message` VALUES ('22', '在干嘛呢', '', '2017-01-05 19:37:34', '顾客');
+INSERT INTO `message` VALUES ('21', '亲，在的哦', '', '2017-01-05 19:37:16', '韩都客服');
+INSERT INTO `message` VALUES ('20', '在吗', '#DC143C', '2017-01-05 19:36:58', '顾客');
+INSERT INTO `message` VALUES ('24', 'how are you', '', '2017-01-05 19:38:45', '韩都客服');
+INSERT INTO `message` VALUES ('25', 'fine', '', '2017-01-05 19:38:57', '顾客');
+
+-- ----------------------------
 -- Table structure for show_pic
 -- ----------------------------
 DROP TABLE IF EXISTS `show_pic`;
@@ -1056,20 +1093,20 @@ CREATE TABLE `stock` (
   `sid` int(11) NOT NULL,
   `stock_num` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of stock
 -- ----------------------------
-INSERT INTO `stock` VALUES ('1', '1', '1', '1', '67');
+INSERT INTO `stock` VALUES ('1', '1', '1', '1', '66');
 INSERT INTO `stock` VALUES ('2', '1', '1', '2', '97');
 INSERT INTO `stock` VALUES ('3', '1', '1', '3', '41');
 INSERT INTO `stock` VALUES ('4', '1', '2', '1', '20');
 INSERT INTO `stock` VALUES ('5', '1', '2', '2', '68');
-INSERT INTO `stock` VALUES ('6', '1', '2', '3', '22');
+INSERT INTO `stock` VALUES ('6', '1', '2', '3', '20');
 INSERT INTO `stock` VALUES ('7', '5', '3', '4', '0');
 INSERT INTO `stock` VALUES ('8', '5', '3', '5', '0');
-INSERT INTO `stock` VALUES ('9', '5', '3', '6', '77');
+INSERT INTO `stock` VALUES ('9', '5', '3', '6', '76');
 INSERT INTO `stock` VALUES ('10', '5', '3', '7', '496');
 INSERT INTO `stock` VALUES ('11', '5', '3', '8', '0');
 INSERT INTO `stock` VALUES ('12', '6', '4', '9', '0');
@@ -1078,6 +1115,11 @@ INSERT INTO `stock` VALUES ('14', '6', '4', '11', '19');
 INSERT INTO `stock` VALUES ('15', '6', '5', '9', '0');
 INSERT INTO `stock` VALUES ('16', '6', '5', '10', '9');
 INSERT INTO `stock` VALUES ('17', '6', '5', '11', '14');
+INSERT INTO `stock` VALUES ('18', '52', '6', '13', '123');
+INSERT INTO `stock` VALUES ('19', '52', '7', '14', '111');
+INSERT INTO `stock` VALUES ('21', '1', '9', '16', '121');
+INSERT INTO `stock` VALUES ('22', '150', '10', '17', '123');
+INSERT INTO `stock` VALUES ('23', '274', '11', '18', '123');
 
 -- ----------------------------
 -- Table structure for users
@@ -1205,8 +1247,26 @@ INSERT INTO `user_extra` VALUES ('5', '4', '90', '60', '30', '15', '0', '3425');
 INSERT INTO `user_extra` VALUES ('6', '3', '0', '0', '0', '0', '0', '0');
 INSERT INTO `user_extra` VALUES ('7', '22', '0', '0', '0', '0', '0', '0');
 INSERT INTO `user_extra` VALUES ('8', '23', '0', '0', '0', '0', '0', '0');
-INSERT INTO `user_extra` VALUES ('9', '24', '0', '0', '0', '0', '0', '0');
+INSERT INTO `user_extra` VALUES ('9', '24', '0', '10', '0', '0', '0', '0');
 INSERT INTO `user_extra` VALUES ('10', '25', '0', '0', '0', '0', '0', '0');
 INSERT INTO `user_extra` VALUES ('11', '26', '0', '0', '0', '0', '0', '0');
 INSERT INTO `user_extra` VALUES ('12', '27', '0', '0', '0', '0', '0', '0');
 INSERT INTO `user_extra` VALUES ('13', '28', '0', '0', '0', '0', '0', '0');
+
+-- ----------------------------
+-- Table structure for web_config
+-- ----------------------------
+DROP TABLE IF EXISTS `web_config`;
+CREATE TABLE `web_config` (
+  `id` int(11) NOT NULL,
+  `web_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `web_copyright` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `web_logo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `statue` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of web_config
+-- ----------------------------
+INSERT INTO `web_config` VALUES ('1', '韩都衣舍', 'Deam Team', '/admin/imgs/tK5pXW6dXfzGIt5L9OD03Usz0o3Bw4ke.png', '1');

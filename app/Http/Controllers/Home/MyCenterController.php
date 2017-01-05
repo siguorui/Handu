@@ -110,7 +110,9 @@ class MyCenterController extends Controller
              ->leftjoin('users as c1', 'c3.uid', '=', 'c1.id')
              ->leftjoin('address as c2', 'c3.aid', '=', 'c2.id')
              -> select('c3.*','c3.id as oid','c1.email','c2.*')
-             -> where([['c3.uid', $id],['order_num', 'like', '%'.$keyword.'%']]) -> get();
+             -> where([['c3.uid', $id],['order_num', 'like', '%'.$keyword.'%']]) 
+             -> orderBy('c3.order_time', 'desc')
+             -> get();
         
         foreach($data as $k => $v)
         {

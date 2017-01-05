@@ -621,7 +621,7 @@ $(".firstP a").hover(function(){
       </div>
       <div class="R fl">
         <div class="fl_img">
-                                    <a href="{{url('/home/cate/list')}}/1" target="_blank"><img data-original="{{ asset('/home/imgs/1481165727968740526.jpg') }}" class="sad1 lazy" alt="夏季清仓" title="夏季清仓" src="{{ asset('/home/imgs/1481165727968740526.jpg') }}" style="display: block;" width="580" height="423"></a>
+                                    <a href="{{url('/home/cate/goodsList')}}/1" target="_blank"><img data-original="{{ asset('/home/imgs/1481165727968740526.jpg') }}" class="sad1 lazy" alt="夏季清仓" title="夏季清仓" src="{{ asset('/home/imgs/1481165727968740526.jpg') }}" style="display: block;" width="580" height="423"></a>
                       
                                     <a href="#" target="_blank"><img data-original="{{ asset('/home/1478063505592900293.jpg') }}" class="sad2 lazy" alt="羽绒服专区" title="羽绒服专区" src="{{ asset('/home/imgs/1478063505592900293.jpg') }}" style="display: block;" width="200" height="253"></a>
                               
@@ -987,7 +987,7 @@ $(".firstP a").hover(function(){
       
       <div class="R fl">
         <div class="fl_img">
-                                    <a href="{{url('/home/cate/list/7')}}" alt="dequanna" title="dequanna" target="_blank"><img data-original="{{ asset('/home/imgs/1479201998458670029.jpg') }}" class="sad4 lazy" alt="dequanna" title="dequanna" src="{{ asset('/home/imgs/1479201998458670029.jpg') }}" style="display: block;" width="790" height="423"></a>
+                                    <a href="{{url('/home/cate/goodsList/7')}}" alt="dequanna" title="dequanna" target="_blank"><img data-original="{{ asset('/home/imgs/1479201998458670029.jpg') }}" class="sad4 lazy" alt="dequanna" title="dequanna" src="{{ asset('/home/imgs/1479201998458670029.jpg') }}" style="display: block;" width="790" height="423"></a>
                               </div>
         <div class="fr_img">
                                     <a href="#" alt="新款T恤" title="新款T恤" target="_blank"><img data-original="{{ asset('/home/imgs/1473843032943779769.jpg') }}" class="sad6 lazy" alt="新款T恤" title="新款T恤" src="{{ asset('/home/imgs/1473843032943779769.jpg') }}" style="display: block;" width="200" height="293"></a>
@@ -1059,7 +1059,7 @@ $(".firstP a").hover(function(){
       
       <div class="R fl">
         <div class="fl_img">
-                                    <a href="{{ url('/home/cate/list')}}/5" alt="娜娜日记甜美女装" title="娜娜日记甜美女装" target="_blank"><img data-original="{{ asset('/home/imgs/1479264165103436988.jpg') }}" class="sad4 lazy" alt="娜娜日记甜美女装" title="娜娜日记甜美女装" src="{{ asset('/home/imgs/1479264165103436988.jpg') }}" style="display: block;" width="790" height="423"></a>
+                                    <a href="{{ url('/home/cate/goodsList')}}/5" alt="娜娜日记甜美女装" title="娜娜日记甜美女装" target="_blank"><img data-original="{{ asset('/home/imgs/1479264165103436988.jpg') }}" class="sad4 lazy" alt="娜娜日记甜美女装" title="娜娜日记甜美女装" src="{{ asset('/home/imgs/1479264165103436988.jpg') }}" style="display: block;" width="790" height="423"></a>
                               </div>
         <div class="fr_img">
            
@@ -1158,7 +1158,7 @@ $(".firstP a").hover(function(){
       
       <div class="R fl">
         <div class="fl_img">
-                                    <a href="{{url('/home/cate/list')}}/4" alt="Minizaru童装" title="Minizaru童装" target="_blank"><img data-original="{{ asset('/home/imgs/1479262852372666217.jpg') }}" class="sad4 lazy" alt="Minizaru童装" title="Minizaru童装" src="{{ asset('/home/imgs/1479262852372666217.jpg') }}" style="display: block;" width="790" height="423"></a>
+                                    <a href="{{url('/home/cate/goodsList')}}/4" alt="Minizaru童装" title="Minizaru童装" target="_blank"><img data-original="{{ asset('/home/imgs/1479262852372666217.jpg') }}" class="sad4 lazy" alt="Minizaru童装" title="Minizaru童装" src="{{ asset('/home/imgs/1479262852372666217.jpg') }}" style="display: block;" width="790" height="423"></a>
                               </div>
         <div class="fr_img">
            
@@ -1238,7 +1238,7 @@ $(".firstP a").hover(function(){
       
       <div class="R fl">
         <div class="fl_img">
-                                    <a href="{{url('/home/cate/list')}}/8" title="niBBuns女装" target="_blank"><img data-original="{{ asset('/home/imgs/1479194830306011154.jpg') }}" class="sad4 lazy" alt="niBBuns女装" title="niBBuns女装" src="{{ asset('/home/imgs/1479194830306011154.jpg') }}" style="display: block;" width="790" height="423"></a>
+                                    <a href="{{url('/home/cate/goodsList')}}/8" title="niBBuns女装" target="_blank"><img data-original="{{ asset('/home/imgs/1479194830306011154.jpg') }}" class="sad4 lazy" alt="niBBuns女装" title="niBBuns女装" src="{{ asset('/home/imgs/1479194830306011154.jpg') }}" style="display: block;" width="790" height="423"></a>
                               </div>
         <div class="fr_img">
            

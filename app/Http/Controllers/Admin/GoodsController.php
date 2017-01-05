@@ -125,8 +125,7 @@ class GoodsController extends Controller
 
 				$d = DB::table('goods_list') -> where([['cate_id',$value->id],['title', 'like', '%'.$keyword.'%']]) -> paginate($pageNum);
               
-				if(count($d)!=0)
-				{
+				
                     $count += 1;
                     if($count==1){
                         $data = $d;
@@ -136,7 +135,7 @@ class GoodsController extends Controller
                             $data[]=$v;
                         } 
                     }
-				}
+				
 
 			}
 

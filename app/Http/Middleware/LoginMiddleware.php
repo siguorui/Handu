@@ -15,7 +15,7 @@ class LoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(!Session::has('master'))
+        if(!Session::has('adminmaster'))
         {
             return redirect('/admin/login') -> with(['info' => '请登录']);
         }

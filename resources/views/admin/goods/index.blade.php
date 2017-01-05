@@ -80,7 +80,7 @@
                                     </td>
                                     <td><img class='img' src = "{{ url('/home/imgs/goods') }}/{{ $v->pic }}" width="30"/></td>
                                     <td>
-                                    <a href="{{ url('/admin/goods/index') }}/{{$v -> id}}">商品详情</a> | <a href="{{ url('/admin/goods/edit') }}/{{$v -> id}}/{{$urlid}}">编辑</a> | <a href="{{ url('/admin/goods/delete') }}/{{$v -> id}}/{{$urlid}}">删除</a>
+                                    <a href="{{ url('/admin/product/productDetail') }}/{{$v -> id}}">商品详情</a> | <a href="{{ url('/admin/goods/edit') }}/{{$v -> id}}/{{$urlid}}">编辑</a> | <a href="{{ url('/admin/goods/delete') }}/{{$v -> id}}/{{$urlid}}">删除</a>
                                     </td>  
                                 </tr>
                                @endforeach

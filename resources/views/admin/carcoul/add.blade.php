@@ -48,12 +48,8 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="exampleInputFile">个人头像</label>
-                                    <img src="" width="200" />
-                                </div>
-                                <div class="form-group">
                                     <input type="file" name="pic" id="exampleInputFile">
-                                    <p class="help-block">请选择您的照片</p>
+                                    <p class="help-block">请选择您的图片</p>
                                 </div>
                             </div><!-- /.box-body -->
 

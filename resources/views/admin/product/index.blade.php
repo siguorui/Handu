@@ -81,7 +81,7 @@
                                     <td><img class='img' src = "{{ url('/home/imgs/goods') }}/{{ $v->pic }}" width="30"/>
                                     </td>
                                     <td>
-                                    <a href="{{ url('/admin/goods/index') }}/{{$v -> id}}">商品详情</a> | <a href="{{ url('/admin/product/edit') }}/{{$v -> id}}">编辑</a> | <a href="{{ url('/admin/product/delete') }}/{{$v -> id}}">删除</a> | <a class="stock" goods_id={{$v->id}} href="#">库存添加</a>
+                                    <a href="{{ url('/admin/product/productDetail') }}/{{$v -> id}}">商品详情</a> | <a href="{{ url('/admin/product/edit') }}/{{$v -> id}}">编辑</a> | <a href="{{ url('/admin/product/delete') }}/{{$v -> id}}">删除</a> | <a class="stock" goods_id={{$v->id}} href="#">库存添加</a>
                                     </td>  
                                 </tr>
 
@@ -289,7 +289,7 @@
                         return false;
                     }
 
-                    if(size==''){
+                    if(stock_num==''){
                         alert('库存不能为空');
                         return false;
                     }

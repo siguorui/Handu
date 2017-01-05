@@ -24,15 +24,16 @@ class UserController extends Controller
             'user_name' => 'required',
             'password' => 'required|max:18',
             'repassword' => 'required|same:password|max:18',
+            'pic' => 'image',
             ],[
             'user_name.required' => '用户名不能为空',
             'password.required' => '密码不能为空',
             'repassword.required' => '确认密码不能为空',
             'repassword.same' => '两次密码不一致',
+            'pic.image' => '图片格式不正确',
             ]);
         //获取的值
         $data = $request -> except('_token', 'repassword');
-
         
         //加密
         $data['password'] = Hash::make($data['password']);
@@ -44,9 +45,31 @@ class UserController extends Controller
         // $data['remember_token'] = str_random(50);//随机50个字符
         $time = time();
         $data['add_time'] = $time; 
-        // dd($data);
-        //执行添加
-        // $sel = select * from managers where user_name = $data['user_name'];
+        //处理图片
+        if($request -> hasFile('pic'))
+        {
+            if($request -> file('pic') -> isValid())
+            {
+                //获取扩展名
+                $extension = $request -> file('pic') -> getClientOriginalExtension();
+                // echo $extension;
+                $fileName = str_random(32).'.'.$extension;
+                $d = date('Ymd');
+                $dir = './uploads/imgs/'.$d;
+                
+                if(!file_exists($dir))
+                {
+                    mkdir($dir,0777,true);
+                }
+                //移动文件
+                $move = $request -> file('pic') -> move($dir,$fileName);
+                $picd = '/uploads/imgs/'.$d.'/'.$fileName;
+                if($move)
+                {
+                    $data['pic'] = $picd;
+                }
+            }
+        }
         $sel = DB::table('managers') -> where('user_name',$data['user_name']) -> first();
         if($sel)
         {
@@ -55,6 +78,7 @@ class UserController extends Controller
         $res = DB::table('managers') -> insert($data);
         if($res)
         {
+            
             return redirect('admin/user/index') -> with(['info' => '添加成功']);
 
         }else
@@ -62,6 +86,7 @@ class UserController extends Controller
             return back() -> with(['info' => '添加失败']);
         }
     }
+
 
 
     //index用户列表页

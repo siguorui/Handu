@@ -8,7 +8,7 @@
         <section class="content-header">
             <h1>
                 分类管理
-                <small>advanced tables</small>
+                <small>分类列表</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,11 +18,11 @@
         </section>
 	 <!-- Main content -->
         <section class="content">
-            <div class="row">
+            <div class="row" id="backhome">
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Hover Data Table</h3>
+                            <a href="{{url('admin/cate/add')}}"><h3 class="box-title">快速添加</h3></a>
                         </div><!-- /.box-header -->
 
                         @if(session('info'))
@@ -31,6 +31,14 @@
                         </div>
                         @endif
                         <div class="box-body">
+
+                            <div class="col-sm-12"><div class="dataTables_length" id="example1_length"><label>
+                            <select name="category" aria-controls="example1" class="form-control input-sm" style="width:200px">
+                            @foreach($pdata as $value)
+                            <option value="{{$value->id}}">{{$value->title}}</option>
+                            @endforeach
+                        </select> </label></div></div>
+
                             <table id="example2" class="table table-bordered table-hover">
                         <form action="{{url('/admin/user/index')}}">
                             <div class="row">
@@ -63,13 +71,14 @@
                                 <tbody>
 								@foreach($data as $v)
                                 <tr>
-                                    <td>{{$key_num += 1}}</td>
+                                    <td id="{{$v->id}}">{{$key_num += 1}}</td>
                                     <td class="cname">@if($v->num == 0)
                                                 <img src = "{{ url('/admin/imgs/dirfirst.gif') }}"/>
-                                            @else
-                                                @for($i=1;$i<=$v->num;$i++)
+                                            @elseif($v->num == 1)
+                                               
                                                 <img src = "{{ url('/admin/imgs/dirsecond.gif') }}"/>
-                                                @endfor
+                                            @else
+                                                <img src = "{{ url('/admin/imgs/dirthird.gif') }}"/> 
                                             @endif
                                     </td>
                                     <td class="cname">{{$v->title}}</td>
@@ -80,7 +89,12 @@
                                     下架
                                     @endif
                                     </td>
-                                    <td><img src = "{{ url('/home/imgs/category') }}/{{ $v->logo }}" width="30"/></td>
+                                    
+                                    <td>
+                                    @if($v->assit_logo)
+                                    <img src = "{{ url('/home/imgs') }}/{{ $v->assit_logo }}" width="30"/>
+                                    @endif
+                                    </td>
                                     <td>
                                     @if($v->num == 0||$v->num == 1)
                                     <a href="{{ url('/admin/goods/index') }}/{{$v -> id}}">查看商品</a> | <a href="{{ url('/admin/cate/edit') }}/{{$v -> id}}">编辑</a> | <a href="{{ url('/admin/cate/delete') }}/{{$v -> id}}">删除</a>
@@ -106,56 +120,15 @@
         <script type="text/javascript">
             window.onload = function()
             {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
+                $("select[name='category']").change(function(){
+                    var cate = '#'+$(this).val();
+                    $("html,body").animate({scrollTop:$(cate).offset().top},1000);
                 });
 
-                function dblChangeName(){
-                    var td = $(this);
-                    var id = $(this).prev().html();
-                    var oldName = $(this).html();
-
-                    var inp = $('<input type="text" />');
-                    inp.val(oldName);
-                    $(this).html(inp);
-                    inp.select();
-
-                    inp.on('blur',function(){
-                        var newName = inp.val();
-
-                        //失去焦点后重新添加单次单击事件
-                        td.one('dblclick',dblChangeName);
-                        $.ajax({
-                            type:'post',
-                            url:"{{ url('/admin/user/ajaxchangename')}}",
-                            data:{id:id,name:newName},
-                            success:function(data)
-                            {
-                                if(data == 0)
-                                {
-                                    alert('用户名已存在');
-                                    td.html(oldName);
-                                }else if(data == 1)
-                                {
-                                    td.html(newName);
-                                }else 
-                                {
-                                    td.html(oldName);
-                                }
-                            },
-                            error:function()
-                            {
-                                alert("异常");
-                            },
-                            dataType:'json'
-
-                        });
-                    });
-
-                }
-                $('.cname').one('dblclick',dblChangeName);
+                $('.box-body').dblclick(function(){
+                    var cate = '#backhome';
+                    $("html,body").animate({scrollTop:$(cate).offset().top},1000);
+                });
             }
         </script>
 @endsection

@@ -189,6 +189,7 @@
             newDiv.find('img').attr('src','/home/imgs/goods/'+n['pic']);
             newDiv.find('img').attr('alt',n['title']);
             newDiv.find('a').attr('title',n['title']);
+            newDiv.find('a').attr('href','/home/goods/goods/'+n['id']);
             newDiv.find('em').attr('title',n['promt_price']);
             newDiv.find('em').html(n['promt_price']);
             newDiv.find('del').attr('title','市场价'+n['rign_price']);
@@ -271,8 +272,8 @@ $(function(){
     </div>
     
     <div class="page_set">
-        <span>总计296个商品</span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>1 /8</span> &nbsp;&nbsp;
+        <span>总计47个商品</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>1 /5</span> &nbsp;&nbsp;
          <span class="arr">&lt;</span>          <a class="arr" href="http://www.handu.com/brand_topic.php?id=10142&amp;price_min=0&amp;price_max=0&amp;page=2&amp;sort=add_time&amp;order=desc"><span>&gt;</span></a>            
     </div>
 </div>
@@ -326,15 +327,15 @@ $(function(){
     <div class="search_page">
   
                 <!-- <strong class="current">1</strong> -->
-                      <a class="page" href="http://handu.com/home/cate/list/4?page=1">1</a>
-                      <a class="page" href="http://handu.com/home/cate/list/4?page=2">2</a>
-                      <a class="page" href="http://handu.com/home/cate/list/4?page=3">3</a>
-                      <a class="page">...</a>
-                      <a class="page" href="http://handu.com/home/cate/list/4?page=5">5</a>
-                      <a class="page" href="http://handu.com/home/cate/list/4?page=6">6</a>
-          	          <a class="page" href="http://handu.com/home/cate/list/4?page=6">7</a>
+                      <a class="page" href="http://handu.com/home/cate/goodsList/4?page=1">1</a>
+                      <a class="page" href="http://handu.com/home/cate/goodsList/4?page=2">2</a>
+                      <a class="page" href="http://handu.com/home/cate/goodsList/4?page=3">3</a>
+                      <a class="page" href="http://handu.com/home/cate/goodsList/4?page=4">4</a>
+                      
+                      <a class="page" href="http://handu.com/home/cate/goodsList/4?page=5">5</a>
+          	          
  <a class="page next" href="http://www.handu.com/brand_topic.php?id=10142&amp;price_min=0&amp;price_max=0&amp;page=2&amp;sort=add_time&amp;order=desc">下一页</a>    
-    <span>共7页 </span>&nbsp;
+    <span>共5页 </span>&nbsp;
    </div></div>
     
 </div>

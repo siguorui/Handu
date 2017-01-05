@@ -42,18 +42,18 @@
             <div class="item">
               <div class="left fl"><span class="red">*&nbsp;</span>性别：</div>
               <div class="right fl">
-                <span><input type="radio" name="sex" value="2" @if($data1 -> sex == 2) checked="checked" @endif class="fl"><span class="fl">&nbsp;保密</span></span>
-                <span><input type="radio" name="sex" @if($data1 -> sex == 0) checked="checked" @endif  value="0" class="fl"><span class="fl">&nbsp;男</span></span>
-                <span><input type="radio" name="sex" @if($data1 -> sex == 1) checked="checked" @endif  value="1" class="fl"><span class="fl">&nbsp;女</span></span>
+                <span><input type="radio" name="sex" value="0" @if($data1 -> sex == 0) checked="checked" @endif class="fl"><span class="fl">&nbsp;保密</span></span>
+                <span><input type="radio" name="sex" @if($data1 -> sex == 1) checked="checked" @endif  value="1" class="fl"><span class="fl">&nbsp;男</span></span>
+                <span><input type="radio" name="sex" @if($data1 -> sex == 2) checked="checked" @endif  value="2" class="fl"><span class="fl">&nbsp;女</span></span>
               </div>
             </div>
-            <div class="item">
+            <!-- <div class="item">
               <div class="left fl"><span class="red">*&nbsp;</span>出生日期：</div>
               <div class="right fl">
                               1993-03-18                            
                  
               </div>
-            </div>
+            </div> -->
 
   
             <div class="item">

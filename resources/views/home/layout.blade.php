@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_base.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/web_index.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('/home/css/talk.css') }}">
 <link type="text/css" href="{{ asset('/home/css/NEWS_login.css') }}" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_list.css') }}">
 <script type="text/javascript"  src="{{ asset('/home/js/jquery.min.js') }}"></script>
@@ -80,7 +81,7 @@
 </li>
 
 <li class="integral">
-  <a target="_blank" href="#"><span>积分</span><b>190</b></a>
+  <a target="_blank" href="#"><span>积分</span><b>{{session('master') -> score}}</b></a>
 </li>
 <li><a href="{{asset('/home/logout')}}">退出</a></li>
 <li class="">
@@ -130,9 +131,9 @@
 
 @endif
 
-<li><a href="#" style="margin-right:10px"  target="_blank">购物车</a></li>      </ul>
+<li><a href="{{asset('/home/goods/shopingcart')}}" style="margin-right:10px"  target="_blank">购物车</a></li>      </ul>
       <ul id="HD_HELPZONE" style="border-right:none;">
-        <li><a href="javascript:NTKF.im_openInPageChat();">在线客服</a></li>
+        <li><a href="javascript:Chat();">在线客服</a></li>
         <li><a href="#" target="_blank" >帮助中心</a></li>
         <li onmouseover="dhceng('webdhceng', 'show');"  onmouseout="dhceng('webdhceng', 'hide');" style="height:30px; display:inline-block;"><a href="#" target="_blank" ><s></s>网站导航</a></li>
       </ul>
@@ -351,11 +352,11 @@ left: 4px;}
 		
       </script>
       <div id="hotwords">
-        <a href="{{asset('/home/cate/list')}}/4" target="_blank">韩风童装</a><s> | </s>
-        <a href="{{asset('/home/cate/list')}}/14" target="_blank">可爱童装</a><s> | </s>
-        <a href="{{asset('/home/cate/list')}}/1" target="_blank">简约女装</a><s> | </s>
-        <a href="{{asset('/home/cate/list')}}/5" target="_blank">甜美女装</a><s> | </s>
-        <a href="{{asset('/home/cate/list')}}/7" target="_blank">时尚妈妈</a><s> | </s>
+        <a href="{{asset('/home/cate/goodsList')}}/4" target="_blank">韩风童装</a><s> | </s>
+        <a href="{{asset('/home/cate/goodsList')}}/14" target="_blank">可爱童装</a><s> | </s>
+        <a href="{{asset('/home/cate/goodsList')}}/1" target="_blank">简约女装</a><s> | </s>
+        <a href="{{asset('/home/cate/goodsList')}}/5" target="_blank">甜美女装</a><s> | </s>
+        <a href="{{asset('/home/cate/goodsList')}}/7" target="_blank">时尚妈妈</a><s> | </s>
         <a href="" target="_blank">明星同款</a>
        </div>
     </div>
@@ -645,7 +646,7 @@ margin-top: 3px;}
                         		 <div class="itemtcul_h">
                                   <div style="width:70px; float:left;">
                                   @foreach(Session::get('index') as $d)
-                                    <a href="#" target="_blank" class="fl_ah"><img src="/home/imgs/{{$d -> assit_logo}}" alt="{{$d -> title}}">
+                                    <a href="{{url('home/cate/index')}}/{{$d->id}}" target="_blank" class="fl_ah"><img src="/home/imgs/{{$d -> assit_logo}}" alt="{{$d -> title}}">
                                 </a>
                                    
                                     @endforeach 
@@ -653,7 +654,7 @@ margin-top: 3px;}
                                     </div>
                                     <div style="width:70px; float:left; margin-left:10px;">
                                      @foreach(Session::get('index1') as $d1)
-                                     <a href="#" target="_blank" class="fl_ah" >
+                                     <a href="{{url('home/cate/index')}}/{{$d1->id}}" target="_blank" class="fl_ah" >
                                       <img src="/home/imgs/{{$d1 -> assit_logo}}" alt="{{$d1 -> title}}">
                                     </a>
                                     @endforeach
@@ -661,7 +662,7 @@ margin-top: 3px;}
                               <div style="width:70px; float:left; margin-left:10px;">
                                 
                                  @foreach(Session::get('index2') as $d2)
-                                     <a target="_blank" href="#" class="fl_ah" >
+                                     <a target="_blank" href="{{url('home/cate/index')}}/{{$d2->id}}" class="fl_ah" >
                                      <img src="/home/imgs/{{$d2 -> assit_logo}}" alt="{{$d2 -> title}}">
                                   </a>
                                        
@@ -731,7 +732,7 @@ margin-top: 3px;}
             @foreach(Session::get('index4')[$k2] as $d3)
            
 
-              <a href="#" target="_blank">{{$d3 -> title}}</a>
+              <a href="{{url('home/cate/index')}}/{{$d3->id}}" target="_blank">{{$d3 -> title}}</a>
           
               @endforeach
             
@@ -745,7 +746,7 @@ margin-top: 3px;}
           <div class="itContent_h"  style="border:none; height:auto;"> 
           @foreach(Session::get('index5') as $d4)
           <div class="itContent_zpp">
- 						<a href="#" target="_blank" class="fl_ah aFirst"><img  src="/home/imgs/{{$d4 -> assit_logo}}" alt="{{$d4 -> title}}"/>
+ 						<a href="{{url('home/cate/index')}}/{{$d4->id}}" target="_blank" class="fl_ah aFirst"><img  src="/home/imgs/{{$d4 -> assit_logo}}" alt="{{$d4 -> title}}"/>
                                 </a>        
             </div>
           @endforeach
@@ -760,7 +761,7 @@ margin-top: 3px;}
          		 <div class="itContent_h"> <div class="divH3">{{$d4 -> title}}</div> <div>
              @foreach(Session::get('index7')[$k] as $d5)
              
- <a href="#" target="_blank">{{$d5 ->title}}</a> 
+ <a href="{{url('home/cate/index')}}/{{$d5->id}}" target="_blank">{{$d5 ->title}}</a> 
               
               @endforeach 
             </div>
@@ -773,7 +774,7 @@ margin-top: 3px;}
 
           <div class="itContent_h"  style="border:none; height:auto;">  <div class="itContent_zpp">
  	                      @foreach(Session::get('index6') as $k => $d4)
-                                <a href="#" target="_blank" class="fl_ah aFirst"><img src="/home/imgs/{{$d4 -> assit_logo}}" alt="{{$d4 -> title}}">
+                                <a href="{{url('home/cate/index')}}/{{$d4->id}}" target="_blank" class="fl_ah aFirst"><img src="/home/imgs/{{$d4 -> assit_logo}}" alt="{{$d4 -> title}}">
                                 </a>
                         @endforeach 
             </div>
@@ -788,7 +789,7 @@ margin-top: 3px;}
             @endforeach 
              <div>
             @foreach(Session::get('index9') as $d7)
- <a href="#" target="_blank" >{{$d7 -> title}}</a> 
+ <a href="{{url('home/cate/index')}}/{{$d7->id}}" target="_blank" >{{$d7 -> title}}</a> 
             @endforeach
             </div>
           </div>
@@ -797,7 +798,7 @@ margin-top: 3px;}
              
           <div class="itContent_h"  style="border:none; height:auto;"><div class="itContent_zpp">
                                   @foreach(Session::get('index8') as $d6)
-                                 <a href="#" target="_blank" class="fl_ah aFirst">
+                                 <a href="{{url('home/cate/index')}}/{{$d6->id}}" target="_blank" class="fl_ah aFirst">
                                     	<img src="/home/imgs/{{$d6 -> assit_logo}}" alt="韩韵衣香">
                                     </a>  
                                   @endforeach 
@@ -997,6 +998,56 @@ $(function() {
   <a href="javascript:void(0);" class="a5 backTop"  onclick="_czc.push(['_trackEvent', '悬浮', '返回顶部']);"></a>
   
 </div>
+
+<!-- 客服在线聊天 -->
+<div id="main" style="display: none;position: fixed;top:120px;left: 500px;z-index: 9999">
+           
+            <div id="right">
+                <div id="content">
+                    <h2 id="content-title">您好，韩都客服竭诚为您服务</h2>
+                    <hr />
+                    <div id="show_msg">
+                        
+                    </div>
+                </div>
+                <div id="send">
+                    <div id="control">
+                    <form id="Formchat">
+                    颜色：
+                    <select name="color" id="color">
+                        <option value="">请选择</option>
+                        <option style="color:#FF8888" value="#FF8888">爱的暗示</option>
+                        <option style="color:#00BBFF" value="#00BBFF">忧郁的蓝</option>
+                        <option style="color:#0000FF" value="#0000FF">碧空蓝天</option>
+                        <option style="color:#9F88FF" value="#9F88FF">灰蓝种族</option>
+                        <option style="color:#000088" value="#000088 ">蔚蓝海洋</option>
+                        <option style="color:#77FFEE" value="#77FFEE">清清之蓝</option>
+                        <option style="color:#4400B3" value="#4400B3">发亮篮紫</option>
+                        <option style="color:#A500CC" value="#A500CC">紫的拘谨</option>
+                        <option style="color:#B088FF" value="#B088FF">卡其制服</option>
+                        <option style="color:#D1BBFF" value="#D1BBFF">伦敦灰雾</option>
+                        <option style="color:#DC143C" value="#DC143C">卡布其诺</option>
+                        <option style="color:#A52A2A" value="#A52A2A">苦涩心红</option>
+                        <option style="color:#FF0000" value="#FF0000">正宗喜红</option>
+                        <option style="color:#990099" value="#990099">红的发紫</option>
+                        <option style="color:#FF0000" value="#FF0000">红旗飘飘</option>
+                        <option style="color:#D2691E" value="#D2691E ">黄金岁月</option>
+                        <option style="color:#800080" value="#800080">紫金绣贴</option>
+                        <option style="color:#006400" value="#006400">橄榄树绿</option>
+                        <option style="color:#000000" value="#000000">绝对黑色</option> 
+                    </select>
+                   
+                    <br />
+                    <textarea id="msg" name="msg"></textarea><br/>
+                    <input type="button" value="发送" onclick="sendmsg()" />
+                    <input type="button" value="退出聊天" onclick="outchat()">
+                    
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+  <!-- 客服在线聊天 -->
 <script language="javascript" type="text/javascript">
 $(window).scroll(function(){
       var t = document.documentElement.scrollTop||document.body.scrollTop;
@@ -1130,6 +1181,136 @@ $(function(){
       $(".tcewm").addClass("tcewm").removeClass("tcewm1");
     }
   
+     function Chat(){
+        $('#main').css('display','block');
+        showmsg();
+        inte = setInterval("showmsg()",2000);
+    }
+
+     //及时显示聊天内容
+    //利用ajax每间隔2s就去服务器获得一次聊天信息
+    var maxID = 0;
+    function showmsg(){
+
+         $.ajax({
+                type:'GET',
+                url:"{{url('/home/chat/showmsg')}}",
+                data:{maxID:maxID},
+                success:function(data)
+                {
+
+                    var s = "";
+                    $(data).each(function(i,n){
+                        if(n['sender']=='顾客'){
+                            var speaker = '我';
+                            s += "<p style='color:#417F4B'>"+speaker+"&nbsp;"+n['add_time']+"</p>";
+                            s += "<p style='color:"+n['color']+"'>"+n['msg']+"</p>";
+                        }else{
+                            speaker = '韩都客服';
+                            s += "<p style='color:#0075B8'>"+speaker+"&nbsp;"+n['add_time']+"</p>";
+                            s += "<p style='color:"+n['color']+"'>"+n['msg']+"</p>";
+                        }
+                        //把已经获得消息的最大id赋予给maxID
+                        maxID = n['id'];
+                    });
+
+                    var showdiv = $('#show_msg');
+                    var msg = showdiv.html();
+                    var aa = msg + s;
+                    showdiv.html(aa);
+
+                    var show = $('#show_msg')[0];
+                    show.scrollTop = show.scrollHeight;
+                    //设置滚动条卷起高度
+                    // showdiv.scrollTop = showdiv.scrollHeight;
+                    
+                },
+                error:function()
+                {
+                    alert("服务器繁忙，请稍等");
+                }
+
+            });
+        
+    }
+    
+
+    function sendmsg(){
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+    var fm = $('#Formchat')[0];
+    //FormData收集表单信息
+    var fd = new FormData(fm);
+
+    //ajax提交表单信息到服务器存储
+    
+                $.ajax({
+                    type:'POST',
+                    url:"{{url('/home/chat/sendmsg')}}",
+                    data:fd,
+                    processData: false,    //必须设置
+                    contentType: false,
+                    success:function(data){
+                        if(data==0){
+                           $('#color').val('');
+                          $('#msg').val('');
+                        }
+                    },
+                    error:function()
+                    {
+                        alert("发送失败,请重试");
+                    }
+
+                });
+                    //必须设置
+    }
+
+    function outchat(){
+        $('#main').css('display','none');
+        clearInterval(inte);
+    }
+
+        var did = document.getElementById('main');
+        var mw = 0;
+        var mh = 0;
+        var isDown = false;
+
+        did.onmousedown = function(e)
+        {
+            isDown = true;
+            var _mx = e.pageX;
+            var _my = e.pageY;
+            var ol = did.offsetLeft;
+            var ot = did.offsetTop;
+
+            mw = _mx - ol;
+            mh = _my - ot;
+
+            this.style.cursor = 'move';
+
+        }
+
+        window.onmousemove = function(e)
+        {
+            if(!isDown) return;
+            var newmx = e.pageX;
+            var newmy = e.pageY;
+
+            dl = newmx - mw;
+            dt = newmy - mh;
+
+            did.style.left = dl + 'px';
+            did.style.top = dt + 'px';
+        }
+
+        did.onmouseup = function()
+        {
+            isDown = false;
+            did.style.cursor = 'default';
+        }
 </script>
 
 </body>

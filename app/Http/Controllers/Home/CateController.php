@@ -9,7 +9,7 @@ use DB;
 class CateController extends Controller
 {
 
-    public function index($id)
+    public function index(Request $request,$id)
     {
     	//获取父级分类数据
     	$fdata = DB::table('category') -> where([['pid','0'],['status','1'],]) -> get();
@@ -42,6 +42,10 @@ class CateController extends Controller
         //  }
         // }
         // die;
+        //商品列表遍历
+       
+        $order = $request -> input('order','id');
+        $sequence = $request -> input('sequence','asc');
 
         //获取每日新品的类别
         $dateGoods = DB::table('goods_list')->distinct()->select('add_time')->get();
@@ -66,80 +70,68 @@ class CateController extends Controller
         {
             if($id == '10000000')
             {
-                $dateData = DB::table('goods_list')->get();
+                $data = DB::table('goods_list')->get();
+               
             }else
             {
                 $tmpDate = DB::table('goods_list')->get();
+
 
                 foreach ($tmpDate as $key => $value) {
 
                     $ymd = date('Ymd',$value->add_time);
                     if($ymd == $id)
                     {
-                        $dateData[] = $value;
+                        $data[] = $value;
                     }
                 }
+               
             }
-
-            return view('home.cate.index',['dateData'=>$dateData,'num'=>3,'fdata'=>$fdata,'data1'=>$data1,'data2'=>$data2,'datenum'=>$datenum]);
+           
+           return view('home.cate.index',['data'=>$data,'num'=>3,'fdata'=>$fdata,'data1'=>$data1,'data2'=>$data2,'datenum'=>$datenum,'id'=>$id]);
         }
 
-    	
-        //商品列表遍历
-        $res = DB::table('category') -> where('id',$id) -> first();
         
-        $num = substr_count($res->path, ',');
-            
+        
+        $res = DB::table('category') -> where('id',$id) -> first();
+        $num = substr_count($res->path, ',');   
         if($num == 2 )      //显示三级分类的商品
         {
-            $data = DB::table('goods_list') -> where('cate_id',$id) -> get();
+            $data = DB::table('goods_list') -> where('cate_id',$id)-> orderBy($order, $sequence)-> paginate(16);
 
             //传urlid用于操作成功之后还能跳回
-           
-
-            return view('home.cate.index',['data'=>$data,'num'=>$num,'fdata'=>$fdata,'data1'=>$data1,'data2'=>$data2,'datenum'=>$datenum]);
 
         }else if($num == 1)     //显示二级分类的商品
         {
             //获取二级分类的内容
             $secate = DB::table('category') -> where('pid',$id) -> get();
 
+             $count = 0;
             foreach ($secate as $key => $value) {
 
-                $d = DB::table('goods_list') -> where('cate_id',$value->id) -> get();
-                if(count($d)!=0)
-                {
-                    $data[] = $d;
-                }
+                $d = DB::table('goods_list') -> where('cate_id',$value->id) -> orderBy($order, $sequence)->paginate(16);
+               
+                    $count += 1;
+                    if($count==1){
+                        $data = $d;
+                    }else{
+                       
+                        foreach ($d as $k => $v) {  
+                            $data[]=$v;
+                        } 
+                    }
+               
 
             }
 
-            return view('home.cate.index',['data'=>$data,'num'=>$num,'fdata'=>$fdata,'data1'=>$data1,'data2'=>$data2,'datenum'=>$datenum]);
 
         }else if($num == 0)     //显示一级分类的商品
         {
-            //二级分类
-            $fircate = DB::table('category') -> where('pid',$id) -> get();
+            $data = DB::table('goods_list') -> where('fid',$id) -> orderBy($order, $sequence)->paginate(16);
 
-            //遍历取出三级分类
-            foreach ($fircate as $key => $value) {
-
-                $d[$key] = DB::table('category') -> where('pid',$value->id) -> get();
-
-                if(count($d[$key])!=0)
-                {
-                    foreach ($d[$key] as $k => $v) {
-
-                        $data[$key][$k] = DB::table('goods_list') -> where('cate_id',$v->id) -> get();
-                        
-                    }
-                    
-                }
-
-            }
-
-            return view('home.cate.index',['data'=>$data,'num'=>$num,'fdata'=>$fdata,'data1'=>$data1,'data2'=>$data2,'datenum'=>$datenum]);
         }
+
+        return view('home.cate.index',['data'=>$data,'num'=>$num,'fdata'=>$fdata,'data1'=>$data1,'data2'=>$data2,'datenum'=>$datenum,'id'=>$id,'request' => $request -> all()]);
 
     }
 

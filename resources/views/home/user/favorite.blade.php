@@ -1,7 +1,8 @@
   @extends('home.layoutcenter')
   @section('content')
 <div class="user_right">
-<div id="myCollect">@if(isset($data1))
+<div id="myCollect">
+@if(isset($data1))
     <h1 class="theme">我的收藏夹</h1>
     <div class="sort_bar">
        <ul>
@@ -337,7 +338,7 @@ function selectPage(sel)
 }
 //-->
 </script>
- @endif
+ @else
  
   
 
@@ -382,7 +383,7 @@ function selectPage(sel)
 //-->
 </script>
  
-
+@endif
 </div> 
 <script type="text/javascript">
 //ajax_form('goods.php?id=7191&act=ajax_goods_sku','L_goods_sku', 450 );

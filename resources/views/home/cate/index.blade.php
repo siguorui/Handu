@@ -48,24 +48,40 @@
 <div class="cate_gg">
 </div>
 <div class="handu_crumb"> 您所在的位置  <code>&gt;</code> <a href=".">韩都衣舍</a> <code>&gt;</code> <a href="category-225-b0.html">HSTYLE女装</a> <code>&gt;</code> <a href="category-366-b0.html">上装</a> <code>&gt;</code> <a href="category-255-b0.html">羽绒服</a></div>
-<form id="c_page_form" action="category.php" method="GET" >
-    <input type="hidden" name="category" value="255" />
-    
-    <input type="hidden" name="sort" value="add_time" />
-    <input type="hidden" name="order" value="desc" />
+
 <div id="sort_bar" >
+    <form id="my_page_form" action="{{ url('/home/cate/index') }}/{{$id}}" method="GET" >
+    
+    <input type="hidden" name="order" value="" />
+    <input type="hidden" name="sequence" value="" />
     <ul class="sort_set">
-            <li class=" " ><a  title="恢复默认排序"  href="category-255-b0-1-default.html">默认排序</a>
+        <li class="selected" order="id" sequence="asc"><a  title="恢复默认排序"  href="#">默认排序</a>
         </li>
-            <li class="selected desc" ><a  title="点击后升序"  href="category-255-b0-1-add_time-asc.html">上架时间<i></i></a>
+
+        <li class="" order="add_time" sequence="desc"><a  title="点击后降序"  href="#">上架时间<i></i></a>
         </li>
-            <li class=" asc" ><a  title="点击后升序"  href="category-255-b0-1-shop_price-asc.html">价格<i></i></a>
+
+        <li class="" order="promt_price" sequence="asc"><a  title="点击后升序"  href="#">价格<i></i></a>
         </li>
-            <li class=" desc" ><a  title="点击后降序"  href="category-255-b0-1-sell_count-desc.html">销量<i></i></a>
+
+        <li class="" order="count" sequence="desc"><a  title="点击后降序"  href="#">销量<i></i></a>
         </li>
      
     </ul>
-    
+    </form>
+    <script type="text/javascript">
+         $('.sort_set li').click(function(){
+             $('.sort_set li').removeClass('selected');
+             $(this).addClass('selected');
+             var sequence = $(this).attr('sequence');
+             var order = $(this).attr('order');
+             $("input[name='sequence']").val(sequence);
+             $("input[name='order']").val(order);
+             $('#my_page_form').submit();
+         });
+
+    </script>
+
     <div class="priceRange" id="bar-range">
         <div class="pr_box">
         <span class="input_notice"><label >￥</label><input type="text" class="rangeNum range-min" name="price_min" value="" autocomplete="off"/></span>
@@ -88,13 +104,21 @@
         <a class="check  " href="javascript:void(0)"></a><span>包邮</span>
     </div>
     
+    @if($num!=3)
     <div class="page_set">
-        <span>总计63个商品</span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <span>1 /2</span> &nbsp;&nbsp;
-         <span  class="arr">&lt;</span>          <a class="arr" href="category-255-b0-min0-max0-attr0-2-add_time-desc.html"><span>&gt;</span></a>            
+        <span>总计{{$data ->total()}}个商品</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>{{$data ->currentPage()}}/{{$data ->lastPage()}}</span> &nbsp;&nbsp;
+         <a class="arr" href="{{ $data -> appends($request) ->previousPageUrl() }}"><span>&lt;</span></a>       <a class="arr" href="{{ $data ->appends($request) -> nextPageUrl() }}"><span>&gt;</span></a>           
     </div>
+    @else
+    <div class="page_set">
+        <span>总计40个商品</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>1/2</span> &nbsp;&nbsp;
+         <a class="arr" href="#"><span>&lt;</span></a>       <a class="arr" href="#"><span>&gt;</span></a>           
+    </div>
+    @endif
 </div>
-</form>
+
 
 <div class="productGrid">
  
@@ -135,8 +159,8 @@
         @endif
 
         @if($num == 1)
-            @foreach($data as $k1 => $v1)
-                @foreach($v1 as $k => $v)
+            @foreach($data as $k => $v)
+                
         <div class="product" >
             <div class="product-iWrap">
                 <div class="productImg-wrap">
@@ -165,16 +189,13 @@
             </div>
                 <p class="productContry">中国</p>
         </div>
-                @endforeach
+               
             @endforeach                         
         @endif
 
 
         @if($num == 0)
-            @foreach($data as $k1 => $v1)
-                @foreach($v1 as $key => $value)
-                    @foreach($value as $k => $v)
-                        @if(!empty($v))
+            @foreach($data as $k => $v)
         <div class="product" >
             <div class="product-iWrap">
                 <div class="productImg-wrap">
@@ -203,15 +224,12 @@
             </div>
                 <p class="productContry">中国</p>
         </div>
-                        @endif
-                    @endforeach
-                @endforeach
-            @endforeach                         
+            @endforeach                        
         @endif
 
 
         @if($num == 3)
-            @foreach($dateData as $k => $v)
+            @foreach($data as $k => $v)
         <div class="product" >
             <div class="product-iWrap">
                 <div class="productImg-wrap">
@@ -246,13 +264,27 @@
         <br class="clear" />
     </div>
 
+    @if($num!=3)
     <div class="search_page">
-                <strong class="current">1</strong>
-                      <a class="page" href="category-255-b0-min0-max0-attr0-2-add_time-desc.html">2</a>
-          	
-<a class="page next" href="category-255-b0-min0-max0-attr0-2-add_time-desc.html">下一页</a>    
-    <span>共2页 </span>&nbsp;
-   </div></div>
+
+        <a class="page prev" href="{{ $data -> appends($request) -> url(1) }}">首页</a>                 
+        <a class="page prev" href="{{ $data -> appends($request) ->previousPageUrl() }}">上一页</a>
+      <!-- 白色class去掉next               -->
+      <a class="page next" href="{{ $data -> appends($request) ->nextPageUrl() }}">下一页</a>
+      <a class="page next" href="{{ $data -> appends($request) ->url($data ->lastPage()) }}">尾页</a> 
+      <span>共 {{$data ->lastPage()}} 页</span> 
+   </div>
+   @else
+     <div class="search_page">
+        <strong class="current">1</strong>
+        <a class="page" href="category-255-b0-min0-max0-attr0-2-add_time-desc.html">2</a>
+            
+        <a class="page next" href="category-255-b0-min0-max0-attr0-2-add_time-desc.html">下一页</a>    
+        <span>共2页 </span>&nbsp; 
+   </div>
+   @endif
+
+   </div>
     
 </div>
 </div>

@@ -11,7 +11,11 @@ class IndexController extends Controller
     //加载首页面
     public function index()
     {
-
+        $data0 = DB::table('web_config') -> first();
+        if(($data0 ->statue) == 0)
+        {
+            return view('home.user.maintain');
+        }
     	//获取父级分类数据
     	// $fdata = DB::table('category') -> where([['pid','0'],['status','1'],]) -> get();
     	$data = DB::table('goods_list') -> where('cate_id',92) ->limit(5) -> get();
@@ -79,14 +83,44 @@ class IndexController extends Controller
     	$data = DB::table('goods_list') -> where('title', 'like', '%'.$keywords.'%') -> paginate($num);
 
     	$fid = DB::table('goods_list') -> distinct() -> select('fid')-> where('title', 'like', '%'.$keywords.'%') -> get();
-
-    	foreach ($fid as $k => $v) {
-    		$res[] = DB::table('category') -> select('assit_logo')->where([['id',$v->fid],['status','1'],]) -> first()-> assit_logo;
-    	}
-    	
-    	
+        if(count($fid) != 0)
+        {
+            foreach ($fid as $k => $v) {
+            $res[] = DB::table('category') -> select('assit_logo')->where([['id',$v->fid],['status','1'],]) -> first()-> assit_logo;
+        }
         return view('home.search', ['data' => $data, 'res' => $res, 'request' => $request -> all()]);
+        }else
+        {
+            return view('home.searchoff');
+        }
+
     	// return view('home.search');
 
+    }
+
+    public function showmsg(Request $request)
+    {
+        $maxID = $request->input('maxID');
+        // dd($maxID);
+        $data = DB::table('message')->where('id','>',$maxID)->get();
+        return response()->json($data);
+    }
+
+    public function sendmsg(Request $request)
+    {
+        date_default_timezone_set('PRC');
+        $data = $request->all();
+        $data['sender'] = '顾客';
+        $data['add_time'] = date('Y-m-d H:i:s',time());
+
+        $res = DB::table('message')->insert($data);
+        if($res)
+        {
+            return response()->json(0);
+        }else
+        {
+            return response()->json(1);
+        }
+        
     }
 }

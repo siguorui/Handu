@@ -1,13 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+@extends('home.shopping')
+
+@section('content')
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>订单确认中心-韩都衣舍官方网站</title>
 
-<script type="text/javascript" id="veConnect" async="" src="{{ asset('/home/js/capture-apps-4.js') }}"></script>
-<script src="{{ asset('/home/js/hm.js') }}"></script><script async="" src="{{ asset('/home/js/analytics.js') }}"></script><script type="text/javascript" async="" charset="utf-8" src="{{ asset('/home/js/ntkfstat.js') }}"></script><script type="text/javascript" language="javascript" src="{{ asset('/home/js/jquery_002.js') }}"></script>
-<script type="text/javascript" language="javascript" src="{{ asset('/home/js/jquery.js') }}"></script>
 <script type="text/javascript">
 var isIndex = '';
 var process_request = "正在处理您的请求..."; 
@@ -17,148 +15,9 @@ var process_request = "正在处理您的请求...";
 <script type="text/javascript" src="{{ asset('/home/js/transport_jquery.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_base.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('/home/css/handu_cart.css') }}/">
-<script type="text/javascript" async="async" charset="utf-8" src="{{ asset('/home/js/zh_cn.js') }}" data-requiremodule="lang"></script>
-<script type="text/javascript" async="async" charset="utf-8" src="{{ asset('/home/js/chat.js') }}" data-requiremodule="chatManage"></script>
-<script type="text/javascript" async="async" charset="utf-8" src="{{ asset('/home/js/mqtt31.js') }}" data-requiremodule="MQTT"></script>
-<script type="text/javascript" async="async" charset="utf-8" src="{{ asset('/home/js/mqtt.js') }}" data-requiremodule="Connection"></script></head>
-
 <body><div id="nTalk_post_hiddenElement" style="left: -10px; top: -10px; visibility: hidden; display: none; width: 1px; height: 1px;"></div>
 
 
-<div class="hd_header_w990">
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
-<div id="global_nav">
-  <div class="global_nav">
-    <div class="global_info fl">
-      <ul id="HD_MZONE">
-        <li class="on">
-          <em><a href="http://www.handu.com/">返回首页</a></em>
-        </li>
-        <li id="nav_addFavorite">
-          <a href="javascript:window.external.addFavorite()" rel="nofollow"><b></b>收藏网站</a>
-        </li>
-      </ul>
-    </div>
-    <div class="global_info fr">
-      <ul id="HD_MEMBERZONE"><style type="text/css">
-#HD_MEMBERZONE li.zhuce_main>img {position: absolute;top: 15px;left: -71px;z-index: 222;display: none;}
-#HD_MEMBERZONE li.zhuce_main:hover>img {display: block;}
-#HD_MEMBERZONE li.on>img {position: absolute;top: 15px;left: 4px;z-index: 222;}
-</style>
-<li class="on">
-  <a href="http://www.handu.com/user.php" target="_blank" title="15313066678" class="user_name">欢迎您，15313066678</a>
-  
-  <a href="http://www.handu.com/user.php?act=privilege" title="注册会员" target="_blank">
-    
-  	    	<em class="lv lv0"></em>
-      
-  </a>
-  <!--<img src="http://img01.handu.com/hdysweb/20141222/gwgl.png"  alt="官网会员内部攻略" border="0" usemap="#Map" />
-  <map name="Map" id="Map">
-    <area shape="rect" coords="0,2,151,27" href="http://www.handu.com/topic-1276.html" target="_blank" />
-  </map>-->
-</li>
-
-<li class="integral">
-  <a href="http://www.handu.com/user.php?act=exchange" target="_blank"><span>积分</span><b>190</b></a>
-</li>
-<li><a href="http://www.handu.com/user.php?act=logout">退出</a></li>
-<li class="">
-    <div class="more-active">
-    <a href="http://www.handu.com/user.php" class="bn-more"><span>我的韩都</span></a><b></b>
-    <div class="more-items">
-        <table cellspacing="0" cellpadding="0">
-            <tbody>
-              <tr><td><a href="http://www.handu.com/user.php?act=order_list" target="_blank">我的订单</a></td></tr>
-              <tr><td><a href="http://www.handu.com/user.php?act=bonus" target="_blank">我的优惠券</a></td></tr>
-              <tr><td><a href="http://www.handu.com/user.php?act=collection_list" target="_blank">我的收藏</a></td></tr>
-              <tr><td><a href="http://www.handu.com/user.php?act=return_list" target="_blank">退货办理</a></td></tr>
-                         </tbody>
-        </table>
-    </div>
-    </div>
-</li>
-<li><a href="http://www.handu.com/flow.php?step=cart" style="margin-right:10px" target="_blank">购物车</a></li></ul>
-      <ul id="HD_HELPZONE" style="border-right:none;">
-       
-         <!--<li>
-          <a href="http://www.handu.com/topic-1430.html" target="_blank" style="color:#c70a28;">团购批发</a>
-        </li>-->
-        <li><a href="javascript:NTKF.im_openInPageChat();">在线客服</a></li>
-        <li><a href="http://www.handu.com/helper.html" target="_blank">帮助中心</a></li>
-        <li onmouseover="dhceng('webdhceng', 'show');" onmouseout="dhceng('webdhceng', 'hide');" style="height:30px; display:inline-block;"><a href="http://www.handu.com/sitemap.html" target="_blank"><s></s>网站导航</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="webdhbox" id="webdhceng" style="width: 976px; display: none;" onmouseover="dhceng('webdhceng', 'show');" onmouseout="dhceng('webdhceng', 'hide');">
-    <div class="webdh">
-      <div class="hot">
-          <h1>大家都在买<span>Hot</span></h1>
-          <ul>
-                <li><a href="http://www.handu.com/category-242-b0-1-add_time-desc.html" target="_blank">t恤</a></li>
-                <li><a href="http://www.handu.com/category-247-b0-1-add_time-desc.html" target="_blank">连衣裙</a></li>
-                <li><a href="http://www.handu.com/category-249-b0-1-add_time-desc.html" target="_blank">牛仔裤</a></li>
-                <li><a href="http://www.handu.com/category-240-b0.html" target="_blank">毛衣针织</a></li>
-                <li><a href="hhttp://www.handu.com/category-241-b0.html" target="_blank">卫衣绒衫</a></li>
-                <li><a href="http://www.handu.com/category-57-b0.html" target="_blank">休闲套装</a></li>
-            </ul>
-        </div>
-      <div class="Hstyle">
-          <h1>女装<span>Women</span></h1>
-          <ul>
-                <li><a href="http://hstyle.handu.com/" target="_blank">韩风快时尚女装</a></li>
-                <li><a href="http://www.handu.com/topic-748.html" target="_blank">韩风快时尚妈妈装</a></li>
-                <li><a href="http://www.handu.com/topic-1173.html" target="_blank">韩风甜美少女装</a></li>
-                <li><a href="http://www.handu.com/topic-417.html" target="_blank">东方复古设计师女装</a></li>
-                <li><a href="http://www.handu.com/topic-502.html" target="_blank">韩风名媛时尚女装</a></li>
-                <li><a href="http://www.handu.com/topic-1226.html" target="_blank">欧美浪漫田园风女装</a></li>
-                <li><a href="http://www.handu.com/topic-1168.html" target="_blank">韩风大码女装</a></li>
-                <li><a href="http://www.handu.com/topic-503.html" target="_blank">欧美快时尚女装</a></li>
-            </ul>
-        </div>
-      <div class="AMH">
-          <h1>男装<span>Men</span></h1>
-          <ul>
-                <li><a href="http://www.handu.com/topic-406.html" target="_blank">韩风快时尚男装</a></li>
-                <li><a href="http://www.handu.com/topic-1184.html" target="_blank">东方禅意设计师男装</a></li>
-                <li><a href="http://www.handu.com/topic-1225.html" target="_blank">欧美街头轻潮男装</a></li>
-            </ul>
-        </div>
-      <div class="mini">
-          <h1>童装<span>Children</span></h1>
-          <ul>
-                <li><a href="http://www.handu.com/topic-347.html" target="_blank">韩风快时尚童装</a></li>
-                <li><a href="http://www.handu.com/topic-1196.html" target="_blank">东方简约设计师童装</a></li>
-            </ul>
-        </div>
-      <div class="help">
-          <h1>帮助中心<span>Help</span></h1>
-          <ul>
-                <li><a href="http://www.handu.com/helper-61-723.html" target="_blank">会员制度</a></li>
-                <li><a href="http://www.handu.com/helper-11-743.html" target="_blank">售后服务</a></li>
-                <li><a href="http://www.handu.com/helper-21-701.html" target="_blank">购物流程</a></li>
-                <li><a href="http://www.handu.com/helper-5-750.html" target="_blank">关于发票</a></li>
-                <li><a href="http://www.handu.com/helper-10-737.html" target="_blank">配送方式</a></li>
-                <li><a href="http://zhaopin.handu.com/index.php" target="_blank">韩都招聘</a></li>
-            </ul>
-        </div>
-    </div>
-  </div>
-</div>
-
-<script>
- //鼠标滑过弹出层
-function dhceng(obj, sType) 
-{ 
-  var oDiv = document.getElementById(obj); 
-  if (sType == 'show') {oDiv.style.display = 'block';} 
-  if (sType == 'hide') {oDiv.style.display = 'none';} 
-} 
-</script></div>
-
-<!-- <form action="" method="post" name="theForm" onsubmit="return checkShoppingOrderForm();" id="theForm"> -->
-<input name="is_now" id="is_now" value="0" type="hidden">
-<input name="is_package" id="is_package" value="" type="hidden">
 <div class="cart_header" style="width:990px;">
     <a href="http://www.handu.com/index.php" class="cart_logo1 fl"></a>
     <div class="cart_step step2 fr"></div>
@@ -182,7 +41,7 @@ function dhceng(obj, sType)
                    	
   <ul class="shopping_order_address" id="shopping_order_address" style="width:100%;">
       @foreach($address as $value)
-   	   		<li class="{{$value->state==1? "selected":''}} addr_list" ondblclick="edit_show(this)" onclick="save(this)">
+   	   		<li class="{{$value->state==1? "selected":''}} addr_list">
           <span class="address_name">
             <input name="address" value="{{$value->id}}" checked="checked" style="display:none;" type="radio">&nbsp;&nbsp;&nbsp;
             {{$value->to_name}}&nbsp;&nbsp;&nbsp;{{$value->phone}}        </span>
@@ -283,14 +142,14 @@ function dhceng(obj, sType)
                         $('#shopping_order_address').find('.addr_list').remove();
                         $(data).each(function(i,n){
                           if(n['state']==1){
-                            str += '<li class="selected addr_list" ondblclick="edit_show(this)" onclick="save(this)">';
+                            str += '<li class="selected addr_list">';
                           }else{ 
-                            str += '<li class="addr_list" onclick="edit_show(this)">';
+                            str += '<li class="addr_list">';
                           }
                           str += '<span class="address_name">';
                           str += '<input name="address" value="'+n['id']+'" checked="checked" style="display:none" type="radio">'+n['to_name']+'&nbsp;&nbsp;&nbsp;'+n['phone']+'</span>';
 
-                          str +=  '<input name="is_default" value="'+n['id']+'" type="hidden"><br>';
+                          str +=  '<input name="is_default" value="'+n['state']+'" type="hidden"><br>';
                           str +=  '<span class="address_dizhi" style="word-break: break-all;word-wrap: break-word;overflow:hidden;position:absolute;top:25px;padding: 5px 10px;line-height: 25px;height:40px;">'+n['addr_area']+'             '+n['addr_deta']+'</span><br>';
                           str += '<span style="display:none;" id="addr_edit">';
                           str +=  '<input class="hide_address_id" value="1259237" type="hidden">';
@@ -313,19 +172,19 @@ function dhceng(obj, sType)
                 });
     }
 
-    function edit_show(obj){
+  
+    $("#shopping_order_address").delegate(".addr_list",'dblclick',function(){
         $('.addr_list').removeClass('selected');
-        $(obj).find('#addr_edit').css('display','block');
-        $(obj).addClass('selected');
-       
-    }
+        $(this).find('#addr_edit').css('display','block');
+        $(this).addClass('selected');
+    });
 
-    function save(obj){
-      $('.addr_list').find("input[name='is_default'][value='1']").parent().addClass('selected');
+
+    $("#shopping_order_address").delegate(".addr_list",'click',function(){
+        $('.addr_list').find("input[name='is_default'][value='1']").parent().addClass('selected');
       $('.addr_list').find("input[name='is_default'][value='0']").parent().removeClass('selected');
-      
-      $(obj).find('#addr_edit').css('display','none');
-    }
+      $(this).find('#addr_edit').css('display','none');
+    });
 
     function edit_address(id,eve){
         $.ajaxSetup({
@@ -405,14 +264,14 @@ function dhceng(obj, sType)
                         $('#shopping_order_address').find('.addr_list').remove();
                         $(data).each(function(i,n){
                           if(n['state']==1){
-                            str += '<li class="selected addr_list" ondblclick="edit_show(this)" onclick="save(this)">';
+                            str += '<li class="selected addr_list">';
                           }else{ 
-                            str += '<li class="addr_list" onclick="edit_show(this)">';
+                            str += '<li class="addr_list">';
                           }
                           str += '<span class="address_name">';
                           str += '<input name="address" value="'+n['id']+'" checked="checked" style="display:none" type="radio">'+n['to_name']+'&nbsp;&nbsp;&nbsp;'+n['phone']+'</span>';
 
-                          str +=  '<input name="is_default" value="'+n['id']+'" type="hidden"><br>';
+                          str +=  '<input name="is_default" value="'+n['state']+'" type="hidden"><br>';
                           str +=  '<span class="address_dizhi" style="word-break: break-all;word-wrap: break-word;overflow:hidden;position:absolute;top:25px;padding: 5px 10px;line-height: 25px;height:40px;">'+n['addr_area']+'             '+n['addr_deta']+'</span><br>';
                           str += '<span style="display:none;" id="addr_edit">';
                           str +=  '<input class="hide_address_id" value="1259237" type="hidden">';
@@ -1109,255 +968,6 @@ $(".cart_good_type").each(function(index,item){
 <!-- </form> -->
 
 
-<div class="hd_footer_w990">
-
-<div class="handu_footer ">
-<div class="footer_info">
-   
-                       <div class="info_column first">
-               <h4 class="fht21">新手指南</h4>
-               <ul>
-                              <li><a href="http://www.handu.com/helper-21-700.html" title="用户注册" target="_blank">用户注册</a></li>
-                              <li><a href="http://www.handu.com/helper-21-701.html" title="购物流程" target="_blank">购物流程</a></li>
-                               
-                              <li><a href="http://www.handu.com/sitemap.html" title="网站导航" target="_blank">网站导航</a></li>
-                              <li><a href="http://www.handu.com/helpercenter.php" title="帮助中心" target="_blank">帮助中心</a></li>
-                           </ul>
-           </div>
-           
-                       <div class="info_column">
-               <h4 class="fht22">支付方式</h4>
-               <ul>
-                              <li><a href="http://www.handu.com/helper-22-121.html" title="在线支付" target="_blank">在线支付</a></li>
-                              <li><a href="http://www.handu.com/helper-22-705.html" title="货到付款" target="_blank">货到付款</a></li>
-                              <li><a href="http://www.handu.com/helper-22-706.html" title="扫码支付" target="_blank">扫码支付</a></li>
-                              <li><a href="http://www.handu.com/helper-22-707.html" title="优惠券支付" target="_blank">优惠券支付</a></li>
-                              
-                           </ul>
-           </div>
-           
-                       <div class="info_column">
-               <h4 class="fht10">配送方式</h4>
-               <ul>
-                              
-                              <li><a href="http://www.handu.com/helper-10-737.html" title="配送说明" target="_blank">配送说明</a></li>
-                              <li><a href="http://www.handu.com/helper-10-738.html" title="运费说明" target="_blank">运费说明</a></li>
-                              <li><a href="http://www.handu.com/helper-10-739.html" title="验货签收" target="_blank">验货签收</a></li>
-                              <li><a href="http://www.handu.com/helper-10-740.html" title="货到付款" target="_blank">货到付款</a></li>
-                              
-                           </ul>
-           </div>
-           
-                       <div class="info_column">
-               <h4 class="fht11">售后服务</h4>
-               <ul>
-                              <!--<li><a href="helper-11-742.html" title="正品保证" target="_blank">正品保证</a></li>-->
-                              <li><a href="http://www.handu.com/helper-11-743.html" title="退换货政策" target="_blank">退换货政策</a></li>
-                              <li><a href="http://www.handu.com/helper-11-744.html" title="退换货流程" target="_blank">退换货流程</a></li>
-                              
-                              
-                           </ul>
-           </div>
-           
-                       <div class="info_column">
-               <h4 class="fht61">会员中心</h4>
-               <ul>
-                              <li><a href="http://www.handu.com/helper-61-723.html" title="会员制度" target="_blank">会员制度</a></li>
-                              <li><a href="http://www.handu.com/helper-61-724.html" title="会员积分" target="_blank">会员积分</a></li>
-                              <li><a href="http://www.handu.com/topic-640.html" title="好评有礼" target="_blank">好评有礼</a></li>
-                              <!--<li><a href="helper-61-726.html" title="推荐返利" target="_blank">推荐返利</a></li>-->
-                              
-                           </ul>
-           </div>
-           
-     
-               
-                       <div class="info_column">
-               <h4 class="fht5">关于我们</h4>
-               <ul>
-                              <li><a href="http://www.handu.com/topic-511.html" title="品牌故事" target="_blank">品牌故事</a></li>
-                              
-                              <li><a href="http://www.handu.com/news/list/82_2.html" title="媒体报道" target="_blank">媒体报道</a></li>
-                              <li><a href="http://zhaopin.handu.com/" title="诚聘英才" target="_blank">诚聘英才</a></li>
-                              <li><a href="http://www.handu.com/helper-5-750.html" title="联系我们" target="_blank">联系我们</a></li>
-                               <!--<li><a href="http://www.handu.com/topic-1430.html" title="团购批发" target="_blank">团购批发</a></li>-->
-                           </ul>
-           </div>
-           
-     
-               
-  </div>
-
-  <div class="footer_feature"></div>
-
-  <div class="footer_black"> 
-     <a href="http://www.handu.com/index.php" target="_blank">首页</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-     <a href="http://www.handu.com/topic-511.html" target="_blank">品牌故事</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-     <a href="http://zhaopin.handu.com/" target="_blank">诚聘英才</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-     <a href="http://www.handu.com/news/list/82_2.html" target="_blank">媒体报道</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-     <a href="http://www.handu.com/helper-5-750.html" target="_blank">联系我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-     <a href="http://www.handu.com/sitemap.html" target="_blank">网站地图</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-     <a href="http://www.handu.com/link.html" target="_blank">友情链接</a>
-   </div>
-
-    <center class="copyright_info">
-      <span><img src="%E8%AE%A2%E5%8D%95%E7%A1%AE%E8%AE%A4%E4%B8%AD%E5%BF%83-%E9%9F%A9%E9%83%BD%E8%A1%A3%E8%88%8D%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99_files/copyright.gif" alt="" width="33" height="37" border="0" align="absmiddle">鲁ICP备14003322号-2 © 2006-2015 handu.com All Rights Reserved. 
-      
-      <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37010202000113" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="%E8%AE%A2%E5%8D%95%E7%A1%AE%E8%AE%A4%E4%B8%AD%E5%BF%83-%E9%9F%A9%E9%83%BD%E8%A1%A3%E8%88%8D%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99_files/beiantubiao.png" style="float:left;"><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">鲁公网安备 37010202000113号</p></a>
-      
-      韩都衣舍电子商务集团股份有限公司，禁止非法复制
-      </span>
-      
-                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5484197'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s25.cnzz.com/stat.php%3Fid%3D5484197%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_5484197"><a href="http://www.cnzz.com/stat/website.php?web_id=5484197" target="_blank" title="站长统计"><img src="{{asset('/home/imgs/pic.gif')}}" vspace="0" hspace="0" border="0"></a></span><script src="{{asset('/home/imgs/stat.php')}}" type="text/javascript"></script><script src="{{asset('/home/imgs/core.php')}}" charset="utf-8" type="text/javascript"></script> 
-                <br>
-             <center>
-
-         <img src="{{asset('/home/imgs/zxmbutton02_sy.jpg')}}" alt="" width="114" height="38" border="0">
-         
-        <a href="http://www.handu.com/themes/handuyishe/html/yyzz.html" target="_blank"><img src="{{asset('/home/imgs/zxmbutton05_sy.jpg')}}" alt="" style="margin:5px 5px 0 5px;" width="103" height="38" border="0"></a>
-
-
-		<a href="https://ss.knet.cn/verifyseal.dll?sn=e14071837010051457jcgb000000&amp;ct=df&amp;a=1&amp;pa=0.6688498684670776" target="_blank" style="display:inline-block;position:relative;width:102px;height:37px;">
-       <img src="{{asset('/home/imgs/cnnic.png')}}" alt="" width="102" height="37" border="0"></a>
-
-        <!--<a href="http://si.trustutn.org/info?sn=615140701004909923565" target="_blank">
-        <img src="http://img01.handu.com/hdysweb/20140415/renzheng.jpg" alt="" width="45" height="38" border="0"></a>-->
-
-        <a style="display: inline-block;width: 74px;margin: 4px 3px;"> <img src="{{asset('/home/imgs/cctv.png')}}" alt="" width="74" height="40" border="0"></a>
-        </center>
-
-        <script src="{{asset('/home/js/cert.js')}}"></script>
-        <script type="text/javascript" src="{{asset('/home/js/certShow.js')}}"></script>
-    </center>
-     
-  
- 
-   
-
-</div>
-
-
-<script type="text/javascript">
-
-$(function() {
- 
-    
-    //添加收藏夹
-    $('#nav_addFavorite a').click(function(){
-        var sURL='http://www.handu.com';
-        var sTitle='韩都衣舍HSTYLE';
-        try {
-            window.external.addFavorite(sURL, sTitle);
-        }
-        catch (e) {
-            try {
-                window.sidebar.addPanel(sTitle, sURL, "");
-            }
-            catch (e) {
-                alert("您可以尝试通过快捷键 Ctrl + D 加入到收藏夹~");
-            }
-        }
-    
-    });
-   
-});
-
-
-</script> 
-
-
-<div class="float_box" style="display: block;">
-  
-  <div class="float_app"></div>
-  <a href="http://www.handu.com/flow.php?step=cart" target="_blank" class="a1" onclick="_czc.push(['_trackEvent', '悬浮', '购物车']);"></a>
-  <a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzkzODE4ODAzNF80MzI3MjBfNDAwODA2Nzc3N18yXw" target="_blank" class="a2" onclick="_czc.push(['_trackEvent', '悬浮', '在线客服']);"></a>
-  <a href="http://www.handu.com/msg.php" target="_blank" class="a3" onclick="_czc.push(['_trackEvent', '悬浮', '在线反馈']);"></a>
-  <a href="http://jq.qq.com/?_wv=1027&amp;k=29u2lqa" class="a4" target="_blank"></a>
-  <a href="javascript:void(0);" class="a5 backTop" onclick="_czc.push(['_trackEvent', '悬浮', '返回顶部']);"></a>
-  
-</div>
-<script language="javascript" type="text/javascript">
-$(window).scroll(function(){
-      var t = document.documentElement.scrollTop||document.body.scrollTop;
-
-      if(t>450){
-    $(".float_box").fadeIn();
-      }
-      else{
-     $(".float_box").hide();
-      }
-})
-
-$('.float_box .backTop').click(function(){
-    $("html, body").animate({'scrollTop':0},320);
-})
-</script>
-
-
-<script language="javascript" type="text/javascript">
-  NTKF_PARAM = {
-  siteid:"kf_9817",
-  settingid: "kf_9817_1377747298633",
-    itemid: "",
-     
-  uid:"15333782",
-    uname:"15313066678",
-
-userlevel:0,
-  orderid: "",
-  orderprice: "",
-itemparam: "size=41|color=red|brand=tata",
-      erpparam: "sid=eadfddeeel|utm=adfe|source=baidu" 
-
-} 
-</script><script type="text/javascript" charset="utf-8" src=""></script>
- 
-  
- 
-   
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-45831645-1', 'handu.com');
-  ga('require', 'displayfeatures');
-   
-  ga('set', 'dimension1', '15333782');
-  ga('set', '&uid', '15333782');
-    ga('send', 'pageview');
-</script>
- 
-
-
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?925dc35723dff5cd810f7fee2e41a269";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
- 
-
-
-<style type="text/css">
-.gwd_toolbar_container{display:none; visibility:hidden;}
-.gwd_float_curve_trigger{display:none; visibility:hidden;}
-.gwd_float_curve{display:none; visibility:hidden;}
-.gwd_toolbar_control_small{display:none;}
-.gwd_toolbar_container gwd_toolbar_containerX gwd_toolbar_big gwd_ns_x11 gwd_toolbar_no_transition{visibility:hidden !important; display:none !important; margin-left: -1000000px !important;}
-.gwd_toolbar_goods_list gwd_ns_baokuan{display:none !important; visibility:hidden !important; margin-left: -1000000px !important;}
-.gwd_toolbar_goods_list .gwd_toolbar_goods_item_pic {display:none !important;}
-.gwd_toolbar_info{display:none !important; visibility:hidden !important; margin-left: -1000000px !important;}
-</style>
-<script src="{{asset('/home/js/tag.js')}}" type="text/javascript" async=""></script>
-</div>
-
 <script type="text/javascript">
 
 $(function(){
@@ -1725,8 +1335,4 @@ function  changePostage(obj)
     }
   </script>
 
-
-
-
-
-<iframe id="veUtilsIframe" style="visibility: hidden; display: none; border: medium none;" width="0" height="0"></iframe><iframe id="1482760559348" tabindex="-1" src="%E8%AE%A2%E5%8D%95%E7%A1%AE%E8%AE%A4%E4%B8%AD%E5%BF%83-%E9%9F%A9%E9%83%BD%E8%A1%A3%E8%88%8D%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99_files/iframeStorage.htm" style="display: none;"></iframe></body></html>
+@endsection

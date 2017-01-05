@@ -100,7 +100,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputFile">类副logo</label>
                                     @if(!empty($dataFirst->assit_logo))
-                                     <img src = "{{ url('/home/imgs/category') }}/{{ $dataFirst->assit_logo }}" width="80"/>
+                                     <img src = "{{ url('/home/imgs') }}/{{ $dataFirst->assit_logo }}" width="80"/>
                                      @endif
                                     <input type="file" name="assit_logo" id="exampleInputFile">
                                     <p class="help-block">非必选</p>

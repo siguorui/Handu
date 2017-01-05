@@ -1,6 +1,7 @@
 @extends('home.layout')
 @section('content')
 <title>搜索中心_韩都衣舍HSTYLE网-韩风快时尚第一品牌购物商城。正品保证！</title>
+<link rel="stylesheet" type="text/css" href="{{asset('/home/css/handu_search.css')}}">
 <div class="wrap">
 <form id="search_page_form" action="http://www.handu.com/search.php" method="GET">
     <input type="hidden" name="brand" value="">
@@ -86,11 +87,11 @@
             <a class="check  " href="javascript:void(0)"></a><span>包邮(全部)</span>
         </div>
 	    
-
+        
 	    <div class="page_set">
             <span>总计{{$data ->total()}}个商品</span>&nbsp;&nbsp;&nbsp;&nbsp;
 	    	<span>{{$data ->currentPage()}}/{{$data ->lastPage()}}</span> &nbsp;&nbsp;
-             <span class="arr" href="{{ $data -> appends($request) -> previousPageUrl() }}">&lt;</span>              <a class="arr" href="{{ $data -> appends($request) -> nextPageUrl() }}"><span>&gt;</span></a>            
+    <span class="arr" href="{{ $data -> appends($request) -> previousPageUrl() }}">&lt;</span>  <a class="arr" href="{{ $data -> appends($request) -> nextPageUrl() }}"><span>&gt;</span></a>            
 	    </div>
 	</div>
 </form>
@@ -113,7 +114,7 @@
              @foreach($data as $v)                   
              <li>
                 <div class="boxCont" style="height: 325px">
-                                        <a href="http://www.handu.com/goods-1054538.html" title="{{$v -> promt_price}}" alt="" target="_blank"><img src="/home/imgs/{{$v -> pic}}"></a>
+                                        <a href="{{ url('/home/goods/goods') }}/{{$v->id}}" title="{{$v -> promt_price}}" alt="" target="_blank"><img src="/home/imgs/goods/{{$v -> pic}}"></a>
                     <!-- <div style="position: absolute;width: 68px;height: 41px;background: url(http://img01.handu.com/hdysweb/20141105/1111.png) no-repeat 0 0;top: 5px;left: 5px;"></div> -->
                     <!--<div title="10.10购物狂欢节" style="position: absolute;width: 67px;height: 29px;top: 12px;left: 12px; background:url(http://img01.handu.com/hdysweb/20141009/shuagshi.png) no-repeat;"></div>-->
                     <script>

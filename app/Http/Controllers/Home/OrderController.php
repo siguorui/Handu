@@ -180,7 +180,9 @@ class OrderController extends Controller
 			$order['uid'] = Session('master') -> id;
 			$order['order_num'] = $order_num;
 			$order['order_type'] = 0;
-			$order['order_state'] = 0;
+            $order['order_state'] = 0;
+			$order['aid'] = $data['add_id'];
+
 			DB::table('goods_orders')->insert($order);
 			$total += DB::table('goods_list') ->select('promt_price')-> where('id',$value)->first()->promt_price * $order['num'];
 
@@ -190,7 +192,8 @@ class OrderController extends Controller
 		$pay['total'] = $total;
 		$pay['order_num'] = $order_num;
 		$pay['pay'] = $data['pay'];
-		$pay['deliver'] = $data['deliver'];;
+        $pay['deliver'] = $data['deliver'];
+		
 		// $pay['id'] = $data['gid'];
 		
 
@@ -239,6 +242,8 @@ class OrderController extends Controller
     			}
     		
         	}
+
+            return redirect('/home/orders/myOrders') -> with(['info'=>'添加成功']);
 
     }
 

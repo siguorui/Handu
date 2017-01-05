@@ -119,6 +119,7 @@ class Catecontroller extends Controller
 
   //   	mysql> select c1.*,concat(c1.path,',',c1.id) as sort_str,c2.title as ptitle from category as c1 left join category as c2 on c1.pid=c2.id order by sort
 		// _str;
+        $pdata = DB::table('category') -> where('pid','0') -> get();
 		
     	//按照path对查询出的结果排序
         $data = DB::table('category') -> select('*',DB::raw("concat(path,',',id) AS sort_str")) -> orderBy('sort_str') -> get();
@@ -131,7 +132,7 @@ class Catecontroller extends Controller
 		}
 
 		// var_dump($data); die;
-    	return view('admin.cate.index',['data'=>$data]);
+    	return view('admin.cate.index',['data'=>$data,'pdata'=>$pdata]);
     }
 
     public function edit($id)
@@ -239,12 +240,28 @@ class Catecontroller extends Controller
     public function delete($id)
     {
     	//判断是否有子分类
-    	$res = DB::table('category') -> where('pid',$id) -> first();
-    	
-    	if($res)
-    	{
-    		return back() -> with(['info'=>'对不起，有子分类，不能删除']);
-    	}
+        $fres = DB::table('category') -> where('id',$id) -> first();
+
+        $num = substr_count($fres->path, ',');
+
+        if($num==0 || $num==1){
+        	$res = DB::table('category') -> where('pid',$id) -> first();
+        	
+        	if($res)
+        	{
+        		return back() -> with(['info'=>'对不起，有子分类，不能删除']);
+        	}
+
+        }
+
+        if($num==2){
+            $res = DB::table('goods_list')->where('cate_id',$id)->first();
+            
+            if($res){
+                return back() -> with(['info'=>'对不起，分类下有商品，不能删除']);
+            }
+        }
+
 
     	$res = DB::table('category') -> delete($id);
 
